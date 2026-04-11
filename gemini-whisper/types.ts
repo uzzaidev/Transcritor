@@ -53,6 +53,48 @@ export interface TranscriptionResult {
   speakerProfiles?: SpeakerProfile[];
 }
 
+export interface AtaPipelineDefaults {
+  projeto: string;
+  sprint: string;
+  participantes: string;
+  destinatarios: string;
+}
+
+export interface AtaPipelineRequest {
+  arquivoFonte: string;
+  transcriptText: string;
+  projeto: string;
+  sprint: string;
+  participantes: string[];
+  destinatarios: string[];
+  meetingTitle: string;
+  meetingDate: string;
+}
+
+export interface AtaPipelineExecutionResult {
+  success: boolean;
+  message: string;
+  stdout?: string;
+  stderr?: string;
+  pythonExecutable?: string;
+  result?: {
+    success: boolean;
+    state?: {
+      arquivos_derivados?: string[];
+      delivery_result?: {
+        success: boolean;
+        error?: string;
+      };
+      audit_result?: {
+        passed: boolean;
+        issues?: string[];
+      };
+    };
+  };
+}
+
+export type AtaPipelineStatus = 'idle' | 'running' | 'success' | 'error';
+
 export interface MediaFile {
   file: File;
   previewUrl: string;
@@ -86,4 +128,7 @@ export interface QueueItem {
   discoveryResult?: SpeakerDiscoveryResult;
   speakerNames?: Record<string, string>;
   awaitingDiarization?: boolean;
+  ataPipelineStatus?: AtaPipelineStatus;
+  ataPipelineMessage?: string;
+  ataPipelineResult?: AtaPipelineExecutionResult;
 }

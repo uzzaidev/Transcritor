@@ -6,14 +6,32 @@ import SettingsModal from './components/SettingsModal';
 import ContextRecorder from './components/ContextRecorder';
 import FileQueue from './components/FileQueue';
 import SpeakerIdentificationModal from './components/SpeakerIdentificationModal';
+import AtaGenerationModal from './components/AtaGenerationModal';
 import { discoverSpeakers, transcribeMedia } from './services/transcriptionService';
-import { MediaFile, TranscriptionResult, ProcessStatus, TranscriptionProvider, ApiKeys, QueueItem, SPEAKER_COLORS, SpeakerDiscoveryResult, SpeakerProfile } from './types';
+import { runAtaPipeline } from './services/ataPipelineService';
+import { ApiKeys, AtaPipelineDefaults, MediaFile, ProcessStatus, QueueItem, SPEAKER_COLORS, SpeakerDiscoveryResult, SpeakerProfile, TranscriptionProvider, TranscriptionResult } from './types';
 
 import { calculateOpenAICost, formatCurrency } from './utils/costCalculator';
 import AudioRecorder from './components/AudioRecorder';
 import { getFileChunks, CHUNK_SIZE, formatBytes } from './utils/fileUtils';
 
 type ViewMode = 'files' | 'live-context';
+
+const getCurrentSprintLabel = (): string => {
+    const now = new Date();
+    const date = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+    const day = date.getUTCDay() || 7;
+    date.setUTCDate(date.getUTCDate() + 4 - day);
+    const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+    const weekNo = Math.ceil((((date.getTime() - yearStart.getTime()) / 86400000) + 1) / 7);
+    return `Sprint-${date.getUTCFullYear()}-W${weekNo.toString().padStart(2, '0')}`;
+};
+
+const parseCommaSeparatedValues = (value: string): string[] =>
+    value
+        .split(/[\n,;]+/)
+        .map((item) => item.trim())
+        .filter(Boolean);
 
 const App: React.FC = () => {
     const [viewMode, setViewMode] = useState<ViewMode>('files');
@@ -46,6 +64,9 @@ const App: React.FC = () => {
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [viewResult, setViewResult] = useState<{ text: string, type: string } | null>(null);
     const [diarizationPendingItem, setDiarizationPendingItem] = useState<QueueItem | null>(null);
+    const [ataModalItemId, setAtaModalItemId] = useState<string | null>(null);
+    const [ataPipelineError, setAtaPipelineError] = useState<string | null>(null);
+    const [isRunningAtaPipeline, setIsRunningAtaPipeline] = useState(false);
 
     // Initialize Provider from localStorage or default
     const [provider, setProvider] = useState<TranscriptionProvider>(() => {
@@ -78,6 +99,27 @@ const App: React.FC = () => {
     React.useEffect(() => {
         localStorage.setItem('gw_apiKeys', JSON.stringify(apiKeys));
     }, [apiKeys]);
+
+    const [ataDefaults, setAtaDefaults] = useState<AtaPipelineDefaults>(() => {
+        const saved = localStorage.getItem('gw_ataDefaults');
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch (e) {
+                console.error("Failed to parse ATA defaults", e);
+            }
+        }
+        return {
+            projeto: 'GERAL',
+            sprint: getCurrentSprintLabel(),
+            participantes: '',
+            destinatarios: '',
+        };
+    });
+
+    React.useEffect(() => {
+        localStorage.setItem('gw_ataDefaults', JSON.stringify(ataDefaults));
+    }, [ataDefaults]);
 
     // Media element ref (for duration check of active file)
     const mediaRef = useRef<HTMLVideoElement | HTMLAudioElement | null>(null);
@@ -169,6 +211,9 @@ const App: React.FC = () => {
     const handleRemoveFromQueue = (id: string) => {
         if (diarizationPendingItem?.id === id) {
             setDiarizationPendingItem(null);
+        }
+        if (ataModalItemId === id) {
+            setAtaModalItemId(null);
         }
         setQueue(prev => prev.filter(item => item.id !== id));
     };
@@ -469,6 +514,87 @@ const App: React.FC = () => {
         setDiarizationPendingItem(null);
     };
 
+    const ataModalItem = ataModalItemId ? queue.find((item) => item.id === ataModalItemId) || null : null;
+
+    const handleOpenAtaModal = (itemId: string) => {
+        setAtaPipelineError(null);
+        setAtaModalItemId(itemId);
+    };
+
+    const handleAtaPipelineSubmit = async (payload: {
+        projeto: string;
+        sprint: string;
+        participantes: string;
+        destinatarios: string;
+        meetingTitle: string;
+        meetingDate: string;
+    }) => {
+        if (!ataModalItem?.result) {
+            setAtaPipelineError('Nenhuma transcrição disponível para este item.');
+            return;
+        }
+
+        setIsRunningAtaPipeline(true);
+        setAtaPipelineError(null);
+        setAtaDefaults({
+            projeto: payload.projeto,
+            sprint: payload.sprint,
+            participantes: payload.participantes,
+            destinatarios: payload.destinatarios,
+        });
+
+        const itemId = ataModalItem.id;
+        setQueue(prev => prev.map(item =>
+            item.id === itemId
+                ? { ...item, ataPipelineStatus: 'running', ataPipelineMessage: 'Executando pipeline de ATA...' }
+                : item
+        ));
+
+        try {
+            const result = await runAtaPipeline({
+                arquivoFonte: ataModalItem.file.name,
+                transcriptText: ataModalItem.result.text,
+                projeto: payload.projeto,
+                sprint: payload.sprint,
+                participantes: parseCommaSeparatedValues(payload.participantes),
+                destinatarios: parseCommaSeparatedValues(payload.destinatarios),
+                meetingTitle: payload.meetingTitle,
+                meetingDate: payload.meetingDate,
+            });
+
+            setQueue(prev => prev.map(item =>
+                item.id === itemId
+                    ? {
+                        ...item,
+                        ataPipelineStatus: result.success ? 'success' : 'error',
+                        ataPipelineMessage: result.message,
+                        ataPipelineResult: result,
+                    }
+                    : item
+            ));
+
+            if (result.success) {
+                setAtaModalItemId(null);
+            } else {
+                setAtaPipelineError(result.message);
+            }
+        } catch (error: any) {
+            const message = error?.message || 'Falha inesperada ao executar o pipeline.';
+            setQueue(prev => prev.map(item =>
+                item.id === itemId
+                    ? {
+                        ...item,
+                        ataPipelineStatus: 'error',
+                        ataPipelineMessage: message,
+                    }
+                    : item
+            ));
+            setAtaPipelineError(message);
+        } finally {
+            setIsRunningAtaPipeline(false);
+        }
+    };
+
     const getProviderName = () => {
         switch (provider) {
             case 'openai': return 'OpenAI Whisper';
@@ -637,6 +763,18 @@ const App: React.FC = () => {
                 setApiKeys={setApiKeys}
                 provider={provider}
                 setProvider={setProvider}
+                ataDefaults={ataDefaults}
+                setAtaDefaults={setAtaDefaults}
+            />
+
+            <AtaGenerationModal
+                isOpen={Boolean(ataModalItem)}
+                item={ataModalItem}
+                defaults={ataDefaults}
+                isSubmitting={isRunningAtaPipeline}
+                errorMessage={ataPipelineError}
+                onClose={() => setAtaModalItemId(null)}
+                onSubmit={handleAtaPipelineSubmit}
             />
 
             {diarizationPendingItem?.discoveryResult && (
@@ -955,8 +1093,34 @@ const App: React.FC = () => {
                                                         result={file.result!}
                                                         mode={mode}
                                                         onDownload={() => downloadText(file.result!.text)}
+                                                        extraActions={(
+                                                            <button
+                                                                onClick={() => handleOpenAtaModal(file.id)}
+                                                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 transition-colors"
+                                                            >
+                                                                <FileText className="w-4 h-4" />
+                                                                Gerar ATA
+                                                            </button>
+                                                        )}
                                                         onRequestRename={file.discoveryResult ? () => handleRequestRename(file.id) : undefined}
                                                     />
+                                                    {file.ataPipelineStatus && file.ataPipelineStatus !== 'idle' && (
+                                                        <div
+                                                            className={`mt-3 rounded-lg border px-4 py-3 text-sm ${file.ataPipelineStatus === 'success'
+                                                                ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200'
+                                                                : file.ataPipelineStatus === 'running'
+                                                                    ? 'border-blue-500/30 bg-blue-500/10 text-blue-200'
+                                                                    : 'border-red-500/30 bg-red-500/10 text-red-200'
+                                                                }`}
+                                                        >
+                                                            <p className="font-medium">{file.ataPipelineMessage}</p>
+                                                            {file.ataPipelineResult?.result?.state?.arquivos_derivados?.length ? (
+                                                                <p className="mt-1 text-xs opacity-80">
+                                                                    Artefatos gerados: {file.ataPipelineResult.result.state.arquivos_derivados.length}
+                                                                </p>
+                                                            ) : null}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             ))}
                                         </div>

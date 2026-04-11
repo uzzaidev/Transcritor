@@ -1,0 +1,15 @@
+{
+  "tipo_evento": "nova_reuniao",
+  "arquivo_fonte": "transcricao_Voz_260411_020256.txt",
+  "projeto": "ATA-PIPELINE",
+  "sprint": "Sprint-2026-W15",
+  "participantes": [
+    "Pedro Vitor Pagliarin",
+    "Equipe Técnica"
+  ],
+  "destinatarios": [
+    "caixa-de-entrada@exemplo.com"
+  ],
+  "meeting_title": "Definição de arquitetura inicial",
+  "meeting_date": "2026-04-11"
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Key, Save, CheckCircle2 } from 'lucide-react';
-import { ApiKeys, TranscriptionProvider } from '../types';
+import { ApiKeys, AtaPipelineDefaults, TranscriptionProvider } from '../types';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -9,6 +9,8 @@ interface SettingsModalProps {
   setApiKeys: (keys: ApiKeys) => void;
   provider: TranscriptionProvider;
   setProvider: (provider: TranscriptionProvider) => void;
+  ataDefaults: AtaPipelineDefaults;
+  setAtaDefaults: (defaults: AtaPipelineDefaults) => void;
 }
 
 const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -18,20 +20,25 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   setApiKeys,
   provider,
   setProvider,
+  ataDefaults,
+  setAtaDefaults,
 }) => {
   const [localKeys, setLocalKeys] = useState<ApiKeys>(apiKeys);
+  const [localAtaDefaults, setLocalAtaDefaults] = useState<AtaPipelineDefaults>(ataDefaults);
   const [saved, setSaved] = useState(false);
 
   // Sync props to local state when modal opens
   useEffect(() => {
     if (isOpen) {
       setLocalKeys(apiKeys);
+      setLocalAtaDefaults(ataDefaults);
       setSaved(false);
     }
-  }, [isOpen, apiKeys]);
+  }, [isOpen, apiKeys, ataDefaults]);
 
   const handleSave = () => {
     setApiKeys(localKeys);
+    setAtaDefaults(localAtaDefaults);
     setSaved(true);
     setTimeout(() => {
       setSaved(false);
@@ -117,6 +124,64 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 value={localKeys.huggingface}
                 onChange={(e) => setLocalKeys({ ...localKeys, huggingface: e.target.value })}
                 placeholder="hf_..."
+                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-4 border-t border-slate-800">
+            <div className="text-sm font-semibold text-slate-300 uppercase tracking-wide">
+              ATA Pipeline Defaults
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-400 uppercase">
+                Projeto padrão
+              </label>
+              <input
+                type="text"
+                value={localAtaDefaults.projeto}
+                onChange={(e) => setLocalAtaDefaults({ ...localAtaDefaults, projeto: e.target.value })}
+                placeholder="GERAL"
+                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-400 uppercase">
+                Sprint padrão
+              </label>
+              <input
+                type="text"
+                value={localAtaDefaults.sprint}
+                onChange={(e) => setLocalAtaDefaults({ ...localAtaDefaults, sprint: e.target.value })}
+                placeholder="Sprint-2026-W15"
+                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-400 uppercase">
+                Participantes padrão
+              </label>
+              <textarea
+                value={localAtaDefaults.participantes}
+                onChange={(e) => setLocalAtaDefaults({ ...localAtaDefaults, participantes: e.target.value })}
+                rows={2}
+                placeholder="Nome 1, Nome 2"
+                className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-semibold text-slate-400 uppercase">
+                Destinatários padrão
+              </label>
+              <textarea
+                value={localAtaDefaults.destinatarios}
+                onChange={(e) => setLocalAtaDefaults({ ...localAtaDefaults, destinatarios: e.target.value })}
+                rows={2}
+                placeholder="ata@empresa.com, time@empresa.com"
                 className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
             </div>

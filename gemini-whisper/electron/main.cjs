@@ -1,8 +1,45 @@
 const { app, BrowserWindow, session, desktopCapturer, globalShortcut, ipcMain } = require('electron');
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
+const { spawn } = require('child_process');
 const isDev = !app.isPackaged;
 
 let mainWindow;
+
+function resolveWorkspaceRoot() {
+    const candidates = [
+        path.resolve(__dirname, '..', '..'),
+        path.resolve(__dirname, '..'),
+        process.cwd(),
+    ];
+
+    return candidates.find((candidate) =>
+        fs.existsSync(path.join(candidate, 'ata_multiagent_pipeline'))
+    ) || path.resolve(__dirname, '..', '..');
+}
+
+function resolvePythonExecutable() {
+    const configured = process.env.PYTHON_EXECUTABLE;
+    if (configured && fs.existsSync(configured)) {
+        return configured;
+    }
+
+    const candidates = [
+        path.join(os.homedir(), 'AppData', 'Local', 'Programs', 'Python', 'Python312', 'python.exe'),
+        path.join(os.homedir(), 'AppData', 'Local', 'Programs', 'Python', 'Python311', 'python.exe'),
+        'python',
+        'py',
+    ];
+
+    return candidates.find((candidate) => candidate === 'python' || candidate === 'py' || fs.existsSync(candidate)) || 'python';
+}
+
+function ensureRuntimeEventDir(workspaceRoot) {
+    const runtimeDir = path.join(workspaceRoot, 'generated', 'ata_pipeline', 'runtime_events');
+    fs.mkdirSync(runtimeDir, { recursive: true });
+    return runtimeDir;
+}
 
 function createWindow() {
     mainWindow = new BrowserWindow({
@@ -72,6 +109,98 @@ ipcMain.on('register-shortcut', (event, shortcut) => {
             console.error('Failed to register shortcut:', e);
         }
     }
+});
+
+ipcMain.handle('ata-pipeline:run', async (_event, payload) => {
+    const workspaceRoot = resolveWorkspaceRoot();
+    const runtimeDir = ensureRuntimeEventDir(workspaceRoot);
+    const eventFile = path.join(runtimeDir, `event_${Date.now()}.json`);
+    const eventPayload = {
+        tipo_evento: 'nova_reuniao',
+        arquivo_fonte: payload.arquivoFonte || 'transcricao_manual.txt',
+        projeto: payload.projeto || 'GERAL',
+        sprint: payload.sprint || '',
+        participantes: Array.isArray(payload.participantes) ? payload.participantes : [],
+        transcript_text: payload.transcriptText || '',
+        destinatarios: Array.isArray(payload.destinatarios) ? payload.destinatarios : [],
+        meeting_title: payload.meetingTitle || '',
+        meeting_date: payload.meetingDate || '',
+        metadata: {
+            source: 'gemini-whisper',
+        },
+    };
+
+    fs.writeFileSync(eventFile, JSON.stringify(eventPayload, null, 2), 'utf-8');
+
+    const pythonExecutable = resolvePythonExecutable();
+
+    return await new Promise((resolve) => {
+        const child = spawn(
+            pythonExecutable,
+            ['-m', 'ata_multiagent_pipeline.cli', eventFile],
+            {
+                cwd: workspaceRoot,
+                env: {
+                    ...process.env,
+                    PYTHONIOENCODING: 'utf-8',
+                },
+                windowsHide: true,
+            }
+        );
+
+        let stdout = '';
+        let stderr = '';
+
+        child.stdout.on('data', (chunk) => {
+            stdout += chunk.toString();
+        });
+
+        child.stderr.on('data', (chunk) => {
+            stderr += chunk.toString();
+        });
+
+        child.on('error', (error) => {
+            resolve({
+                success: false,
+                message: `Falha ao iniciar Python: ${error.message}`,
+                stderr,
+                stdout,
+                pythonExecutable,
+            });
+        });
+
+        child.on('close', (code) => {
+            let parsed = null;
+            try {
+                parsed = stdout ? JSON.parse(stdout) : null;
+            } catch (_error) {
+                parsed = null;
+            }
+
+            if (code === 0 || code === 2) {
+                resolve({
+                    success: Boolean(parsed?.success),
+                    message: parsed?.success
+                        ? 'Pipeline de ATA executado com sucesso.'
+                        : 'Pipeline executado, mas retornou validação incompleta.',
+                    stdout,
+                    stderr,
+                    pythonExecutable,
+                    result: parsed,
+                });
+                return;
+            }
+
+            resolve({
+                success: false,
+                message: stderr.trim() || `Pipeline falhou com código ${code}.`,
+                stdout,
+                stderr,
+                pythonExecutable,
+                result: parsed,
+            });
+        });
+    });
 });
 
 app.whenReady().then(createWindow);
