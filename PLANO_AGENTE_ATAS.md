@@ -38,3 +38,17 @@ Criar um agente (ou fluxo de automação) que seja capaz de:
 1. **Abordagem de Infraestrutura:** Você prefere que **100% disso seja programado em Python** ou prefere usar uma **ferramenta no-code/low-code** (como o n8n ou Make.com) para conectar o Gmail à sua base em Python?
 2. **Serviço de Email:** Qual e-mail nós usaremos para Ler e Enviar as atas? (ex: Gmail pessoal, Google Workspace da empresa, Outlook?)
 3. **Template da Ata:** Você já tem um template preferido ou devo criar um padrão estruturado em Tópicos, Decisões e Ações?
+
+---
+
+## Decisões fechadas (execução)
+
+| Tema | Decisão |
+|------|---------|
+| **Gatilho / infra** | **100% Python** para leitura IMAP, processamento e envio SMTP. n8n/Make permanecem opcionais no futuro se quiser UI visual para o mesmo fluxo. |
+| **E-mail** | **Gmail / Google Workspace** como padrão (IMAP + SMTP com app password ou credencial adequada). Outros provedores via mesma interface (`ata_agent/email/`), trocando host/porta. |
+| **Transcrição** | **Gemini** (upload de arquivo + `generateContent`), alinhado ao fluxo da pasta `gemini-whisper`. Whisper local em `Whisper de voz/` continua disponível para uso manual/offline. |
+| **Template** | Padrão interno em `ata_agent/prompts/` + possibilidade de apontar `ATA_TEMPLATE_PATH` para um arquivo em `Template de atas/`. |
+| **Camada web** | Projeto **Next.js + React + Tailwind** em `web/`, tokens de cor no `tailwind.config.ts`, **Neon** para persistência leve (runs do pipeline); **sem autenticação** na primeira versão. |
+
+Implementação: pacote `ata_agent/` (CLI) e app `web/`. Detalhes operacionais multiagente: `PLANO_PIPELINE_MULTIAGENTE.md`.

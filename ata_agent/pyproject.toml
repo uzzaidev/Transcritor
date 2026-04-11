@@ -1,0 +1,24 @@
+[project]
+name = "ata-agent"
+version = "0.1.0"
+description = "Pipeline: e-mail com áudio → Gemini → ata → SMTP"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31.0",
+  "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+ata-agent = "ata_agent.__main__:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ata_agent*"]
+
+[tool.setuptools.package-data]
+ata_agent = ["prompts/*.md"]

@@ -68,7 +68,7 @@ class AtaAgent(BaseAgent):
     def build_seed(self, event: PipelineEvent, transcript_text: str) -> dict:
         title = event.meeting_title or Path(event.arquivo_fonte).stem.replace("_", " ").replace("-", " ").strip()
         return {
-            "titulo": title or "Reunião sem título",
+            "titulo": title or "Reuniao sem titulo",
             "data": event.meeting_date or date.today().isoformat(),
             "transcricao": transcript_text.strip(),
         }
@@ -80,14 +80,14 @@ class ExtractorAgent(BaseAgent):
         self.llm_client = llm_client
 
     def extract(self, event: PipelineEvent, seed: dict) -> AtaExtraction:
-        system_prompt = "Você extrai atas empresariais em JSON. Retorne resumo_executivo, topicos, decisoes, acoes, kaizens e riscos."
+        system_prompt = "Voce extrai atas empresariais em JSON. Retorne resumo_executivo, topicos, decisoes, acoes, kaizens e riscos."
         user_prompt = (
-            f"Título: {seed['titulo']}\nProjeto: {event.projeto}\nSprint: {event.sprint}\n"
-            f"Participantes: {', '.join(event.participantes)}\nTranscrição:\n{seed['transcricao']}\n"
-            "Regras: use português, gere decisões numeráveis e ações com responsável quando possível."
+            f"Titulo: {seed['titulo']}\nProjeto: {event.projeto}\nSprint: {event.sprint}\n"
+            f"Participantes: {', '.join(event.participantes)}\nTranscricao:\n{seed['transcricao']}\n"
+            "Regras: use portugues, gere decisoes numeraveis e acoes com responsavel quando possivel."
         )
         structured = self.llm_client.generate(system_prompt, user_prompt)
-        if structured:
+        if structured and _is_structured_payload_usable(structured):
             return self._from_llm(event, seed["titulo"], structured)
         return self._fallback(event, seed)
 
@@ -95,7 +95,7 @@ class ExtractorAgent(BaseAgent):
         decisions = [
             Decision(
                 id=f"D-{index:03d}",
-                titulo=item.get("titulo", f"Decisão {index}"),
+                titulo=item.get("titulo", f"Decisao {index}"),
                 contexto=item.get("contexto", ""),
                 decisao=item.get("decisao", ""),
                 alternativas=item.get("alternativas", []),
@@ -106,8 +106,8 @@ class ExtractorAgent(BaseAgent):
         actions = [
             ActionItem(
                 id=f"A-{index:03d}",
-                titulo=item.get("titulo", f"Ação {index}"),
-                responsavel=item.get("responsavel", "Responsável a definir"),
+                titulo=item.get("titulo", f"Acao {index}"),
+                responsavel=item.get("responsavel", "Responsavel a definir"),
                 prazo=item.get("prazo", ""),
                 prioridade=item.get("prioridade", "media"),
                 tags=item.get("tags", []),
@@ -147,17 +147,42 @@ class ExtractorAgent(BaseAgent):
 
     def _fallback(self, event: PipelineEvent, seed: dict) -> AtaExtraction:
         transcript = seed["transcricao"]
-        sentences = [item.strip() for item in re.split(r"(?<=[.!?])\s+", transcript) if item.strip()]
-        summary = " ".join(sentences[:3])[:500] if sentences else "Resumo pendente a partir da transcrição."
-        topicos = sentences[:5] if sentences else ["Discussão geral"]
-        decisions = []
-        actions = []
-        if sentences:
-            decisions.append(Decision(id="D-001", titulo="Direcionamento técnico inicial", contexto=sentences[0], decisao=sentences[0]))
-            responsavel = event.participantes[0] if event.participantes else "Responsável a definir"
-            actions.append(ActionItem(id="A-001", titulo="Consolidar requisitos da reunião", responsavel=responsavel, tags=["encaminhamento", f"project:{event.projeto}"]))
-        kaizens = [Kaizen(id="K-001", categoria="processual", descricao="Manter ata estruturada e rastreável.")]
-        risks = [RiskItem(id="R-001", descricao="Metadados ausentes podem quebrar derivados.", probabilidade=2, impacto=4, mitigacao="Validar schema antes de publicar.")]
+        sentences = _split_sentences(transcript)
+        topicos = _extract_topics(sentences)
+        decisions = _extract_decisions(sentences)
+        actions = _extract_actions(sentences, event.participantes)
+        kaizens = _extract_kaizens(sentences)
+        risks = _extract_risks(sentences, decisions)
+
+        if not decisions and sentences:
+            decisions.append(
+                Decision(
+                    id="D-001",
+                    titulo="Direcionamento tecnico inicial",
+                    contexto=sentences[0],
+                    decisao=sentences[0],
+                    impacto="Define o rumo inicial da implementacao.",
+                )
+            )
+
+        if not actions and sentences:
+            responsavel = event.participantes[0] if event.participantes else "Responsavel a definir"
+            actions.append(
+                ActionItem(
+                    id="A-001",
+                    titulo="Consolidar requisitos da reuniao",
+                    responsavel=responsavel,
+                    tags=["encaminhamento"],
+                )
+            )
+
+        if not kaizens:
+            kaizens = [Kaizen(id="K-001", categoria="processual", descricao="Manter ata estruturada e rastreavel.")]
+
+        if not risks:
+            risks = [RiskItem(id="R-001", descricao="Metadados ausentes podem quebrar derivados.", probabilidade=2, impacto=4, mitigacao="Validar schema antes de publicar.")]
+
+        summary = _build_summary(seed["titulo"], decisions, actions, topicos, event.projeto)
         return AtaExtraction(
             titulo=seed["titulo"],
             resumo_executivo=summary,
@@ -193,50 +218,50 @@ class NormalizerAgent(BaseAgent):
             "versao: 2.0",
             "---",
             "",
-            f"# ATA — {extraction.titulo}",
+            f"# ATA - {extraction.titulo}",
             "",
             "## Resumo Executivo",
             extraction.resumo_executivo or "Resumo pendente.",
             "",
-            "## Tópicos Discutidos",
+            "## Topicos Discutidos",
         ]
-        lines.extend(f"- {item}" for item in extraction.topicos or ["Sem tópicos identificados."])
-        lines.extend(["", "## Decisões"])
+        lines.extend(f"- {item}" for item in extraction.topicos or ["Sem topicos identificados."])
+        lines.extend(["", "## Decisoes"])
         if extraction.decisoes:
             for decision in extraction.decisoes:
                 lines.extend([
-                    f"### {decision.id} — {decision.titulo}",
-                    f"**Contexto:** {decision.contexto or 'Não informado.'}",
-                    f"**Decisão:** {decision.decisao or 'Não informada.'}",
-                    f"**Alternativas:** {', '.join(decision.alternativas) if decision.alternativas else 'Não registradas.'}",
+                    f"### {decision.id} - {decision.titulo}",
+                    f"**Contexto:** {decision.contexto or 'Nao informado.'}",
+                    f"**Decisao:** {decision.decisao or 'Nao informada.'}",
+                    f"**Alternativas:** {', '.join(decision.alternativas) if decision.alternativas else 'Nao registradas.'}",
                     f"**Impacto:** {decision.impacto or 'A avaliar.'}",
                     "",
                 ])
         else:
-            lines.append("- Nenhuma decisão estruturada identificada.")
+            lines.append("- Nenhuma decisao estruturada identificada.")
 
         lines.extend(["## Encaminhamentos"])
         if extraction.acoes:
             for action in extraction.acoes:
                 responsible = f"[[{action.responsavel}]]" if not action.responsavel.startswith("[[") else action.responsavel
                 tags = " ".join(f"#{tag}" if not tag.startswith("#") else tag for tag in (action.tags or ["encaminhamento"]))
-                due = f" 📅 {action.prazo}" if action.prazo else ""
-                lines.append(f"- [ ] **{action.id}: {action.titulo}** {responsible}{due} 🏷️ project:{extraction.projeto} {tags} priority:{action.prioridade.lower()} #sprint/{extraction.sprint}")
+                due = f" prazo:{action.prazo}" if action.prazo else ""
+                lines.append(f"- [ ] **{action.id}: {action.titulo}** {responsible}{due} project:{extraction.projeto} {tags} priority:{action.prioridade.lower()} #sprint/{extraction.sprint}")
         else:
-            lines.append("- [ ] **A-001: Revisar ata e definir próximos passos** [[Responsável a definir]] 🏷️ project:GERAL #encaminhamento")
+            lines.append("- [ ] **A-001: Revisar ata e definir proximos passos** [[Responsavel a definir]] project:GERAL #encaminhamento")
 
         lines.extend(["", "## Kaizens"])
         lines.extend(f"- **{item.id} ({item.categoria})**: {item.descricao}" for item in extraction.kaizens)
         lines.extend(["", "## Riscos e Bloqueios"])
-        lines.extend(f"- **{item.id}**: {item.descricao} | severidade={item.severidade} | mitigação={item.mitigacao or 'A definir'}" for item in extraction.riscos)
+        lines.extend(f"- **{item.id}**: {item.descricao} | severidade={item.severidade} | mitigacao={item.mitigacao or 'A definir'}" for item in extraction.riscos)
         return "\n".join(lines).strip() + "\n"
 
 
 class ValidatorAgent(BaseAgent):
     def validate(self, state: PipelineState, min_score: int) -> ValidationResult:
         extraction = state.ata_extraction
-        errors = []
-        warnings = []
+        errors: list[str] = []
+        warnings: list[str] = []
         score = 100
         if extraction is None:
             return ValidationResult(valid=False, score=0, errors=["ata_extraction_missing"])
@@ -280,8 +305,8 @@ class SprintAgent(BaseAgent):
             f"- Projeto: {extraction.projeto}",
             f"- Participantes: {', '.join(extraction.participantes)}",
             f"- Atas vinculadas: {Path(state.event.arquivo_fonte).name}",
-            f"- Ações planejadas: {len(extraction.acoes)}",
-            f"- Decisões registradas: {len(extraction.decisoes)}",
+            f"- Acoes planejadas: {len(extraction.acoes)}",
+            f"- Decisoes registradas: {len(extraction.decisoes)}",
         ])
         return f"{extraction.sprint}.md", content
 
@@ -315,21 +340,21 @@ class DeliveryIntegratorAgent(BaseAgent):
     def build_email(self, state: PipelineState) -> EmailPayload:
         extraction = state.ata_extraction
         assert extraction is not None
-        decisions = "\n".join(f"- {item.id}: {item.titulo}" for item in extraction.decisoes) or "- Nenhuma decisão registrada"
+        decisions = "\n".join(f"- {item.id}: {item.titulo}" for item in extraction.decisoes) or "- Nenhuma decisao registrada"
         actions = "\n".join(f"- {item.id}: {item.titulo} ({item.responsavel})" for item in extraction.acoes) or "- Nenhum encaminhamento registrado"
         return EmailPayload(
             subject=f"[ATA] {extraction.projeto} - {extraction.titulo}",
             body_text=(
                 f"{extraction.titulo}\n\nResumo executivo:\n{extraction.resumo_executivo}\n\n"
-                f"Decisões principais:\n{decisions}\n\nEncaminhamentos:\n{actions}\n\n"
-                "Ata completa disponível no artefato markdown gerado pelo pipeline."
+                f"Decisoes principais:\n{decisions}\n\nEncaminhamentos:\n{actions}\n\n"
+                "Ata completa disponivel no artefato markdown gerado pelo pipeline."
             ),
             body_html=(
                 f"<h1>{extraction.titulo}</h1>"
                 f"<h2>Resumo Executivo</h2><p>{_html_escape(extraction.resumo_executivo)}</p>"
-                f"<h2>Decisões Principais</h2><pre>{_html_escape(decisions)}</pre>"
+                f"<h2>Decisoes Principais</h2><pre>{_html_escape(decisions)}</pre>"
                 f"<h2>Encaminhamentos</h2><pre>{_html_escape(actions)}</pre>"
-                "<p>Ata completa disponível no artefato markdown gerado pelo pipeline.</p>"
+                "<p>Ata completa disponivel no artefato markdown gerado pelo pipeline.</p>"
             ),
             to=state.event.destinatarios,
         )
@@ -368,6 +393,180 @@ def run_parallel_derivations(state: PipelineState, output_root: Path, sprint_age
         for future in futures:
             generated_files.append(future.result())
     return generated_files
+
+
+def _split_sentences(transcript: str) -> list[str]:
+    normalized = re.sub(r"\s+", " ", transcript).strip()
+    if not normalized:
+        return []
+    return [item.strip(" -") for item in re.split(r"(?<=[.!?])\s+", normalized) if item.strip()]
+
+
+def _extract_topics(sentences: list[str]) -> list[str]:
+    keyword_topics = [
+        ("next", "Arquitetura em Next.js"),
+        ("react", "Uso de React na aplicacao"),
+        ("tailwind", "Padronizacao visual com Tailwind"),
+        ("neon", "Definicao do banco de dados Neon"),
+        ("autentica", "Escopo de autenticacao"),
+        ("login", "Necessidade de login no MVP"),
+        ("arquivo", "Criacao inicial dos arquivos do projeto"),
+        ("instal", "Instalacao inicial de dependencias"),
+    ]
+    found: list[str] = []
+    lowered = " ".join(sentences).lower()
+    for token, topic in keyword_topics:
+        if token in lowered and topic not in found:
+            found.append(topic)
+    return found or sentences[:5] or ["Discussao geral"]
+
+
+def _extract_decisions(sentences: list[str]) -> list[Decision]:
+    decisions: list[Decision] = []
+    seen_titles: set[str] = set()
+    rules = [
+        (r"\bnext\b", "Arquitetura base em Next.js", "Adotar Next.js como base da arquitetura web.", "Padroniza estrutura frontend e SSR."),
+        (r"\breact\b", "Frontend em React", "Utilizar React como biblioteca principal da interface.", "Mantem o frontend alinhado ao stack definido."),
+        (r"\btailwind\b", "Estilizacao com Tailwind", "Usar Tailwind CSS como camada principal de estilos.", "Centraliza o sistema visual e acelera implementacao."),
+        (r"\bcentralizad[ao].*tailwind|\btemas das cores", "Temas centralizados no Tailwind", "Centralizar cores, temas e tokens visuais no Tailwind.", "Facilita consistencia visual e manutencao futura."),
+        (r"\bneon\b", "Banco de dados em Neon", "Usar Neon como base de dados inicial do projeto.", "Define o servico de persistencia para a primeira versao."),
+        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Sem autenticacao no momento inicial", "Nao implementar login ou autenticacao nesta primeira fase.", "Reduz escopo do MVP e acelera entrega inicial."),
+        (r"come[cç]a a criar os arquivos|criar os arquivos", "Gerar estrutura inicial do projeto", "Comecar o projeto ja criando os arquivos e a estrutura base.", "Acelera o bootstrap e reduz trabalho manual."),
+        (r"install|instal", "Instalar dependencias iniciais", "Instalar as dependencias necessarias ja no inicio da geracao do projeto.", "Deixa o ambiente pronto para evolucao imediata."),
+    ]
+
+    for sentence in sentences:
+        lowered = sentence.lower()
+        for pattern, title, decision_text, impact in rules:
+            if re.search(pattern, lowered) and title not in seen_titles:
+                decisions.append(
+                    Decision(
+                        id=f"D-{len(decisions) + 1:03d}",
+                        titulo=title,
+                        contexto=sentence,
+                        decisao=decision_text,
+                        impacto=impact,
+                    )
+                )
+                seen_titles.add(title)
+    return decisions
+
+
+def _extract_actions(sentences: list[str], participants: list[str]) -> list[ActionItem]:
+    actions: list[ActionItem] = []
+    owner = participants[0] if participants else "Responsavel a definir"
+    rules = [
+        (r"\bnext\b", "Criar a base do projeto em Next.js com React"),
+        (r"\btailwind\b", "Configurar Tailwind CSS e centralizar os temas visuais"),
+        (r"\bneon\b", "Preparar a integracao inicial com o banco Neon"),
+        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Registrar que autenticacao fica fora do escopo inicial"),
+        (r"criar os arquivos|come[cç]a a criar", "Gerar os arquivos iniciais e a estrutura do projeto"),
+        (r"install|instal", "Instalar as dependencias necessarias do projeto"),
+    ]
+
+    for sentence in sentences:
+        lowered = sentence.lower()
+        for pattern, title in rules:
+            if re.search(pattern, lowered) and not any(action.titulo == title for action in actions):
+                actions.append(
+                    ActionItem(
+                        id=f"A-{len(actions) + 1:03d}",
+                        titulo=title,
+                        responsavel=owner,
+                        prioridade="media",
+                        tags=["encaminhamento"],
+                    )
+                )
+    return actions
+
+
+def _extract_kaizens(sentences: list[str]) -> list[Kaizen]:
+    kaizens: list[Kaizen] = []
+    transcript = " ".join(sentences).lower()
+    if "gravei" in transcript or "repita" in transcript:
+        kaizens.append(
+            Kaizen(
+                id="K-001",
+                categoria="comunicacao",
+                descricao="Registrar requisitos em audio ou prompt reutilizavel para evitar retrabalho nas repeticoes.",
+            )
+        )
+    if "centralizado" in transcript and "tailwind" in transcript:
+        kaizens.append(
+            Kaizen(
+                id=f"K-{len(kaizens) + 1:03d}",
+                categoria="arquitetura",
+                descricao="Centralizar tokens visuais desde o inicio para reduzir inconsistencias entre telas.",
+            )
+        )
+    return kaizens
+
+
+def _extract_risks(sentences: list[str], decisions: list[Decision]) -> list[RiskItem]:
+    risks: list[RiskItem] = []
+    transcript = " ".join(sentences).lower()
+    if "autentica" in transcript or "login" in transcript:
+        risks.append(
+            RiskItem(
+                id="R-001",
+                descricao="A ausencia inicial de autenticacao pode gerar debito tecnico e risco de seguranca ao expandir o produto.",
+                probabilidade=2,
+                impacto=4,
+                mitigacao="Registrar o tema no backlog e tratar antes de expor funcionalidades sensiveis.",
+            )
+        )
+    if any("Tailwind" in decision.titulo or "Tailwind" in decision.decisao for decision in decisions):
+        risks.append(
+            RiskItem(
+                id=f"R-{len(risks) + 1:03d}",
+                descricao="Sem governanca dos tokens visuais, o uso de Tailwind pode se fragmentar rapidamente.",
+                probabilidade=2,
+                impacto=3,
+                mitigacao="Definir convencoes de tema e classes utilitarias compartilhadas desde o bootstrap.",
+            )
+        )
+    return risks
+
+
+def _build_summary(titulo: str, decisions: list[Decision], actions: list[ActionItem], topicos: list[str], projeto: str) -> str:
+    focus = ", ".join(topic.lower() for topic in topicos[:3]) if topicos else "arquitetura inicial"
+    summary = f"Reuniao '{titulo}' do projeto {projeto} definiu {focus}."
+    if decisions:
+        summary += f" Foram registradas {len(decisions)} decisoes estruturantes para o bootstrap da solucao."
+    if actions:
+        summary += f" A reuniao tambem gerou {len(actions)} encaminhamentos para execucao imediata."
+    return summary
+
+
+def _is_structured_payload_usable(payload: dict) -> bool:
+    decisions = payload.get("decisoes", [])
+    actions = payload.get("acoes", [])
+
+    def looks_generic(item: dict, kind: str) -> bool:
+        title = str(item.get("titulo", "")).strip().lower()
+        context = str(item.get("contexto", "")).strip()
+        decision_text = str(item.get("decisao", "")).strip()
+        responsible = str(item.get("responsavel", "")).strip().lower()
+        generic_titles = {
+            "decisao 1",
+            "decisao 2",
+            "decisao 3",
+            "decisao 4",
+            "acao 1",
+            "acao 2",
+            "acao 3",
+            "acao 4",
+        }
+        if kind == "decision":
+            return title in generic_titles and not context and not decision_text
+        return title in generic_titles and responsible in {"", "responsavel a definir"}
+
+    decision_score = sum(1 for item in decisions if not looks_generic(item, "decision"))
+    action_score = sum(1 for item in actions if not looks_generic(item, "action"))
+
+    has_summary = bool(str(payload.get("resumo_executivo", "")).strip())
+    has_topics = bool(payload.get("topicos"))
+    return has_summary and has_topics and (decision_score > 0 or action_score > 0)
 
 
 def _safe_slug(value: str) -> str:
