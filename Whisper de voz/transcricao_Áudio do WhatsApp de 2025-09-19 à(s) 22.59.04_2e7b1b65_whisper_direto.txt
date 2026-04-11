@@ -1,0 +1,1897 @@
+🎵 TRANSCRIÇÃO DO ÁUDIO
+============================================================
+📅 Data: 2025-01-13
+📁 Arquivo: .\Áudio do WhatsApp de 2025-09-19 à(s) 22.59.04_2e7b1b65.mp3
+🤖 Método: whisper_direto
+⏱️ Duração: N/As
+🌍 Idioma: pt
+============================================================
+
+ Vamos tomar. O porque de eu está gravando agora é que nós implementamos uma nova função, onde a cada cliente que nós falamos e conversamos, nós fazemos a transcrição do áudio e nós viramos uma ata para o cliente ver se essa ata está de acordo com a Reannão. Mas assim, voltando a que o Dani falou, ela quer fazer a questão do imobiliário, juntamente com o que ela oferece a energia e elas precisam de um contrato, elas também precisam de, como chamam, quando a pessoa é falasse do luco. Eu vei, estamos saídos. O inventário. O inventário, como uma... Tem. Ela precisa também que nós coloqueimos um botão para a parte do botão direto prototab, um botão viajendo que fica integrado com a agenda do Google dela. Um, um, um. É isso aí. Um, um, um. O olhar o que mais aqui. Na questão do Google Visa, Google Visa, fica na parte de migração. Então, nós vamos ser que pensar tanto eu quanto Felipe, de que forma que nós vamos reorganizar a ascensão do site para a inquestão de prioridade de anúncios, um imobiliário, por exemplo. Ok, mas ela comentou o que não tem ali. É o... É o... É o enliir antes de testemunizarem ou não, na verdade, desculpa. É o housing e o renovation com contracts. Oh, tá. Ok. Que não tá inserido aqui. Hmm, hmm. Eu acho que era basicamente isso que ela comentou. Da agenda, daí, do direcionamento dos anúncios, para os países ali que a gente combinou. Seria isso. Beleza, os anúncios, pelo que ela comentou, quem vem comprar uma moradia normalmente fala inglês. Uh-huh. Os nifóram, né? Sim. Outra dúvida que eu não perguntei para a Dani, é se esses anúncios devem ser feito além da Irlanda, da Inglaterra, dos Estados Unidos, se eles devem ser feitos para a Itália também ou não. Mércico também, né? Ah, México, ah. Eu acho bem interessante ter na Canadá também, mas eu acho bem interessante a gente ter aqui na Itália, porque assim, como a Dani falou, mas anúncios em inglês, né? Porque quem está aí na Itália procura ali um advogado italiano. Mas tem muita gente aqui, aqui que vem para cá, para ver imóveles e está fazendo a procura em inglês em tente, então, acho interessante. Até porque, num momento que a pessoa estiver aí, eu tenho duas opções nos anúncios do Google, que são de anunciar para pessoas que realmente moram aí ou pessoas que visitaram ou estão visitando o local no momento. É, eu acredito que seja mais interessante para pessoas que estejam visitando. Tá. Ele não pega exatamente no momento que a pessoa tá ali, tá? Mas ele vai pegar de um momento a partir de que o celular da pessoa entendeu que ela tá no local da Itália e um pouco mais para frente. Por lá, ela foi com o dia 10 ou dia 20, mas a inteligência do Google vai entender que ela ficou com o dia 10, o dia 30, talvez, só todos os outros. Sim. Quanto aos anúncios no México, esses seriam os únicos anúncios em espanhol a serem feitos hoje, hoje o Google para frente. Uhum. Nesse caso, eu vou pegar e vou fazer uma redaptação do espanhol, da tradição em espanhol para as abas que nós formos anunciar para ficar conforme o inglês, conforme o espanhol nativo do mexicano, que às vezes mudam alguns termos, tipo um dialeto ou o cutac. Uhum. Sim. Deixa eu pensar assim, mas há algum dancer o pontoado. A questão do da integração do pagamento, né? Que ela comentou que seria melhor se o cliente pagar dinheiro e ela receber se reais, porque ela tá no perigo. Sim. A empresa dela para cá. Porém, se ela quer ser bem reais, é melhor que a transação ceder de reais para reais, onde o cliente não vai ter que pagar euf e a taxa de transacional para vocês sem ter a conversão de câmbio, é menor. Uh, obviamente, se tiver uma pessoa dos Estados Unidos que vai pagar em dólar, uma pessoa do reino, um livro que vai pagar em Libras, aí sim, vai ter essa taxa de conversão, que é totalmente normal. Mas eu acredito que seja mais viável para vocês, porque a maioria dos clientes de vocês hoje em dia são brasileiros. Sim. Então, na questão de custos de transação, eu acredito que seja menos custoso já deixar em reais e que as pessoas que vão pagar em Euros Libras, eles façam eles mesmos automaticamente, né? O site vai desenvolver, vai fazer essa desenvolatura, onde eles vão botar o valor ali, e, na verdade, eles seriam botar o valor em reais, eles seriam fazer a conversão antes. Eu vou ter que ver a melhor forma para isso, mas deixar com que as transações se sejam feitas de real para real e esses outros clientes que pagam em outras manedas, consigam pagar Libra Euros dólar, já convertendo para real também, que aí na conta da Dani vai cair em reais já, convertido. Trão algumas taxas do Stripe de transação, que isso aí é totalmente comum. Eu até já tinha passado no artes para vocês algumas taxas, alguns exemplos de taxas, porém, era para fazer a conversão, tipo, a pessoa vai pagar em reais, mas vai... a Dani vai recebendo Euros, vai ter o esporte de bancária. Agora, a gente está passando a conta da Wise, e ali, ela parece bastante taxas, porque, apesar da Dani está indo para o Brasil e recebendo o Brasil, ela quer ter liberdade para transferir esse dinheiro aqui para a Europa, sem ter que ela pagar essas taxas de transação, então ela sempre vê ali no Wise e analisa as taxas que dá às vezes até mil reais, assim, de taxas, né? É bem alto. E ela faz questão de receber isso, para ter a liberdade de conseguir transferir esse dinheiro para cá também quando necessário. Eu sei bem porque eu uso o Wise e todo o Santo Díeto. E como eu estava conversando com a minha irmã ontem sobre o Cicob, eu sugiro que vocês analisa entre leopções. O Cicob, o Wise e o Unicred. Eu não tá aqui, Cicob. Unicred e o Wise. E o Wise. Eu digo analisar na questão do IOF e do spread bancária, porque às vezes um não cobra o IOF, mas o spread absurdo. O spread, o dia de spread, o dia de... O spread é assim, por exemplo, a Lara vai me transferir, na verdade eu vou transferir um dólar para a Lara. O spread é a taxa de porcentagem que o banco cobra sobre a transação cambial. Ou seja, esse um dólar vai virar 1,04. Ao invés de ser 1 dólar fixo. E obviamente o IOF hoje em dia tá em 3,5%, mas o spread. Então tem bancos que não cobram o IOF, ou cobram o IOF de 1%, 1,1,1, mas eles perregam no spread. É isso que eu vou fazer, que eu questiono de marketing deles mesmo, mas às vezes um banco que cobra o IOF, mas cobram o spread menor, é melhor. E também tem bancos que cobram o IOF menor e cobram o spread menor, que eu acho que é a questão do Sikob. Eu não me interei muito por isso, porque eu falei com a minha irmã sobre isso ontem mesmo. Eu sou só na cabeça mesmo, mas com o Adeline conversou com ela também recentemente, já estava com você ideia na mente até para mim mesmo. Então, tá. Beleza. Eu vou passar isso para Adeline. Na questão da aba onde o cliente pode pagar, o VICVS Stripe, é melhor a opção que eu vou ter. Esse caso. Só que assim, eu vou ter que desenvolver duas páginas e uma de pagamentos, só que como se um dado sensíveis, eu preciso de um tempinho para conseguir fazer, porque a proteção dessa página, ela tem que ser muito mais robusta do sete da noite, já tem proteção, tá. Mas nessa aba em específico, ela tem que ser criptografada, aí tem trascutos de segurança, porque são dados extremamente sensíveis, que são cartões da pessoa, né? Sim, com certeza. E se tem ataque hacker para conseguir roubar os dados, são exatamente nessa aba. Mas isso é totalmente possível fazer, tá. Tá. Eu acho que foi basicamente isso que Adeline comentou, né? Eu acredito que sim, acho que isso ali, a questão da agenda também que ela, a gente falou, está vindo muito bem, agora ela falou como certeza e pronto. Tá, legal. Eu vou falar com Felipe hoje a tarde ainda, para nós vermos o melhor layout para a aba do imobiliário e para a aba da emigração. Eu acredito que o foco principal seja o imobiliário, né? É, né. Por exemplo, 80% é imobiliário, 20% é a emigração, ou 70% é 30%. É, acho que 70 é 30. Tá. Até para nós sermos um termômetro, né? Uh-huh. Nesse caso, também vão ter orçamento separados, porque vão aumentar o número da gestão de tráfego, mas eu não vou fazer o valor cheio para Adeline, porque ela já trabalha conosco. Então, vou fazer um valor exicional só. Não vai muito muito por dobro do que é cobrado, vai ser um valor, eu vou fazer um balancimento. Tá. Ótimo. Tá, eu só estou dando um morial aqui meio por cima só, para não me perder. Fazer o redireceramento certo por código das eles sociais, um site. Porque você vai ter que fazer por código, o que deu mesmo, o que aconteceu, o que a gente não tá... Eu acredito que foi a questão do desenvolvimento, do desenvolvimento que o Lucas tinha feito antes. Não. Porque eu não sei, mas o orçprez ele tem essas complicações em mesmo. E é inexplicável. É melhor tu ir direto por lado mais difícil, para cantar no fácil várias vezes. E daí, tipo, ficar tentando fácil, fácil, fácil. E depois tem que partir por difícil. Então, já partimos por difícil, porque isso é o mesmo que funciona. Não é porque a brinha outra aba é um negócio básico, o leader de press do ior. É um clique. Literalmente clique. Sim, um clique. Mas é isso, na questão do blog, que pode ver que tem um post de test, que eu realizei, que é um post... No post, ele tem o prônio cliente e deixa eu comentário, tá? Ah. E um... Desculpa, pode-se... Ou não pode-se me pode falar. É que eu lembrei de ter uma coisa agora. Eu queria saber se a gente podia colocar um botão de assináneas, letter, ou cadastro de seu e-mail, ou para receber mais informações além do WhatsApp, para a gente ter e-mail certos, assim, para meio marketing, sabe? Claro, com certeza. Isso é bem possível. É bem possível mesmo. Vai ficar... Aí é com o Felipe, tá? Mas, vamos ver o meu mouse aqui, né? Eu acredito que essa parte... Não, risquesse. Provavelmente ela vai ficar aqui por cima, tá? Antes do que do VadoPet. Eu estou pensando em deixar ela aqui num canto e alinhar essas outras mas não. É porque eu estou com os 1 menor aqui. Mas... Tá? Eu acredito que por enquanto seja isso. O mais largo falar? Não, não seja isso. A questão do e-mail market, através do site, é muito interessante para a gente, uma coisa que a gente não tinha. Então, é mais ou menos isso, Franco. Tá, beleza. O que acontece na questão do e-mail market em bairro é mesmo que você já tem. O e-mail market invindo do site, vão ser só e-mails que já foram cadastrados. Ejam no formulário aqui da cidadania. Tá, tá, tá. Ai, desculpa, Franco, a Dani precisa ir. Ela precisa do telefone. Ah, tá. Eu acabou, né? Um minuto pode ser. Tá. Aqui, ó, vocês vão ter os dados de e-mail marketing, para esse formulário de contato, onde não vão ter muitos e-mails eu acredito. Mas a Dani tem muitos e-mails de contatos no e-mail dela. Ah, sim. Então seria a questão de fazer exportação desses e-mails e usar uma plataforma que eu surgiro o e-mail time e, sim, de macaco mesmo, ou o clávio.io. Eu vou te mandar os dois nomes aqui. O e-mail time, eu sei que ele tem dois milhoneiros gratuitos. Tá. O clávio é mais chato de mexer, mas ele é mais completo. Tá. Eu vou entregar o telefone para ela, então muito obrigada, tá, Franco? Obrigada, Franco. Tchau, vamos tchau. Tchau, vamos tchau. Tchau, tchau. Tchau, tchau. Então, vocês também, tchau. Tchau, tchau. Peri.
+
+📊 SEGMENTOS DETALHADOS:
+----------------------------------------
+Segmento 1:
+  Início: 0.0s
+  Fim: 8.0s
+  Texto:  Vamos tomar.
+  Confiança: -0.387258699962071
+
+Segmento 2:
+  Início: 8.0s
+  Fim: 17.0s
+  Texto:  O porque de eu está gravando agora é que nós implementamos uma nova função, onde a cada
+  Confiança: -0.387258699962071
+
+Segmento 3:
+  Início: 17.0s
+  Fim: 23.0s
+  Texto:  cliente que nós falamos e conversamos, nós fazemos a transcrição do áudio e nós viramos
+  Confiança: -0.387258699962071
+
+Segmento 4:
+  Início: 23.0s
+  Fim: 30.0s
+  Texto:  uma ata para o cliente ver se essa ata está de acordo com a Reannão. Mas assim, voltando
+  Confiança: -0.3117220025313528
+
+Segmento 5:
+  Início: 30.0s
+  Fim: 45.0s
+  Texto:  a que o Dani falou, ela quer fazer a questão do imobiliário, juntamente com o que ela oferece
+  Confiança: -0.3117220025313528
+
+Segmento 6:
+  Início: 75.0s
+  Fim: 82.0s
+  Texto:  a energia e elas precisam de um contrato, elas também precisam de, como chamam, quando a pessoa
+  Confiança: -0.6989397590543017
+
+Segmento 7:
+  Início: 82.0s
+  Fim: 87.0s
+  Texto:  é falasse do luco.
+  Confiança: -0.6989397590543017
+
+Segmento 8:
+  Início: 87.0s
+  Fim: 89.0s
+  Texto:  Eu vei, estamos saídos.
+  Confiança: -0.6989397590543017
+
+Segmento 9:
+  Início: 89.0s
+  Fim: 90.0s
+  Texto:  O inventário.
+  Confiança: -0.6989397590543017
+
+Segmento 10:
+  Início: 90.0s
+  Fim: 92.0s
+  Texto:  O inventário, como uma...
+  Confiança: -0.6989397590543017
+
+Segmento 11:
+  Início: 92.0s
+  Fim: 93.0s
+  Texto:  Tem.
+  Confiança: -0.6989397590543017
+
+Segmento 12:
+  Início: 93.0s
+  Fim: 104.0s
+  Texto:  Ela precisa também que nós coloqueimos um botão
+  Confiança: -0.6989397590543017
+
+Segmento 13:
+  Início: 104.0s
+  Fim: 112.0s
+  Texto:  para a parte do botão direto prototab, um botão viajendo que fica integrado com a agenda
+  Confiança: -0.4996270549540617
+
+Segmento 14:
+  Início: 112.0s
+  Fim: 113.0s
+  Texto:  do Google dela.
+  Confiança: -0.4996270549540617
+
+Segmento 15:
+  Início: 113.0s
+  Fim: 114.0s
+  Texto:  Um, um, um.
+  Confiança: -0.4996270549540617
+
+Segmento 16:
+  Início: 114.0s
+  Fim: 118.0s
+  Texto:  É isso aí.
+  Confiança: -0.4996270549540617
+
+Segmento 17:
+  Início: 118.0s
+  Fim: 129.0s
+  Texto:  Um, um, um.
+  Confiança: -0.48400791271312815
+
+Segmento 18:
+  Início: 129.0s
+  Fim: 131.0s
+  Texto:  O olhar o que mais aqui.
+  Confiança: -0.48400791271312815
+
+Segmento 19:
+  Início: 131.0s
+  Fim: 143.0s
+  Texto:  Na questão do Google Visa, Google Visa, fica na parte de migração.
+  Confiança: -0.48400791271312815
+
+Segmento 20:
+  Início: 143.0s
+  Fim: 157.0s
+  Texto:  Então, nós vamos ser que pensar tanto eu quanto Felipe, de que forma que nós vamos reorganizar
+  Confiança: -0.31555550186722364
+
+Segmento 21:
+  Início: 157.0s
+  Fim: 169.0s
+  Texto:  a ascensão do site para a inquestão de prioridade de anúncios, um imobiliário, por exemplo.
+  Confiança: -0.31555550186722364
+
+Segmento 22:
+  Início: 169.0s
+  Fim: 176.0s
+  Texto:  Ok, mas ela comentou o que não tem ali.
+  Confiança: -0.7293742826615257
+
+Segmento 23:
+  Início: 176.0s
+  Fim: 177.0s
+  Texto:  É o...
+  Confiança: -0.7293742826615257
+
+Segmento 24:
+  Início: 178.0s
+  Fim: 179.0s
+  Texto:  É o...
+  Confiança: -0.7293742826615257
+
+Segmento 25:
+  Início: 179.0s
+  Fim: 187.0s
+  Texto:  É o enliir antes de testemunizarem ou não, na verdade, desculpa.
+  Confiança: -0.7293742826615257
+
+Segmento 26:
+  Início: 187.0s
+  Fim: 190.0s
+  Texto:  É o housing e o renovation com contracts.
+  Confiança: -0.7293742826615257
+
+Segmento 27:
+  Início: 190.0s
+  Fim: 191.0s
+  Texto:  Oh, tá.
+  Confiança: -0.7293742826615257
+
+Segmento 28:
+  Início: 191.0s
+  Fim: 192.0s
+  Texto:  Ok.
+  Confiança: -0.7293742826615257
+
+Segmento 29:
+  Início: 192.0s
+  Fim: 194.0s
+  Texto:  Que não tá inserido aqui.
+  Confiança: -0.7293742826615257
+
+Segmento 30:
+  Início: 194.0s
+  Fim: 195.0s
+  Texto:  Hmm, hmm.
+  Confiança: -0.7293742826615257
+
+Segmento 31:
+  Início: 195.0s
+  Fim: 202.0s
+  Texto:  Eu acho que era basicamente isso que ela comentou.
+  Confiança: -0.47498146057128904
+
+Segmento 32:
+  Início: 202.0s
+  Fim: 207.0s
+  Texto:  Da agenda, daí, do direcionamento dos anúncios,
+  Confiança: -0.47498146057128904
+
+Segmento 33:
+  Início: 207.0s
+  Fim: 210.0s
+  Texto:  para os países ali que a gente combinou.
+  Confiança: -0.47498146057128904
+
+Segmento 34:
+  Início: 210.0s
+  Fim: 213.0s
+  Texto:  Seria isso.
+  Confiança: -0.47498146057128904
+
+Segmento 35:
+  Início: 214.0s
+  Fim: 219.0s
+  Texto:  Beleza, os anúncios,
+  Confiança: -0.29284618677717916
+
+Segmento 36:
+  Início: 219.0s
+  Fim: 222.0s
+  Texto:  pelo que ela comentou,
+  Confiança: -0.29284618677717916
+
+Segmento 37:
+  Início: 222.0s
+  Fim: 226.0s
+  Texto:  quem vem comprar uma moradia normalmente fala inglês.
+  Confiança: -0.29284618677717916
+
+Segmento 38:
+  Início: 226.0s
+  Fim: 227.0s
+  Texto:  Uh-huh.
+  Confiança: -0.29284618677717916
+
+Segmento 39:
+  Início: 227.0s
+  Fim: 229.0s
+  Texto:  Os nifóram, né?
+  Confiança: -0.29284618677717916
+
+Segmento 40:
+  Início: 229.0s
+  Fim: 230.0s
+  Texto:  Sim.
+  Confiança: -0.29284618677717916
+
+Segmento 41:
+  Início: 230.0s
+  Fim: 235.0s
+  Texto:  Outra dúvida que eu não perguntei para a Dani,
+  Confiança: -0.29284618677717916
+
+Segmento 42:
+  Início: 235.0s
+  Fim: 240.0s
+  Texto:  é se esses anúncios devem ser feito além da Irlanda,
+  Confiança: -0.29284618677717916
+
+Segmento 43:
+  Início: 240.0s
+  Fim: 243.0s
+  Texto:  da Inglaterra, dos Estados Unidos,
+  Confiança: -0.24363181807778098
+
+Segmento 44:
+  Início: 243.0s
+  Fim: 248.0s
+  Texto:  se eles devem ser feitos para a Itália também ou não.
+  Confiança: -0.24363181807778098
+
+Segmento 45:
+  Início: 248.0s
+  Fim: 250.0s
+  Texto:  Mércico também, né?
+  Confiança: -0.24363181807778098
+
+Segmento 46:
+  Início: 250.0s
+  Fim: 252.0s
+  Texto:  Ah, México, ah.
+  Confiança: -0.24363181807778098
+
+Segmento 47:
+  Início: 252.0s
+  Fim: 258.0s
+  Texto:  Eu acho bem interessante ter na Canadá também,
+  Confiança: -0.24363181807778098
+
+Segmento 48:
+  Início: 258.0s
+  Fim: 263.0s
+  Texto:  mas eu acho bem interessante a gente ter aqui na Itália,
+  Confiança: -0.24363181807778098
+
+Segmento 49:
+  Início: 263.0s
+  Fim: 266.0s
+  Texto:  porque assim, como a Dani falou,
+  Confiança: -0.24363181807778098
+
+Segmento 50:
+  Início: 266.0s
+  Fim: 268.0s
+  Texto:  mas anúncios em inglês, né?
+  Confiança: -0.21596409724308893
+
+Segmento 51:
+  Início: 268.0s
+  Fim: 272.0s
+  Texto:  Porque quem está aí na Itália procura ali um advogado italiano.
+  Confiança: -0.21596409724308893
+
+Segmento 52:
+  Início: 272.0s
+  Fim: 275.0s
+  Texto:  Mas tem muita gente aqui,
+  Confiança: -0.21596409724308893
+
+Segmento 53:
+  Início: 275.0s
+  Fim: 278.0s
+  Texto:  aqui que vem para cá, para ver imóveles
+  Confiança: -0.21596409724308893
+
+Segmento 54:
+  Início: 278.0s
+  Fim: 281.0s
+  Texto:  e está fazendo a procura em inglês em tente,
+  Confiança: -0.21596409724308893
+
+Segmento 55:
+  Início: 281.0s
+  Fim: 283.0s
+  Texto:  então, acho interessante.
+  Confiança: -0.21596409724308893
+
+Segmento 56:
+  Início: 283.0s
+  Fim: 287.0s
+  Texto:  Até porque, num momento que a pessoa estiver aí,
+  Confiança: -0.21596409724308893
+
+Segmento 57:
+  Início: 287.0s
+  Fim: 292.0s
+  Texto:  eu tenho duas opções nos anúncios do Google,
+  Confiança: -0.21596409724308893
+
+Segmento 58:
+  Início: 292.0s
+  Fim: 298.0s
+  Texto:  que são de anunciar para pessoas que realmente moram aí
+  Confiança: -0.16080932183699173
+
+Segmento 59:
+  Início: 298.0s
+  Fim: 303.0s
+  Texto:  ou pessoas que visitaram ou estão visitando o local no momento.
+  Confiança: -0.16080932183699173
+
+Segmento 60:
+  Início: 303.0s
+  Fim: 308.0s
+  Texto:  É, eu acredito que seja mais interessante para pessoas que estejam visitando.
+  Confiança: -0.16080932183699173
+
+Segmento 61:
+  Início: 308.0s
+  Fim: 310.0s
+  Texto:  Tá.
+  Confiança: -0.16080932183699173
+
+Segmento 62:
+  Início: 310.0s
+  Fim: 314.0s
+  Texto:  Ele não pega exatamente no momento que a pessoa tá ali, tá?
+  Confiança: -0.16080932183699173
+
+Segmento 63:
+  Início: 314.0s
+  Fim: 320.0s
+  Texto:  Mas ele vai pegar de um momento a partir de que o celular da pessoa
+  Confiança: -0.16080932183699173
+
+Segmento 64:
+  Início: 320.0s
+  Fim: 323.0s
+  Texto:  entendeu que ela tá no local da Itália
+  Confiança: -0.26291377134997435
+
+Segmento 65:
+  Início: 323.0s
+  Fim: 326.0s
+  Texto:  e um pouco mais para frente.
+  Confiança: -0.26291377134997435
+
+Segmento 66:
+  Início: 326.0s
+  Fim: 331.0s
+  Texto:  Por lá, ela foi com o dia 10 ou dia 20,
+  Confiança: -0.26291377134997435
+
+Segmento 67:
+  Início: 331.0s
+  Fim: 335.0s
+  Texto:  mas a inteligência do Google vai entender que ela ficou com o dia 10,
+  Confiança: -0.26291377134997435
+
+Segmento 68:
+  Início: 335.0s
+  Fim: 338.0s
+  Texto:  o dia 30, talvez, só todos os outros.
+  Confiança: -0.26291377134997435
+
+Segmento 69:
+  Início: 338.0s
+  Fim: 340.0s
+  Texto:  Sim.
+  Confiança: -0.26291377134997435
+
+Segmento 70:
+  Início: 340.0s
+  Fim: 344.0s
+  Texto:  Quanto aos anúncios no México,
+  Confiança: -0.26291377134997435
+
+Segmento 71:
+  Início: 344.0s
+  Fim: 348.0s
+  Texto:  esses seriam os únicos anúncios em espanhol
+  Confiança: -0.26291377134997435
+
+Segmento 72:
+  Início: 348.0s
+  Fim: 352.0s
+  Texto:  a serem feitos hoje,
+  Confiança: -0.34135271468252504
+
+Segmento 73:
+  Início: 352.0s
+  Fim: 354.0s
+  Texto:  hoje o Google para frente.
+  Confiança: -0.34135271468252504
+
+Segmento 74:
+  Início: 354.0s
+  Fim: 356.0s
+  Texto:  Uhum.
+  Confiança: -0.34135271468252504
+
+Segmento 75:
+  Início: 356.0s
+  Fim: 361.0s
+  Texto:  Nesse caso, eu vou pegar e vou fazer uma redaptação do espanhol,
+  Confiança: -0.34135271468252504
+
+Segmento 76:
+  Início: 361.0s
+  Fim: 366.0s
+  Texto:  da tradição em espanhol para as abas que nós formos anunciar
+  Confiança: -0.34135271468252504
+
+Segmento 77:
+  Início: 366.0s
+  Fim: 373.0s
+  Texto:  para ficar conforme o inglês, conforme o espanhol nativo do mexicano,
+  Confiança: -0.34135271468252504
+
+Segmento 78:
+  Início: 373.0s
+  Fim: 377.0s
+  Texto:  que às vezes mudam alguns termos, tipo um dialeto ou o cutac.
+  Confiança: -0.34135271468252504
+
+Segmento 79:
+  Início: 377.0s
+  Fim: 380.0s
+  Texto:  Uhum.
+  Confiança: -0.4574641375474527
+
+Segmento 80:
+  Início: 380.0s
+  Fim: 383.0s
+  Texto:  Sim.
+  Confiança: -0.4574641375474527
+
+Segmento 81:
+  Início: 383.0s
+  Fim: 389.0s
+  Texto:  Deixa eu pensar assim, mas há algum dancer o pontoado.
+  Confiança: -0.4574641375474527
+
+Segmento 82:
+  Início: 389.0s
+  Fim: 397.0s
+  Texto:  A questão do da integração do pagamento, né?
+  Confiança: -0.4574641375474527
+
+Segmento 83:
+  Início: 397.0s
+  Fim: 401.0s
+  Texto:  Que ela comentou que seria melhor se o cliente pagar dinheiro
+  Confiança: -0.4574641375474527
+
+Segmento 84:
+  Início: 401.0s
+  Fim: 404.0s
+  Texto:  e ela receber se reais, porque ela tá no perigo.
+  Confiança: -0.4574641375474527
+
+Segmento 85:
+  Início: 404.0s
+  Fim: 405.0s
+  Texto:  Sim.
+  Confiança: -0.26382198496761483
+
+Segmento 86:
+  Início: 405.0s
+  Fim: 407.0s
+  Texto:  A empresa dela para cá.
+  Confiança: -0.26382198496761483
+
+Segmento 87:
+  Início: 407.0s
+  Fim: 410.0s
+  Texto:  Porém, se ela quer ser bem reais,
+  Confiança: -0.26382198496761483
+
+Segmento 88:
+  Início: 410.0s
+  Fim: 413.0s
+  Texto:  é melhor que a transação ceder de reais para reais,
+  Confiança: -0.26382198496761483
+
+Segmento 89:
+  Início: 413.0s
+  Fim: 416.0s
+  Texto:  onde o cliente não vai ter que pagar euf
+  Confiança: -0.26382198496761483
+
+Segmento 90:
+  Início: 416.0s
+  Fim: 421.0s
+  Texto:  e a taxa de transacional para vocês sem ter a conversão de câmbio,
+  Confiança: -0.26382198496761483
+
+Segmento 91:
+  Início: 421.0s
+  Fim: 423.0s
+  Texto:  é menor.
+  Confiança: -0.26382198496761483
+
+Segmento 92:
+  Início: 423.0s
+  Fim: 428.0s
+  Texto:  Uh, obviamente, se tiver uma pessoa dos Estados Unidos
+  Confiança: -0.26382198496761483
+
+Segmento 93:
+  Início: 428.0s
+  Fim: 432.0s
+  Texto:  que vai pagar em dólar, uma pessoa do reino, um livro que vai pagar em Libras,
+  Confiança: -0.26382198496761483
+
+Segmento 94:
+  Início: 432.0s
+  Fim: 438.0s
+  Texto:  aí sim, vai ter essa taxa de conversão, que é totalmente normal.
+  Confiança: -0.15295965775199558
+
+Segmento 95:
+  Início: 438.0s
+  Fim: 443.0s
+  Texto:  Mas eu acredito que seja mais viável para vocês,
+  Confiança: -0.15295965775199558
+
+Segmento 96:
+  Início: 443.0s
+  Fim: 448.0s
+  Texto:  porque a maioria dos clientes de vocês hoje em dia são brasileiros.
+  Confiança: -0.15295965775199558
+
+Segmento 97:
+  Início: 448.0s
+  Fim: 450.0s
+  Texto:  Sim.
+  Confiança: -0.15295965775199558
+
+Segmento 98:
+  Início: 450.0s
+  Fim: 456.0s
+  Texto:  Então, na questão de custos de transação,
+  Confiança: -0.15295965775199558
+
+Segmento 99:
+  Início: 457.0s
+  Fim: 463.0s
+  Texto:  eu acredito que seja menos custoso já deixar em reais
+  Confiança: -0.2171563296250894
+
+Segmento 100:
+  Início: 463.0s
+  Fim: 468.0s
+  Texto:  e que as pessoas que vão pagar em Euros Libras,
+  Confiança: -0.2171563296250894
+
+Segmento 101:
+  Início: 468.0s
+  Fim: 473.0s
+  Texto:  eles façam eles mesmos automaticamente, né?
+  Confiança: -0.2171563296250894
+
+Segmento 102:
+  Início: 473.0s
+  Fim: 478.0s
+  Texto:  O site vai desenvolver, vai fazer essa desenvolatura,
+  Confiança: -0.2171563296250894
+
+Segmento 103:
+  Início: 478.0s
+  Fim: 482.0s
+  Texto:  onde eles vão botar o valor ali,
+  Confiança: -0.2171563296250894
+
+Segmento 104:
+  Início: 483.0s
+  Fim: 487.0s
+  Texto:  e, na verdade, eles seriam botar o valor em reais,
+  Confiança: -0.3164856351655105
+
+Segmento 105:
+  Início: 487.0s
+  Fim: 489.0s
+  Texto:  eles seriam fazer a conversão antes.
+  Confiança: -0.3164856351655105
+
+Segmento 106:
+  Início: 489.0s
+  Fim: 491.0s
+  Texto:  Eu vou ter que ver a melhor forma para isso,
+  Confiança: -0.3164856351655105
+
+Segmento 107:
+  Início: 491.0s
+  Fim: 496.0s
+  Texto:  mas deixar com que as transações se sejam feitas de real para real
+  Confiança: -0.3164856351655105
+
+Segmento 108:
+  Início: 496.0s
+  Fim: 500.0s
+  Texto:  e esses outros clientes que pagam em outras manedas,
+  Confiança: -0.3164856351655105
+
+Segmento 109:
+  Início: 500.0s
+  Fim: 505.0s
+  Texto:  consigam pagar Libra Euros dólar,
+  Confiança: -0.3164856351655105
+
+Segmento 110:
+  Início: 505.0s
+  Fim: 507.0s
+  Texto:  já convertendo para real também,
+  Confiança: -0.3164856351655105
+
+Segmento 111:
+  Início: 507.0s
+  Fim: 511.0s
+  Texto:  que aí na conta da Dani vai cair em reais já, convertido.
+  Confiança: -0.3164856351655105
+
+Segmento 112:
+  Início: 513.0s
+  Fim: 517.0s
+  Texto:  Trão algumas taxas do Stripe de transação,
+  Confiança: -0.2960883225544845
+
+Segmento 113:
+  Início: 517.0s
+  Fim: 519.0s
+  Texto:  que isso aí é totalmente comum.
+  Confiança: -0.2960883225544845
+
+Segmento 114:
+  Início: 519.0s
+  Fim: 522.0s
+  Texto:  Eu até já tinha passado no artes para vocês algumas taxas,
+  Confiança: -0.2960883225544845
+
+Segmento 115:
+  Início: 522.0s
+  Fim: 524.0s
+  Texto:  alguns exemplos de taxas,
+  Confiança: -0.2960883225544845
+
+Segmento 116:
+  Início: 524.0s
+  Fim: 529.0s
+  Texto:  porém, era para fazer a conversão,
+  Confiança: -0.2960883225544845
+
+Segmento 117:
+  Início: 529.0s
+  Fim: 531.0s
+  Texto:  tipo, a pessoa vai pagar em reais,
+  Confiança: -0.2960883225544845
+
+Segmento 118:
+  Início: 531.0s
+  Fim: 533.0s
+  Texto:  mas vai...
+  Confiança: -0.2960883225544845
+
+Segmento 119:
+  Início: 534.0s
+  Fim: 536.0s
+  Texto:  a Dani vai recebendo Euros,
+  Confiança: -0.2960883225544845
+
+Segmento 120:
+  Início: 536.0s
+  Fim: 540.0s
+  Texto:  vai ter o esporte de bancária.
+  Confiança: -0.2960883225544845
+
+Segmento 121:
+  Início: 541.0s
+  Fim: 545.0s
+  Texto:  Agora, a gente está passando a conta da Wise,
+  Confiança: -0.20580584877415709
+
+Segmento 122:
+  Início: 545.0s
+  Fim: 550.0s
+  Texto:  e ali, ela parece bastante taxas,
+  Confiança: -0.20580584877415709
+
+Segmento 123:
+  Início: 550.0s
+  Fim: 554.0s
+  Texto:  porque, apesar da Dani está indo para o Brasil
+  Confiança: -0.20580584877415709
+
+Segmento 124:
+  Início: 554.0s
+  Fim: 556.0s
+  Texto:  e recebendo o Brasil,
+  Confiança: -0.20580584877415709
+
+Segmento 125:
+  Início: 556.0s
+  Fim: 561.0s
+  Texto:  ela quer ter liberdade para transferir esse dinheiro aqui para a Europa,
+  Confiança: -0.20580584877415709
+
+Segmento 126:
+  Início: 561.0s
+  Fim: 565.0s
+  Texto:  sem ter que ela pagar essas taxas de transação,
+  Confiança: -0.20580584877415709
+
+Segmento 127:
+  Início: 565.0s
+  Fim: 569.0s
+  Texto:  então ela sempre vê ali no Wise e analisa as taxas
+  Confiança: -0.20580584877415709
+
+Segmento 128:
+  Início: 569.0s
+  Fim: 571.0s
+  Texto:  que dá às vezes até mil reais,
+  Confiança: -0.38466806122750946
+
+Segmento 129:
+  Início: 571.0s
+  Fim: 573.0s
+  Texto:  assim, de taxas, né?
+  Confiança: -0.38466806122750946
+
+Segmento 130:
+  Início: 573.0s
+  Fim: 575.0s
+  Texto:  É bem alto.
+  Confiança: -0.38466806122750946
+
+Segmento 131:
+  Início: 575.0s
+  Fim: 578.0s
+  Texto:  E ela faz questão de receber isso,
+  Confiança: -0.38466806122750946
+
+Segmento 132:
+  Início: 578.0s
+  Fim: 582.0s
+  Texto:  para ter a liberdade de conseguir transferir esse dinheiro
+  Confiança: -0.38466806122750946
+
+Segmento 133:
+  Início: 582.0s
+  Fim: 585.0s
+  Texto:  para cá também quando necessário.
+  Confiança: -0.38466806122750946
+
+Segmento 134:
+  Início: 586.0s
+  Fim: 590.0s
+  Texto:  Eu sei bem porque eu uso o Wise e todo o Santo Díeto.
+  Confiança: -0.38466806122750946
+
+Segmento 135:
+  Início: 590.0s
+  Fim: 596.0s
+  Texto:  E como eu estava conversando com a minha irmã ontem sobre o Cicob,
+  Confiança: -0.38466806122750946
+
+Segmento 136:
+  Início: 597.0s
+  Fim: 601.0s
+  Texto:  eu sugiro que vocês analisa entre leopções.
+  Confiança: -0.2976147099545127
+
+Segmento 137:
+  Início: 601.0s
+  Fim: 605.0s
+  Texto:  O Cicob, o Wise e o Unicred.
+  Confiança: -0.2976147099545127
+
+Segmento 138:
+  Início: 605.0s
+  Fim: 608.0s
+  Texto:  Eu não tá aqui, Cicob.
+  Confiança: -0.2976147099545127
+
+Segmento 139:
+  Início: 609.0s
+  Fim: 611.0s
+  Texto:  Unicred e o Wise.
+  Confiança: -0.2976147099545127
+
+Segmento 140:
+  Início: 611.0s
+  Fim: 612.0s
+  Texto:  E o Wise.
+  Confiança: -0.2976147099545127
+
+Segmento 141:
+  Início: 612.0s
+  Fim: 617.0s
+  Texto:  Eu digo analisar na questão do IOF e do spread bancária,
+  Confiança: -0.2976147099545127
+
+Segmento 142:
+  Início: 617.0s
+  Fim: 619.0s
+  Texto:  porque às vezes um não cobra o IOF,
+  Confiança: -0.2976147099545127
+
+Segmento 143:
+  Início: 619.0s
+  Fim: 621.0s
+  Texto:  mas o spread absurdo.
+  Confiança: -0.2976147099545127
+
+Segmento 144:
+  Início: 622.0s
+  Fim: 625.0s
+  Texto:  O spread, o dia de spread, o dia de...
+  Confiança: -0.3136746752393115
+
+Segmento 145:
+  Início: 625.0s
+  Fim: 629.0s
+  Texto:  O spread é assim, por exemplo,
+  Confiança: -0.3136746752393115
+
+Segmento 146:
+  Início: 629.0s
+  Fim: 631.0s
+  Texto:  a Lara vai me transferir,
+  Confiança: -0.3136746752393115
+
+Segmento 147:
+  Início: 631.0s
+  Fim: 636.0s
+  Texto:  na verdade eu vou transferir um dólar para a Lara.
+  Confiança: -0.3136746752393115
+
+Segmento 148:
+  Início: 636.0s
+  Fim: 643.0s
+  Texto:  O spread é a taxa de porcentagem que o banco cobra
+  Confiança: -0.3136746752393115
+
+Segmento 149:
+  Início: 643.0s
+  Fim: 646.0s
+  Texto:  sobre a transação cambial.
+  Confiança: -0.3136746752393115
+
+Segmento 150:
+  Início: 646.0s
+  Fim: 650.0s
+  Texto:  Ou seja, esse um dólar vai virar 1,04.
+  Confiança: -0.3136746752393115
+
+Segmento 151:
+  Início: 650.0s
+  Fim: 656.0s
+  Texto:  Ao invés de ser 1 dólar fixo.
+  Confiança: -0.2771564245223999
+
+Segmento 152:
+  Início: 660.0s
+  Fim: 665.0s
+  Texto:  E obviamente o IOF hoje em dia tá em 3,5%,
+  Confiança: -0.2771564245223999
+
+Segmento 153:
+  Início: 665.0s
+  Fim: 668.0s
+  Texto:  mas o spread.
+  Confiança: -0.2771564245223999
+
+Segmento 154:
+  Início: 668.0s
+  Fim: 671.0s
+  Texto:  Então tem bancos que não cobram o IOF,
+  Confiança: -0.2771564245223999
+
+Segmento 155:
+  Início: 671.0s
+  Fim: 674.0s
+  Texto:  ou cobram o IOF de 1%, 1,1,1,
+  Confiança: -0.2771564245223999
+
+Segmento 156:
+  Início: 674.0s
+  Fim: 678.0s
+  Texto:  mas eles perregam no spread.
+  Confiança: -0.2771564245223999
+
+Segmento 157:
+  Início: 678.0s
+  Fim: 682.0s
+  Texto:  É isso que eu vou fazer, que eu questiono de marketing
+  Confiança: -0.3142293403888571
+
+Segmento 158:
+  Início: 682.0s
+  Fim: 684.0s
+  Texto:  deles mesmo,
+  Confiança: -0.3142293403888571
+
+Segmento 159:
+  Início: 684.0s
+  Fim: 688.0s
+  Texto:  mas às vezes um banco que cobra o IOF,
+  Confiança: -0.3142293403888571
+
+Segmento 160:
+  Início: 688.0s
+  Fim: 690.0s
+  Texto:  mas cobram o spread menor,
+  Confiança: -0.3142293403888571
+
+Segmento 161:
+  Início: 690.0s
+  Fim: 692.0s
+  Texto:  é melhor.
+  Confiança: -0.3142293403888571
+
+Segmento 162:
+  Início: 692.0s
+  Fim: 696.0s
+  Texto:  E também tem bancos que cobram o IOF menor
+  Confiança: -0.3142293403888571
+
+Segmento 163:
+  Início: 696.0s
+  Fim: 699.0s
+  Texto:  e cobram o spread menor,
+  Confiança: -0.3142293403888571
+
+Segmento 164:
+  Início: 699.0s
+  Fim: 701.0s
+  Texto:  que eu acho que é a questão do Sikob.
+  Confiança: -0.3142293403888571
+
+Segmento 165:
+  Início: 701.0s
+  Fim: 703.0s
+  Texto:  Eu não me interei muito por isso,
+  Confiança: -0.3142293403888571
+
+Segmento 166:
+  Início: 703.0s
+  Fim: 706.0s
+  Texto:  porque eu falei com a minha irmã sobre isso ontem mesmo.
+  Confiança: -0.3142293403888571
+
+Segmento 167:
+  Início: 706.0s
+  Fim: 708.0s
+  Texto:  Eu sou só na cabeça mesmo,
+  Confiança: -0.3748726654052734
+
+Segmento 168:
+  Início: 708.0s
+  Fim: 712.0s
+  Texto:  mas com o Adeline conversou com ela também recentemente,
+  Confiança: -0.3748726654052734
+
+Segmento 169:
+  Início: 712.0s
+  Fim: 718.0s
+  Texto:  já estava com você ideia na mente até para mim mesmo.
+  Confiança: -0.3748726654052734
+
+Segmento 170:
+  Início: 720.0s
+  Fim: 722.0s
+  Texto:  Então, tá.
+  Confiança: -0.3748726654052734
+
+Segmento 171:
+  Início: 722.0s
+  Fim: 724.0s
+  Texto:  Beleza.
+  Confiança: -0.3748726654052734
+
+Segmento 172:
+  Início: 724.0s
+  Fim: 727.0s
+  Texto:  Eu vou passar isso para Adeline.
+  Confiança: -0.3748726654052734
+
+Segmento 173:
+  Início: 727.0s
+  Fim: 732.0s
+  Texto:  Na questão da aba onde o cliente pode pagar,
+  Confiança: -0.3748726654052734
+
+Segmento 174:
+  Início: 732.0s
+  Fim: 738.0s
+  Texto:  o VICVS Stripe,
+  Confiança: -0.5087413272342166
+
+Segmento 175:
+  Início: 738.0s
+  Fim: 744.0s
+  Texto:  é melhor a opção que eu vou ter.
+  Confiança: -0.5087413272342166
+
+Segmento 176:
+  Início: 744.0s
+  Fim: 746.0s
+  Texto:  Esse caso.
+  Confiança: -0.5087413272342166
+
+Segmento 177:
+  Início: 746.0s
+  Fim: 753.0s
+  Texto:  Só que assim, eu vou ter que desenvolver duas páginas e uma
+  Confiança: -0.5087413272342166
+
+Segmento 178:
+  Início: 753.0s
+  Fim: 756.0s
+  Texto:  de pagamentos, só que como se um dado sensíveis,
+  Confiança: -0.5087413272342166
+
+Segmento 179:
+  Início: 756.0s
+  Fim: 760.0s
+  Texto:  eu preciso de um tempinho para conseguir fazer,
+  Confiança: -0.5087413272342166
+
+Segmento 180:
+  Início: 760.0s
+  Fim: 763.0s
+  Texto:  porque a proteção dessa página,
+  Confiança: -0.3029471614904571
+
+Segmento 181:
+  Início: 763.0s
+  Fim: 767.0s
+  Texto:  ela tem que ser muito mais robusta do sete da noite,
+  Confiança: -0.3029471614904571
+
+Segmento 182:
+  Início: 767.0s
+  Fim: 769.0s
+  Texto:  já tem proteção, tá.
+  Confiança: -0.3029471614904571
+
+Segmento 183:
+  Início: 769.0s
+  Fim: 773.0s
+  Texto:  Mas nessa aba em específico, ela tem que ser criptografada,
+  Confiança: -0.3029471614904571
+
+Segmento 184:
+  Início: 773.0s
+  Fim: 776.0s
+  Texto:  aí tem trascutos de segurança,
+  Confiança: -0.3029471614904571
+
+Segmento 185:
+  Início: 776.0s
+  Fim: 778.0s
+  Texto:  porque são dados extremamente sensíveis,
+  Confiança: -0.3029471614904571
+
+Segmento 186:
+  Início: 778.0s
+  Fim: 780.0s
+  Texto:  que são cartões da pessoa, né?
+  Confiança: -0.3029471614904571
+
+Segmento 187:
+  Início: 780.0s
+  Fim: 782.0s
+  Texto:  Sim, com certeza.
+  Confiança: -0.3029471614904571
+
+Segmento 188:
+  Início: 782.0s
+  Fim: 786.0s
+  Texto:  E se tem ataque hacker para conseguir roubar os dados,
+  Confiança: -0.3029471614904571
+
+Segmento 189:
+  Início: 786.0s
+  Fim: 788.0s
+  Texto:  são exatamente nessa aba.
+  Confiança: -0.3029471614904571
+
+Segmento 190:
+  Início: 788.0s
+  Fim: 792.0s
+  Texto:  Mas isso é totalmente possível fazer, tá.
+  Confiança: -0.36918759065515855
+
+Segmento 191:
+  Início: 792.0s
+  Fim: 794.0s
+  Texto:  Tá.
+  Confiança: -0.36918759065515855
+
+Segmento 192:
+  Início: 794.0s
+  Fim: 802.0s
+  Texto:  Eu acho que foi basicamente isso que Adeline comentou, né?
+  Confiança: -0.36918759065515855
+
+Segmento 193:
+  Início: 802.0s
+  Fim: 807.0s
+  Texto:  Eu acredito que sim, acho que isso ali,
+  Confiança: -0.36918759065515855
+
+Segmento 194:
+  Início: 807.0s
+  Fim: 809.0s
+  Texto:  a questão da agenda também que ela,
+  Confiança: -0.36918759065515855
+
+Segmento 195:
+  Início: 809.0s
+  Fim: 811.0s
+  Texto:  a gente falou, está vindo muito bem,
+  Confiança: -0.36918759065515855
+
+Segmento 196:
+  Início: 811.0s
+  Fim: 815.0s
+  Texto:  agora ela falou como certeza e pronto.
+  Confiança: -0.36918759065515855
+
+Segmento 197:
+  Início: 815.0s
+  Fim: 817.0s
+  Texto:  Tá, legal.
+  Confiança: -0.36918759065515855
+
+Segmento 198:
+  Início: 817.0s
+  Fim: 823.0s
+  Texto:  Eu vou falar com Felipe hoje a tarde ainda,
+  Confiança: -0.27150992552439374
+
+Segmento 199:
+  Início: 823.0s
+  Fim: 830.0s
+  Texto:  para nós vermos o melhor layout para a aba do imobiliário
+  Confiança: -0.27150992552439374
+
+Segmento 200:
+  Início: 830.0s
+  Fim: 832.0s
+  Texto:  e para a aba da emigração.
+  Confiança: -0.27150992552439374
+
+Segmento 201:
+  Início: 832.0s
+  Fim: 836.0s
+  Texto:  Eu acredito que o foco principal seja o imobiliário, né?
+  Confiança: -0.27150992552439374
+
+Segmento 202:
+  Início: 836.0s
+  Fim: 837.0s
+  Texto:  É, né.
+  Confiança: -0.27150992552439374
+
+Segmento 203:
+  Início: 837.0s
+  Fim: 842.0s
+  Texto:  Por exemplo, 80% é imobiliário, 20% é a emigração,
+  Confiança: -0.27150992552439374
+
+Segmento 204:
+  Início: 842.0s
+  Fim: 845.0s
+  Texto:  ou 70% é 30%.
+  Confiança: -0.27150992552439374
+
+Segmento 205:
+  Início: 845.0s
+  Fim: 849.0s
+  Texto:  É, acho que 70 é 30.
+  Confiança: -0.2465023464626736
+
+Segmento 206:
+  Início: 849.0s
+  Fim: 852.0s
+  Texto:  Tá. Até para nós sermos um termômetro, né?
+  Confiança: -0.2465023464626736
+
+Segmento 207:
+  Início: 852.0s
+  Fim: 854.0s
+  Texto:  Uh-huh.
+  Confiança: -0.2465023464626736
+
+Segmento 208:
+  Início: 857.0s
+  Fim: 862.0s
+  Texto:  Nesse caso, também vão ter orçamento separados,
+  Confiança: -0.2465023464626736
+
+Segmento 209:
+  Início: 862.0s
+  Fim: 867.0s
+  Texto:  porque vão aumentar o número da gestão de tráfego,
+  Confiança: -0.2465023464626736
+
+Segmento 210:
+  Início: 867.0s
+  Fim: 869.0s
+  Texto:  mas eu não vou fazer o valor cheio para Adeline,
+  Confiança: -0.2465023464626736
+
+Segmento 211:
+  Início: 869.0s
+  Fim: 872.0s
+  Texto:  porque ela já trabalha conosco.
+  Confiança: -0.2465023464626736
+
+Segmento 212:
+  Início: 872.0s
+  Fim: 875.0s
+  Texto:  Então, vou fazer um valor exicional só.
+  Confiança: -0.37554939270019533
+
+Segmento 213:
+  Início: 875.0s
+  Fim: 877.0s
+  Texto:  Não vai muito muito por dobro do que é cobrado,
+  Confiança: -0.37554939270019533
+
+Segmento 214:
+  Início: 877.0s
+  Fim: 881.0s
+  Texto:  vai ser um valor, eu vou fazer um balancimento.
+  Confiança: -0.37554939270019533
+
+Segmento 215:
+  Início: 881.0s
+  Fim: 884.0s
+  Texto:  Tá.
+  Confiança: -0.37554939270019533
+
+Segmento 216:
+  Início: 887.0s
+  Fim: 889.0s
+  Texto:  Ótimo.
+  Confiança: -0.37554939270019533
+
+Segmento 217:
+  Início: 889.0s
+  Fim: 892.0s
+  Texto:  Tá, eu só estou dando um morial aqui meio por cima só,
+  Confiança: -0.37554939270019533
+
+Segmento 218:
+  Início: 892.0s
+  Fim: 893.0s
+  Texto:  para não me perder.
+  Confiança: -0.37554939270019533
+
+Segmento 219:
+  Início: 893.0s
+  Fim: 898.0s
+  Texto:  Fazer o redireceramento certo por código das eles sociais,
+  Confiança: -0.37554939270019533
+
+Segmento 220:
+  Início: 898.0s
+  Fim: 901.0s
+  Texto:  um site.
+  Confiança: -0.37554939270019533
+
+Segmento 221:
+  Início: 901.0s
+  Fim: 904.0s
+  Texto:  Porque você vai ter que fazer por código,
+  Confiança: -0.30113995328862614
+
+Segmento 222:
+  Início: 904.0s
+  Fim: 907.0s
+  Texto:  o que deu mesmo, o que aconteceu,
+  Confiança: -0.30113995328862614
+
+Segmento 223:
+  Início: 907.0s
+  Fim: 910.0s
+  Texto:  o que a gente não tá...
+  Confiança: -0.30113995328862614
+
+Segmento 224:
+  Início: 910.0s
+  Fim: 914.0s
+  Texto:  Eu acredito que foi a questão do desenvolvimento,
+  Confiança: -0.30113995328862614
+
+Segmento 225:
+  Início: 914.0s
+  Fim: 917.0s
+  Texto:  do desenvolvimento que o Lucas tinha feito antes.
+  Confiança: -0.30113995328862614
+
+Segmento 226:
+  Início: 917.0s
+  Fim: 919.0s
+  Texto:  Não.
+  Confiança: -0.30113995328862614
+
+Segmento 227:
+  Início: 919.0s
+  Fim: 923.0s
+  Texto:  Porque eu não sei, mas o orçprez ele tem essas complicações
+  Confiança: -0.30113995328862614
+
+Segmento 228:
+  Início: 923.0s
+  Fim: 925.0s
+  Texto:  em mesmo.
+  Confiança: -0.30113995328862614
+
+Segmento 229:
+  Início: 925.0s
+  Fim: 928.0s
+  Texto:  E é inexplicável.
+  Confiança: -0.30113995328862614
+
+Segmento 230:
+  Início: 928.0s
+  Fim: 931.0s
+  Texto:  É melhor tu ir direto por lado mais difícil,
+  Confiança: -0.456205941797272
+
+Segmento 231:
+  Início: 931.0s
+  Fim: 934.0s
+  Texto:  para cantar no fácil várias vezes.
+  Confiança: -0.456205941797272
+
+Segmento 232:
+  Início: 934.0s
+  Fim: 936.0s
+  Texto:  E daí, tipo, ficar tentando fácil,
+  Confiança: -0.456205941797272
+
+Segmento 233:
+  Início: 936.0s
+  Fim: 937.0s
+  Texto:  fácil, fácil.
+  Confiança: -0.456205941797272
+
+Segmento 234:
+  Início: 937.0s
+  Fim: 939.0s
+  Texto:  E depois tem que partir por difícil.
+  Confiança: -0.456205941797272
+
+Segmento 235:
+  Início: 939.0s
+  Fim: 940.0s
+  Texto:  Então, já partimos por difícil,
+  Confiança: -0.456205941797272
+
+Segmento 236:
+  Início: 940.0s
+  Fim: 942.0s
+  Texto:  porque isso é o mesmo que funciona.
+  Confiança: -0.456205941797272
+
+Segmento 237:
+  Início: 942.0s
+  Fim: 945.0s
+  Texto:  Não é porque a brinha outra aba é um negócio básico,
+  Confiança: -0.456205941797272
+
+Segmento 238:
+  Início: 945.0s
+  Fim: 947.0s
+  Texto:  o leader de press do ior.
+  Confiança: -0.456205941797272
+
+Segmento 239:
+  Início: 947.0s
+  Fim: 949.0s
+  Texto:  É um clique.
+  Confiança: -0.456205941797272
+
+Segmento 240:
+  Início: 949.0s
+  Fim: 951.0s
+  Texto:  Literalmente clique.
+  Confiança: -0.456205941797272
+
+Segmento 241:
+  Início: 951.0s
+  Fim: 953.0s
+  Texto:  Sim, um clique.
+  Confiança: -0.456205941797272
+
+Segmento 242:
+  Início: 954.0s
+  Fim: 957.0s
+  Texto:  Mas é isso, na questão do blog,
+  Confiança: -0.4793526844311786
+
+Segmento 243:
+  Início: 957.0s
+  Fim: 961.0s
+  Texto:  que pode ver que tem um post de test,
+  Confiança: -0.4793526844311786
+
+Segmento 244:
+  Início: 961.0s
+  Fim: 963.0s
+  Texto:  que eu realizei,
+  Confiança: -0.4793526844311786
+
+Segmento 245:
+  Início: 963.0s
+  Fim: 965.0s
+  Texto:  que é um post...
+  Confiança: -0.4793526844311786
+
+Segmento 246:
+  Início: 965.0s
+  Fim: 968.0s
+  Texto:  No post, ele tem o prônio cliente
+  Confiança: -0.4793526844311786
+
+Segmento 247:
+  Início: 968.0s
+  Fim: 970.0s
+  Texto:  e deixa eu comentário, tá?
+  Confiança: -0.4793526844311786
+
+Segmento 248:
+  Início: 970.0s
+  Fim: 972.0s
+  Texto:  Ah.
+  Confiança: -0.4793526844311786
+
+Segmento 249:
+  Início: 972.0s
+  Fim: 974.0s
+  Texto:  E um...
+  Confiança: -0.4793526844311786
+
+Segmento 250:
+  Início: 974.0s
+  Fim: 977.0s
+  Texto:  Desculpa, pode-se...
+  Confiança: -0.4793526844311786
+
+Segmento 251:
+  Início: 977.0s
+  Fim: 980.0s
+  Texto:  Ou não pode-se me pode falar.
+  Confiança: -0.4793526844311786
+
+Segmento 252:
+  Início: 980.0s
+  Fim: 983.0s
+  Texto:  É que eu lembrei de ter uma coisa agora.
+  Confiança: -0.20709022315772804
+
+Segmento 253:
+  Início: 983.0s
+  Fim: 988.0s
+  Texto:  Eu queria saber se a gente podia colocar um botão
+  Confiança: -0.20709022315772804
+
+Segmento 254:
+  Início: 988.0s
+  Fim: 991.0s
+  Texto:  de assináneas, letter,
+  Confiança: -0.20709022315772804
+
+Segmento 255:
+  Início: 991.0s
+  Fim: 993.0s
+  Texto:  ou cadastro de seu e-mail,
+  Confiança: -0.20709022315772804
+
+Segmento 256:
+  Início: 993.0s
+  Fim: 995.0s
+  Texto:  ou para receber mais informações
+  Confiança: -0.20709022315772804
+
+Segmento 257:
+  Início: 995.0s
+  Fim: 996.0s
+  Texto:  além do WhatsApp,
+  Confiança: -0.20709022315772804
+
+Segmento 258:
+  Início: 996.0s
+  Fim: 998.0s
+  Texto:  para a gente ter e-mail certos,
+  Confiança: -0.20709022315772804
+
+Segmento 259:
+  Início: 998.0s
+  Fim: 1000.0s
+  Texto:  assim, para meio marketing, sabe?
+  Confiança: -0.20709022315772804
+
+Segmento 260:
+  Início: 1000.0s
+  Fim: 1003.0s
+  Texto:  Claro, com certeza. Isso é bem possível.
+  Confiança: -0.20709022315772804
+
+Segmento 261:
+  Início: 1003.0s
+  Fim: 1005.0s
+  Texto:  É bem possível mesmo.
+  Confiança: -0.20709022315772804
+
+Segmento 262:
+  Início: 1005.0s
+  Fim: 1007.0s
+  Texto:  Vai ficar...
+  Confiança: -0.20709022315772804
+
+Segmento 263:
+  Início: 1008.0s
+  Fim: 1010.0s
+  Texto:  Aí é com o Felipe, tá?
+  Confiança: -0.43228735747160735
+
+Segmento 264:
+  Início: 1010.0s
+  Fim: 1012.0s
+  Texto:  Mas, vamos ver o meu mouse aqui, né?
+  Confiança: -0.43228735747160735
+
+Segmento 265:
+  Início: 1012.0s
+  Fim: 1015.0s
+  Texto:  Eu acredito que essa parte...
+  Confiança: -0.43228735747160735
+
+Segmento 266:
+  Início: 1015.0s
+  Fim: 1017.0s
+  Texto:  Não, risquesse.
+  Confiança: -0.43228735747160735
+
+Segmento 267:
+  Início: 1017.0s
+  Fim: 1020.0s
+  Texto:  Provavelmente ela vai ficar aqui por cima, tá?
+  Confiança: -0.43228735747160735
+
+Segmento 268:
+  Início: 1020.0s
+  Fim: 1023.0s
+  Texto:  Antes do que do VadoPet.
+  Confiança: -0.43228735747160735
+
+Segmento 269:
+  Início: 1023.0s
+  Fim: 1026.0s
+  Texto:  Eu estou pensando em deixar ela aqui num canto
+  Confiança: -0.43228735747160735
+
+Segmento 270:
+  Início: 1026.0s
+  Fim: 1028.0s
+  Texto:  e alinhar essas outras mas não.
+  Confiança: -0.43228735747160735
+
+Segmento 271:
+  Início: 1028.0s
+  Fim: 1031.0s
+  Texto:  É porque eu estou com os 1 menor aqui.
+  Confiança: -0.43228735747160735
+
+Segmento 272:
+  Início: 1034.0s
+  Fim: 1036.0s
+  Texto:  Mas... Tá?
+  Confiança: -0.43228735747160735
+
+Segmento 273:
+  Início: 1036.0s
+  Fim: 1041.0s
+  Texto:  Eu acredito que por enquanto seja isso.
+  Confiança: -0.25011064718057824
+
+Segmento 274:
+  Início: 1041.0s
+  Fim: 1044.0s
+  Texto:  O mais largo falar?
+  Confiança: -0.25011064718057824
+
+Segmento 275:
+  Início: 1044.0s
+  Fim: 1046.0s
+  Texto:  Não, não seja isso.
+  Confiança: -0.25011064718057824
+
+Segmento 276:
+  Início: 1046.0s
+  Fim: 1049.0s
+  Texto:  A questão do e-mail market,
+  Confiança: -0.25011064718057824
+
+Segmento 277:
+  Início: 1049.0s
+  Fim: 1052.0s
+  Texto:  através do site, é muito interessante para a gente,
+  Confiança: -0.25011064718057824
+
+Segmento 278:
+  Início: 1052.0s
+  Fim: 1054.0s
+  Texto:  uma coisa que a gente não tinha.
+  Confiança: -0.25011064718057824
+
+Segmento 279:
+  Início: 1054.0s
+  Fim: 1057.0s
+  Texto:  Então, é mais ou menos isso, Franco.
+  Confiança: -0.25011064718057824
+
+Segmento 280:
+  Início: 1057.0s
+  Fim: 1059.0s
+  Texto:  Tá, beleza.
+  Confiança: -0.25011064718057824
+
+Segmento 281:
+  Início: 1059.0s
+  Fim: 1062.0s
+  Texto:  O que acontece na questão do e-mail market
+  Confiança: -0.25011064718057824
+
+Segmento 282:
+  Início: 1062.0s
+  Fim: 1065.0s
+  Texto:  em bairro é mesmo que você já tem.
+  Confiança: -0.4645795733015114
+
+Segmento 283:
+  Início: 1065.0s
+  Fim: 1068.0s
+  Texto:  O e-mail market invindo do site,
+  Confiança: -0.4645795733015114
+
+Segmento 284:
+  Início: 1068.0s
+  Fim: 1072.0s
+  Texto:  vão ser só e-mails que já foram cadastrados.
+  Confiança: -0.4645795733015114
+
+Segmento 285:
+  Início: 1072.0s
+  Fim: 1076.0s
+  Texto:  Ejam no formulário aqui da cidadania.
+  Confiança: -0.4645795733015114
+
+Segmento 286:
+  Início: 1076.0s
+  Fim: 1078.0s
+  Texto:  Tá, tá, tá.
+  Confiança: -0.4645795733015114
+
+Segmento 287:
+  Início: 1080.0s
+  Fim: 1083.0s
+  Texto:  Ai, desculpa, Franco, a Dani precisa ir.
+  Confiança: -0.4645795733015114
+
+Segmento 288:
+  Início: 1083.0s
+  Fim: 1086.0s
+  Texto:  Ela precisa do telefone.
+  Confiança: -0.4645795733015114
+
+Segmento 289:
+  Início: 1086.0s
+  Fim: 1088.0s
+  Texto:  Ah, tá. Eu acabou, né?
+  Confiança: -0.4645795733015114
+
+Segmento 290:
+  Início: 1088.0s
+  Fim: 1090.0s
+  Texto:  Um minuto pode ser.
+  Confiança: -0.4645795733015114
+
+Segmento 291:
+  Início: 1090.0s
+  Fim: 1092.0s
+  Texto:  Tá.
+  Confiança: -0.2389179401183396
+
+Segmento 292:
+  Início: 1092.0s
+  Fim: 1097.0s
+  Texto:  Aqui, ó, vocês vão ter os dados de e-mail marketing,
+  Confiança: -0.2389179401183396
+
+Segmento 293:
+  Início: 1097.0s
+  Fim: 1100.0s
+  Texto:  para esse formulário de contato,
+  Confiança: -0.2389179401183396
+
+Segmento 294:
+  Início: 1100.0s
+  Fim: 1104.0s
+  Texto:  onde não vão ter muitos e-mails eu acredito.
+  Confiança: -0.2389179401183396
+
+Segmento 295:
+  Início: 1104.0s
+  Fim: 1111.0s
+  Texto:  Mas a Dani tem muitos e-mails de contatos no e-mail dela.
+  Confiança: -0.2389179401183396
+
+Segmento 296:
+  Início: 1111.0s
+  Fim: 1113.0s
+  Texto:  Ah, sim.
+  Confiança: -0.2389179401183396
+
+Segmento 297:
+  Início: 1113.0s
+  Fim: 1117.0s
+  Texto:  Então seria a questão de fazer exportação desses e-mails
+  Confiança: -0.2389179401183396
+
+Segmento 298:
+  Início: 1117.0s
+  Fim: 1123.0s
+  Texto:  e usar uma plataforma que eu surgiro o e-mail time
+  Confiança: -0.2830612584164268
+
+Segmento 299:
+  Início: 1123.0s
+  Fim: 1126.0s
+  Texto:  e, sim, de macaco mesmo,
+  Confiança: -0.2830612584164268
+
+Segmento 300:
+  Início: 1126.0s
+  Fim: 1129.0s
+  Texto:  ou o clávio.io.
+  Confiança: -0.2830612584164268
+
+Segmento 301:
+  Início: 1129.0s
+  Fim: 1132.0s
+  Texto:  Eu vou te mandar os dois nomes aqui.
+  Confiança: -0.2830612584164268
+
+Segmento 302:
+  Início: 1132.0s
+  Fim: 1140.0s
+  Texto:  O e-mail time, eu sei que ele tem dois milhoneiros gratuitos.
+  Confiança: -0.2830612584164268
+
+Segmento 303:
+  Início: 1140.0s
+  Fim: 1141.0s
+  Texto:  Tá.
+  Confiança: -0.2830612584164268
+
+Segmento 304:
+  Início: 1141.0s
+  Fim: 1144.0s
+  Texto:  O clávio é mais chato de mexer, mas ele é mais completo.
+  Confiança: -0.2830612584164268
+
+Segmento 305:
+  Início: 1144.0s
+  Fim: 1147.0s
+  Texto:  Tá. Eu vou entregar o telefone para ela,
+  Confiança: -0.3824598524305556
+
+Segmento 306:
+  Início: 1147.0s
+  Fim: 1149.0s
+  Texto:  então muito obrigada, tá, Franco?
+  Confiança: -0.3824598524305556
+
+Segmento 307:
+  Início: 1149.0s
+  Fim: 1150.0s
+  Texto:  Obrigada, Franco.
+  Confiança: -0.3824598524305556
+
+Segmento 308:
+  Início: 1150.0s
+  Fim: 1151.0s
+  Texto:  Tchau, vamos tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 309:
+  Início: 1151.0s
+  Fim: 1152.0s
+  Texto:  Tchau, vamos tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 310:
+  Início: 1152.0s
+  Fim: 1153.0s
+  Texto:  Tchau, tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 311:
+  Início: 1153.0s
+  Fim: 1154.0s
+  Texto:  Tchau, tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 312:
+  Início: 1154.0s
+  Fim: 1155.0s
+  Texto:  Então, vocês também, tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 313:
+  Início: 1155.0s
+  Fim: 1156.0s
+  Texto:  Tchau, tchau.
+  Confiança: -0.3824598524305556
+
+Segmento 314:
+  Início: 1161.0s
+  Fim: 1162.0s
+  Texto:  Peri.
+  Confiança: -0.3824598524305556
+

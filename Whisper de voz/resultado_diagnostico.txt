@@ -1,0 +1,34 @@
+
+[TESTE WHISPER]
+------------------------------------------------------------
+Arquivo: Lucas email.mp3
+Tamanho: 6.83 MB
+
+Carregando modelo Tiny...
+Transcrevendo com thresholds muito baixos...
+
+============================================================
+[RESULTADO]
+============================================================
+SUCESSO: Texto encontrado (411 caracteres)
+
+Texto completo:
+Ainda não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso. Não é a ideia de fazer isso.
+
+Segmentos: 14
+  Segmento 1:  Ainda não é a ideia de fazer isso.
+  Segmento 2:  Não é a ideia de fazer isso.
+  Segmento 3:  Não é a ideia de fazer isso.
+  Segmento 4:  Não é a ideia de fazer isso.
+  Segmento 5:  Não é a ideia de fazer isso.
+  Segmento 6:  Não é a ideia de fazer isso.
+  Segmento 7:  Não é a ideia de fazer isso.
+  Segmento 8:  Não é a ideia de fazer isso.
+  Segmento 9:  Não é a ideia de fazer isso.
+  Segmento 10:  Não é a ideia de fazer isso.
+  Segmento 11:  Não é a ideia de fazer isso.
+  Segmento 12:  Não é a ideia de fazer isso.
+  Segmento 13:  Não é a ideia de fazer isso.
+  Segmento 14:  Não é a ideia de fazer isso.
+
+Idioma detectado: pt

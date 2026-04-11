@@ -1,0 +1,1181 @@
+# Reuniao 
+
+  Meeting started: 06/10/2025, 20:06:34
+  Duration: 96 minutes
+  Participants: Arthur Brandalise, Guilherme Horstmann, Lucas , Lucas C De Zotti, Luis Fernando Boff, pedro henrique sanvito andreazza corso, Pedro Vitor Brunello Pagliarin
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/EkZ9EEjGSZDzmGRqD4Ec?o=txt)
+
+    
+
+  
+
+  
+
+  ## Transcript
+
+  00:00 Lucas C De Zotti: Hoje eu só saio lá pelas 9.
+00:04 Guilherme Horstmann: Ora, sim, para me ver.
+00:04 pedro henrique sanvito andreazza corso: OGH fala GH.
+00:06 Arthur Brandalise: Agora, sim.
+00:06 Pedro Vitor Brunello Pagliarin: Olá, seja vindo. Ou. Ou quer dar o Google quer dar um oi para todo mundo, Gui antes ou posso começar?
+00:16 Luis Fernando Boff: A cara dele, de quem quer dar oi, ó.
+00:17 Guilherme Horstmann: Pessoal.
+00:19 Luis Fernando Boff: A cara dele, de quem quer falar.
+00:20 pedro henrique sanvito andreazza corso: Oi, Gui.
+00:21 Guilherme Horstmann: Acabado, vamos lá.
+00:23 Pedro Vitor Brunello Pagliarin: Ah, então eu vou começar aqui a transcrição, quem está aqui é o Pedro Victor bagularim, o Arthur brandalise, o Pedro Corso, o Lucas deszoti, o Luiz Fernando Boff e o Guilherme horseman. Só para pegar a transcrição dos presentes.
+00:38 Guilherme Horstmann: Feito.
+00:40 Arthur Brandalise: Mas ele pega também pelo pelo, pelo som. Se a gente falasse cada um o nosso nome.
+00:47 Pedro Vitor Brunello Pagliarin: Olha, ele não identifica que o teu nome é o Toshiba. Sim, ele vai identificar que é uma pessoa diferente, mas não necessariamente que tu é o Toshiba, né? O Arthur.
+00:58 Guilherme Horstmann: Que está transcrevendo e pegam aqui ao Arthur.
+00:58 Pedro Vitor Brunello Pagliarin: Na verdade, ele até pega ele até pega de ser da forma. Entendi o que quiser.
+01:04 Arthur Brandalise: Eu falo, pois porque ainda vou falar, é ao Arthur, sou eu. É essa voz aqui daí tipo, sei lá. Ele falou que era uma frase.
+01:09 Pedro Vitor Brunello Pagliarin: Ele ele ent Ele. Ele entende isso, depois ele entende exatamente. Quem iria começar pode ser o Gui ou Toshiba. A gente tem 2 assuntos principais, que tem até identidade visual ou a questão do cartão de crédito.
+01:27 Arthur Brandalise: Primeiro primeiro primeiro Primeiro, primeiro, primeiro eu vi ali que tu a gente conversou mais cedo, né? Falando sobre essa reunião.
+01:34 pedro henrique sanvito andreazza corso: Gosto muito.
+01:37 Arthur Brandalise: Eu acho que tipo, a reunião semanal, acho que teria que ser muito boa, primeira, primeiramente, para a gente fazer esse, porque o que acontece a gente começar a fazer o sprint mesmo, né? A gente fazendo a gestão certinha, né?
+01:41 Pedro Vitor Brunello Pagliarin: Perdão.
+01:50 Arthur Brandalise: Já com o nosso sistema de de gestão de testes Luís, a gente teria que fazer essa primeira reunião. É o que a gente vai fazer na semana e aquela reunião para falar dos feitos da semana passada. Ent Então, mais nessa questão geral da da da da empresa, né? Os projetos à parte, a gente vai falando depois, com cada time de cada projeto, né? Então, é por isso que é bem interessante a gente sempre ter essa reunião, apesar da gente ainda não ter ainda, né? A.
+02:16 Arthur Brandalise: Desenvolvido ali, né? PVO sistema de de gestão, né, de testes? Eu acho Eu acho importante sempre fazer falar mais ou menos o que cada um fez naquilo que estava. Pendente Pendente para cada Pendente para cada um e, enfim, o que a gente vai fazer para essa semana? Então é pra gente começar a criar esse hábito de a gente sempre ter esse print inicial. E E enfim, pra mais pra mais tempo a gente fazer mais prints no decorrer da semana.
+02:49 Arthur Brandalise: Então Então, é mais ou menos isso que.
+02:50 Pedro Vitor Brunello Pagliarin: Eu achei boa ideia, achei boa ideia de cada um dizer mais ou menos o que fez durante a semana em relação ao que foi dito que tem que ser feito. Eu vou começar por mim, então, para dar um briefing bem rápido, a gente mexeu um pouco No No. Projeto. Vamos falando em projetos. Talvez, né? Mexemos um pouco mexiamos um pouco no projeto chat, bote. A gente está aguardando AA validação da meta.
+03:06 Arthur Brandalise: Pode falar também, pode falar também, Hum?
+03:15 Pedro Vitor Brunello Pagliarin: Eu. Eu pensei que se fosse pegar pela tuilho, a gente não precisaria da verificação da meta. Mas a tuilho também usa. Então não adiantou muita coisa. Em relação a esse projeto, estamos esperando a verificação da meta. Talvez saia amanhã. Tem um outro projeto, que é o site Builder que a gente criou um template. Então temos um template para tentar aplicar e também criei uma documentação para identidade visual pra todo mundo dar em sites, ver o que que achou pra gente conseguir ter um ponto de start. Acho que isso foi as principais coisas que eu fiz durante a semana.
+03:52 Pedro Vitor Brunello Pagliarin: E E leva levantamos pontos ali que a gente precisa separar questões financeiras, pessoais e da empresa. Até por isso que a gente não adquiriu o subsidium que não queria. Não, não, não quero pagar outro obsídio além do que eu pago com meu cartão, meu pessoal e até para nós. Assumirmos um compromisso com o grupo, como o time de termos o caixa da empresa. Olá.
+04:15 Arthur Brandalise: Perfeito, perfeito, uns pontos aqui aqui, lá que o bug te mandou que eu vi lá que ele começou a mandar e tu achou interessante. Perfeito perf Tem alguma a ver, coisa a ver com API ou é só para? É a compra de.
+04:29 Pedro Vitor Brunello Pagliarin: É um projeto aquilo lá, né? É? É um projeto também. Aquilo lá é um, como é que é o nome SIS? Uma revisão sistemática, né? É uma revisão sistemática, é muito utilizada em meios acadêmicos. O que que acontece? AA revisão sistemática é tipo a verdade universal bas. Em artigos, então é como tem aquela aquela foto da pirâmide ali em cima está a revisão sistemática e ela é feita baseada em muitos artigos. Muitas informações que já foram validadas. Então, para tu ter uma revisão sistemática, tu precisa de muitas e muitas e muitas validações acadêmicas e.
+05:07 Pedro Vitor Brunello Pagliarin: Referências que têm contribuição e validação via a sociedade científica. Isso é um processo que demora muito tempo e ele mostrou o artigo que saiu ali de alguns estudiosos de Harvard de outras universidades bem conceituadas dos Estados Unidos que eles estavam utilizando agentes para fazer esse processo que de.
+05:29 Pedro Vitor Brunello Pagliarin: 2 anos, diminuir drasticamente para semanas ou mês, então, é um possível projeto.
+05:37 Arthur Brandalise: Ah, tá, eu precisava que tinha alguma coisa a ver com API lá no short, but no.
+05:40 Pedro Vitor Brunello Pagliarin: Tem a ver com a Tem a ver com API também por causa que envolve agentes.
+05:47 Arthur Brandalise: Um.
+05:47 Pedro Vitor Brunello Pagliarin: E ele dá. E teve outra coisa que ele mostrou também, né? Que lá que ele mostrou era o reggae, né? Que é retribement algument generation que é tu botar. Entre entre, entre aspas, estudar contexto por um modelo de inteligência artificial, para ele conseguir entender um contexto sem que tu tenha que escrever. Olha, estamos fazendo isso, não? Ele já pega diretamente do banco de dados dele, pode-se dizer e se realimenta, então ele pode se realimentar às vezes.
+05:57 Pedro Vitor Brunello Pagliarin: Entre entre
+06:16 Arthur Brandalise: Manda.
+06:16 Pedro Vitor Brunello Pagliarin: Ficou muito claro.
+06:19 Arthur Brandalise: Você ficou ti Você ficou tipo tu usar um chat e PT, mas usar pouco pouco prompt.
+06:26 Pedro Vitor Brunello Pagliarin: Pense num jet chave de GPT bustado 11, chap GPT com mais potencial eu. Eu dá para pensar facilmente assim.
+06:29 Arthur Brandalise: Não. E uma questão agora, relativamente ao ao pagamento de não usar a conta pessoal, eu acho isso muito justo. Eu só queria ver um ponto aqui, tipo, se a gente tiver muito preso. Aqui a CNPJ para a gente abrir uma conta bancária por causa do CNPJ, eu sugiro, tá a gente abrir uma conta num numa conta pessoal de alguém, só que, tipo, fazemos criar um Nubank? A gente cria essa conta que pelo menos vai estar em um CPF, vai estar pelo menos num num particular, mas a gente coloca dinheiro lá e a gente usa esse cartão. Como o dinheiro da empresa. É assim que eu fazia, né? Também na minha agência, eu.
+07:13 Arthur Brandalise: Não tinha CNPJ nem nada. Eu tinha um cartão que aquele cartão era da empresa, só que era o meu pessoal. Então a gente pode pensar isso, se tiver travando muito pra gente começar já comprar o subsídio, a gente colocar aquele dinheiro que a gente IA.
+07:19 Pedro Vitor Brunello Pagliarin: Team?
+07:25 Arthur Brandalise: Colocar e depois pensar em em botar em fazer OOCNPJ ou, enfim, não sei, é algo pra gente.
+07:34 Pedro Vitor Brunello Pagliarin: Nós. Nós recebemos pelo serviço também iria para essa conta.
+07:38 Arthur Brandalise: Exato pra gente não ficar travado no CNPJ. Demora muito, Gui, não sei tipo PV não tem conta no Nubank ainda. Pô, abre o Nubank, vai ser rápido, já vem. O cartãozinho já vai ter OA, conta tudo, pô, já manda dinheiro lá pra gente não ficar sempre esperando alguma coisa. E aí depois a gente vê onde que a gente vai colocar quando começar a colocar mais dinheiro até.
+07:57 Pedro Vitor Brunello Pagliarin: AA questão é que depois, o que eu penso assim, depois a pessoa tem que declarar isso, né, meu? Pro? Imposto de renda? Essas movimentações todas. Por isso que eu queria centralizar numa empresa e não envolver a questão pessoal, entendeu? Envolve contador e tudo mais.
+08:12 Arthur Brandalise: Hum?
+08:13 Pedro Vitor Brunello Pagliarin: E daí? Separa o pessoal disso aí e agora.
+08:16 Arthur Brandalise: Mas eu digo pra gente começar, tipo, vai pagar.
+08:18 Pedro Vitor Brunello Pagliarin: Agora eu vou ser engenheiro meu, agora eu vou ter que começar a declarar, entendeu? Então eu queria separar esses 2 mundos por. Agora eu vou ser engenheiro meu agora eu vou ter que começar a declarar entendeu
+08:25 Arthur Brandalise: Mas eu não estou dizendo só por enquanto, não vai ser tipo 20 USD, só aquele mínimo pra gente começar.
+08:32 Pedro Vitor Brunello Pagliarin: Mas eu já estou pensando em nosso receber, já estou pensando em nós monetizar, né?
+08:32 Arthur Brandalise: Que ele Que ele foi aquela conta que eu. Sim, eu também acho. Eu também acho, eu acho isso daí. Bom, mas eu estou dizendo até enfim, até a gente conseguir OCNPJE não sei como é que que vai estar isso, se há muito tempo ou se isso que eu falei, tipo, pode es. Por Porque eu estou pensando aquele mínimo do hobsidio que foi que o Luís mandou aquela vez aqui ou na outra reunião era obsidio e que mais para 20 DOL?
+09:03 Guilherme Horstmann: Ela é um rapaz.
+09:03 Pedro Vitor Brunello Pagliarin: Hostinger o domínio a hostenberg, que é o domínio.
+09:05 Arthur Brandalise: É antes, antes de contadores ******* aqui ó doutor up, custa fixo. Comprador, INSS, ó, mas eu estou dizendo só esse subsídio e custo inicial de abertura de é tipo, 6 2000. Cliente dando a empresa ainda não tem o subsídio que vai ser o nosso principal e é 20 USD, correto? Antes do contador, só para a gente não ficar esperando tanto para a gente já ter obsidion, entendeu? A gente abre uma conta no Nubank, depois a gente pode can? Cliente dando a empresa ainda não tem o subsídio que vai ser o nosso principal e é Cliente dando a empresa ainda não tem o subsídio que vai ser o nosso principal AI os *******, só para já ter esses 20 USD.
+09:37 Pedro Vitor Brunello Pagliarin: Certo?
+09:41 pedro henrique sanvito andreazza corso: Pode ser. Acho que é pouca movimentação, não dá Rolo.
+09:42 Arthur Brandalise: Não.
+09:44 Pedro Vitor Brunello Pagliarin: Espirituais, Figueiredo.
+09:47 Guilherme Horstmann: Eu acho que o quanto enquanto a gente não estiver recebendo ganhos, é tranquilo. O único problema da gente está a gente ter clientes. É a exigência de nota.
+10:02 Arthur Brandalise: 9.
+10:03 Guilherme Horstmann: Essas coisas mais formais que aí, isso aí é uma questão que é impossível da gente da gente fazer por fora, entendeu? O que daria vai fazer, só que a gente vai pagar muito mais. Só que depois abate no imposto de renda, vai fazer por RPA, né? Mas eu.
+10:10 Arthur Brandalise: Sim, é verdade.
+10:10 pedro henrique sanvito andreazza corso: Ah, isso sim.
+10:18 Guilherme Horstmann: Não, não sou muito a favor disso, não.
+10:21 Pedro Vitor Brunello Pagliarin: E também não sou, não.
+10:22 Guilherme Horstmann: Então Então, mas o simples nacional é recibo por pessoa física, pessoa autônoma, sei lá, uma coisa assim paga, paga uma cancetada, paga +30.
+10:23 Arthur Brandalise: Que RPA? A?
+10:30 Pedro Vitor Brunello Pagliarin: Paga muito imposto, meu. Mas 30%.
+10:37 Arthur Brandalise: É isso, gente? Tá, mas eu.
+10:41 Guilherme Horstmann: Mas esses gastos iniciais eu acho que sim, não tem problema. A gente paga até por se OPV, botar no cartão dele, já está pagando. A gente vai tipo, faz 11 caixinha numa conta separada. E vai pagando isso? Esses custos fixos por enquanto, entendeu?
+10:54 Pedro Vitor Brunello Pagliarin: A questão questão é que não é só obsídio, está ligado? A questão é que eu penso assim, cara, eu estou muito confiante que a gente vai monetizar próximo, que a gente vai ter um produto que a gente vai vender alguma coisa para alguém, para onde que vai esse? Dinheiro meu, se for tipo, não é o correto ir para minha conta, entendeu? Para depois eu passar para vocês, meu.
+11:14 pedro henrique sanvito andreazza corso: Não, mas daí não, né?
+11:16 Arthur Brandalise: Não.
+11:17 Guilherme Horstmann: Mas aí isso é em paralelo.
+11:17 Arthur Brandalise: Mas daí a aí a gente.
+11:18 pedro henrique sanvito andreazza corso: Então daí a gente vai precisar até OCNPJ.
+11:21 Guilherme Horstmann: Sim, sem paralelo, enquanto a gente não tiver com OCNPJ aberto que eu acho que esse processo aceleradamente assim.
+11:22 Arthur Brandalise: Jogo.
+11:32 Guilherme Horstmann: Tendo bem otimista, vai um mês e meio, 2 pra gente conseguir abrir.
+11:37 Pedro Vitor Brunello Pagliarin: Não, não, não, não, está louco, meu AA. Nós abrimos CNPJE nem 2 semanas, meu.
+11:37 Arthur Brandalise: Entendeu?
+11:43 pedro henrique sanvito andreazza corso: É, eu abri em 2 dias.
+11:43 Guilherme Horstmann: Tem que ver porque é porque existe vários vários tipos de contratos que a gente vai ter que fazer com os sócios, né? Seu ponto?
+11:52 Pedro Vitor Brunello Pagliarin: Sim, tem a burocracia entre nós 2.
+11:52 Arthur Brandalise: Hum, Hum.
+11:52 Guilherme Horstmann: Só se tu ficares o titular entre a gente.
+11:54 Arthur Brandalise: Há porque esta entre nós?
+11:57 Guilherme Horstmann: Mas se tu ficar como o principal e por enquanto, não tiver sócios, eu acho que é de boa e a gente faz essa distribuição como sei lá, tipo prestador de serviço, entendeu?
+12:03 pedro henrique sanvito andreazza corso: Isso é. Isso aí. É bom falar com a contadora junto.
+12:09 Guilherme Horstmann: Tu faz a distribuição do. É exato.
+12:11 Pedro Vitor Brunello Pagliarin: Isso. Então a primeira ação é marcar reunião com a contadora. Eu chamei a Luiza aqui. Ela me respondeu, eu vou chamar, eu vou chamar a Mara, a mãe dela amanhã, a Mara e a gente vai e combinar 11 reunião para ver disso aí.
+12:26 Arthur Brandalise: Maravilha.
+12:32 Guilherme Horstmann: Está?
+12:33 pedro henrique sanvito andreazza corso: Ué, tem que ter.
+12:34 Arthur Brandalise: Da?
+12:34 Guilherme Horstmann: Sentem simples nacional. Aqui tu tem Pedro Henrique San Vicente Andreazza, Corsa.
+12:40 pedro henrique sanvito andreazza corso: Eu tenho de horseman.
+12:42 Guilherme Horstmann: Bem e foi em 2 dias também.
+12:43 pedro henrique sanvito andreazza corso: Abrir semana passada, 2 dias, assinei.
+12:47 Guilherme Horstmann: Mas o simples nacional para ti, só.
+12:51 pedro henrique sanvito andreazza corso: Isso.
+12:52 Guilherme Horstmann: Ou da empresa da da colabore?
+12:55 Pedro Vitor Brunello Pagliarin: Uma grana?
+12:56 Arthur Brandalise: Dobro. Louvo do colabora. O que?
+12:56 pedro henrique sanvito andreazza corso: Como não? Não para mim, um CNPJ é drogar SA curso LTDA.
+13:01 Guilherme Horstmann: É, aí eu acho que é mais tranquilo tu abrir 11 simples nacional. Não foi um MEI.
+13:06 pedro henrique sanvito andreazza corso: Beyoncé inglês um simples nacional com atividade de governança e administração.
+13:13 Guilherme Horstmann: É isso que você tem que abrir para ver.
+13:13 pedro henrique sanvito andreazza corso: Empresas?
+13:13 Guilherme Horstmann: É isso que você tem que abrir para ver Aí tu vai ficar como administrador e aí a gente vai fazer esses contratos paralelos com um sócio, mas é esse tipo de burocracia que aí eu eu desconheço um pouco mais assim.
+13:26 pedro henrique sanvito andreazza corso: PV, tu vai ter que tu vai ter que ter uma umas decisões aí para fazer isso, tipo eu. Quando ele abriu o meu. CNPJ, ele pediu se, tipo, eu IA fazer o craque, daí IA precisar botar junto umas coisas assim. Não sei se tem como tu abrir 2 assim.
+13:45 Pedro Vitor Brunello Pagliarin: Mas não é, tem que tem que definir os sinais, não Oo do meu crea vai ser separado disso, é outra coisa.
+13:49 pedro henrique sanvito andreazza corso: É que daí ele botava uma outra cor, Ah, está é, não é verdade, viajei, viajei, mas eu não sei se como sócio.
+13:59 Pedro Vitor Brunello Pagliarin: Que vai ser é outros.
+14:03 pedro henrique sanvito andreazza corso: Tem direito sua briga?
+14:03 Arthur Brandalise: Mas dessa, mas dessa, mas dessa reunião com a contadora, vai ser de a galera. Vai tipo, vai ser uma reunião, sei lá, OPVEO Gui, com a contadora, como é que vai ser isso?
+14:15 Guilherme Horstmann: Acho que Acho que se mais alguém quiser participar, não tem problema, não problema.
+14:16 Pedro Vitor Brunello Pagliarin: Minha parte, quanto mais gente participar, melhor, né?
+14:16 Arthur Brandalise: Estou aqui.
+14:17 Guilherme Horstmann: Acho que se mais alguém quiser participar não tem problema
+14:21 Arthur Brandalise: Vá. Porque daí a gente vai ter que também pagar ela, então a gente vai ter que já ter a conta pra gente colocar o dinheiro para pagar essa pessoa, entendeu? É isso que eu estou falando. Porque daí a gente vai ter que também pagar ela então a gente vai ter que já ter a conta pra gente colocar o dinheiro para pagar essa pessoa entendeu é isso que eu estou falando
+14:25 pedro henrique sanvito andreazza corso: Às?
+14:28 Guilherme Horstmann: Não.
+14:28 pedro henrique sanvito andreazza corso: Tu já notou que a maioria das reuniões era das reuniões, não tem?
+14:30 Guilherme Horstmann: Mas eu acho que a reunião inicial, essa é a reunião inicial, vai ser 11 con, uma consultoria, sei lá, vai ser um.
+14:37 Pedro Vitor Brunello Pagliarin: É uma consultoria, eu consigo.
+14:37 pedro henrique sanvito andreazza corso: Maria, das nossas reuniões, não tem mais do que 6 pessoas ultimamente. Não vai ser bagunça.
+14:42 Pedro Vitor Brunello Pagliarin: Ela, eu acho que por nós já termos a recém fechada, aberta no CNPJ com ela e já ter comentado que talvez eu iria abrir 11 segunda empresa, ela faça essa reunião ali, sem sem nos cobrar.
+14:56 Arthur Brandalise: Sim. Então então Então, então OPV, vai falar então OPV, está falando com ela, então vamos marcar essa reunião com ela.
+15:05 Pedro Vitor Brunello Pagliarin: Amanhã eu Marco amanhã sem falta, eu vou dizer os horários possíveis. Daí vocês respondem e a gente decide um horário.
+15:12 Arthur Brandalise: Vá, pode ser aí vai aonde que a maioria se for só tu, beleza, transcreve a reunião também. *******.
+15:13 Guilherme Horstmann: Pronto.
+15:17 Pedro Vitor Brunello Pagliarin: É isso aí. Sei.
+15:21 Arthur Brandalise: Tem que acelerar isso. Se não, não é. Se a gente ficar sem parado no sdae QDI ficar estagnado.
+15:29 Guilherme Horstmann: Sim.
+15:30 Arthur Brandalise: Porque daí? Porque, tipo, se a gente começar a criar cliente que não seja pessoas conhecidas, que não precisa, né? Até o até as pessoas conhecidas vão querer nota fiscal, né? Pra que depois a contabilidade deles vão, vai pedir? Então, se é uma empresa assim, né? Até ali, a partir também. Se a gente fazer o do site, mesmo que seja cunhado do Luís, o cara vai querer a nota fiscal, porque é uma empresa, não é ele contato, né? Luís? Então a gente tem que.
+15:58 pedro henrique sanvito andreazza corso: Sim, se fizesse, colaboro, eu tinha que emitir a notinha.
+16:05 Guilherme Horstmann: Ah, mas isso e no máximo 2 semanas a gente resolve. Se for só OPV por enquanto, de administrador, é bem tranquilo. Tem que ver a esses estatutos aí de startup. Como é que vai ser? Eu acho que é uma que é uma, ainda é uma IDE. Inte Interessante.
+16:25 Luis Fernando Boff: Para OA, única coisa.
+16:26 Guilherme Horstmann: A gente vai avaliar com a contadora aí pra.
+16:30 Pedro Vitor Brunello Pagliarin: Leilots.
+16:31 Guilherme Horstmann: Oi.
+16:32 Luis Fernando Boff: A A única coisa é que depois para botar sócio, vai ter que fazer uma alteração contratual. E os caras cobram uns 1000 e poucos **** nisso, está ligado, só isso. Um tem que ver realmente se vale a pena.
+16:43 Guilherme Horstmann: É?
+16:48 Luis Fernando Boff: Tipo, não botar agora ou esperar e botar depois, porque para fazer alteração contratual, os caras cobram uns 1000 e poucos. **** está ligado, só tem que ver isso aí.
+16:56 Arthur Brandalise: EOPV tem?
+16:56 Pedro Vitor Brunello Pagliarin: Os caras seriam o judicial Oo.
+16:57 Guilherme Horstmann: Aqui.
+17:02 Luis Fernando Boff: Geralmente a
+17:02 Guilherme Horstmann: Contador mesmo.
+17:02 Arthur Brandalise: Computador.
+17:03 Luis Fernando Boff: Geralmente a contabilidade, né?
+17:05 Guilherme Horstmann: Mas eu acho que não seria uma alteração contratual.
+17:07 Luis Fernando Boff: Não sei se alguém tem. Se alguém tem a manha de fazer e tal, se conseguir fazer, é melhor, né? Mas não sei como é que funciona se não é obrigatório a contabilidade faz
+17:13 Guilherme Horstmann: O Lucas trabalha com direito de empresa, aí, não é?
+17:14 Luis Fernando Boff: Mas não sei como é que funciona se não é obriga Mas não sei como é que funciona, se não é obrigatório a contabilidade fazer meu.
+17:16 Pedro Vitor Brunello Pagliarin: É, nós. Nós temos alguns advogados meu.
+17:19 pedro henrique sanvito andreazza corso: Vou fazer hóquei, né?
+17:20 Lucas C De Zotti: Mas não é relacionado, mas eu posso ir atrás, meu, estou ouvindo, eu posso realmente ir atrás de algumas informação? Mas sim, eu acho que é difícil, eu eu aconselharia já a fazer OCNPJ para não ter nenhum problema. Se OPV está dizendo que ele confia que já está para começar a monetizar. Mas eu posso pesquisar e trazer para você segunda que vem me alguma coisa.
+17:52 Guilherme Horstmann: Não. Mas eu acho que AA questão não é alterar contrato. Eu acho que a questão vai ser deixar um contrato com margem para a gente.
+17:54 Luis Fernando Boff: Eu. Isso é outra coisa bom.
+18:01 Arthur Brandalise: Hum?
+18:02 Guilherme Horstmann: Abrir esses para ter a sociedade ativa. Entendeu tipo, Ah, tu quer porque eu já eu já? Eu já participei de, quer dizer, já me convidaram para fazer parte de sociedades onde tu a fazer um aporte inicial e tu era parte da sociedade, tipo tu dá a que eu? Via era 1000-1000 ****. Assim, aí tá tu dava porte de 1000. BRL faz o contrato lá tu fica vinculado com teu CPFA empresa e aí tu é sócio cotista, sócio alguma coisa? Porque sócio administrador, que é algo que precisa de pelo menos um aí. Esse. Eu acho que é o mais complexo, sabe que aí é o cara que vai receber. Para labory, é o cara que dá e esse a gente tem que deixar bem definido e acho que todo mundo já concordou que é OPV.
+18:53 Guilherme Horstmann: O resto acho que pode entrar como sócio cortistas só se alguém quiser. Faz muita questão de ser sócio administrador também ou sócio diretor. Enfim, não sei como é que é o estatuto da da startup, mas eu acho que vamos em busca de um contrato mais flexível, de um CPJ que tem um contrato flexível para esse tipo de co.
+19:12 Arthur Brandalise: Hum, Hum.
+19:12 Lucas C De Zotti: Ah, mas tu o Gui, tu já tinha, tu tá? Tu já tinha visto que a startup é o que mais se encaixa em nós. Isso tu já pesquisou, tá? Isso está. Então é a partir daí que a gente tem que ir.
+19:22 Guilherme Horstmann: Já, sim, isso. É startup, é um estatuto. A gente vai citar a lei da startup dentro do nosso dos nossos contratos entendeu aí ela vai ser o contrato vai ser
+19:35 Arthur Brandalise: Hum?
+19:39 Guilherme Horstmann: Ter o contrato vai ser feito a partir do do modelo lá, que é do estatuto da startup, de 2021.
+19:40 Lucas C De Zotti: Sim. E daí? Vai ter que registrar o contrato e no e no contrato tu vai indicar uma pessoa física. Por isso que eu estou dizendo, acho melhor você no PJ.
+19:51 Guilherme Horstmann: É contrato igual, vai ter que ser uma empresa administradora ou um se um CPF, né? Enfim, aí vai ter que definir isso. O que que é mais barato que que é? Menos é juridicamente mais seguro que OPV. Vai fazer um outro CNPJ, ele vincula OC. NPJ que ele vai criar como OCNPJ da da empresa, aí são dúvidas que eu também não tenho resposta agora. Mas uma coisa é isso, deixar OPV de administrador de socio administrador e aí a gente entra como sócio cotista, sócio inv.
+20:26 pedro henrique sanvito andreazza corso: Olá, estar lá para.
+20:26 Guilherme Horstmann: A gente vai ter participação nos lucros e vamos poder participar de de de algumas tomadas de decisões também.
+20:37 Pedro Vitor Brunello Pagliarin: Eu não quero parecer ser grosso nem nada, mas assim não é que eu estou. Super atarefado, eu estou fazendo várias coisas e essas questões, meu, eu realmente preciso de ajuda, meu? Essas questões administrativas e legais é uma área que eu não Domino. Então, da mesma maneira que tu já está me ajudando, que que tu também se dispôs a ajudar o Lucas? Precisamos que aconteça essas ações, meu tipo, a gente não pode ficar esperando porque Na Na semana que vem a gente vá. Ainda não viu? Não vimos isso, é uma.
+21:00 Lucas C De Zotti: Espera aí, eu vou, vou.
+21:08 Pedro Vitor Brunello Pagliarin: Coisa muito importante para a gente ver o quanto antes e eu não. Eu realmente não vou conseguir pegar nessa parte, entendeu?
+21:16 Guilherme Horstmann: Com
+21:16 Lucas C De Zotti: Eu vou, eu vou.
+21:16 Luis Fernando Boff: Eu vi que o Lucas falou ali antes, o Lucas falou antes, Ah, segunda-feira que vem eu trago aqui para nós, meu, a gente não precisa trazer as coisas em reuniões, meu, vocês podem ir mandando no grupo do WhatsApp. Assim, a medida que vão tendo informação, porque se a.
+21:16 Guilherme Horstmann: Com certeza, mas marca, reunião é já que tu.
+21:26 Arthur Brandalise: Exato.
+21:28 Luis Fernando Boff: Gente Gente, for esperar sempre uma reunião para fazer as coisas. Meu é tipo, vai demorar muito, tá ligado? A gente pode ir resolvendo.
+21:28 Lucas C De Zotti: E não, não, mas eu peço. Só pediu um pouco a longo prazo, meu, que eu. Com um prazo longo que eu estou cheio de coisa, mas vai dar por isso que eu falei segunda tipo, dando uma certeza, entendeu? Mas o que eu consegui pesquisar? Então eu vou, já vou botando lá no grupo. Lá do CNPJ alguma coisa assim. Quer ver? Então?
+21:51 Pedro Vitor Brunello Pagliarin: É? A gente precisa do que meu precisamos, de não informações de links, a gente precisa de informações filtradas diretas, que a gente bata o olho e já entenda.
+22:03 Arthur Brandalise: Exato. E ao mesmo tempo, então, PV ou OPV, passa é que tu já o contado da contadora, né? PV não se planeja falar com.
+22:14 Guilherme Horstmann: Marca essa reunião e a gente a partir daí a gente vai é não. Essa reunião vai ser o estádio que eu quase.
+22:16 Lucas C De Zotti: Essa reunião vai pode ajudar muito também meu, com certeza. Eu vou participar PV vou tentar participar, vou tentar marcar essa reunião.
+22:22 pedro henrique sanvito andreazza corso: Não. Ela vai matar as dúvidas.
+22:26 Guilherme Horstmann: Posso pesquisar o quanto eu quiser aqui, mas eu não sou especialista também nessa área. Então é isso, vamos dar esse start a partir dessa reunião.
+22:26 pedro henrique sanvito andreazza corso: Das coisas que?
+22:32 Pedro Vitor Brunello Pagliarin: Vou tentar marcar essa reunião meio-dia ou 1 hora, que que vocês acham?
+22:36 Lucas C De Zotti: A perfeito, se tu marcar meio-dia para mim, perfeito.
+22:40 Guilherme Horstmann: Entendi, é bom.
+22:40 Pedro Vitor Brunello Pagliarin: Ou 1 hora, né? Que não depende de mim, depende delas, né?
+22:45 Lucas C De Zotti: Ah, está dá. Dá para dar um jeito.
+22:45 pedro henrique sanvito andreazza corso: Lucas poupa teu tempo em alguma reunião, uma reunião com essa contadora vai tirar todas as dúvidas que tu iria ir atrás, por exemplo.
+22:56 Pedro Vitor Brunello Pagliarin: Saberia fazer as perguntas necessárias, Lucas.
+22:56 Lucas C De Zotti: Sim, sim, sim. Aí que tá, meu.
+23:02 Arthur Brandalise: Então tem que estar preparado PA Então, tem que estar preparado para para essa reunião. Tem que saber as perguntas que a gente vai fazer para ela, para a gente, porque * ****. O contador tem que ir já com as perguntas, não é que ele é igual advogado, né? Você sabe, vai lá com o advogado, Ah, vou marcar a hora que o AD. Se tu não tem as pergunta boa, o cara só vai te falar o básico, né?
+23:17 pedro henrique sanvito andreazza corso: Mas. Mas eu acho que, mas eu acho que a pessoa vai ajudando também com as ideias que a gente vai passando, né? Que que vai se encaixando, como vai fazer?
+23:26 Arthur Brandalise: Sim. A gente tem que falar, olha.
+23:28 Pedro Vitor Brunello Pagliarin: Sim, cara, ela. Ela me ajudou muito na reunião que ela que ela fez meus, isso que eu estou puxando o saco dela, entendeu?
+23:30 Lucas C De Zotti: Era isso que eu IA dizer. PV no tipo Tatto vai ter umas pergunta mais específica, mas tu explicando para ela, ela vai te dar morta fácil. Por isso que eu estou te dizendo, dá para fazer essa reunião bem bem de boa, bem de boa.
+23:48 Arthur Brandalise: Até que eu acho que talvez algumas perguntas assim, que o que o Gui também teve ali na Ah, mas então é mais fácil fazer pelo administrativo ou fazer já CNPJ fazer essa, entendeu?
+23:48 Lucas C De Zotti: Certeza que não.
+24:00 Guilherme Horstmann: É essas perguntas. A gente tem que elencar, a gente já tem que ir com o hall de perguntas de dúvidas e eu já sei que eu quero perguntar basicamente, que eu falei aqui.
+24:01 Arthur Brandalise: Essas perguntas, eu acho que é bem interessante. É?
+24:10 Guilherme Horstmann: Mas aí, se alguém mais tiver dúvidas.
+24:11 Arthur Brandalise: Sim, olha, a empresa tem vários sócios, tem que falar. A empresa vai ter vários sócios, 8 sócios, né? A gente vai ter vários projetos dentro dessa empresa. Aí quem participar Aí, quem participar o que? A gente o que a gente vem conversando até hoje, né? Quem é cada um vai começar, talvez com 1%.
+24:28 Guilherme Horstmann: O Luiz é meio, eu sou servidor público.
+24:28 Pedro Vitor Brunello Pagliarin: Eu acho que como a gente está transcrevendo, é importante falar isso, que é uma empresa que ela engloba vários projetos e esses projetos têm a distribuição de lucros entre sócios e uma parcela para é injetada na própria empresa. E é assim que, nesse primeiro momento, está sendo d. Os lucros. Estou falando nisso, porque está está transcrevendo e vou pedir para ele me gerar perguntas. Para a contadora perante a ato.
+25:04 Pedro Vitor Brunello Pagliarin: Eu sei que todo mundo faz um Monte de coisa, está ligado e tipo da minha parte, meu, eu estou me dedicando quase integralmente a isso, entendeu? Eu agora eu acho que semana que vem eu, né?
+25:05 Arthur Brandalise: Perfeito, só.
+25:05 Guilherme Horstmann: Isto é mais ou menos assim.
+25:15 Pedro Vitor Brunello Pagliarin: Na outra, meu, eu vou tentar talvez pegar alguma coisa da minha profissão também, mas esses últimos meses meu só fiz isso, entendeu? Só essa questão do papo e Bobby também, que não tem nada a ver com nós aqui. Mas cara, eu me tô me focando bastante nisso por. É uma coisa que eu tenho o propósito de fazer dar certo não é nem questão de ganância, de dinheiro, porque eu acho que isso vem com com o tempo. Isso é consequência, não é uma causa.
+25:35 Arthur Brandalise: Um.
+25:39 Pedro Vitor Brunello Pagliarin: Então assim, preciso que que a galera como estão aqui nesse momento, sei que estão pilhando, mas não basta. Aqui tem que ter cada um consigo mesmo, trazer as informações, como eu sei que as pessoas estão fazendo.
+25:55 Arthur Brandalise: Também acho que vê e a gente vê aqui também que praticamente é nós 6 aqui que sempre vem na reunião semanal, né? Então a gente também tem que a gente está vendo isso é o Vitinho, Vitinho também. Eu sei que não é no mesmo horário que todo mundo consegue, mas acho que aqui cada um está dando esforço. Bem, não é? Está todo mundo cansado.
+26:05 pedro henrique sanvito andreazza corso: O Vitinho.
+26:18 Luis Fernando Boff: Mas eu. Isso. Isso é uma coisa que eu que eu também acho meu, porque tipo.
+26:19 Arthur Brandalise: Bem.
+26:19 Guilherme Horstmann: Sim.
+26:22 Luis Fernando Boff: Cara, ali por lá tem muita pouca gente que interage, meu EE não precisa estar fazendo as coisas em reunião meu, quando tu está fazendo um tempo livre lá, bota alguma coisa no whats ali, vamos usar aquele grupo lá para render meu cliente, tipo, cara, a gente estava. Com uma dúvida lá no projeto shotbot. Daí OPV, falou uma coisa, eu fui atrás, já resolvi. Já falei para ele, já consegui marcar uma reunião, já fiz tudo, já resolvemos. Já passamos adiante, então a gente fosse esperar uma reunião, marcar para fazer isso, a gente IA.
+26:45 Arthur Brandalise: É isso aí.
+26:49 Luis Fernando Boff: Tipo ficar com o tempo ocioso a Fu até marcar a reunião para daí a gente entender o problema para daí fazer ação tipo, não precisem, não precisam esperar. Ter a reunião para fazer alguma coisa. É isso que eu quero deixar de cultura para a nossa empresa está li.
+26:57 Pedro Vitor Brunello Pagliarin: Portanto.
+27:03 Luis Fernando Boff: A gente não precisar, tipo, Ah, a gente só vai falar sobre os projetos aqui na reunião.
+27:03 Arthur Brandalise: Uhum.
+27:05 pedro henrique sanvito andreazza corso: Verdade?
+27:07 Luis Fernando Boff: A gente só vai fazer as coisas aqui na reunião, cara. Às vezes a gente pode soltando lá no grupo. Daí a galera vai interagindo, EEO bom disso é que cada um pode ir no seu tempo. Está ligado, tipo na. Ah, não é desculpa. Ah, não con. Participar da reunião, *****, mas nenhuma hora ainda 24 horas dos 7 dias da semana. Tu não conseguiu dar um comentário ali no grupo tipo, tu não conseguiu trazer uma coisinha no grupo ali, tipo *******, tá ligado? Tipo o Google gog não consegue participar das reuniões, mas.
+27:32 Pedro Vitor Brunello Pagliarin: Rádio.
+27:33 Luis Fernando Boff: Ele participa ativamente ali, dando a opinião dele. Ele participa com os projetos, ele participa com algumas coisas, tá ligado? Tem gente que tipo, nem IA espaço, tá ligado? Eu. Eu acho chave isso, meu.
+27:44 Arthur Brandalise: Eu também acho.
+27:44 Guilherme Horstmann: Sim, mas eu acho que é por isso que a gente tem que ter um contrato toxível, entendeu? Essa é a minha maior questão, porque se alguma pessoa do grupo, em algum momento tiver mais disponibilidade e quiser ajudar e quiser contribuir, tem essa brecha. Eu acho que a gente. Não só não precisa fechar. Óbvio que quando a carruagem estiver andando, né? A coisa vai ser muito mais simples e aí as pessoas vão ver que está realmente o negócio está fluindo.
+28:03 pedro henrique sanvito andreazza corso: De novo?
+28:11 Guilherme Horstmann: Mas acho que deixar o contrato mais flexível é uma. É um ganho para nós. Eu acho que é. É com essa ideia que eu estou trabalhando. É com isso que eu já vi experiências assim que que deram certo. Então estou indo nessa linha, mas eu é isso a.
+28:20 Arthur Brandalise: Mais ou menos.
+28:30 Guilherme Horstmann: Gente, tem que marcar essa reunião com com as meninas e ver o que que a gente vai precisar ir atrás de fato, né?
+28:39 Arthur Brandalise: Mas aqui a gente que está participando das reuniões semanais, a gente tem que a gente tem que a gente tem que comprar isso, velho. A gente tem que comprar que a gente tem que ser soluções de problema e não a gente solucionar o problema, não o problema. Ah.
+28:44 pedro henrique sanvito andreazza corso: 25.
+28:49 Pedro Vitor Brunello Pagliarin: Netflix.
+28:55 Arthur Brandalise: Talvez houver a semana que vem, pô, vamos organizar, boto no calendariozinho ali, pô, bota 1 hora, 2 horas para para.
+29:02 pedro henrique sanvito andreazza corso: Parabéns.
+29:04 Arthur Brandalise: Usar Usar e Usar e né, para a gente ver, pô, a gente ainda não tem uma gestão de da das tesks. Eu gostaria muito disso, né? Porque a gente pode ser uma pessoa ali falando, ó, tem essa tesc e tem até tem até sexta-feira para completar isso. Então tu vai. Ter que colocar noutra semana a gente a gente tem outros trampo, mas pô, vai colocar uma horinha ali ou 30 minutos do do dia? Entendeu? Que tu tem ali aquele pouquinho para se dedicar? A gente tem que começar a fazer isso. A gente tem que se organizar. Se. Não, a gente não vai. As coisas não vão muito pra frente, né? Se ou alguém vai ficar muito sobrecarregado, então acho que é essa cultura que a gente tem que começar a aplicar.
+29:49 Arthur Brandalise: Pô, a é o esforço. A mais é esforço a mais pra gente conseguir fazer AA carruagem andar, então é isso que a gente tem que começar a criar a cultura aqui. Nós, vocês que estamos aqui mais presente, a gente tem que criar essa cultura entre nós para depois espalhar pro pro res. Entendeu? É assim que a gente vai criando uma cultura de uma empresa. Começa por um líder e esse líder vai espalhando a visão de mundo dele, né? O jeito que ele faz, o Luís sabe disso também, né? É isso que o líder vai passando para começar a gerar cultura, porque o resto quando vem o dinheiro, é a cultura que vai permanecer nas empresas. Não é? Quando começa a falar a questão de de dinheiro, essas coisas, então é. É isso que a gente tem. Que cri.
+30:25 Pedro Vitor Brunello Pagliarin: SMS.
+30:31 Guilherme Horstmann: Da?
+30:32 Arthur Brandalise: A gente tem que criar um negócio sólido e eu acho que é nós aqui que a gente vai criando, né? A gente tem que criar um Com a reunião semanal falando, pô, a gente tem que solucionar, a gente não precisa, tá marcar uma reunião pra se eu quiser marcar uma reunião para falar da pra só falar agora de uma coisa, vai colocando lá no grupo do WhatsApp e a gente vai desenvolvendo por lá.
+30:45 Pedro Vitor Brunello Pagliarin: Tá?
+30:53 Arthur Brandalise: E cada um tem que pegar uma responsabilidade, ir atrás. Acho que essa cultura que a gente tem que colocar na empresa. PV que tu acha?
+31:01 Pedro Vitor Brunello Pagliarin: Tem que fazer. Tem. Eu acho que tem. A proatividade é uma coisa muito importante. Não adianta querer achar que as coisas vão acontecer, ver as coisas acontecendo, precisa de pessoas proativas, né, meu? Assim como eu vejo, as pessoas estão aqui nessa reunião porque estão sendo proativas. Mas precisa. A gente tem muita coisa dependente e agora no começo é difícil, porque tem tanta coisa que as vezes a gente dá umas travadas, da onde que a gente vai atacar, né?
+31:16 Arthur Brandalise: Eu AC Eu acho que uma Eu acho que uma pessoa.
+31:24 Pedro Vitor Brunello Pagliarin: Ah, se ela é que ataca as questões legais, será que a gente ataca os projetos? É bastante coisa pra gente pensar, mas faz parte pelo modelo que a gente está criando, pelo jeito que a gente está fazendo isso, né? Ah se ela é que ataca as questões legais será que a gente ataca os projetos Eu acho que é um problema que era bem visível que iria acontecer, né?
+31:38 Arthur Brandalise: Sim, mas é isso. A gente vai começando.
+31:39 Guilherme Horstmann: Com certeza. Reunião é reunião para sintetizar tudo que a gente está fazendo.
+31:46 Arthur Brandalise: E guit, sabe, EE sabe o que eu acho, também é legal.
+31:46 Guilherme Horstmann: Não é? Acho que tem as reuniões de brainstorming que são importantes.
+31:50 Arthur Brandalise: Agora, no começo, uma reunião. A gente vê o comprometimento velho é porque também gosto disso, de fazer a reunião para ver o comprometimento, porque eu também vou entrar como sócio. Eu estou aqui no outro lado do mundo e também estou me dedicando. Tipo, pô, hoje no Day Off, por exemplo, hoje no meu.
+31:53 Pedro Vitor Brunello Pagliarin: Antes?
+32:05 Arthur Brandalise: Day Off eu podia estar com a minha mina entendeu podia podia ter ficado acordado mais ontem podia estar
+32:32 Arthur Brandalise: Então é isso que a gente tem que ver nessa parte depois da da empresa, que é as pessoas que estão se dedicando. Mesmo com uma reunião que a gente está vindo trocando ideia e desenvolvendo alguma coisa.
+32:37 Luis Fernando Boff: Ô meu, isso aí.
+32:39 Arthur Brandalise: Vá.
+32:40 Guilherme Horstmann: Ué, era?
+32:43 Pedro Vitor Brunello Pagliarin: Acho que a questão.
+32:44 Lucas C De Zotti: Eu da minha parte, começo a trazer o resultado da minha parte a partir de hoje eu começo a trazer o resultado administrativo jurídico.
+32:45 pedro henrique sanvito andreazza corso: Coloca isso até em Sam.
+32:56 Lucas C De Zotti: Para mostrar Para mostrar o meu apoio?
+33:00 Guilherme Horstmann: Bom.
+33:00 Pedro Vitor Brunello Pagliarin: Sei, mas precisa. A gente precisa que tu que tu sinte sintetize as informações. 11 meu guichê te deu as mortes. Dá uma olhadinha naqueles sites lá, sintetize as informações, faz um documento bonitinho para nós, que que seja visivelmente fácil que a gente não precisa desprender mais do.
+33:00 pedro henrique sanvito andreazza corso: Primeiro saí da banheira na.
+33:01 Luis Fernando Boff: Boa.
+33:18 Pedro Vitor Brunello Pagliarin: Que 10 minutos para ler e entender tudo, entendeu? Para que a gente, que o processo flua de uma maneira. Mais fácil para os outros Mais fácil para os outros, né? Por isso, e quais ações tomar?
+33:27 Luis Fernando Boff: Para ser bem sincero, meu é pra ser bem, certo, você tem que trazer as ações. Tu não precisa nem o documento explicando, é legal, mas tem que trazer cara. A gente precisa fazer isso, é isso que eu preciso que vocês me entreguem. Tipo, tu não precisa trazer Ah. A gente precisa e atrás de fazer isso, tipo, a gente não precisa muito de saber o que é que a gente precisa fazer. A gente precisa que tudo diga, é isso. A gente vai lá e faz isso. Porque, tipo, senão todo mundo tem muito uma coisa. E se?
+33:47 Arthur Brandalise: Direto ao Direto ao ponto, direto ao ponto.
+33:50 Luis Fernando Boff: Não te vai mandar um documento lá que tem que ler daí um documento tem que ler. Tem que decidir o que ser feito daí, pá. Não adianta nada ler documento. Você tem que decidir o que ser feito. A gente precisa que traga já o que tem que ser feito. Não, não tu. Eu estou dizendo, estou dizendo, tipo, uma cultura geral está ligado de tipo não trazer.
+34:02 Arthur Brandalise: Todo mundo não é exato.
+34:07 Luis Fernando Boff: Várias informações e várias coisas. Tipo, Ah, fiz uma pesquisa, está aqui ó, a pesquisa que eu fiz. Há um Monte de promoção, tá, mas qual que é a conclusão que tu tirou disso? Me interessa muito mais a conclusão que tu tirou disso e os próximos passos do que todo o conteúdo que tu trouxe está ligado? Então é tipo essa cultura que a gente tem por. Hoje, meu cara, em 1 minuto eu faço uma pesquisa aqui no chat. IPT enorme.
+34:26 Luis Fernando Boff: Ele vai me dar 100 páginas de pesquisa, mas, cara, o que que eu tirei daquilo? O que que no fim, aquilo vai nos dar de ação, tá ligado?
+34:28 Pedro Vitor Brunello Pagliarin: Muito bem, exatamente.
+34:34 Luis Fernando Boff: Então, tipo, pesquisa por pesquisa hoje não vale muito a pena meu, tem que trazer a conclusão da pesquisa e os próximos passos é só tipo uma coisa que a gente tem que tomar cuidado assim, sabe?
+34:43 Pedro Vitor Brunello Pagliarin: Feito isso aí é muito importante, meu.
+34:47 Arthur Brandalise: Muito importante é a mesma coisa. Eu, eu, eu li do branding, eu estava fazendo um negócio só porque a gente estava querendo construir mais com com vocês, mas um designer, uma pessoa profissional, não faz o que eu estava fazendo.
+34:47 pedro henrique sanvito andreazza corso: Sim.
+34:59 Arthur Brandalise: Mas eu queria começar a fazer com vocês, entendeu? Gente? Tipo, trazer algo. O que vocês acham dessas cores? E tal, um designer não faz isso, tá? Então, eu estava fazendo ter televisão, um trabalho conjunto, mas um designer, uma pessoa que, né? Que foi contratada para isso? Ela vai chegar com isso e vai te dizer os porque é por isso que eu queria ter um material para explicar para vocês, mas a parte ali do eu quero mostrar para vocês o que eu estou desenvolvendo, tá? Até também recebeu um pouco da já mudando de ***. Desculpa. Já foi fechado o assunto desse a.
+35:30 Pedro Vitor Brunello Pagliarin: Muda onde mudando de assunto agora, acho que fechamos esse assunto ainda é a as ações, é falar, eu marcar reunião com a contadora nós já estarmos meio que preparados para saber o que nós vamos pedir para ela entender realmente o que que a nossa empresa faz como ela.
+35:34 Guilherme Horstmann: Ué.
+35:45 Pedro Vitor Brunello Pagliarin: Vai operar e as opções que nós temos e as informações que a contadora vai nos disponibilizar e lá de contratos flexíveis.
+35:54 Arthur Brandalise: A questão da cultura também. A gente tem que colocar na cultura, porque a gente vai colocar isso no site, a gente vai colocar o nosso branding, que a gente não vê problema. A gente vê a solução e a gente traz as coisas na pontinha. A gente já traz as coisas como que se fala filtradas, né?
+36:11 Guilherme Horstmann: Mastigadas?
+36:11 Luis Fernando Boff: Plants já traz o plano de ação tipo, a gente atrasa Oo ação e não o para tu tirar as a gente, cara, a gente pode dizer até que a gente não ensina a pescar, a gente dá o peixe, tipo. Plants já traz
+36:24 Arthur Brandalise: A gente coloca o peixe no teu anzol, Hum, Oh, começa, já começa.
+36:24 Luis Fernando Boff: Porque, cara assim.
+36:25 pedro henrique sanvito andreazza corso: Meio?
+36:27 Luis Fernando Boff: O é é mais ou menos isso, meu, porque eu não. Eu não quero que tu me ensine a abrir 16. Alguma coisa é até até interessante, quem tiver interesse até é legal saber, mas no momento a gente precisa que tu nos entregue OCNPJ. E não que tipo, fale tudo por trás do que que tem, que tipo, quem quiser aprender. Acho que é muito importante. Vai lá e se informa.
+36:47 Luis Fernando Boff: Mas não é o tipo de informação que que vai agregar muito, sabe?
+36:51 Guilherme Horstmann: Até porque está nos link lá que eu mandei, né? Quem quiser abrir um CNPJ tem até um curso lá de 60 horas, se quiser fazer.
+36:57 pedro henrique sanvito andreazza corso: Exatamente.
+36:59 Luis Fernando Boff: Mas é isso. Isso é uma coisa ****, Gui, tipo tu botou os link lá? Mas no fim, não tirou nenhuma conclusão daqui, tipo, eu não enviei esse link, tá ligado? Porque eu não me interessei, mas se tivesse uma conclusão daquilo.
+37:00 Guilherme Horstmann: Não é essa a ideia? Tem? Mas eu to, eu estou atrás das informações. Eu já sei as perguntas que eu preciso fazer e pelo menos a dos documentos enfim que tem. Tem que ser levantado. E isso aí é contador, né? Daí é por, por isso que é necessário essa reunião, não é? Enfim.
+37:21 Lucas C De Zotti: Então, meu.
+37:25 Luis Fernando Boff: Não, pô, concordo.
+37:26 Lucas C De Zotti: E já está nesse caminho há quanto tempo? Atrás da questão do CTJ empresa faz 1 mês que tu está nesse caminho, então está mantendo. Vamos chegar nessa reunião e vamos ver a vamos apresentar umas perguntas triste.
+37:33 Guilherme Horstmann: Faz umas 22 semanas, 23 semanas. A gente Def A gente definiu o nome da empresa quarta, né?
+37:44 Arthur Brandalise: É verdade.
+37:44 Luis Fernando Boff: Ah, tem de tudo muito rápido. Eu estou indo muito rápido, está está de boas.
+37:45 Guilherme Horstmann: Não vamos se esquecer disso.
+37:48 pedro henrique sanvito andreazza corso: Família.
+37:48 Guilherme Horstmann: É?
+37:48 Pedro Vitor Brunello Pagliarin: Faz 1 mês que a gente fez nossa primeira reunião, um mês e 7 dias da primeira reunião, não é?
+37:52 Guilherme Horstmann: Claro.
+37:53 Lucas C De Zotti: Exatamente.
+37:54 Arthur Brandalise: Mas o nosso ali, mas o mas o nosso aniversário.
+37:55 pedro henrique sanvito andreazza corso: Pouco, mas está num ritmo excelente.
+37:55 Lucas C De Zotti: Eu acho que está em um ritmo bom meu até, mas dá para mais, dá para a gente.
+37:57 Luis Fernando Boff: Ah, tá, eu não estou. É que eu. Eu vou ser esse cara chato sempre meu.
+38:02 Lucas C De Zotti: Em resultado a gente já está no contra, tem que ser meu, tem que ser meu.
+38:02 pedro henrique sanvito andreazza corso: Y?
+38:05 Arthur Brandalise: Não, Luiz, é seu chatão.
+38:07 Lucas C De Zotti: Né? Um o meu qual empresa com OCNPJ com tudo registrado, a gente já está no jogo, meu, está tudo pronto para a gente começar a receber direitinho, mais ou menos.
+38:17 Pedro Vitor Brunello Pagliarin: Ah, e uma coisa que é importante, né? Eu vejo que ter 11 CNPJ, alguma coisa legal, isso é uma coisa que vai nos favorecer de qualquer impedimento legal, via qualquer situação que a gente precise, tipo, Ah, a gente precisa de um documento que com.
+38:28 pedro henrique sanvito andreazza corso: É, não.
+38:36 Pedro Vitor Brunello Pagliarin: Que tinha uma empresa para fazer tal coisa, como a gente enfrentou a líder da da meta ali, cara, essas coisas que travam nós, que eu quero ir conseguir evitar. Por isso que a gente está conversando essas coisas que talvez não precisaria nesse momento, mas pode servir para ev. Que a gente trave no futuro, entendem?
+38:54 Lucas C De Zotti: Eu acho Eu acho que isso é o principal de uma empresa meu, mas eu acho que vai ser.
+38:55 Guilherme Horstmann: Tem? Mas eu acho que está está OKA, gente, já está, a gente já está com uma ideia bem fechada com o nome, com uma ideia de identidade visual. Acho é o próximo passo. É esse mesmo, não tem muito, é só a questão do do tempo de CA.
+38:57 pedro henrique sanvito andreazza corso: Vontade?
+39:08 Lucas C De Zotti: É isso também acho.
+39:08 Guilherme Horstmann: Um, né? Enfim, acho que tem. Tem questões aí que envolvem gastos, enfim, que eu não na minha relação com a empresa ainda não está batendo, né? Mas eu entendo que para outras pessoas, sim. Então vamos priorizar isso. Esse é o ponto. Tá? Acho que é isso.
+39:29 Pedro Vitor Brunello Pagliarin: Vamos trocar de assunto, eu vou finalizar essa primeira ata. Essa primeira parte da reunião e agora eu estou gravando de novo? A segunda parte da reunião, onde está o Arthur brandalise, o Pedro Victor pagarim, o Lucas deszoti, Luiz Fernando Boff, o Pedro côrço e o Guilherme horseman **. Intuito agora é falar sobre o branding, identidade visual. Do Chile, eu vou passar pra ti a palavra que tu tava falando ali sobre isso.
+39:52 Arthur Brandalise: Tem é eu. Eu estava mandando já lá no grupo algumas ideias. De cores eu acho que já teve alguma, alguma coisa legal ainda não? Sim, sim, sim, vou compartilhar, compartilhar.
+40:03 Pedro Vitor Brunello Pagliarin: Tu tá vendo aí? Compartilha a tela. Aí tu tá vendo alguma coisa isso, tá?
+40:12 Arthur Brandalise: Beleza a paleta de cores então, ficou decidida. Essa daqui estão vendo agora? Calma aí.
+40:19 pedro henrique sanvito andreazza corso: Sim.
+40:22 Arthur Brandalise: Calma aí. Então, o que acontece? Eu vou só antes de eu vou explicar pra vocês. Eu fui fazendo aqui com não calma, calma, eu. Eu quero explicar antes, antes de mostrar para vocês.
+40:22 Luis Fernando Boff: Sim.
+40:31 Pedro Vitor Brunello Pagliarin: Se não avalia a paleta de cores, mostra ali de novo a paleta, por favor, rapidinho. Se não avalia a paleta de cores mostra ali de novo a paleta por favor rapidinho
+40:38 Arthur Brandalise: Porque é das cores.
+40:38 Pedro Vitor Brunello Pagliarin: Só para mim, bater um print que eu quero fazer uma coisa rapidinho do chiba, porque daí a gente adiante, aí iá, pronto, pode, pode ir lá, pode ir continuar.
+40:42 Arthur Brandalise: Está bem?
+40:42 pedro henrique sanvito andreazza corso: Mas tem no grupo, acho.
+40:48 Arthur Brandalise: Que que eu fiz? Eu fui. Eu fui pegando as as cores, né? Primeira uma que OPV tinha mandado que OPV, fez um manual da marca.
+40:58 pedro henrique sanvito andreazza corso: Sabe?
+40:58 Arthur Brandalise: Ele fez bem rápido. Eu acho que ele fez com não sei com qual epto usou, né?
+41:04 Pedro Vitor Brunello Pagliarin: Um HTML.
+41:04 Arthur Brandalise: Percebo HTML, então eu peguei mais ou menos as ideias deles. Eu fui porque sempre tem que ter um porquê de tudo, né? Então eu fui montando junto aqui aqui, nesse, nessa sábado já. Tietê já tem tudo, tem várias informações da da nossa empresa, tá? E aí eu fui, fui tentando entrar num acordo aqui no verde, daí eu tinha mandado o verde para vocês. Vocês falaram que estava muito aquele verde, né? Mas fosse florescente.
+41:36 Arthur Brandalise: Vocês
+41:36 pedro henrique sanvito andreazza corso: Zoado.
+41:37 Arthur Brandalise: Vocês estavam. Vos falaram que estava meio um pouco mais.
+41:42 pedro henrique sanvito andreazza corso: Azul?
+41:42 Arthur Brandalise: Não estava tão legal Não estava tão legal. Aí a gente conseguiu chegar nessa paleta de cores, tá? E na qual a verde vai ser a principal?
+41:48 pedro henrique sanvito andreazza corso: Rádio.
+41:53 Arthur Brandalise: Essa aid black, porque eu achei que o black mais aquele blackzão não é tão legal. Esse é um blackzinho mais um pouco mais fraco, um pouco mais para o cinza, né? Essa a O silver O silver, eu tinha colocado. A gente tem que ter uma cor um pouco mais neutra, né? E aí, nessa daqui, o silver foi uma coisa que o Luís trouxe. Ele falou, Ah, talvez um prata, em vez de um branco ou 11 cinza, um pouco mais claro. Eu gostei.
+42:22 Arthur Brandalise: Ficou? Ficou legal, né? A gente consegue ver ela combina com essas cores, porque esse daqui vai ser para o nosso Dark mode. Depois eu vou mostrar para vocês. As cores ficam legais no Dark mode. Esse blue e esse minch, e esse Gold também chama bastante atenção para a gente. Se a gente quiser usar no site, mas não vai ser a principal, tá? As principais seria esse verde e esse preto. E essas aqui, mais secundárias para a gente usar impost para gente usar no website Dark essas coisas, tá? Eu vou trazer mais bonitinho. Eu não quero trazer aqui porque está bem bruto aqui, mas é mais ou menos o mife, né? Que é o verde água, o tecnológico, o.
+43:02 Arthur Brandalise: Frescor, um pouco mais seguro e menos agressivo. A Wade black é uma série de cor de base. É forte, elegante, da solidez. O silver é um tom neutro metálico da ordem de futurismo, mas se usado com excesso pode deixar frio ou sem emergir. Então a gente tem que. Ter Ter cuidado o blue, que é aquele azul ali, né? O azul médio transmite confiança, que é o que a gente quer transmitir por um tom comum, e pode ele. Ele deu-nos porquê aqui, né? Pode terminar, mas acho que não tem nenhum problema. E o Gold, que é ch.
+43:33 Arthur Brandalise: Atenção que tem energia também traz essa parte também de dinheiro que a gente quer também. Risco de parecer luxo ou ostentação em vez de tech. Por isso que a gente tem que usar com cuidado por isso que esses daqui seriam os principais, tá? Seria esses 2 aí eu? Com Comecei a criar um pouco o nosso nome da visual. Eu estou dizendo aqui no figma mesmo. Eu estou me aventurando aqui. Design não é muito minha área.
+44:00 Luis Fernando Boff: Foi ótimo, ótimo, continua no figma, tá? Continua no figma é ótimo para nós.
+44:06 Arthur Brandalise: É, e aí?
+44:07 Luis Fernando Boff: Sim, é o mais fácil de a gente conseguir fazer depois para os sites e tudo é a melhor ferramenta de design que eu, eu diria que seria oficial da da empresa se pudesse, né? O figma.
+44:19 Arthur Brandalise: Sim, porque aí depois ele vai com um ele.
+44:23 Luis Fernando Boff: EE outra dica, ali tu chegou, não sei se tu faz isso, não, mas eu vi que tu não faz ali no teu chat é PT, tu não cria pasta de projeto meu.
+44:31 Arthur Brandalise: Ah, não criam, né? Tinha que criar, né? Que é.
+44:33 Luis Fernando Boff: Eu tenho que começar a usar bota uns projeto aí, visual breinding, daí tu bota o chat ali, você não vai se perder aí, não nesse daí, só uma dica de organização mesmo começa a criar um projeto para branding. Aí tu, botas, todas as conversas aí, tipo, sei lá.
+44:41 Arthur Brandalise: Um. Boa.
+44:47 Luis Fernando Boff: Essas empresas eu acho interessante, mas enfim.
+44:50 Arthur Brandalise: Então eu entendi essa aqui. Eu não estou só no chat, né? Tem que organizar melhor aqui mesmo. É, então tá ficando assim daí o que é o que acontece? A gente vai usar. Calma aí, essa fonte aqui.
+45:04 pedro henrique sanvito andreazza corso: Disco.
+45:05 Arthur Brandalise: Vai usar Vai usar a fonte? Pessoas. Ah, OK, então a gente vai usar 11 mix de Fontes, tá essa? Essa primeira vai ser uma fonte e essa daqui é outra fonte, tá? Que é Que é a eso 2, para a gente dar um ar mais tecnológico, né? De startup e essa daqui vai ser um tom mais vai ser a pompies que é mais dá para usar mais, ela dá mais modernidade, né? É um pouco mais minimalista. Ela tem um pouco os.
+45:41 Arthur Brandalise: Cortes e essa daqui é um pouquinho mais redondinha, tá? As cores eu, eu achei legal. Essa parte de degradê é, então a gente vai estar usando o nosso verde verde menta, mais o nosso azul e aí depois eu fui testando esse daqui é no Dark mode, tá no Dark mode, fica bem legal essas coisas, ó.
+46:03 Pedro Vitor Brunello Pagliarin: Qual que é a segunda fonte? O nome da segunda fonte.
+46:06 Arthur Brandalise: 3 o 3. O 2 daqui do tecnológico ou 2 e ela tá em semi-blondi semi-bond e essa daqui ela vai estar irregular que é a pomps.
+46:12 Pedro Vitor Brunello Pagliarin: Isso. Eu ver como é que se escreve, semi-blante.
+46:22 Arthur Brandalise: Bom, é só porque ele tem tipo de bonde, ó vai mudando, né?
+46:25 Pedro Vitor Brunello Pagliarin: Entendi, então, beleza, beleza, aham, Sério, meu.
+46:31 Arthur Brandalise: Eu estava brincando, fazendo com as cores pra ver como é que ficaria.
+46:32 pedro henrique sanvito andreazza corso: Agora, comentar no Rio.
+46:35 Arthur Brandalise: Só não só na no. Esse daqui é o linear, né? Eu gosto dessa parte linear que vai mudando de cor.
+46:38 pedro henrique sanvito andreazza corso: Vídeo? Des Desligar.
+46:43 Arthur Brandalise: Acho mais fica mais bonito do que usar, tipo usar isso daqui verde e talvez daqui azul, sabe? Não, não fica. Acho que tão fica meio parecendo meio criança, não sei, sabe?
+46:57 Guilherme Horstmann: WhatsApp e separado sem pontos, sem nada.
+46:58 pedro henrique sanvito andreazza corso: O pretão?
+47:02 Arthur Brandalise: É É as tipo junto, ficaria assim, ó.
+47:09 Luis Fernando Boff: Deixa eu perguntar.
+47:10 Guilherme Horstmann: Não sei, não, não, isso não bateu para mim.
+47:15 Luis Fernando Boff: Esse seria o lobo.
+47:17 Arthur Brandalise: Não não Não, não logo, Luís.
+47:18 Guilherme Horstmann: Ele junto, assim se não.
+47:18 Luis Fernando Boff: É um logo, né está.
+47:20 Arthur Brandalise: Não é? É o nosso, é o nosso, é o é o nosso visual, só pra gente começar a criar as cores. Talvez não. Isso daqui é para a gente criar. A nossa tipografia está. A gente não precisava usar o logo.
+47:21 pedro henrique sanvito andreazza corso: Sim.
+47:21 Luis Fernando Boff: Ah, está. Está está não é o logo, beleza.
+47:34 Guilherme Horstmann: O logo tem a ideia do do olho, né? Aquele olho doidão lá.
+47:34 pedro henrique sanvito andreazza corso: New ponto, aí.
+47:39 Arthur Brandalise: É? É porque é o aí, a gente vai ter que desenvolver. Não sei como, porque eu, eu também não tenho essa essa habilidade de fazer o logo. A gente está fazendo uma coisa de tendência artificial, mas eu pegar aqui no Photoshop, mas essa daqui é para a gente ter. A ideia que a gente vai usar essa tipografia vai ser pontes e se a gente quiser usar mais o negócio futuro isto futurístico vai ser o eso 2.
+48:04 Arthur Brandalise: E esse, e o nome vai ser talvez, a gente tem o logo o olho aqui, EOZAI embaixo assim, sabe? E aí o logo a gente vai usar pra pra questões de outros serviços, tipo, a gente vai fazer AEO ZAP aí o ZAP vai ter só o olhinho, mas daí vai entrar no nosso site a gente vai ter que ter o nome, né? Falando isso aí.
+48:26 pedro henrique sanvito andreazza corso: 10.
+48:29 Arthur Brandalise: Não só o logo, então, seria a tipografia do nosso logo.
+48:30 pedro henrique sanvito andreazza corso: Gajo.
+48:36 Guilherme Horstmann: Bota um ponto ali de
+48:37 pedro henrique sanvito andreazza corso: Olha que bom é o pontinho.
+48:37 Guilherme Horstmann: Bota um ponto ali, deixa eu ver uma coisa.
+48:39 Arthur Brandalise: Vá ao pontinho.
+48:42 Guilherme Horstmann: Entre os EAI.
+48:42 pedro henrique sanvito andreazza corso: Um ponto nomei.
+48:44 Arthur Brandalise: Lata, assim.
+48:49 Guilherme Horstmann: Sei lá também.
+48:49 pedro henrique sanvito andreazza corso: No seu é, né? O ponto podia ser quadrado.
+48:54 Guilherme Horstmann: É, eu pensei nisso.
+48:56 Arthur Brandalise: Só porque é só mudar a diplografia dele tentar bater em ESA.
+49:01 Guilherme Horstmann: Aí. Oh.
+49:02 pedro henrique sanvito andreazza corso: Hum Melhor.
+49:03 Pedro Vitor Brunello Pagliarin: Olá, boa.
+49:05 Guilherme Horstmann: Aí ficou bom.
+49:06 Pedro Vitor Brunello Pagliarin: Ó, deixa eu te fazer um teste, como é, como é que eu aham, ponho, põe, põe o cursor no meio do do antes do IA do a.
+49:07 Arthur Brandalise: Quer dizer Quer dizer com Pina que combina, que e aqui não é.
+49:09 pedro henrique sanvito andreazza corso: E tinha um outro quadrado.
+49:10 Guilherme Horstmann: É?
+49:19 Pedro Vitor Brunello Pagliarin: Tu tem Tu tem, tu tem o teu, o teu Windows, né?
+49:22 Arthur Brandalise: Tem?
+49:24 Pedro Vitor Brunello Pagliarin: Fica alt 51, alt 5160.
+49:35 Arthur Brandalise: Esse PV existe.
+49:37 Pedro Vitor Brunello Pagliarin: E 13?
+49:39 Arthur Brandalise: É?
+49:41 Guilherme Horstmann: Audi, 5160.
+49:46 Arthur Brandalise: Que que é isso?
+49:48 Pedro Vitor Brunello Pagliarin: Apareceu algum caracter aí
+49:49 Guilherme Horstmann: É vírus
+49:49 pedro henrique sanvito andreazza corso: TV?
+49:53 Pedro Vitor Brunello Pagliarin: E?
+49:54 Arthur Brandalise: Alt? Alte 1560, há um sol.
+50:01 pedro henrique sanvito andreazza corso: Boa, não ficou, não ficaria mal, solzinho.
+50:06 Pedro Vitor Brunello Pagliarin: Não, mas eu só só quis testar uma coisa meu, que interessante, meu não é. Era para parecer uma outra coisa meu.
+50:12 Arthur Brandalise: Mas é um só aqui, só que agora eu estou perdido.
+50:17 Pedro Vitor Brunello Pagliarin: Desculpa, foi só um teste mesmo que eu quis fazer, eu só queria ver como é que IA sair aí No No figma um Control Z aí.
+50:17 pedro henrique sanvito andreazza corso: Acter, 11.
+50:23 Arthur Brandalise: Boa tarde.
+50:23 pedro henrique sanvito andreazza corso: Encontrar você.
+50:25 Arthur Brandalise: Estou usando.
+50:26 Guilherme Horstmann: Mas eu sou a favor do pontinho quadrado, não sei.
+50:30 Pedro Vitor Brunello Pagliarin: Não, eu concordo. Eu achei que ficou melhor.
+50:30 pedro henrique sanvito andreazza corso: Eu também EEO maior pontinho que estava outra. Tu botou e disse, pá, parecia que era um pouquinho maior.
+50:30 Arthur Brandalise: Sim, é, eu também gostei. Daí estão com o **.
+50:32 Guilherme Horstmann: Me soou bem. Mais gordinho?
+50:41 Arthur Brandalise: Ah, tá.
+50:43 pedro henrique sanvito andreazza corso: Era um pouquinho mais gordinho.
+50:44 Luis Fernando Boff: A gente bateu o martelo sobre significado desses 2 ex.
+50:50 Arthur Brandalise: A gente acha que significado sim.
+50:50 pedro henrique sanvito andreazza corso: Aí, aí ou aí? Oh, este mesmo é igual o pingo do i.
+50:54 Guilherme Horstmann: Aí. Oh, que nem Luís boa.
+50:57 Arthur Brandalise: Topping, o doi.
+50:58 Luis Fernando Boff: Por causa do do sono. Lá os 2 ex tipo é, é? É por causa disso mundo.
+51:03 pedro henrique sanvito andreazza corso: E pela estética.
+51:04 Pedro Vitor Brunello Pagliarin: Acho que não só por causa disso tem a questão do use de usar fonética do z.
+51:10 Luis Fernando Boff: Não mas isso não tem Não mas isso não tem nada a ver com 2 ZS Não, mas isso não tem nada a ver com 2 ZS.
+51:14 pedro henrique sanvito andreazza corso: A estética com a fé.
+51:14 Pedro Vitor Brunello Pagliarin: Ah, porque é 2 vezes, né? Entendi, entendi.
+51:19 Luis Fernando Boff: O motivo de ser 2 ê é só por causa do sono lá, tipo, tipo dizer duro.
+51:19 Arthur Brandalise: Não é?
+51:19 Pedro Vitor Brunello Pagliarin: Da minha parte, e a estética.
+51:22 Arthur Brandalise: Porque e porque tem uma companhia e tem uma companhia já com.
+51:25 Pedro Vitor Brunello Pagliarin: Esteticamente?
+51:28 pedro henrique sanvito andreazza corso: Prat Praticamente com um z ficava CE já tem a agência de turismo chinesa.
+51:35 Arthur Brandalise: E eu acho que a gente pode brincar, tá um pouco esses 2 é, eles não conseguem ver um formatinho legal aqui de alguma coisa que dá para brincar com.
+51:47 pedro henrique sanvito andreazza corso: Cobrinha.
+51:47 Arthur Brandalise: Cobrinha, dá pra fazer um negócio?
+51:47 Pedro Vitor Brunello Pagliarin: Eu eu Eu. Eu vejo, eu vejo o losango.
+51:49 Arthur Brandalise: Aqui, ó. Para fazer um negócio aqui legal, entendeu?
+51:56 Guilherme Horstmann: É, mas dá para pegar as 2. Os 2 de 5, os 2 de baixo, talvez juntar ele, deixar mais orgânico, mais tecnológico, dá para fazer umas coisas legais.
+52:04 Arthur Brandalise: É?
+52:05 pedro henrique sanvito andreazza corso: Vira um, vira um para o outro.
+52:05 Arthur Brandalise: Depois a gente pode brincar algumas coisas. Sim, cara, eu. Eu, particularmente eu fecharia, eu fecharia tipo Oo nosso nome assim, sem sem mais porque ficou legal, ó pra gente ver ver de perto assim ó, fica legal, cara, tem poucas coisas, tem, tem 3 vogais.
+52:24 pedro henrique sanvito andreazza corso: Achei massa.
+52:24 Luis Fernando Boff: Não, não estou terminando porque legal, eu tô. Eu tô pensando, porque dá pra fazer tipo UZEO outro Zinho subindo assim, tá ligado? Como se fosse tipo, dá pra fazer um Monte de coisas, se for esse o mesmo motivo, né? Eu só estou pensando, mas boa. Não não estou terminando porque legal eu tô eu tô pensando
+52:29 Pedro Vitor Brunello Pagliarin: Justificado?
+52:34 pedro henrique sanvito andreazza corso: Hum?
+52:39 Guilherme Horstmann: Uh, huh, é, eu acho que o significado em si é a função do uso e AI, né? Acho que é. É esse o que a gente vai trabalhar mais em cima, porque, mas também assim, significado de tatuagem, né? O cara nem sempre precisa, nem sempre precisa ter um.
+52:39 Arthur Brandalise: Sim.
+52:41 pedro henrique sanvito andreazza corso: Verdade? Oh.
+52:46 Arthur Brandalise: É?
+52:56 Pedro Vitor Brunello Pagliarin: Os e a durma tranquilo.
+52:56 Arthur Brandalise: Não.
+52:59 Guilherme Horstmann: Negócio. Uau, meu Deus.
+53:02 Arthur Brandalise: É verdade.
+53:02 Guilherme Horstmann: É OA gente precisa ter alguma coisa que É OA. Gente precisa ter alguma coisa que chame atenção que para nós, na nossa nóia, fez sentido. É isso.
+53:10 Arthur Brandalise: Imagina o.
+53:11 Guilherme Horstmann: Não estou muito preocupado com isso na real de significado super. Não estou muito preocupado com isso na real
+53:13 Luis Fernando Boff: Olá. Não não Não, não Bora Bora. Vamos seguir hoje a gente pode passar por uma estruturação também, eventualmente.
+53:18 Arthur Brandalise: Queira fazer?
+53:18 Pedro Vitor Brunello Pagliarin: Toshiba volta.
+53:22 Guilherme Horstmann: É, a gente inventa um significado também.
+53:25 Arthur Brandalise: Olha
+53:25 pedro henrique sanvito andreazza corso: Foi boatos, que nossa.
+53:25 Arthur Brandalise: Olha que legal, fica aí o ZAP.
+53:28 pedro henrique sanvito andreazza corso: Bon Bonito. Nosso Instagram está bombando, não é?
+53:31 Pedro Vitor Brunello Pagliarin: Outrachê.
+53:33 Arthur Brandalise: Bomb Bombando, quantos seguidores?
+53:34 Pedro Vitor Brunello Pagliarin: Volta.
+53:35 pedro henrique sanvito andreazza corso: Apareceu para Natália para seguir o cara que trabalha no colaborador. Eu vi que está seguindo.
+53:40 Guilherme Horstmann: Apareceu pra minha amiga também pra seguir.
+53:41 Arthur Brandalise: Sério?
+53:43 Luis Fernando Boff: Porque esse OP aí, meu.
+53:44 Pedro Vitor Brunello Pagliarin: Hum?
+53:44 Arthur Brandalise: A sim é o do Oo ZAP. Tudo que deu o nome.
+53:47 pedro henrique sanvito andreazza corso: WhatsApp.
+53:50 Luis Fernando Boff: Não é com anão é o WhatsApp.
+53:53 Guilherme Horstmann: O ZAP.
+53:53 Arthur Brandalise: Não, não, Luís, não é o nosso, o nosso assistente. Tu deu o nome do shopping.
+53:54 pedro henrique sanvito andreazza corso: Aperta.
+53:59 Luis Fernando Boff: Não é com a, é o ZAP, não o zoop.
+54:02 Arthur Brandalise: Ah, Ah, entendi, também. Sim, o ZAP é, pô.
+54:08 Pedro Vitor Brunello Pagliarin: Entre.
+54:09 pedro henrique sanvito andreazza corso: Bonito, Tânia.
+54:11 Arthur Brandalise: Olha aqui OA Olha aqui, OA, o A100 ficou legal.
+54:14 pedro henrique sanvito andreazza corso: Não.
+54:15 Arthur Brandalise: OA, Hein? O azul está em não, mas a ideia a gente tem que fazer sempre essa panca, Oh, Ah, aqui está em eso 2. Ficou legal, Hein?
+54:25 pedro henrique sanvito andreazza corso: Bom, então deixa eu volta de novo.
+54:26 Luis Fernando Boff: Outro ponto, vamos a ver.
+54:27 Guilherme Horstmann: Deixa eu
+54:27 Arthur Brandalise: Início.
+54:27 Guilherme Horstmann: Deixa eu tentar fazer os nossos projetos com esses nomes.
+54:31 Arthur Brandalise: Para fazer várias coisas
+54:31 Pedro Vitor Brunello Pagliarin: Volta rapidamente ela para a paleta de flores rapidamente.
+54:32 Arthur Brandalise: Para fazer várias coisas, né? Mas a gente colocou o ponto só.
+54:35 Pedro Vitor Brunello Pagliarin: Só um, só um click, volte aí.
+54:41 Luis Fernando Boff: Daí você curtiu o ponto nesse aí no caso?
+54:46 Arthur Brandalise: Também não sei se eu curtio.eu gostei assim, porque daí parece o WhatsApp também WhatsApp, o ZAP ZAP ficou muito massa dá para brincar muito, dá para brincar muito com o usa, né?
+54:49 Luis Fernando Boff: É nesse aí, no caso.
+54:53 pedro henrique sanvito andreazza corso: Boa tarde.
+54:54 Luis Fernando Boff: Mas há.
+55:00 pedro henrique sanvito andreazza corso: Dá?
+55:00 Arthur Brandalise: Os building, o site, os websites.
+55:04 Guilherme Horstmann: Rios deeira.
+55:07 Arthur Brandalise: Fala aqui fal
+55:08 Pedro Vitor Brunello Pagliarin: Isso, rapidinho.
+55:08 Arthur Brandalise: Fala aqui, fala preto.
+55:11 Pedro Vitor Brunello Pagliarin: Essa é a ordem da esquerda para direita, dá mais.
+55:15 Arthur Brandalise: De importância mais importante para menos importante.
+55:19 pedro henrique sanvito andreazza corso: Deve ter preto sempre a melhor combinação.
+55:23 Arthur Brandalise: É porque o que acontece a gente vai pensar.
+55:25 Luis Fernando Boff: Pessoal.
+55:26 Arthur Brandalise: A gente tem, a gente tem que pensar muito no Dark mode, né? Que o Luiz falou uma coisa muito importante, eu também uso bastante Dark mode, mas tem.
+55:30 Pedro Vitor Brunello Pagliarin: A?
+55:32 Guilherme Horstmann: No caso No caso tem que No caso, tem que pensar 11 pro light mode também, que eu acho interessante a gente ter essas 2 versões.
+55:41 Arthur Brandalise: Que eu deixa eu mostrar um negócio para vocês eu peguei de Que eu deixa eu mostrar um negócio para vocês eu peguei Que eu deixa eu mostrar um negócio para vocês? Eu peguei de um, porque o meu ex, meu ex-sócio lá na agência, ele fez o logo do mundão afora, né? Então eu peguei a apresentação. Ele é profissional, aí ó, tipo, a gente tem que fazer um negócio disso. Claro que fez um negócio muito simples, mas vai ser esse ódio é um moodboard, é isso que eu quero fazer para nós para apresentar, para, para todo mundo. Ó aí.
+56:05 pedro henrique sanvito andreazza corso: Mas.
+56:05 Arthur Brandalise: Foi a Foi a paleta de cores que ele usou pro bundão. Afora ele pegou a maré, ela laranja, representando o pôr do sol, porque eu falei que é a minha Vibe, entendeu? Uma estética vibrante, inspiradora. Aí ó, eu também quero fazer isso aqui, ó porco ou dia.
+56:09 Pedro Vitor Brunello Pagliarin: Net?
+56:25 Arthur Brandalise: Aí veio Oo símbolo do mundo lá fora. A gente tem que fazer Oh, essa também as partes que combina. Olha que legal.
+56:32 Guilherme Horstmann: Exatamente.
+56:34 pedro henrique sanvito andreazza corso: Esse, ressalta.
+56:36 Arthur Brandalise: Moletom. Aí a gente começa a aplicar aplicações, né? Olha que legal.
+56:39 Guilherme Horstmann: A gente precisa de um bonézinho bonézinho da empresa.
+56:42 Arthur Brandalise: Embora o boné vai ter que ter, acho que vai ser a primeira caneca. Todo mundo toma café, né?
+56:44 pedro henrique sanvito andreazza corso: A boné, sim. Né? Eu não tomo café.
+56:50 Arthur Brandalise: Evidente. Vai ter que ter o logo.
+56:54 Guilherme Horstmann: Estamos.
+56:57 Arthur Brandalise: Então é isso, então eu. Eu parei aqui, tá? Então, aparelho aqui.
+56:58 Pedro Vitor Brunello Pagliarin: Em relação show? Em relação a logo meu, o que que eu acho que sim, não vou dizer que eu consigo fazer um logo 100%, mas eu consigo brincar. Eu sei várias ferramentas para brincar, inclusive Photoshop. Eu sei mexer meu. A questão que que precisa meu, aqueles vídeos que eu. Botei imagens, todas elas têm. Foi tirado um pouquinho de cada coisa para vocês darem feedbacks e a gente tipo, Ah, isso aqui ficou legal, então eu pego aquilo ali e tento reimplementar daqueles.
+57:32 Pedro Vitor Brunello Pagliarin: Daquilo que a gente foi que foi mostrado na semana passada o que que vocês acharam que assim que pode Daquilo que a gente foi que foi mostrado na semana passada, o que que vocês acharam que assim que pode ser utilizado?
+57:38 Guilherme Horstmann: Ah, eu já dei minha opinião sobre isso. Acho que o lobo, ele faz sentido com o que a gente está pensando.
+57:39 Arthur Brandalise: Meio?
+57:46 Guilherme Horstmann: Eu só sou mais da Vibe 2 d para a gente conseguir aplicar em mais locais, entendeu? Eu acho que coisa muito 3 DE que muito detalhe tipo os cílios ali, a função de tipo assim, ó assim é, mas ele já é 2 d, mas ele tem muita informação, entendeu? Já é 2 d, dá pra gente.
+57:59 Luis Fernando Boff: Eu Eu. Eu.
+58:01 Arthur Brandalise: Tipo Tipo, Ah, esse aqui, ó, esse daqui é to much.
+58:04 Luis Fernando Boff: É to much to mult.
+58:08 Arthur Brandalise: Bom.
+58:11 Luis Fernando Boff: Eu acho importante. Brincar com tipo teu logo sem a, sem OA, em em as letras embaixo ligado, então o logo não vai poder ter o escrito em baixo, o logo é o logo tipo ó, e esse, esse esses assim que tem o UI uai, eu acho legal, mas eu AC.
+58:21 pedro henrique sanvito andreazza corso: Bem, também. Eu sei, achei bonita.
+58:25 Pedro Vitor Brunello Pagliarin: Concordo.
+58:29 Luis Fernando Boff: Que teria que entrar Oz de alguma forma ali também, então tu tem que, tipo, teria que pegar o as letras e juntar as letras de uma forma em que elas apareçam no logo, mas que não fique as letras, tá ligado? Tipo que nem o nosso BC.
+58:32 Guilherme Horstmann: Será que não dá para botar OOI também?
+58:35 pedro henrique sanvito andreazza corso: Pausa.
+58:43 Guilherme Horstmann: Aí, a Band.
+58:45 Luis Fernando Boff: Smart, cara, ele pegou b, pegou c, pegou o smart Energy, juntou tudo e fez um logo. Está ligado, tipo, ele foi juntando, foi tirando tipo, esse é um processo criativo que o pessoal faz assim, então.
+58:56 Arthur Brandalise: Sim.
+58:58 Pedro Vitor Brunello Pagliarin: Tá, eu. Eu entendi, eu concordo, mas e qual?
+58:58 Luis Fernando Boff: Só faltou isso, meu.
+59:02 Pedro Vitor Brunello Pagliarin: Então vamos. Vamos olhar algumas, escolher algumas como referência, vamos escolher algumas em conjunto como referência.
+59:08 Arthur Brandalise: Essas aqui.
+59:09 Luis Fernando Boff: Essa.
+59:09 pedro henrique sanvito andreazza corso: Você já gostei daquela das folhas. Você já
+59:12 Arthur Brandalise: É tipo, é tipo, essa equipe é pegou u com AEO olho e aí olhando.
+59:17 Luis Fernando Boff: Faltou o Faltou, Oz.
+59:18 Pedro Vitor Brunello Pagliarin: Não. Então daí só então, calma aí. Oh, eu vou dar um print aqui, o que que a gente fala sobre o que que a gente tem a falar sobre essa imagem? Faltou Oz, que mais esse círculo em cima?
+59:31 Guilherme Horstmann: Acho que não precisa do olho, o óleo não precisa ser detalhado, assim pode ser um olho mais comum que isso aí depois de tu passar pra vai renderizar, vai botar em é um olho com mais traços. Assim não precisa ter.
+59:31 Arthur Brandalise: Acho que não PRE
+59:31 Luis Fernando Boff: OA ficou muito evidente.
+59:34 Arthur Brandalise: Acho que não precisa.
+59:37 pedro henrique sanvito andreazza corso: É? Acho que AA Íris do olho está muito esforçado.
+59:42 Pedro Vitor Brunello Pagliarin: Olho mais simples em 2 d. Parte de cima ali.
+59:48 Guilherme Horstmann: A parte de cima, acho que não precisa.
+59:49 Arthur Brandalise: Pode ser um olho mais lúdico, não tão. Com vários riscos assim, para fazer essa interligação que a gente quer fazer, né? Tipo, eu gostei bastante desses tipo e isso daqui eu acho muito irado. Acho que faz sentido.
+01:00:04 pedro henrique sanvito andreazza corso: A eles?
+01:00:06 Arthur Brandalise: É É esses risquinhos aí, sabe que daí a gente faz conexão e tudo vai se conectar, a gente vai fazer, porque é o que a gente tem que criar. É se ecossistema, né? Tudo se liga.
+01:00:20 Pedro Vitor Brunello Pagliarin: Ah, então desse aí eu botei faltou Oz? Olho mais simples em 2 d ou mais lúdico, mais alguma? Observação?
+01:00:29 pedro henrique sanvito andreazza corso: Não tem como fazer um olho com os 2, e.
+01:00:29 Luis Fernando Boff: As cores, né?
+01:00:30 Guilherme Horstmann: Away Wayne, né? Não só o ar, vamos botar o item junto.
+01:00:34 Arthur Brandalise: Não, não, Gui, não, Gui, eu. Eu acho que a gente não precisa colocar tipo tudo isso daqui no logo a gente pode simplificar.
+01:00:42 Guilherme Horstmann: Daqui a AI é a nossa marca, é o que a gente vai usar. Eu acho que isso tem que estar de alguma forma. Inteligência artificial é basicamente o as fundações dessa empresa, entendeu? Isso tem que estar evidente assim No No logo eu, eu acho isso pelo menos enf. O que vocês acham?
+01:01:03 Arthur Brandalise: Quer dizer, eu acho que tem muita coisa.
+01:01:03 Pedro Vitor Brunello Pagliarin: Eu tenho 2 opiniões, concordo, eu concordo e discordo, porque eu concordo, porque tu está certo, porque eu discordo, porque eu acho que vai entrar em uma em uma, quando que é tudo muito igual, que todo mundo vai usar.
+01:01:03 pedro henrique sanvito andreazza corso: Eu não sei como.
+01:01:17 Arthur Brandalise: É?
+01:01:19 Luis Fernando Boff: Não.
+01:01:19 Arthur Brandalise: Pode ser também?
+01:01:20 Guilherme Horstmann: Vai entrar em sim, está entendido, mas não precisa ser evidente. Só acho que poderia estar.
+01:01:23 Arthur Brandalise: Padrão, mas olha, ó, mas olha aqui é, pode ser alguma coisa também. Se a gente for ver aqui, AI, cacete.
+01:01:35 pedro henrique sanvito andreazza corso: OK?
+01:01:36 Arthur Brandalise: Tipo. Tipo a Nike Tipo a Nike se chama Nike, mas o logo dos cara é o quê? É 11, certo? Tá? É, pô, tudo bem? A Apple, se se diz porque é uma maçã, né? OK. McDonald's, então não é, não é? Todas as marcas que coloca, né? O tudo, as letras dela na marca, né? Então, é por isso que a gente tem que pensar em fazer algo único.
+01:01:55 Pedro Vitor Brunello Pagliarin: Anime.
+01:02:05 pedro henrique sanvito andreazza corso: Cuidar para não secar Vision, techno.
+01:02:06 Arthur Brandalise: AI. É tipo a, é a GoPro. A GoPro já tem o nome dela, entendeu? Então é mais a tipologia deles. Eles têm esses 3, esses 4 pontinhos aqui.
+01:02:10 Pedro Vitor Brunello Pagliarin: Abre.
+01:02:16 Luis Fernando Boff: Lá?
+01:02:17 Pedro Vitor Brunello Pagliarin: Tudo bem. Eu vou eu vou
+01:02:20 pedro henrique sanvito andreazza corso: Xbox item dezesse.
+01:02:20 Pedro Vitor Brunello Pagliarin: Eu vou. Eu vou girar com as 2. Daí depois a gente vê, é isso aí, é briefing, volta lá, por favor. Toshiba pode passar para a próxima, essa aí infantil, né?
+01:02:29 Arthur Brandalise: Muito infantil.
+01:02:30 pedro henrique sanvito andreazza corso: É isso aí, está fora para. Para mim é um elefante.
+01:02:30 Guilherme Horstmann: Desenho animado.
+01:02:32 Pedro Vitor Brunello Pagliarin: Esse aí eu não gostei também TAP.
+01:02:33 Arthur Brandalise: E aí foi quando a gente for fazer um desenho animado, a gente faz esse. E aí foi quando a gente for fazer um desenho animado a gente faz esse
+01:02:36 Guilherme Horstmann: É, isso é bom para criança.
+01:02:37 pedro henrique sanvito andreazza corso: É um elefante?
+01:02:38 Pedro Vitor Brunello Pagliarin: Então vamos Então vamos, já passo, já passa próxima.
+01:02:42 Guilherme Horstmann: Bem demais, não sei.
+01:02:43 Arthur Brandalise: É daqui?
+01:02:43 pedro henrique sanvito andreazza corso: Bacana.
+01:02:45 Lucas : Essa é dos Vingadores Avengers?
+01:02:48 Luis Fernando Boff: É também essa. Eu não gostei, meu. Eu sou bem sincero, eu não gostei.
+01:02:48 Guilherme Horstmann: Eu gostei, parece firma de Caxias, tema de cachet do céu.
+01:02:50 pedro henrique sanvito andreazza corso: Verdade, verdade, verdade.
+01:02:52 Guilherme Horstmann: Parece firme de metalurgia.
+01:02:55 Pedro Vitor Brunello Pagliarin: Me me lembrou um pouco e game assim, mas não ficou, não ficou aquela coisa lá pode passar, vamos lá, a gente tem um Monte de opção.
+01:02:58 pedro henrique sanvito andreazza corso: Eu poderia dizer ano é, vamos ver.
+01:02:59 Arthur Brandalise: É? E em Sports. Essa aqui.
+01:03:06 pedro henrique sanvito andreazza corso: Mais ou menos meio simples, não é simples. Mais ou menos meio
+01:03:08 Arthur Brandalise: Daqui, parece coisa de música.
+01:03:11 Guilherme Horstmann: É, se fosse mais simplificado, acho. Acho legal.
+01:03:11 Pedro Vitor Brunello Pagliarin: Calma aí Calma aí, cara. Eu particularmente é. Eu IA dizer, meu tiro. Tira um pouquinho. Zoom estouxi.
+01:03:21 Lucas : Não.
+01:03:21 Guilherme Horstmann: Sem borda nas letras.
+01:03:22 Pedro Vitor Brunello Pagliarin: Está o que que. O que que vocês têm a dizer sobre ela?
+01:03:22 Lucas : 81.
+01:03:26 Guilherme Horstmann: Sem borda nas letras, o olho pode ser um pouquinho mais de boa.
+01:03:28 Lucas : Um pouquinho menos será o.
+01:03:33 Pedro Vitor Brunello Pagliarin: Tem aque
+01:03:33 Lucas : Pouquinho menor os traços um pouquinho menor, talvez.
+01:03:33 Pedro Vitor Brunello Pagliarin: Tem aqueles traços à direita.
+01:03:35 Luis Fernando Boff: Não. Olha que legal essa daí. Olha que legal essa daí.
+01:03:40 pedro henrique sanvito andreazza corso: AI PA
+01:03:40 Luis Fernando Boff: O olho em cima, meu outro chip, passa o do outro lado e desce, faz um z ó, faz um z aí, ó.
+01:03:43 Arthur Brandalise: É? Eu gostaria de dizer aqui, né?
+01:03:48 pedro henrique sanvito andreazza corso: Lera.
+01:03:48 Luis Fernando Boff: Um tum tum, dá para fazer um Zezinho ali está ligado.
+01:03:52 Lucas : Aham.
+01:03:53 pedro henrique sanvito andreazza corso: Boa, Lourdes.
+01:03:53 Guilherme Horstmann: Fazer um em cima e um em baixo, talvez em baixo do olho.
+01:03:55 Luis Fernando Boff: Então, tipo, é, é esse detalhe que é legal de trazer, tá ligado? Tipo, tem Oz, ele tá ali, mas ele tá muito sutil, então, tipo, foi uma sacada que surgiu ali, por exemplo.
+01:04:02 Arthur Brandalise: Hu-hu.
+01:04:03 Pedro Vitor Brunello Pagliarin: Como é que como é que Como é que, como é que a gente pode dizer isso? O que a gente pode dizer isso? Eu estou escrevendo aqui para ter registrado No No nosso próprio WhatsApp, a borda de cima do u pode parecer um z isso.
+01:04:16 pedro henrique sanvito andreazza corso: Distância, distância, entre OAEOU.
+01:04:17 Arthur Brandalise: Não fala para fazer formatos geométricos, formatos geométricos que pode significar um z, que pode significar uma letra com formatos geométricos. Tipo, isso daqui é um formato geométrico, né?
+01:04:21 pedro henrique sanvito andreazza corso: Peso, parar.
+01:04:28 Arthur Brandalise: Isso daqui é um triângulo. Aí quero ver aí a matemática, os engenheiros, um triângulo.
+01:04:33 pedro henrique sanvito andreazza corso: Camila, retângulo, hipotenusa, cateto.
+01:04:35 Guilherme Horstmann: Quadrângulo.
+01:04:36 Arthur Brandalise: São espectáculo.
+01:04:37 Pedro Vitor Brunello Pagliarin: Boa curso, já, ô.
+01:04:38 Lucas : Hipotenusa, hipotenusa.
+01:04:40 Arthur Brandalise: E?
+01:04:41 Luis Fernando Boff: Protenoso é o é o lado do bagulho, né, velho?
+01:04:44 pedro henrique sanvito andreazza corso: Me empolgou pouco, Lucas.
+01:04:48 Guilherme Horstmann: Hipotenusa. Que, Ah, eu vou marcar no negócio para ver.
+01:04:59 Luis Fernando Boff: Os triângulo retângulo.
+01:05:01 Pedro Vitor Brunello Pagliarin: Próximo?
+01:05:01 Arthur Brandalise: Próximo assim que vocês querem user
+01:05:03 Guilherme Horstmann: Próximo, assim que vocês querem user? Olhe no grupo de WhatsApp, eu achei que ficou bom assim, nesse formato que eu fiz.
+01:05:08 Luis Fernando Boff: Exatamente assim que bah é, é, tem que ser essa linha do Gui velho, exatamente essa linha do Gui.
+01:05:10 pedro henrique sanvito andreazza corso: E aí?
+01:05:12 Guilherme Horstmann: Essa linha não é vou curtir, mas assim, né, está pronto logo.
+01:05:15 pedro henrique sanvito andreazza corso: Deixe-me ver.
+01:05:16 Arthur Brandalise: Aonde que está alguém? Aonde está o quê? Ah, aqui.
+01:05:17 Luis Fernando Boff: Não é assim Não é assim mesmo, daí talvez o ali fica mais reto ali, né?
+01:05:19 Arthur Brandalise: Ah.
+01:05:21 Luis Fernando Boff: Tá ligado? Tipo, OA, não precisa ser essa curvinha, daí faz OA mais reto. Daí fica. Parece Oz ali.
+01:05:25 pedro henrique sanvito andreazza corso: E daí? Papo reto.
+01:05:26 Guilherme Horstmann: Eu acho que está pronto, pode julgar abrir.
+01:05:27 Luis Fernando Boff: Não necessariamente.
+01:05:32 Guilherme Horstmann: Acho que dá para fazer um em cima e talvez tentar encaixar algum embaixo, que aí fica os 2 é, não sei também. Testes embaixo do olho, mas essas cores, essas bordas na letra, aí me tá me dando agonia que tem que.
+01:05:32 Arthur Brandalise: Pelo menos, já.
+01:05:39 Luis Fernando Boff: Gosto.
+01:05:39 Arthur Brandalise: Futebol aqu Futebol aqui, não é? Não AAAA, cor, vamos a cor.
+01:05:47 Luis Fernando Boff: É?
+01:05:50 Arthur Brandalise: Vamos usar aquela ali que eu consegui girar as cores, as principais.
+01:05:50 pedro henrique sanvito andreazza corso: Advogado.
+01:05:51 Guilherme Horstmann: Sim, sim.
+01:05:55 Arthur Brandalise: Outras. Ah, o que eu IA está fazendo lá?
+01:05:58 Pedro Vitor Brunello Pagliarin: Ah, pode ir. Pode voltar lá para aquela, para aquelas primeira, para as próximas lá.
+01:06:03 Arthur Brandalise: Eu gostei dessa des Eu gostei dessa, dessa letra.
+01:06:06 Guilherme Horstmann: Essa é boa.
+01:06:06 pedro henrique sanvito andreazza corso: Um.
+01:06:08 Luis Fernando Boff: Mostrar, não é?
+01:06:09 Arthur Brandalise: Tem calma, não é? Onde eu parei? Portanto Portanto aqui foi Portanto aqui foi o Portanto, aqui foi o Band que nem o Gui falou que foi OPV, que fez o corsage.
+01:06:20 Luis Fernando Boff: Cara, parece a Band mesmo velho.
+01:06:21 pedro henrique sanvito andreazza corso: 28.
+01:06:24 Arthur Brandalise: Daqui ficou bem parecida com a outra. Sim, eu acho que a gente pode brincar com as cores, degradê. Eu gosto degradê, que traz tecnologia, né? Traz um pouco mais de leveza. Eu gosto que foi mais ou menos o que eu fiz, né?
+01:06:24 Pedro Vitor Brunello Pagliarin: Mas também parecida, só com cores diferentes, né?
+01:06:24 pedro henrique sanvito andreazza corso: Chico.
+01:06:28 Guilherme Horstmann: Hum?
+01:06:29 pedro henrique sanvito andreazza corso: Verdade? Bom dia. Menor?
+01:06:39 Luis Fernando Boff: Gosto de te agradecer também.
+01:06:44 Pedro Vitor Brunello Pagliarin: Q.
+01:06:46 Arthur Brandalise: Ah, essa daqui, esse tipo, esse corte. Assim, para parecer mais reflexo, não sei. Explicar. Talvez que Oz, também, com formato assim de cores também, mas sem borda.
+01:07:01 Luis Fernando Boff: Começa a ser muita informação, não?
+01:07:03 Arthur Brandalise: É muita informação. Eu acho que a gente tem que ser minimalista, né?
+01:07:03 pedro henrique sanvito andreazza corso: É claro que eu acho.
+01:07:07 Luis Fernando Boff: Aí já tem muita informação aí pra mim.
+01:07:07 Arthur Brandalise: Vamos ser minimalista, que é modernidade.
+01:07:07 Pedro Vitor Brunello Pagliarin: Tem que.
+01:07:08 Guilherme Horstmann: Eu acho que eu acho que sendo minimalista, depois a gente pode complexificar se for a nossa a nossa ideia.
+01:07:13 Arthur Brandalise: A também acho boa.
+01:07:15 Luis Fernando Boff: É exato.
+01:07:15 pedro henrique sanvito andreazza corso: Verdade, volta aí, bebê minimalista.
+01:07:19 Pedro Vitor Brunello Pagliarin: Oi, connect.
+01:07:24 Guilherme Horstmann: Essa bem minimalista, achei bem minimalista essa bem boa.
+01:07:25 Arthur Brandalise: É só. Essa daqui falha é essa daqui.
+01:07:32 Lucas : Essa transcendeu, OK?
+01:07:35 pedro henrique sanvito andreazza corso: Isso aí pode ser Oo logo de uma rave.
+01:07:38 Pedro Vitor Brunello Pagliarin: Pago next. Gol next chegou next. Vamos lá, vamos, vamos, vamos ser bem. Meio que direto, cara.
+01:07:42 Arthur Brandalise: É bem aqui, ó, um pouquinho mais.
+01:07:43 Pedro Vitor Brunello Pagliarin: Eu não gostei muito dessa.
+01:07:46 Guilherme Horstmann: Essa China aí ele aí é minimalismo demais.
+01:07:46 pedro henrique sanvito andreazza corso: Essa aí, achei bacana.
+01:07:47 Pedro Vitor Brunello Pagliarin: Ser bem sincero, esta mais minimalista.
+01:07:50 Arthur Brandalise: É, também.
+01:07:51 Luis Fernando Boff: Mas é dá pra tirar algumas ideias legais dela, Mano.
+01:07:54 Guilherme Horstmann: Mas eu acho que meio preguiçoso assim.
+01:07:55 Luis Fernando Boff: Os geométricos, tá ligado?
+01:07:57 Arthur Brandalise: Já?
+01:07:58 pedro henrique sanvito andreazza corso: Verdade, louce.
+01:08:01 Guilherme Horstmann: O óleo é algo que eu assim que eu imaginei mais em 2 d
+01:08:06 pedro henrique sanvito andreazza corso: Esse esse com as cores
+01:08:06 Arthur Brandalise: É né mas
+01:08:42 Luis Fernando Boff: Ela tem asinhas retas, ela, sei lá, ela me agrada de alguma forma.
+01:08:43 pedro henrique sanvito andreazza corso: Segundo pequeno.
+01:08:49 Arthur Brandalise: Subconsciente?
+01:08:50 pedro henrique sanvito andreazza corso: Também estudou?
+01:08:51 Pedro Vitor Brunello Pagliarin: OK alguém daqui a
+01:08:51 Luis Fernando Boff: É, ela me traz uma sessão de ordem, OK, connect, não, não, né?
+01:08:56 Arthur Brandalise: OK, alguém daqui a al.
+01:09:01 Luis Fernando Boff: Não.
+01:09:01 Arthur Brandalise: Não. A equipe voltou, voltou a Gui, que estava falando, rapaz.
+01:09:04 Guilherme Horstmann: Sim, nem sei, mas Ah, esse aí olho, achei que esse olho esse olho fica mais interessante do que eles. Aquele em 3D eu acho que dá para pôr aqueles detalhes Na Na Íris, né que tu falou? Toshiba, os tracinho e tal, mas tirando aquele aspecto 3D.
+01:09:10 Arthur Brandalise: Ah, o olho verdade.
+01:09:11 pedro henrique sanvito andreazza corso: AI eu gosto e eu gostei dos detalhes, Hein? Re
+01:09:26 Guilherme Horstmann: Assim, acho que enfim, ele está mandando.
+01:09:28 Arthur Brandalise: Uhum.
+01:09:31 pedro henrique sanvito andreazza corso: Eu gostei dos detalhes no branco também sai dos um, sai do zoom, não. Os detalhes no ao redor ali no entorno.
+01:09:36 Arthur Brandalise: Mas o quê? Ah, isso aqui.
+01:09:42 Pedro Vitor Brunello Pagliarin: Eduardo, olho.
+01:09:44 Luis Fernando Boff: É legal mesmo.
+01:09:44 pedro henrique sanvito andreazza corso: Não aí bem bem pouco visível ele sai do zoom **** *** ***** Ah está louco ali Oh tem uma Vibe ali em volta isso circuitos
+01:09:54 Guilherme Horstmann: Parece um chip.
+01:09:56 Arthur Brandalise: Quito Aqui, tu diz, Ah, sim.
+01:09:59 pedro henrique sanvito andreazza corso: Isso circuitos circuitos, viu? É tão discreto que tu não vê. Temos do lado dos escrito é o circuito.
+01:09:59 Pedro Vitor Brunello Pagliarin: Aonde eu não estou vendo, não.
+01:10:05 Luis Fernando Boff: Trilho do componente seria trilho de placa mãe, trilho de placa.
+01:10:05 Arthur Brandalise: Lados escrito.
+01:10:11 Pedro Vitor Brunello Pagliarin: Ah, lá no fundo.
+01:10:13 pedro henrique sanvito andreazza corso: Isso, né? Tem que ter aqui bem na aí. Oh isso.
+01:10:13 Luis Fernando Boff: É?
+01:10:13 Guilherme Horstmann: É apagado?
+01:10:15 Arthur Brandalise: Ah, tá, isso aqui, as coisa anão, mas desde que você esse daqui não vai ficar num lobo, né? Isso daqui é um ou ele botou no background?
+01:10:19 pedro henrique sanvito andreazza corso: É porque É porque não? Mais bonito. Oh.
+01:10:26 Arthur Brandalise: Tecnológico?
+01:10:28 Pedro Vitor Brunello Pagliarin: É?
+01:10:30 pedro henrique sanvito andreazza corso: Muito boné.
+01:10:30 Pedro Vitor Brunello Pagliarin: Eu tenho por fazer o curso que eu fiz. Eu não gosto dessas ***** aí, meu. Quero que elas explodam meu, essas trilhas de *****, irmão.
+01:10:34 Arthur Brandalise: Nossa velho.
+01:10:37 pedro henrique sanvito andreazza corso: Ah, eu estou me mijando. Quero um também.
+01:10:38 Pedro Vitor Brunello Pagliarin: Obrigado, Costa.
+01:10:39 Arthur Brandalise: É tipo um pouco desse risquinho assim ó só que não está um degradê então estão 3
+01:10:44 pedro henrique sanvito andreazza corso: É também
+01:11:06 Guilherme Horstmann: É o olho indiano do.
+01:11:06 Luis Fernando Boff: X?
+01:11:07 Pedro Vitor Brunello Pagliarin: É isso aí.
+01:11:10 Arthur Brandalise: Esse aqui parece o videogame mesmo.
+01:11:13 Luis Fernando Boff: Exterior?
+01:11:15 Guilherme Horstmann: Daí não dá pra ver doidão Daí não dá pra ver doidão.
+01:11:18 Arthur Brandalise: Passo daqui 23 d.
+01:11:22 Pedro Vitor Brunello Pagliarin: Eu acho que da minha parte, era esses aí que eu tinha traz que eu tinha botado que eu tinha feito.
+01:11:27 Luis Fernando Boff: É, acho que os outros são viagens.
+01:11:32 Guilherme Horstmann: Vou ter que levantar um ponto que eu não falei até agora, que talvez seja relevante, mas eu vou falar e os erros, será que vai ser 11 nome atemporal por causa da e AI?
+01:11:32 Arthur Brandalise: Essa daqui.
+01:11:33 Pedro Vitor Brunello Pagliarin: A?
+01:11:34 Arthur Brandalise: Lá você. Eu acho que não.
+01:11:48 Luis Fernando Boff: Isso é uma coisa que a gente tem que ver também. A gente vai falar e AI?
+01:11:52 Guilherme Horstmann: Vamos, e aí?
+01:11:53 Arthur Brandalise: E os AI não usai, eu acho yousai.
+01:11:55 Luis Fernando Boff: Porque é difícil, quem ler não vai falar, use AI. Então tem que pensar isso, como é que a gente vai pronunciar?
+01:11:59 Arthur Brandalise: É, e os AI.
+01:12:02 Guilherme Horstmann: Yousse Youssef.
+01:12:02 Arthur Brandalise: Os. AI.
+01:12:02 Pedro Vitor Brunello Pagliarin: Usar aí.
+01:12:04 Arthur Brandalise: Design?
+01:12:05 Guilherme Horstmann: Os gordosi up.
+01:12:06 Pedro Vitor Brunello Pagliarin: Usae.
+01:12:07 Luis Fernando Boff: Re Relatos, vai lá vender pro.
+01:12:08 Arthur Brandalise: A ver com?
+01:12:10 Luis Fernando Boff: Pai do Gui, pai do Gui, vai lá, vai ver a marca. Como é que teu pai IA falar? Gui, eu acho que ele fazia ele falar. Use AI.
+01:12:11 Pedro Vitor Brunello Pagliarin: Usar?
+01:12:12 Arthur Brandalise: É, vamos ver.
+01:12:21 Guilherme Horstmann: Jus EIAI.
+01:12:26 Luis Fernando Boff: Quando é que ele IA surgir? Esse e como é que ele IA falar? Esse e.
+01:12:30 Guilherme Horstmann: Ah, tem que estar, tem que ser linguista, pai. Hoje em dia o mundo é moderno, né?
+01:12:31 Arthur Brandalise: É, falamos aí.
+01:12:34 Pedro Vitor Brunello Pagliarin: Como é que ficou Como é que ficou, Toshiba?
+01:12:37 Arthur Brandalise: Eles conseguem ouvir.
+01:12:40 Guilherme Horstmann: Não.
+01:12:41 Pedro Vitor Brunello Pagliarin: Não.
+01:12:42 Arthur Brandalise: A coloque aí ele vai falar, usa aí, usa. Aí vai ficar muito bom de usar, usa aí. Mas como a gente mas é Mas como a gente? Mas é isso que a gente tem a pesar. Mas como a gente mas é isso que a gente tem a pesar como a gente quer Como a gente quer fazer um negócio Como a gente quer fazer um negócio mundial, as pessoas vão falar usai, vocês podem botar em português ou inglês? Inglês fica, ó usai usar.
+01:12:58 Guilherme Horstmann: Ah, mas o Jack vai sair o uai, se eu usar aí, não vai ter u vai ter usae ou Youse AI.
+01:13:04 Arthur Brandalise: Usei.
+01:13:06 Luis Fernando Boff: Aqui, aqui no Brasil vai pegar como usar?
+01:13:11 Guilherme Horstmann: Vocês acham que vai ser o nome mais atemporal, assim que vai passar por por pelas intempéries, pela terceira guerra mundial e vai ficar de pé?
+01:13:21 Arthur Brandalise: Eu. Eu acho que sim, porque.
+01:13:23 Guilherme Horstmann: É só uma questão. Eu não sou contra o nome, eu gostei dele, mas é um ponto que a gente tem que depois para é.
+01:13:29 Luis Fernando Boff: Ah, qualquer coisa a gente se reinventa, meu.
+01:13:33 Pedro Vitor Brunello Pagliarin: Isso aí. Isso aí.
+01:13:33 Arthur Brandalise: Também?
+01:13:35 Guilherme Horstmann: Vamos nessa.
+01:13:37 Arthur Brandalise: Acho que é isso, não é?
+01:13:38 Pedro Vitor Brunello Pagliarin: Continua Toshiba e continua rapidão. Aí vamos, vamos tentar ser efetivos. Foi tudo.
+01:13:41 Arthur Brandalise: Não foi, mas já foi, mas já foi. Foi.
+01:13:45 Pedro Vitor Brunello Pagliarin: Vocês querem falar algum feedback dos vídeos também?
+01:13:45 Lucas : Pô, a gente vai ter que.
+01:13:50 Arthur Brandalise: Bom.
+01:13:51 Pedro Vitor Brunello Pagliarin: Querendo dar algum feedback de alguma coisa legal dos vídeos meu, que daí eu tenho coisa para trabalhar.
+01:13:56 Arthur Brandalise: E vídeo, gente.
+01:13:59 Pedro Vitor Brunello Pagliarin: Vai lá Vai lá no, no ice de novo, eles são curtinhos, meu volta lá tudo.
+01:14:01 Guilherme Horstmann: Escolha tudo ali.
+01:14:05 Arthur Brandalise: Ah, está, o que tu fez as animações.
+01:14:08 Pedro Vitor Brunello Pagliarin: Acho que está no início antes Acho que está no início, antes do antes dos logo. É jogo rápido, meu jogo bem rápido. O que o que cada coisa é legal de ter lá? Dá play bem rápido esse jogo aí, meu primeiro vídeo.
+01:14:15 Arthur Brandalise: Ah. Vocês viram vocês ouviram esse vídeo? O jeito que ele falou, Usain, que que natural. Você tem que ouvir. Eu queria. Não dá para compartilhar com o som, gente.
+01:14:33 Pedro Vitor Brunello Pagliarin: Tudo. Não tem o som está ligado.
+01:14:42 Arthur Brandalise: Como está a sharing?
+01:14:46 Pedro Vitor Brunello Pagliarin: O stop item de novo.
+01:14:46 Arthur Brandalise: * ****. Quer a incluir Sound? Ó, ouçam.
+01:14:57 Pedro Vitor Brunello Pagliarin: Você está me.
+01:15:02 Arthur Brandalise: O zi configurações iá a iTunes, entendeu?
+01:15:05 pedro henrique sanvito andreazza corso: Massa demais.
+01:15:10 Pedro Vitor Brunello Pagliarin: O que o que O que. O que que gostaram dessa parte desse vídeo aí? Porque eu tenho todos os prompts.
+01:15:15 Arthur Brandalise: A voz vós, voz do locutor, muito boa.
+01:15:15 Pedro Vitor Brunello Pagliarin: Meu feedback é assim, ó. Voz tá primeiro vídeo mostra o locutor, beleza próximo.
+01:15:19 pedro henrique sanvito andreazza corso: A voz top.
+01:15:20 Lucas : Isso.
+01:15:32 Arthur Brandalise: Gosto dessas conexões, mas fazer uma forma melhor assim, muita informação.
+01:15:36 Pedro Vitor Brunello Pagliarin: Que para.
+01:15:36 pedro henrique sanvito andreazza corso: Hugo.
+01:15:38 Pedro Vitor Brunello Pagliarin: Para você, está, está. Está meio alagado.
+01:15:39 pedro henrique sanvito andreazza corso: Muita informação. Não.
+01:15:45 Guilherme Horstmann: O vídeo fica um pouquinho travado a mim, pelo menos, mas é, concordo. Muita informação ainda se for para conectar alguma coisa, conecta 23 coisas, não?
+01:15:53 pedro henrique sanvito andreazza corso: É? Tinha que ser menos conexões. Exatamente, no máximo.
+01:16:00 Guilherme Horstmann: Rose, juntos.
+01:16:00 Pedro Vitor Brunello Pagliarin: Está show Monkey show.
+01:16:01 Arthur Brandalise: Mas conexão, conexão.
+01:16:04 Pedro Vitor Brunello Pagliarin: Bom feedback, beleza?
+01:16:08 Arthur Brandalise: Connect channels? Train with your data? Eu gosto do olho brincando.
+01:16:17 Guilherme Horstmann: Você faz.
+01:16:18 Arthur Brandalise: Eu gosto do olho, brincando, indo para um lado para o outro.
+01:16:22 Guilherme Horstmann: Dá pra ser o Mascote, né? O olho.
+01:16:23 Pedro Vitor Brunello Pagliarin: Legal está?
+01:16:25 Arthur Brandalise: Né? Olho você Mascote.
+01:16:26 Pedro Vitor Brunello Pagliarin: Certo? Aham, beleza, pode passar próximo.
+01:16:35 Arthur Brandalise: We help you master at.
+01:16:42 Pedro Vitor Brunello Pagliarin: Mais ou menos
+01:16:43 Arthur Brandalise: Eu não gosto da sorte.
+01:16:43 Pedro Vitor Brunello Pagliarin: Mais ou menos né
+01:16:44 Guilherme Horstmann: Então?
+01:16:44 pedro henrique sanvito andreazza corso: Gostei.
+01:16:44 Arthur Brandalise: Eu não gosto da vossa.
+01:16:46 Pedro Vitor Brunello Pagliarin: Mais ou menos, né?
+01:16:46 Guilherme Horstmann: Vamos pegar
+01:16:46 pedro henrique sanvito andreazza corso: Já vá, se não.
+01:16:46 Guilherme Horstmann: Vamos pegar só porque a mulher não é um machista.
+01:16:47 Pedro Vitor Brunello Pagliarin: Tá, next.
+01:16:51 Arthur Brandalise: Exploration with card.
+01:16:59 Pedro Vitor Brunello Pagliarin: Oh, isso eu gostei, meu, esse, esse, esse, esse background preto vindo com o, com o logo com um textozinho embaixo, está ligado.
+01:17:09 Arthur Brandalise: Sim. A gente tem que fazer também. Depois do nosso logotipo, o nosso slogan é já usar o slogan.
+01:17:14 Pedro Vitor Brunello Pagliarin: Frase slogan, uhum, está beleza próximo.
+01:17:28 pedro henrique sanvito andreazza corso: Contudo.
+01:17:29 Arthur Brandalise: Eu gosto dessa explicação, tipo quando, como a gente vai explicar o nosso, ó o Luiz Fernando Boff saindo como eu acho isso daí muito legal para gente começar a fazer explicação, tipo, Ah, como funciona o nosso assytem, o nosso ZAP e o ZAP, entendeu aí isso daí com.
+01:17:33 Pedro Vitor Brunello Pagliarin: Não.
+01:17:36 pedro henrique sanvito andreazza corso: Um.
+01:17:44 Arthur Brandalise: A gente vai explicar. Exato.
+01:17:44 Pedro Vitor Brunello Pagliarin: Tipo vídeo do produto.
+01:17:48 pedro henrique sanvito andreazza corso: Você.
+01:17:49 Guilherme Horstmann: É? Mas eu acho que fazendo só adeno, acho que quando a gente for apresentar um produto, apresentar um vídeo já com a fonética de como que a gente vai falar o nome da empresa, entendeu?
+01:17:56 Arthur Brandalise: Uhum. Exato, isso aí.
+01:18:02 Guilherme Horstmann: Já bota de nos nas redes, enfim, como a gente quer que as pessoas nos chamem, entendeu?
+01:18:09 Arthur Brandalise: Isso aí mesmo que é.
+01:18:11 Guilherme Horstmann: Aí a gente, a gente se precaver desses, dessas diversas interpretações. Enfim, Bora?
+01:18:12 Pedro Vitor Brunello Pagliarin: Pop.
+01:18:16 Arthur Brandalise: Sim, mas ô, Gui, mas isso daí sempre vai existir. Quantas pessoas aí no Brasil falam Apple?
+01:18:17 Pedro Vitor Brunello Pagliarin: Feito.
+01:18:22 Guilherme Horstmann: Coca-Cola foi cacoila.
+01:18:23 pedro henrique sanvito andreazza corso: Não Não.
+01:18:24 Arthur Brandalise: Ah, pô, não fala Apple?
+01:18:25 pedro henrique sanvito andreazza corso: Vocês estão falando de um país que chama o WhatsApp de ZAP ZAP?
+01:18:27 Guilherme Horstmann: Não, com certeza, mas eu acho que a questão é. Principais clientes. Assim, só para a gente ter uma identidade unânime.
+01:18:29 Arthur Brandalise: É, não é? Sim.
+01:18:33 Luis Fernando Boff: Eu quero saber quem que vai botar a cara empresa?
+01:18:38 Guilherme Horstmann: Can eu pensei
+01:18:40 Pedro Vitor Brunello Pagliarin: Can, eu pensei num comercial meu que mostrasse uma as regiões e com inteligência artificial, todo mundo falando um pouco, está ligado?
+01:18:42 Guilherme Horstmann: Ah. As regiões do Brasil?
+01:18:51 Arthur Brandalise: Pode ser?
+01:18:52 Pedro Vitor Brunello Pagliarin: Um dia eu vou. Eu vou fazer um vídeo, vou mostrar para vocês, meu, tenho 11 ideia de vídeo para fazer e eu sigo um cara que que possibilita fazer uns vídeos bem louco meu, mas isso por outro momento. Vamos lá.
+01:18:53 Arthur Brandalise: Não é?
+01:19:04 pedro henrique sanvito andreazza corso: EOO, Toshiba sem camisa não é pensar.
+01:19:08 Arthur Brandalise: Tá? Viagem?
+01:19:13 Pedro Vitor Brunello Pagliarin: Agora, eu até gostei desse nesse formato de olho assim, meio que diferente, ó, isso aí poderia ser um olho também. Agora eu
+01:19:16 pedro henrique sanvito andreazza corso: Olá.
+01:19:21 Guilherme Horstmann: De Avatar?
+01:19:24 Pedro Vitor Brunello Pagliarin: Então
+01:19:24 Luis Fernando Boff: Ah, eu não curti meu.
+01:19:24 Pedro Vitor Brunello Pagliarin: Então esse, né?
+01:19:27 pedro henrique sanvito andreazza corso: Também não achei.
+01:19:28 Guilherme Horstmann: Eu achei alienígena, acho que dá medo. É? Pareceu um bicho, bicho.
+01:19:31 Luis Fernando Boff: É?
+01:19:31 Pedro Vitor Brunello Pagliarin: Então Então esse, né, Oo outro, o outro, o outro volta um vídeo meu está me estava me referindo ao outro volta, um vídeo, aí ó, o finalzinho dele.
+01:19:35 Luis Fernando Boff: Eu também achei ele meio Dark.
+01:19:42 Guilherme Horstmann: Esse é o novaski do monstros SA.
+01:19:43 Pedro Vitor Brunello Pagliarin: Aí ó, parece uma flor, parece uma flor a um olho. Ao mesmo tempo, está ligado?
+01:19:46 pedro henrique sanvito andreazza corso: Enfim.
+01:19:50 Arthur Brandalise: Sei, Hum.
+01:19:52 Guilherme Horstmann: Legal. A gente pode fazer umas cotinhas se eu covar os que com flor?
+01:19:56 Arthur Brandalise: Ay is a too we help you masterrest We help you masterd. Eu também gostei dessa é a avozinha do tio.
+01:20:03 pedro henrique sanvito andreazza corso: Essa vozinha é top, né?
+01:20:06 Pedro Vitor Brunello Pagliarin: É o filho Márcio. Ele então.
+01:20:07 pedro henrique sanvito andreazza corso: Voz de montanha-russa da Disney.
+01:20:09 Pedro Vitor Brunello Pagliarin: AAA, fala dessa, desse aí foi interessante, né?
+01:20:13 Arthur Brandalise: É? Mas Oo, cara falando, eu acho que ele já pode ser nosso, o vamos contratar ele.
+01:20:20 pedro henrique sanvito andreazza corso: É a voz da empresa.
+01:20:25 Guilherme Horstmann: Esse é o Mascote de ferv.
+01:20:29 Pedro Vitor Brunello Pagliarin: É o primeiro deles, pelo menos, talvez.
+01:20:32 Guilherme Horstmann: Eu
+01:20:32 Pedro Vitor Brunello Pagliarin: Tá esse aí não teve
+01:20:32 Guilherme Horstmann: Eu acho legal a ideia de ter umas fotinho.
+01:20:33 Pedro Vitor Brunello Pagliarin: Tá? Esse aí não teve mudo.
+01:20:36 Arthur Brandalise: Ah, 30.
+01:20:36 Guilherme Horstmann: Aí ele pode ser o cara, ser o bichinho que vai explicando as coisas nos vídeos, entendeu?
+01:20:39 pedro henrique sanvito andreazza corso: Volume 9.
+01:20:40 Arthur Brandalise: É exato, ele vai ser o nosso.
+01:20:43 Pedro Vitor Brunello Pagliarin: Gonext.
+01:20:45 Arthur Brandalise: Ele vai ser OA gente, vai ter que dar o nome depois para ele.
+01:20:54 Luis Fernando Boff: Dennis é eu também gostei da entrada
+01:20:55 pedro henrique sanvito andreazza corso: Gostei da entrada.
+01:20:55 Pedro Vitor Brunello Pagliarin: Vai ser tudo.
+01:20:56 Arthur Brandalise: Um deles, tênis pimentinho.
+01:20:58 Pedro Vitor Brunello Pagliarin: Dennis, é, eu também gostei da entrada e se se botasse o nosso, as nossas cor correta e o texto correto também, isso poderia ser tipo, No No final do, no final da apresentação da empresa do comercial, seja pum, vem isso aí, mais ou menos.
+01:21:04 Arthur Brandalise: Sim.
+01:21:04 pedro henrique sanvito andreazza corso: IA ficar top?
+01:21:10 Arthur Brandalise: Hum-hum.
+01:21:16 Guilherme Horstmann: Essa achei muito Microsoft, sei lá.
+01:21:19 Arthur Brandalise: Inc.
+01:21:20 pedro henrique sanvito andreazza corso: Muita PowerPoint.
+01:21:21 Arthur Brandalise: Institucional?
+01:21:24 Pedro Vitor Brunello Pagliarin: OK, nexo, então.
+01:21:24 Guilherme Horstmann: Acho muito corporativo. Essa eu achei bala.
+01:21:29 Arthur Brandalise: Eu. Eu gosto do barulhinho aqui. Ohh, é a gente tem que pensar muito nisso. Isso daí é branday, tá? O que, o que você lembra quando eu falo?
+01:21:30 pedro henrique sanvito andreazza corso: Gostei do barulhinho. Eu também barulhinho top. Mais?
+01:21:42 Arthur Brandalise: Entendeu? É isso que a gente tem que pensar também.
+01:21:43 pedro henrique sanvito andreazza corso: E é fácil de novo, é para papar.
+01:21:45 Pedro Vitor Brunello Pagliarin: Você dá WhatsApp?
+01:21:45 Luis Fernando Boff: Ah.
+01:21:48 Arthur Brandalise: Exato. Que que é isso?
+01:21:51 Guilherme Horstmann: Sumley.
+01:21:52 Arthur Brandalise: Não sabe aí, McDonald's.
+01:21:55 Guilherme Horstmann: Sim.
+01:21:56 pedro henrique sanvito andreazza corso: É? Eu falei para PA, PA.
+01:21:58 Guilherme Horstmann: Black
+01:21:58 Pedro Vitor Brunello Pagliarin: Está legal, legal.
+01:21:58 Guilherme Horstmann: Black cumbly.
+01:22:00 Arthur Brandalise: E eu gosto desse.
+01:22:01 Pedro Vitor Brunello Pagliarin: Anexo pro last one.
+01:22:07 Guilherme Horstmann: Tá aí, OPPT demais. Não.
+01:22:10 pedro henrique sanvito andreazza corso: Vestido curto.
+01:22:11 Arthur Brandalise: Festa do 4.
+01:22:12 Guilherme Horstmann: Acho que o outro eu votaria no anterior a tentar explorar essa ideia da essa luz atrás.
+01:22:20 Pedro Vitor Brunello Pagliarin: O flash do.
+01:22:20 Luis Fernando Boff: Muito.
+01:22:22 Guilherme Horstmann: Um traz Um traz um efeito de a gente levando tipo a dominando os caminhos, sei lá.
+01:22:30 pedro henrique sanvito andreazza corso: Eu gostei demais desse barulho.
+01:22:31 Arthur Brandalise: Iluminando os caminho e 1 e 1 fumacinha, né?
+01:22:33 Pedro Vitor Brunello Pagliarin: Agora, o.
+01:22:35 Arthur Brandalise: E a fumacinha sofre os guri que entende do negócio lá, lá passando, ó, a fumacinha lá.
+01:22:42 pedro henrique sanvito andreazza corso: Você é muito lisbofe, Hein?
+01:22:44 Pedro Vitor Brunello Pagliarin: Agora, o último feedback que eu quero de vocês é o último arquivo que que nós temos ali, que eu botei agora, eu, eu botei agora agora o arquivo.
+01:22:55 Guilherme Horstmann: Agora morreu.
+01:22:59 Pedro Vitor Brunello Pagliarin: Eu t Eu tentei criar esse arquivo com base nas nas alterações que a gente fez. Vamos ver se, ué, mas não ficou igual meu.
+01:23:06 Arthur Brandalise: Não ficou? Ah, tu botou, tu esqueceu tu, vamos colocar o pontinho.
+01:23:11 Pedro Vitor Brunello Pagliarin: Ano. Não, mas isso aí, posso colocar assim, ó.
+01:23:15 pedro henrique sanvito andreazza corso: Obrigatório?
+01:23:19 Guilherme Horstmann: Pontinho, eu achei massa AA única coisa que eu não negocio é o ponto.
+01:23:22 Pedro Vitor Brunello Pagliarin: Claro, espera aí, deixa eu arrumar aqui.
+01:23:29 pedro henrique sanvito andreazza corso: Mal é algo que alguém que trabalha na prefeitura não gosta, é pontana.
+01:23:29 Arthur Brandalise: João Mendes.
+01:23:30 Pedro Vitor Brunello Pagliarin: Ponto.
+01:23:32 Luis Fernando Boff: Eu Eu acho que o it tinha que ser em formato de.
+01:23:36 Arthur Brandalise: Ah, pronto, vamos, vamos tomar no **, o tem que ser em formato de uma bunda.
+01:23:41 Pedro Vitor Brunello Pagliarin: Espera.
+01:23:42 Guilherme Horstmann: Ou ir em formato de ******?
+01:23:42 pedro henrique sanvito andreazza corso: Um óleo fechando.
+01:23:44 Luis Fernando Boff: Esqueci o nome eucalipto.
+01:23:46 Arthur Brandalise: O IVA, eu vá eucaliptei a história entre nós, Hein? Primeiro negócio que a gente começou a fumar.
+01:23:54 pedro henrique sanvito andreazza corso: Carlito é top.
+01:23:56 Guilherme Horstmann: Lá em formato de barraca.
+01:24:03 Arthur Brandalise: E o formato de piscina?
+01:24:06 Pedro Vitor Brunello Pagliarin: Legal.
+01:24:07 Luis Fernando Boff: *******, velho, se tivesse o as de espada ali.
+01:24:07 pedro henrique sanvito andreazza corso: OPA.
+01:24:12 Arthur Brandalise: Vá. Conceito, ideia é isso aí, ó. A gente vai criar TV isso aí mesmo.
+01:24:18 pedro henrique sanvito andreazza corso: Sim.
+01:24:20 Pedro Vitor Brunello Pagliarin: Vamos ver se está, se as se, as os textos são correto, vai descendo aí.
+01:24:26 pedro henrique sanvito andreazza corso: Estudos.
+01:24:29 Pedro Vitor Brunello Pagliarin: Descendo, depois quero ver se o se se pegou a se pegou a.
+01:24:31 Arthur Brandalise: A alma, vou escolher.
+01:24:35 Luis Fernando Boff: Tu já tu já Tu já. Tu já mudou o prompt do tu já mudou o prompt desses teus HTML, né? Pra usar cards e 2 colunas ficou bem melhor meu nossa, outra vida, meu.
+01:24:41 Pedro Vitor Brunello Pagliarin: Ah, já mudei.
+01:24:50 Arthur Brandalise: Aham, ficou bem bonito, ficou o top. Pop velho.
+01:25:00 Pedro Vitor Brunello Pagliarin: Certo, está certo para isso aí.
+01:25:00 Arthur Brandalise: CTA em destaque, ó, meteu o Telmo, ó passa, faz uma animaçãozinha, ***** falei, tá bom? Elementos principais, ótimo cotabilológico black, uso fundo, estrutura, navegação por base. É tipo a nossa camisa.
+01:25:00 pedro henrique sanvito andreazza corso: Tá? As uma gracinha.
+01:25:11 Arthur Brandalise: Vai ser esse preto, não vai ser um preto qualquer, vai ser Oo ery Silva neutrometário com o texto secundário, uso com moderação, confiança e tecnologia, elementos de apoio, cuidado perto do verde. Isso daí eu combinamos também com o preto Gold use destaque especial, uso com cuidado o. Gold também a gente usaria, talvez por uns botões no site quanto passa na frente do botão. Assim ele muda de cor. Seria talvez ele combinação principal mente black, gosto bonito, Hein? Gosto também desse ficou legal.
+01:25:38 pedro henrique sanvito andreazza corso: Pode Pode parar.
+01:25:45 Arthur Brandalise: Entendeu, tipo, tipo assim, ó as quando a gente.
+01:25:46 Guilherme Horstmann: E os e a hoje é o vip, pacote ultra premium.
+01:25:52 Arthur Brandalise: Exato, bode, bem visto.
+01:25:52 pedro henrique sanvito andreazza corso: Exatamente.
+01:25:53 Luis Fernando Boff: Aquele black blue ali ficou legal, Hein?
+01:25:57 Arthur Brandalise: LED bloton, muito legal as combinações.
+01:25:58 pedro henrique sanvito andreazza corso: Gostei.
+01:26:03 Guilherme Horstmann: A gente ficou legal.
+01:26:03 Arthur Brandalise: Desde quando a gente tiver nosso pacote, tipo o pacote do. Do Do do yousap tipo fazia Ah, tu quer mais caracteres? É o premium, tu quer o mais? O mais selecionado vai ser o do meio tu quer Oo? Gratuito? Por exemplo, esse aqui muito bom.
+01:26:21 Guilherme Horstmann: Esse ment, gol de que? Só se eu levanta um pouco. Acho que esse ment Gold IA ficar legal na no tema light.
+01:26:31 Pedro Vitor Brunello Pagliarin: Que seria o tema light.
+01:26:32 Arthur Brandalise: Com all minit Gold. Ah.
+01:26:32 Guilherme Horstmann: É isso aí, zero.
+01:26:33 pedro henrique sanvito andreazza corso: Mike Gold, a alcoólica.
+01:26:36 Guilherme Horstmann: Em fundos brancos, talvez.
+01:26:41 Arthur Brandalise: Legal, Hein, do site?
+01:26:42 pedro henrique sanvito andreazza corso: 2.
+01:26:46 Guilherme Horstmann: Falta um ponto.
+01:26:48 Arthur Brandalise: Falta o ponto, mas ao começar aí, que tipo, ó, a gente muda de cor quando a gente passa por aqui também, pô, já tá ficando massa, Hein? Se traduzir o Mascote.
+01:26:48 Pedro Vitor Brunello Pagliarin: Ponto onde?
+01:26:57 pedro henrique sanvito andreazza corso: Mas.
+01:26:58 Guilherme Horstmann: É, eu vou te mandar o perfil de um designer meu que ele fala muito sobre experiência do usuário em sites.
+01:27:05 Pedro Vitor Brunello Pagliarin: Boa.
+01:27:05 Guilherme Horstmann: Cara, é bom, ele tem vários. Eu vou ver os os materiais que ele tem para a gente não ratear no. Na criação do site não ficar.
+01:27:15 Arthur Brandalise: Ah, desculpa, PV. Faltou um negócio aqui, tá? A gente vai, a gente vai usar. Cair de lines cadê os teus corrido? É nos textos corridos, parágrafo, a gente vai avisar o pontos regular e AI, cadê? Era o Monte serrar que eu Era o Monte serrar que eu tinha colocado floc. Mas a gente vai usar uma outra tipografia para o uso dos texto. Tu sabe qual tipografias são essas, mas para mim está legal. Eu acho que é a Monte serraice daqui.
+01:27:55 Pedro Vitor Brunello Pagliarin: Essa em específico, não. Eu quero ver se depois aparece as que tu comentou, que é lá Oo Ezio e a outra vamos, vamos, vamos terminar de ver o material. Aí eu gerei. Agora eu estou conferindo a primeira vez com vocês. Para ser bem sincero, Mano.
+01:27:55 pedro henrique sanvito andreazza corso: Hum-hum.
+01:28:04 Arthur Brandalise: Está? Legal, velho, gostei muito desse dessas parte muito bom.
+01:28:13 pedro henrique sanvito andreazza corso: Ninguém sabe a aparência que filho dela vai ter. Ninguém sabe a aparência que filho dela faz
+01:28:18 Arthur Brandalise: É o gradiente ficou legal. Ah, que bom.
+01:28:19 pedro henrique sanvito andreazza corso: Em concurso de beleza ganharam João de arroz.
+01:28:21 Pedro Vitor Brunello Pagliarin: Tipo Tipo esse material a gente vai por isso eu acho que eu quero.
+01:28:25 pedro henrique sanvito andreazza corso: Procurar novo problema.
+01:28:25 Pedro Vitor Brunello Pagliarin: Por isso que eu quero validar os feedbacks, esse material que a gente está vendo vai ser utilizado para fazer o nosso site e o nosso site vai ser feito através de um tablet que o Luiz estava conversando, então é importante estar alinhadinho essas coisas agora, entendeu?
+01:28:40 Arthur Brandalise: Muito bom, é isso que eu quero.
+01:28:41 Luis Fernando Boff: Esse aí é que tu fez, é o template do do cliente que vai apresentar para o cliente, teoricamente, sim também, tipo, não.
+01:28:47 Arthur Brandalise: Exato, não?
+01:28:47 Pedro Vitor Brunello Pagliarin: Esse seria tipo, através de uma reunião com o cliente, geraria esse cara aí para depois alimentar para o template universal.
+01:28:49 pedro henrique sanvito andreazza corso: Desculpe. 4.
+01:28:57 Arthur Brandalise: Ele, daqui a um trampo de um designer, Luís. Ele, daqui a um trampo de de uma marca, se eu, se alguém quiser, tipo, criar uma marca com nós, a gente também pode criar. Usando isso, a gente já vira 11 empresa de uma digital, sabe por quê? Várias várias empresas, tipo o primo rico, né? O primo lá, os caras começaram falando de investimento. O cara hoje em dia vem de curso de marketing digital, porque os cara pegaram a ideia sa.
+01:29:11 Guilherme Horstmann: É? Tem que cuidar para. Não.
+01:29:25 Arthur Brandalise: Em construir as pessoas, cara, eu quero ter uma marca. Eu quero saber como me pôr nas redes sociais. Os caras vendem a expertise desses que foram evoluindo com o tempo, tá ligado?
+01:29:37 Guilherme Horstmann: É, tem que cuidar só para não ser charlatão.
+01:29:38 Pedro Vitor Brunello Pagliarin: Pode escrever?
+01:29:40 Guilherme Horstmann: Que esse cara aí me **** a gente. Acho que, como especialistas, especialistas em várias áreas, aqui a gente tem que não, não desmerecendo a ideia do toshibo. Acho que isso vai acabar acontecendo em algum momento.
+01:29:40 Arthur Brandalise: Ah, sim. Ah, não, mas.
+01:29:46 Pedro Vitor Brunello Pagliarin: Ah, isso aí, Gui, concordo.
+01:29:56 Guilherme Horstmann: A gente vai para uma área ali que a gente não sabe muito, mas do mundo aqui é, enfim, especialista em alguma área e tal. E acho que só tentar não se jogar muito assim com propriedade, sabe?
+01:30:09 Arthur Brandalise: Sim, sim, não, claro, claro.
+01:30:10 Pedro Vitor Brunello Pagliarin: Concordo aqui, concordo plenamente, Mano. Concordo aqui con
+01:30:14 Arthur Brandalise: Gostei da Inter, a Inter está muito colocada.
+01:30:15 Pedro Vitor Brunello Pagliarin: Vou fazer tudo pelo.
+01:30:20 Arthur Brandalise: É? Aham, legal, só assim também, ó.
+01:30:24 pedro henrique sanvito andreazza corso: Olha, ficou melhor ainda se o que tinha no grupo.
+01:30:33 Pedro Vitor Brunello Pagliarin: O ponto ali, quadradinho também, né?
+01:30:36 Arthur Brandalise: É, e eu e eu usaria o degradê. Aqui eu usaria o interface, em vez de 2 cores que nem eu tinha feito aqui.
+01:30:37 pedro henrique sanvito andreazza corso: Tio inflegra. Hilton?
+01:30:42 Pedro Vitor Brunello Pagliarin: Então, No No 5 pontos, sistema de logo, falta de favor. O tipo primário entre parentes. Wordmark fazer esse USAI com gradiente.
+01:30:58 pedro henrique sanvito andreazza corso: Que bom.
+01:31:02 Arthur Brandalise: Legal.
+01:31:03 pedro henrique sanvito andreazza corso: Só que.
+01:31:06 Arthur Brandalise: Com pétalas, só faltou as pétalas.
+01:31:07 pedro henrique sanvito andreazza corso: Bom.
+01:31:10 Pedro Vitor Brunello Pagliarin: É, será que ele fez aí?
+01:31:14 Arthur Brandalise: Ah, tipo isso daqui, ó. Aham. O olho e a dente pode usar de várias coisas, né? Só o símbolo, o símbolo e o nome, isso aí mesmo.
+01:31:18 pedro henrique sanvito andreazza corso: Vai res
+01:31:27 Luis Fernando Boff: Acho que Acho que a galera tá perdendo foco já meu.
+01:31:31 Arthur Brandalise: Quem é que está?
+01:31:31 Guilherme Horstmann: Estou procurando um negócio.
+01:31:32 Pedro Vitor Brunello Pagliarin: Deve. Então já estamos finalizando aí.
+01:31:35 Arthur Brandalise: Sim.
+01:31:35 Pedro Vitor Brunello Pagliarin: Vamos só só conferir esse documento e ver os feedbacks que daí a gente trabalha em cima disso, né?
+01:31:41 Arthur Brandalise: Eu gosto, eu gosto disso. PV me dá mais ideia, mas daí colocar esse bichinho aqui, ó, aqui.
+01:31:46 pedro henrique sanvito andreazza corso: Ficou bom, OK? Assinatura horizontal.
+01:31:48 Pedro Vitor Brunello Pagliarin: Sábado, botar o símbolo.
+01:31:55 Arthur Brandalise: Versão branco versão preto é que daí o branco talvez tentar fazer o Hugo silver, né? Que a gente tem 2 de branco?
+01:32:04 Pedro Vitor Brunello Pagliarin: Boa, bom feedback.
+01:32:06 Arthur Brandalise: Os incorretos a marca não deve alterar as cores sem não fazer a travesti lá fazer as coisas oficiais não traz gordos que a tragédia sim, área de proteção, mantenha sempre área livre. Carta, explicando aqui né? Como a gente tem que usar? Uhum. Personalidade Personalidade, nossa casa não arrogante, partilha conhecimento. Isso aí precisa não robótico, comunicação, eficiência, boa paridade pessoal dele. Tirativo não é um caótico, inspira novas ideias, possibilidade presente de outra forma, espiritualiza não estou lá. Possui um sentimento de humor sutil, inteligente, que sou um público tecnologia muito experiente, tá?
+01:32:50 Arthur Brandalise: Ficou no benefício move prisão inteligente. OK? Aplicação.
+01:33:01 pedro henrique sanvito andreazza corso: Ficou bom, é preto, Hein?
+01:33:04 Pedro Vitor Brunello Pagliarin: Bom, também achei esse esse contato aí, né? No pé do rodapé dos e-mails, talvez, sei lá.
+01:33:06 pedro henrique sanvito andreazza corso: Ficou preto, ama, tudo bem. Oi.
+01:33:10 Arthur Brandalise: Sim, assinatura a. Só faltou o nosso dei Oo du ali. Vocês gostaram? Todo mundo gostou daqui do bichinho aqui.
+01:33:19 pedro henrique sanvito andreazza corso: Filme bonita, presentará assim.
+01:33:26 Guilherme Horstmann: Ou menos está está melhorando, Hum, melhorando.
+01:33:27 pedro henrique sanvito andreazza corso: Eu não ouvi.
+01:33:28 Pedro Vitor Brunello Pagliarin: Eu acho que dá para melhorar ele também.
+01:33:28 Arthur Brandalise: Aqui não? Ah, SIM, 1 fator.
+01:33:32 Pedro Vitor Brunello Pagliarin: Dá para melhorar
+01:33:33 pedro henrique sanvito andreazza corso: Está melhor do que?
+01:33:33 Pedro Vitor Brunello Pagliarin: Dá para melhorar esse aqui mesmo assim?
+01:33:35 Arthur Brandalise: Con Contagem de universal, isso daqui é não é, não é ponto de Instagram, não tem nada a ver isso daqui.
+01:33:42 Guilherme Horstmann: Mas eu acho que isso aí é um código.
+01:33:43 Pedro Vitor Brunello Pagliarin: É?
+01:33:43 Arthur Brandalise: Fats.
+01:33:46 Guilherme Horstmann: Ela tá numa ação, não?
+01:33:47 Pedro Vitor Brunello Pagliarin: Sei lá que que ele fez aí.
+01:33:50 Arthur Brandalise: Isso faz o ponto do Instagram? Talvez já fazer um post com falar explicando, tipo, o primeiro post da empresa, né? Com o logo explicando de onde vem a ideia tudo mais.
+01:34:00 pedro henrique sanvito andreazza corso: Recheie.
+01:34:11 Arthur Brandalise: O hino da marca, que também tinha visto esse que era o hino da marca. Muito bom criar o hino da marca.
+01:34:16 pedro henrique sanvito andreazza corso: Adelino, adequado, está bom.
+01:34:20 Guilherme Horstmann: ADDUIADTU.
+01:34:23 Pedro Vitor Brunello Pagliarin: Hum-hum.
+01:34:25 Guilherme Horstmann: Vida esquecerem esse.
+01:34:27 Arthur Brandalise: A paleta de novo não precisa, pode tirar. Já tá falando de novo, repetiu.
+01:34:34 Pedro Vitor Brunello Pagliarin: Que tinha, né? Mas aí, o que que você eu acho que para teste de nós, para nós, criar o site, essa identidade visual, está OK, está bacana, não é?
+01:34:35 Arthur Brandalise: É essa parte que está repetindo?
+01:34:49 Pedro Vitor Brunello Pagliarin: A?
+01:34:51 Arthur Brandalise: That it?
+01:34:53 Pedro Vitor Brunello Pagliarin: 7 For My parte parte que eu posso finalizar aqui é a transcrição, né?
+01:34:56 Lucas : Joga ou joga lá no grupo? A ideia ali meu e bota para o pessoal lá, pelo menos dê uma olhada, um feedback, alguma coisa para todo mundo ver o Mano.
+01:35:04 Guilherme Horstmann: Que é *****.
+01:35:06 Arthur Brandalise: Não. Agora nós que mandamos nossa porta.
+01:35:10 Guilherme Horstmann: Ali, já meu.
+01:35:10 Pedro Vitor Brunello Pagliarin: É? Eu acho que o pessoal não vai nem olhar, tá ligado meu? É isso que é o meu teto, meu. Se eu, se eu acho.
+01:35:17 Guilherme Horstmann: Não importa TV, eu acho que.
+01:35:18 Pedro Vitor Brunello Pagliarin: Valeu. Eu acho que é isso. Bom, bom.
+01:35:23 Arthur Brandalise: Pelo espelho?
+01:35:26 Luis Fernando Boff: É sacando velho, não quer participar também? Bah. Por?
+01:35:30 Guilherme Horstmann: Luís já Luís já é mais política do.
+01:35:31 pedro henrique sanvito andreazza corso: A Boa.
+01:35:35 Pedro Vitor Brunello Pagliarin: Eu. Eu. Eu penso a longo prazo, eu sei que a gente está, se a gente está ralando mais, eu, cara, é que é uma mentalidade tipo, já já, já botei tanto a mão em cima disso, meu que sei lá, eu estou ligando *******, porque eu vejo que a. Longo prazo, são pessoas que podem contribuir, entendeu? Eu acho que muitas delas estão momentos da vida que realmente não podem. Por exemplo, eu sei que o rock é um cara que ele não está não botando a mão pelo facto de não querer, eSIM porque a vida dele no momento não está permitindo isso. Pode ser quantas pessoas também e tipo cara, isso vai refletir no quanto as pesso. Vão ganhar na questão monetária.
+01:36:14 Pedro Vitor Brunello Pagliarin: Mas eu quero deixar isso as portas abertas para elas, porque eu acho que elas têm a agregar e se elas quisesse sair elas saem, entendeu? A porta aberta para sair, saiu. É isso aí, vou pedir para elas darem opinião, dêem opiniões. Sei que não vão falar nada, mas. É isso aí meu acho que a gente está a gente decide as parada por nós e vamos tocando e a partir do momento que a gente vê que a gente está
+  

@@ -1,0 +1,18 @@
+directories:
+  output: release
+  buildResources: build
+appId: com.gemini.whisper
+productName: Gemini Whisper
+files:
+  - filter:
+      - dist/**/*
+      - electron/**/*
+      - package.json
+win:
+  target: nsis
+  forceCodeSigning: false
+  sign: null
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+electronVersion: 34.5.8
