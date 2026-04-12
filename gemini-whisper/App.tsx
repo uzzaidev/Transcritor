@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Sparkles, RefreshCw, Mic, Globe, Play, Loader2, X, FileText, Settings, Video, Download } from 'lucide-react';
 import FileUpload from './components/FileUpload';
 import TranscriptionView from './components/TranscriptionView';
@@ -8,8 +8,8 @@ import FileQueue from './components/FileQueue';
 import SpeakerIdentificationModal from './components/SpeakerIdentificationModal';
 import AtaGenerationModal from './components/AtaGenerationModal';
 import { discoverSpeakers, transcribeMedia } from './services/transcriptionService';
-import { runAtaPipeline } from './services/ataPipelineService';
-import { ApiKeys, AtaPipelineDefaults, MediaFile, ProcessStatus, QueueItem, SPEAKER_COLORS, SpeakerDiscoveryResult, SpeakerProfile, TranscriptionProvider, TranscriptionResult } from './types';
+import { preflightAtaPipeline, reprocessLatestAtaPipeline, runAtaPipeline } from './services/ataPipelineService';
+import { ApiKeys, AtaPipelineDefaults, AtaPipelineExecutionResult, AtaProjectProfile, MediaFile, ProcessStatus, QueueItem, SPEAKER_COLORS, SpeakerDiscoveryResult, SpeakerProfile, TranscriptionProvider, TranscriptionResult } from './types';
 
 import { calculateOpenAICost, formatCurrency } from './utils/costCalculator';
 import AudioRecorder from './components/AudioRecorder';
@@ -32,6 +32,23 @@ const parseCommaSeparatedValues = (value: string): string[] =>
         .split(/[\n,;]+/)
         .map((item) => item.trim())
         .filter(Boolean);
+
+const normalizeProjectKey = (value: string): string => value.trim().toLowerCase();
+
+const findProjectProfile = (profiles: AtaProjectProfile[], projeto: string): AtaProjectProfile | undefined =>
+    profiles.find((profile) => normalizeProjectKey(profile.projeto) === normalizeProjectKey(projeto));
+
+const canAutoGenerateAta = (defaults: AtaPipelineDefaults): boolean => {
+    const matchedProfile = findProjectProfile(defaults.projectProfiles, defaults.projeto);
+    const sprint = matchedProfile?.sprint || defaults.sprint;
+    const destinatarios = matchedProfile?.destinatarios || defaults.destinatarios;
+    return Boolean(
+        defaults.autoGenerateAta &&
+        defaults.projeto.trim() &&
+        sprint.trim() &&
+        destinatarios.trim()
+    );
+};
 
 const App: React.FC = () => {
     const [viewMode, setViewMode] = useState<ViewMode>('files');
@@ -67,6 +84,15 @@ const App: React.FC = () => {
     const [ataModalItemId, setAtaModalItemId] = useState<string | null>(null);
     const [ataPipelineError, setAtaPipelineError] = useState<string | null>(null);
     const [isRunningAtaPipeline, setIsRunningAtaPipeline] = useState(false);
+    const [pipelineOpsState, setPipelineOpsState] = useState<{
+        running: boolean;
+        message: string | null;
+        result: AtaPipelineExecutionResult | null;
+    }>({
+        running: false,
+        message: null,
+        result: null,
+    });
 
     // Initialize Provider from localStorage or default
     const [provider, setProvider] = useState<TranscriptionProvider>(() => {
@@ -104,7 +130,23 @@ const App: React.FC = () => {
         const saved = localStorage.getItem('gw_ataDefaults');
         if (saved) {
             try {
-                return JSON.parse(saved);
+                const parsed = JSON.parse(saved);
+                return {
+                    projeto: parsed.projeto || 'GERAL',
+                    sprint: parsed.sprint || getCurrentSprintLabel(),
+                    participantes: parsed.participantes || '',
+                    destinatarios: parsed.destinatarios || '',
+                    autoGenerateAta: Boolean(parsed.autoGenerateAta),
+                    projectProfiles: Array.isArray(parsed.projectProfiles)
+                        ? parsed.projectProfiles.map((profile: AtaProjectProfile) => ({
+                            id: profile.id || Math.random().toString(36).slice(2, 10),
+                            projeto: profile.projeto || '',
+                            sprint: profile.sprint || '',
+                            participantes: profile.participantes || '',
+                            destinatarios: profile.destinatarios || '',
+                        }))
+                        : [],
+                };
             } catch (e) {
                 console.error("Failed to parse ATA defaults", e);
             }
@@ -114,6 +156,8 @@ const App: React.FC = () => {
             sprint: getCurrentSprintLabel(),
             participantes: '',
             destinatarios: '',
+            autoGenerateAta: false,
+            projectProfiles: [],
         };
     });
 
@@ -394,6 +438,7 @@ const App: React.FC = () => {
                         ...item,
                         status: ProcessStatus.COMPLETED,
                         result: resultData,
+                        processedMode: mode,
                         progressMessage: "Done",
                         discoveryResult: discoveryResult || item.discoveryResult,
                         speakerNames: speakerNames || item.speakerNames,
@@ -477,6 +522,7 @@ const App: React.FC = () => {
                         ...item,
                         status: ProcessStatus.COMPLETED,
                         result,
+                        processedMode: 'transcribe',
                         discoveryResult: discovery,
                         speakerNames: normalizedNames,
                         awaitingDiarization: false,
@@ -521,39 +567,52 @@ const App: React.FC = () => {
         setAtaModalItemId(itemId);
     };
 
-    const handleAtaPipelineSubmit = async (payload: {
-        projeto: string;
-        sprint: string;
-        participantes: string;
-        destinatarios: string;
-        meetingTitle: string;
-        meetingDate: string;
-    }) => {
-        if (!ataModalItem?.result) {
-            setAtaPipelineError('Nenhuma transcrição disponível para este item.');
+    const executeAtaPipelineForItem = useCallback(async (
+        item: QueueItem,
+        payload: {
+            projeto: string;
+            sprint: string;
+            participantes: string;
+            destinatarios: string;
+            meetingTitle: string;
+            meetingDate: string;
+        },
+        options?: {
+            closeModalOnSuccess?: boolean;
+            surfaceErrorsInModal?: boolean;
+        }
+    ) => {
+        if (!item.result) {
+            if (options?.surfaceErrorsInModal) {
+                setAtaPipelineError('Nenhuma transcricao disponivel para este item.');
+            }
             return;
         }
 
         setIsRunningAtaPipeline(true);
-        setAtaPipelineError(null);
-        setAtaDefaults({
+        if (options?.surfaceErrorsInModal) {
+            setAtaPipelineError(null);
+        }
+        setAtaDefaults(prev => ({
             projeto: payload.projeto,
             sprint: payload.sprint,
             participantes: payload.participantes,
             destinatarios: payload.destinatarios,
-        });
+            autoGenerateAta: prev.autoGenerateAta,
+            projectProfiles: prev.projectProfiles,
+        }));
 
-        const itemId = ataModalItem.id;
-        setQueue(prev => prev.map(item =>
-            item.id === itemId
-                ? { ...item, ataPipelineStatus: 'running', ataPipelineMessage: 'Executando pipeline de ATA...' }
-                : item
+        const itemId = item.id;
+        setQueue(prev => prev.map(queueItem =>
+            queueItem.id === itemId
+                ? { ...queueItem, ataPipelineStatus: 'running', ataPipelineMessage: 'Executando pipeline de ATA...' }
+                : queueItem
         ));
 
         try {
             const result = await runAtaPipeline({
-                arquivoFonte: ataModalItem.file.name,
-                transcriptText: ataModalItem.result.text,
+                arquivoFonte: item.file.name,
+                transcriptText: item.result.text,
                 projeto: payload.projeto,
                 sprint: payload.sprint,
                 participantes: parseCommaSeparatedValues(payload.participantes),
@@ -562,38 +621,124 @@ const App: React.FC = () => {
                 meetingDate: payload.meetingDate,
             });
 
-            setQueue(prev => prev.map(item =>
-                item.id === itemId
+            setQueue(prev => prev.map(queueItem =>
+                queueItem.id === itemId
                     ? {
-                        ...item,
+                        ...queueItem,
                         ataPipelineStatus: result.success ? 'success' : 'error',
                         ataPipelineMessage: result.message,
                         ataPipelineResult: result,
                     }
-                    : item
+                    : queueItem
             ));
 
-            if (result.success) {
+            if (result.success && options?.closeModalOnSuccess) {
                 setAtaModalItemId(null);
-            } else {
+            } else if (!result.success && options?.surfaceErrorsInModal) {
                 setAtaPipelineError(result.message);
             }
         } catch (error: any) {
             const message = error?.message || 'Falha inesperada ao executar o pipeline.';
-            setQueue(prev => prev.map(item =>
-                item.id === itemId
+            setQueue(prev => prev.map(queueItem =>
+                queueItem.id === itemId
                     ? {
-                        ...item,
+                        ...queueItem,
                         ataPipelineStatus: 'error',
                         ataPipelineMessage: message,
                     }
-                    : item
+                    : queueItem
             ));
-            setAtaPipelineError(message);
+            if (options?.surfaceErrorsInModal) {
+                setAtaPipelineError(message);
+            }
         } finally {
             setIsRunningAtaPipeline(false);
         }
+    }, [setAtaDefaults]);
+
+    const handleAtaPipelineSubmit = async (payload: {
+        projeto: string;
+        sprint: string;
+        participantes: string;
+        destinatarios: string;
+        meetingTitle: string;
+        meetingDate: string;
+    }) => {
+        if (!ataModalItem) {
+            setAtaPipelineError('Nenhum item selecionado para gerar ATA.');
+            return;
+        }
+
+        await executeAtaPipelineForItem(ataModalItem, payload, {
+            closeModalOnSuccess: true,
+            surfaceErrorsInModal: true,
+        });
     };
+
+    const handlePreflightPipeline = useCallback(async () => {
+        setPipelineOpsState({ running: true, message: 'Executando preflight do pipeline...', result: null });
+        try {
+            const result = await preflightAtaPipeline();
+            setPipelineOpsState({ running: false, message: result.message, result });
+        } catch (error: any) {
+            setPipelineOpsState({
+                running: false,
+                message: error?.message || 'Falha ao executar o preflight do pipeline.',
+                result: null,
+            });
+        }
+    }, []);
+
+    const handleReprocessLatestPipeline = useCallback(async (dryRunEmail: boolean) => {
+        setPipelineOpsState({
+            running: true,
+            message: dryRunEmail ? 'Reprocessando o último evento em dry-run...' : 'Reprocessando o último evento com envio real...',
+            result: null,
+        });
+        try {
+            const result = await reprocessLatestAtaPipeline(dryRunEmail);
+            setPipelineOpsState({ running: false, message: result.message, result });
+        } catch (error: any) {
+            setPipelineOpsState({
+                running: false,
+                message: error?.message || 'Falha ao reprocessar o último evento.',
+                result: null,
+            });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isRunningAtaPipeline || !canAutoGenerateAta(ataDefaults)) {
+            return;
+        }
+
+        const pendingAutoItem = queue.find((item) =>
+            item.status === ProcessStatus.COMPLETED &&
+            item.processedMode === 'transcribe' &&
+            item.result &&
+            !item.ataPipelineStatus
+        );
+
+        if (!pendingAutoItem) {
+            return;
+        }
+
+        const participantsFromProfiles = pendingAutoItem.result?.speakerProfiles?.map((profile) => profile.displayName).join(', ');
+        const fallbackTitle = pendingAutoItem.file.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ').trim() || 'Nova reuniao';
+        const matchedProfile = findProjectProfile(ataDefaults.projectProfiles, ataDefaults.projeto);
+
+        void executeAtaPipelineForItem(
+            pendingAutoItem,
+            {
+                projeto: matchedProfile?.projeto || ataDefaults.projeto,
+                sprint: matchedProfile?.sprint || ataDefaults.sprint,
+                participantes: participantsFromProfiles || matchedProfile?.participantes || ataDefaults.participantes,
+                destinatarios: matchedProfile?.destinatarios || ataDefaults.destinatarios,
+                meetingTitle: fallbackTitle,
+                meetingDate: new Date().toISOString().slice(0, 10),
+            }
+        );
+    }, [ataDefaults, executeAtaPipelineForItem, isRunningAtaPipeline, queue]);
 
     const getProviderName = () => {
         switch (provider) {
@@ -682,7 +827,7 @@ const App: React.FC = () => {
                 { duration, onProgress: (m) => setQueue(q => q.map(i => i.id === id ? { ...i, progressMessage: m } : i)) }
             );
 
-            setQueue(q => q.map(i => i.id === id ? { ...i, status: ProcessStatus.COMPLETED, result, progressMessage: "Done" } : i));
+            setQueue(q => q.map(i => i.id === id ? { ...i, status: ProcessStatus.COMPLETED, result, processedMode: 'transcribe', progressMessage: "Done" } : i));
 
             // Auto-generate Markdown
             const markdown = generateMarkdown(result.text, screenshots);
@@ -765,12 +910,16 @@ const App: React.FC = () => {
                 setProvider={setProvider}
                 ataDefaults={ataDefaults}
                 setAtaDefaults={setAtaDefaults}
+                pipelineOpsState={pipelineOpsState}
+                onPreflight={handlePreflightPipeline}
+                onReprocessLatest={handleReprocessLatestPipeline}
             />
 
             <AtaGenerationModal
                 isOpen={Boolean(ataModalItem)}
                 item={ataModalItem}
                 defaults={ataDefaults}
+                projectProfiles={ataDefaults.projectProfiles}
                 isSubmitting={isRunningAtaPipeline}
                 errorMessage={ataPipelineError}
                 onClose={() => setAtaModalItemId(null)}

@@ -36,3 +36,33 @@ export const runAtaPipeline = async (
   const response = await electron.ipcRenderer.invoke("ata-pipeline:run", payload);
   return response as AtaPipelineExecutionResult;
 };
+
+export const preflightAtaPipeline = async (): Promise<AtaPipelineExecutionResult> => {
+  const electron = getElectronApi();
+  if (!electron?.ipcRenderer) {
+    return {
+      success: false,
+      message: "Electron IPC indisponível neste ambiente.",
+      operation: "preflight",
+    };
+  }
+
+  const response = await electron.ipcRenderer.invoke("ata-pipeline:preflight");
+  return response as AtaPipelineExecutionResult;
+};
+
+export const reprocessLatestAtaPipeline = async (
+  dryRunEmail: boolean
+): Promise<AtaPipelineExecutionResult> => {
+  const electron = getElectronApi();
+  if (!electron?.ipcRenderer) {
+    return {
+      success: false,
+      message: "Electron IPC indisponível neste ambiente.",
+      operation: "reprocess-latest",
+    };
+  }
+
+  const response = await electron.ipcRenderer.invoke("ata-pipeline:reprocess-latest", { dryRunEmail });
+  return response as AtaPipelineExecutionResult;
+};

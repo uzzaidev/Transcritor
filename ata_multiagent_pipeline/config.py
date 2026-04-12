@@ -32,6 +32,7 @@ class PipelineConfig:
     smtp_from_email: str = ""
     smtp_from_name: str = "ATA Pipeline"
     smtp_use_tls: bool = True
+    smtp_dry_run: bool = False
     git_enabled: bool = False
     git_remote: str = "origin"
     git_branch: str = "main"
@@ -62,6 +63,7 @@ class PipelineConfig:
             smtp_from_email=getenv("SMTP_FROM_EMAIL"),
             smtp_from_name=getenv("SMTP_FROM_NAME", "ATA Pipeline"),
             smtp_use_tls=getenv("SMTP_USE_TLS", "1") not in {"0", "false", "False"},
+            smtp_dry_run=getenv("SMTP_DRY_RUN", "0") in {"1", "true", "True"},
             git_enabled=getenv("PIPELINE_GIT_ENABLED", "0") in {"1", "true", "True"},
             git_remote=getenv("PIPELINE_GIT_REMOTE", "origin"),
             git_branch=getenv("PIPELINE_GIT_BRANCH", "main"),

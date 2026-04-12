@@ -9,7 +9,7 @@ from datetime import date
 from pathlib import Path
 
 from .config import PipelineConfig
-from .contracts import ActionItem, AtaExtraction, AuditResult, Decision, EmailPayload, Kaizen, PipelineEvent, PipelineState, RiskItem, ValidationResult
+from .contracts import ActionItem, AtaExtraction, AuditResult, Decision, EmailPayload, Kaizen, PipelineEvent, PipelineState, RiskItem, ValidationResult, normalize_participant_name, sanitize_text, slugify_filename, text_looks_degraded
 
 
 class ArtifactLockRegistry:
@@ -66,12 +66,26 @@ class BaseAgent:
 
 class AtaAgent(BaseAgent):
     def build_seed(self, event: PipelineEvent, transcript_text: str) -> dict:
-        title = event.meeting_title or Path(event.arquivo_fonte).stem.replace("_", " ").replace("-", " ").strip()
+        title = self._resolve_title(event, transcript_text)
         return {
-            "titulo": title or "Reuniao sem titulo",
+            "titulo": title or "Reunião sem título",
             "data": event.meeting_date or date.today().isoformat(),
             "transcricao": transcript_text.strip(),
         }
+
+    def _resolve_title(self, event: PipelineEvent, transcript_text: str) -> str:
+        provided_title = sanitize_text(event.meeting_title)
+        if provided_title and not text_looks_degraded(provided_title):
+            return provided_title
+
+        inferred_title = _infer_title_from_transcript(transcript_text)
+        if inferred_title:
+            return inferred_title
+
+        source_title = sanitize_text(Path(event.arquivo_fonte).stem.replace("_", " ").replace("-", " ").strip())
+        if source_title and not source_title.lower().startswith(("transcricao voz", "transcricao", "voz ")):
+            return source_title
+        return provided_title or source_title or "Reunião sem título"
 
 
 class ExtractorAgent(BaseAgent):
@@ -80,69 +94,91 @@ class ExtractorAgent(BaseAgent):
         self.llm_client = llm_client
 
     def extract(self, event: PipelineEvent, seed: dict) -> AtaExtraction:
-        system_prompt = "Voce extrai atas empresariais em JSON. Retorne resumo_executivo, topicos, decisoes, acoes, kaizens e riscos."
+        system_prompt = (
+            "Você extrai atas empresariais em JSON. "
+            "Retorne resumo_executivo, topicos, decisoes, acoes, kaizens e riscos. "
+            "Não use placeholders como 'Acao 1', 'Decisao 1', 'Item 1' ou textos genéricos. "
+            "Cada ação precisa ter verbo claro e objetivo específico. "
+            "Se não houver responsável explícito, escolha o participante mais provável ou use 'Responsável a definir'."
+        )
         user_prompt = (
             f"Titulo: {seed['titulo']}\nProjeto: {event.projeto}\nSprint: {event.sprint}\n"
             f"Participantes: {', '.join(event.participantes)}\nTranscricao:\n{seed['transcricao']}\n"
-            "Regras: use portugues, gere decisoes numeraveis e acoes com responsavel quando possivel."
+            "Regras: use português, gere decisões numeráveis e ações com responsável quando possível. "
+            "Evite repetir frases vagas e não devolva nomes genéricos para ações ou decisões."
         )
         structured = self.llm_client.generate(system_prompt, user_prompt)
         if structured and _is_structured_payload_usable(structured):
-            return self._from_llm(event, seed["titulo"], structured)
+            try:
+                return self._merge_with_fallback(event, seed, self._from_llm(event, seed["titulo"], structured))
+            except Exception:
+                pass
         return self._fallback(event, seed)
 
     def _from_llm(self, event: PipelineEvent, titulo: str, payload: dict) -> AtaExtraction:
         decisions = [
             Decision(
                 id=f"D-{index:03d}",
-                titulo=item.get("titulo", f"Decisao {index}"),
-                contexto=item.get("contexto", ""),
-                decisao=item.get("decisao", ""),
-                alternativas=item.get("alternativas", []),
-                impacto=item.get("impacto", ""),
+                titulo=sanitize_text(item.get("titulo") or item.get("descricao") or f"Decisao {index}"),
+                contexto=sanitize_text(item.get("contexto", "")),
+                decisao=sanitize_text(item.get("decisao") or item.get("descricao", "")),
+                alternativas=[sanitize_text(option) for option in item.get("alternativas", []) if sanitize_text(option)],
+                impacto=sanitize_text(item.get("impacto", "")),
             )
             for index, item in enumerate(payload.get("decisoes", []), start=1)
         ]
         actions = [
             ActionItem(
                 id=f"A-{index:03d}",
-                titulo=item.get("titulo", f"Acao {index}"),
-                responsavel=item.get("responsavel", "Responsavel a definir"),
-                prazo=item.get("prazo", ""),
-                prioridade=item.get("prioridade", "media"),
-                tags=item.get("tags", []),
+                titulo=sanitize_text(item.get("titulo") or item.get("descricao") or f"Acao {index}"),
+                responsavel=normalize_participant_name(sanitize_text(item.get("responsavel", "Responsável a definir"))),
+                prazo=sanitize_text(item.get("prazo", "")),
+                prioridade=sanitize_text(item.get("prioridade", "media")) or "media",
+                tags=[sanitize_text(tag) for tag in item.get("tags", []) if sanitize_text(tag)],
             )
             for index, item in enumerate(payload.get("acoes", []), start=1)
         ]
         kaizens = [
             Kaizen(
                 id=f"K-{index:03d}",
-                categoria=item.get("categoria", "processual"),
-                descricao=item.get("descricao", ""),
+                categoria=sanitize_text(item.get("categoria", "processual")) or "processual",
+                descricao=sanitize_text(item.get("descricao", "")),
             )
             for index, item in enumerate(payload.get("kaizens", []), start=1)
         ]
-        risks = [
-            RiskItem(
-                id=f"R-{index:03d}",
-                descricao=item.get("descricao", ""),
-                probabilidade=int(item.get("probabilidade", 1)),
-                impacto=int(item.get("impacto", 1)),
-                mitigacao=item.get("mitigacao", ""),
-            )
-            for index, item in enumerate(payload.get("riscos", []), start=1)
-        ]
+        risks = []
+        for index, item in enumerate(payload.get("riscos", []), start=1):
+            if isinstance(item, str):
+                risks.append(
+                    RiskItem(
+                        id=f"R-{index:03d}",
+                        descricao=sanitize_text(item),
+                        probabilidade=1,
+                        impacto=2,
+                        mitigacao="Acompanhar evolução do projeto e revisar o risco periodicamente.",
+                    )
+                )
+                continue
+            risks.append(
+                    RiskItem(
+                        id=f"R-{index:03d}",
+                        descricao=sanitize_text(item.get("descricao", "")),
+                        probabilidade=_coerce_risk_level(item.get("probabilidade", 1)),
+                        impacto=_coerce_risk_level(item.get("impacto", 1)),
+                        mitigacao=sanitize_text(item.get("mitigacao", "")),
+                    )
+                )
         return AtaExtraction(
-            titulo=titulo,
-            resumo_executivo=payload.get("resumo_executivo", ""),
-            topicos=payload.get("topicos", []),
+            titulo=sanitize_text(titulo),
+            resumo_executivo=sanitize_text(payload.get("resumo_executivo", "")),
+            topicos=[sanitize_text(topic) for topic in payload.get("topicos", []) if sanitize_text(topic)],
             decisoes=decisions,
             acoes=actions,
             kaizens=kaizens,
             riscos=risks,
-            participantes=event.participantes,
-            projeto=event.projeto,
-            sprint=event.sprint,
+            participantes=[normalize_participant_name(sanitize_text(name)) for name in event.participantes if sanitize_text(name)],
+            projeto=sanitize_text(event.projeto),
+            sprint=sanitize_text(event.sprint),
         )
 
     def _fallback(self, event: PipelineEvent, seed: dict) -> AtaExtraction:
@@ -158,26 +194,26 @@ class ExtractorAgent(BaseAgent):
             decisions.append(
                 Decision(
                     id="D-001",
-                    titulo="Direcionamento tecnico inicial",
+                    titulo="Direcionamento técnico inicial",
                     contexto=sentences[0],
                     decisao=sentences[0],
-                    impacto="Define o rumo inicial da implementacao.",
+                    impacto="Define o rumo inicial da implementação.",
                 )
             )
 
         if not actions and sentences:
-            responsavel = event.participantes[0] if event.participantes else "Responsavel a definir"
+            responsavel = event.participantes[0] if event.participantes else "Responsável a definir"
             actions.append(
                 ActionItem(
                     id="A-001",
-                    titulo="Consolidar requisitos da reuniao",
+                    titulo="Consolidar requisitos da reunião",
                     responsavel=responsavel,
                     tags=["encaminhamento"],
                 )
             )
 
         if not kaizens:
-            kaizens = [Kaizen(id="K-001", categoria="processual", descricao="Manter ata estruturada e rastreavel.")]
+            kaizens = [Kaizen(id="K-001", categoria="processual", descricao="Manter ata estruturada e rastreável.")]
 
         if not risks:
             risks = [RiskItem(id="R-001", descricao="Metadados ausentes podem quebrar derivados.", probabilidade=2, impacto=4, mitigacao="Validar schema antes de publicar.")]
@@ -194,6 +230,39 @@ class ExtractorAgent(BaseAgent):
             participantes=event.participantes,
             projeto=event.projeto,
             sprint=event.sprint,
+        )
+
+    def _merge_with_fallback(self, event: PipelineEvent, seed: dict, structured: AtaExtraction) -> AtaExtraction:
+        fallback = self._fallback(event, seed)
+
+        decisions = structured.decisoes
+        if _collection_is_generic(structured.decisoes, "decision"):
+            decisions = fallback.decisoes
+        else:
+            decisions = _merge_decisions(structured.decisoes, fallback.decisoes)
+
+        actions = structured.acoes
+        if _collection_is_generic(structured.acoes, "action"):
+            actions = fallback.acoes
+        else:
+            actions = _merge_actions(structured.acoes, fallback.acoes)
+
+        kaizens = structured.kaizens or fallback.kaizens
+        risks = structured.riscos or fallback.riscos
+        topicos = structured.topicos or fallback.topicos
+        resumo = structured.resumo_executivo or fallback.resumo_executivo
+
+        return AtaExtraction(
+            titulo=structured.titulo or fallback.titulo,
+            resumo_executivo=resumo,
+            topicos=topicos,
+            decisoes=decisions,
+            acoes=actions,
+            kaizens=kaizens,
+            riscos=risks,
+            participantes=structured.participantes or fallback.participantes,
+            projeto=structured.projeto or fallback.projeto,
+            sprint=structured.sprint or fallback.sprint,
         )
 
 
@@ -223,22 +292,22 @@ class NormalizerAgent(BaseAgent):
             "## Resumo Executivo",
             extraction.resumo_executivo or "Resumo pendente.",
             "",
-            "## Topicos Discutidos",
+            "## Tópicos Discutidos",
         ]
-        lines.extend(f"- {item}" for item in extraction.topicos or ["Sem topicos identificados."])
-        lines.extend(["", "## Decisoes"])
+        lines.extend(f"- {item}" for item in extraction.topicos or ["Sem tópicos identificados."])
+        lines.extend(["", "## Decisões"])
         if extraction.decisoes:
             for decision in extraction.decisoes:
                 lines.extend([
                     f"### {decision.id} - {decision.titulo}",
-                    f"**Contexto:** {decision.contexto or 'Nao informado.'}",
-                    f"**Decisao:** {decision.decisao or 'Nao informada.'}",
-                    f"**Alternativas:** {', '.join(decision.alternativas) if decision.alternativas else 'Nao registradas.'}",
+                    f"**Contexto:** {decision.contexto or 'Não informado.'}",
+                    f"**Decisão:** {decision.decisao or 'Não informada.'}",
+                    f"**Alternativas:** {', '.join(decision.alternativas) if decision.alternativas else 'Não registradas.'}",
                     f"**Impacto:** {decision.impacto or 'A avaliar.'}",
                     "",
                 ])
         else:
-            lines.append("- Nenhuma decisao estruturada identificada.")
+            lines.append("- Nenhuma decisão estruturada identificada.")
 
         lines.extend(["## Encaminhamentos"])
         if extraction.acoes:
@@ -248,12 +317,12 @@ class NormalizerAgent(BaseAgent):
                 due = f" prazo:{action.prazo}" if action.prazo else ""
                 lines.append(f"- [ ] **{action.id}: {action.titulo}** {responsible}{due} project:{extraction.projeto} {tags} priority:{action.prioridade.lower()} #sprint/{extraction.sprint}")
         else:
-            lines.append("- [ ] **A-001: Revisar ata e definir proximos passos** [[Responsavel a definir]] project:GERAL #encaminhamento")
+            lines.append(f"- [ ] **A-001: Revisar ata e definir próximos passos** [[Responsável a definir]] project:{extraction.projeto} #encaminhamento priority:media #sprint/{extraction.sprint}")
 
         lines.extend(["", "## Kaizens"])
         lines.extend(f"- **{item.id} ({item.categoria})**: {item.descricao}" for item in extraction.kaizens)
         lines.extend(["", "## Riscos e Bloqueios"])
-        lines.extend(f"- **{item.id}**: {item.descricao} | severidade={item.severidade} | mitigacao={item.mitigacao or 'A definir'}" for item in extraction.riscos)
+        lines.extend(f"- **{item.id}**: {item.descricao} | severidade={item.severidade} | mitigação={item.mitigacao or 'A definir'}" for item in extraction.riscos)
         return "\n".join(lines).strip() + "\n"
 
 
@@ -305,8 +374,8 @@ class SprintAgent(BaseAgent):
             f"- Projeto: {extraction.projeto}",
             f"- Participantes: {', '.join(extraction.participantes)}",
             f"- Atas vinculadas: {Path(state.event.arquivo_fonte).name}",
-            f"- Acoes planejadas: {len(extraction.acoes)}",
-            f"- Decisoes registradas: {len(extraction.decisoes)}",
+            f"- Ações planejadas: {len(extraction.acoes)}",
+            f"- Decisões registradas: {len(extraction.decisoes)}",
         ])
         return f"{extraction.sprint}.md", content
 
@@ -340,22 +409,11 @@ class DeliveryIntegratorAgent(BaseAgent):
     def build_email(self, state: PipelineState) -> EmailPayload:
         extraction = state.ata_extraction
         assert extraction is not None
-        decisions = "\n".join(f"- {item.id}: {item.titulo}" for item in extraction.decisoes) or "- Nenhuma decisao registrada"
-        actions = "\n".join(f"- {item.id}: {item.titulo} ({item.responsavel})" for item in extraction.acoes) or "- Nenhum encaminhamento registrado"
+        ata_text = _strip_frontmatter(state.ata_markdown_final).strip() or "ATA indisponível."
         return EmailPayload(
             subject=f"[ATA] {extraction.projeto} - {extraction.titulo}",
-            body_text=(
-                f"{extraction.titulo}\n\nResumo executivo:\n{extraction.resumo_executivo}\n\n"
-                f"Decisoes principais:\n{decisions}\n\nEncaminhamentos:\n{actions}\n\n"
-                "Ata completa disponivel no artefato markdown gerado pelo pipeline."
-            ),
-            body_html=(
-                f"<h1>{extraction.titulo}</h1>"
-                f"<h2>Resumo Executivo</h2><p>{_html_escape(extraction.resumo_executivo)}</p>"
-                f"<h2>Decisoes Principais</h2><pre>{_html_escape(decisions)}</pre>"
-                f"<h2>Encaminhamentos</h2><pre>{_html_escape(actions)}</pre>"
-                "<p>Ata completa disponivel no artefato markdown gerado pelo pipeline.</p>"
-            ),
+            body_text=f"ATA gerada automaticamente pelo pipeline.\n\n{ata_text}\n",
+            body_html=_markdown_to_email_html(ata_text, extraction.titulo),
             to=state.event.destinatarios,
         )
 
@@ -405,20 +463,20 @@ def _split_sentences(transcript: str) -> list[str]:
 def _extract_topics(sentences: list[str]) -> list[str]:
     keyword_topics = [
         ("next", "Arquitetura em Next.js"),
-        ("react", "Uso de React na aplicacao"),
-        ("tailwind", "Padronizacao visual com Tailwind"),
-        ("neon", "Definicao do banco de dados Neon"),
-        ("autentica", "Escopo de autenticacao"),
+        ("react", "Uso de React na aplicação"),
+        ("tailwind", "Padronização visual com Tailwind"),
+        ("neon", "Definição do banco de dados Neon"),
+        ("autentica", "Escopo de autenticação"),
         ("login", "Necessidade de login no MVP"),
-        ("arquivo", "Criacao inicial dos arquivos do projeto"),
-        ("instal", "Instalacao inicial de dependencias"),
+        ("arquivo", "Criação inicial dos arquivos do projeto"),
+        ("instal", "Instalação inicial de dependências"),
     ]
     found: list[str] = []
     lowered = " ".join(sentences).lower()
     for token, topic in keyword_topics:
         if token in lowered and topic not in found:
             found.append(topic)
-    return found or sentences[:5] or ["Discussao geral"]
+    return found or sentences[:5] or ["Discussão geral"]
 
 
 def _extract_decisions(sentences: list[str]) -> list[Decision]:
@@ -426,13 +484,13 @@ def _extract_decisions(sentences: list[str]) -> list[Decision]:
     seen_titles: set[str] = set()
     rules = [
         (r"\bnext\b", "Arquitetura base em Next.js", "Adotar Next.js como base da arquitetura web.", "Padroniza estrutura frontend e SSR."),
-        (r"\breact\b", "Frontend em React", "Utilizar React como biblioteca principal da interface.", "Mantem o frontend alinhado ao stack definido."),
-        (r"\btailwind\b", "Estilizacao com Tailwind", "Usar Tailwind CSS como camada principal de estilos.", "Centraliza o sistema visual e acelera implementacao."),
-        (r"\bcentralizad[ao].*tailwind|\btemas das cores", "Temas centralizados no Tailwind", "Centralizar cores, temas e tokens visuais no Tailwind.", "Facilita consistencia visual e manutencao futura."),
-        (r"\bneon\b", "Banco de dados em Neon", "Usar Neon como base de dados inicial do projeto.", "Define o servico de persistencia para a primeira versao."),
-        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Sem autenticacao no momento inicial", "Nao implementar login ou autenticacao nesta primeira fase.", "Reduz escopo do MVP e acelera entrega inicial."),
-        (r"come[cç]a a criar os arquivos|criar os arquivos", "Gerar estrutura inicial do projeto", "Comecar o projeto ja criando os arquivos e a estrutura base.", "Acelera o bootstrap e reduz trabalho manual."),
-        (r"install|instal", "Instalar dependencias iniciais", "Instalar as dependencias necessarias ja no inicio da geracao do projeto.", "Deixa o ambiente pronto para evolucao imediata."),
+        (r"\breact\b", "Frontend em React", "Utilizar React como biblioteca principal da interface.", "Mantém o frontend alinhado ao stack definido."),
+        (r"\btailwind\b", "Estilização com Tailwind", "Usar Tailwind CSS como camada principal de estilos.", "Centraliza o sistema visual e acelera a implementação."),
+        (r"\bcentralizad[ao].*tailwind|\btemas das cores", "Temas centralizados no Tailwind", "Centralizar cores, temas e tokens visuais no Tailwind.", "Facilita consistência visual e manutenção futura."),
+        (r"\bneon\b", "Banco de dados em Neon", "Usar Neon como base de dados inicial do projeto.", "Define o serviço de persistência para a primeira versão."),
+        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Sem autenticação no momento inicial", "Não implementar login ou autenticação nesta primeira fase.", "Reduz escopo do MVP e acelera a entrega inicial."),
+        (r"come[cç]a a criar os arquivos|criar os arquivos", "Gerar estrutura inicial do projeto", "Começar o projeto já criando os arquivos e a estrutura base.", "Acelera o bootstrap e reduz trabalho manual."),
+        (r"install|instal", "Instalar dependências iniciais", "Instalar as dependências necessárias já no início da geração do projeto.", "Deixa o ambiente pronto para evolução imediata."),
     ]
 
     for sentence in sentences:
@@ -458,10 +516,10 @@ def _extract_actions(sentences: list[str], participants: list[str]) -> list[Acti
     rules = [
         (r"\bnext\b", "Criar a base do projeto em Next.js com React"),
         (r"\btailwind\b", "Configurar Tailwind CSS e centralizar os temas visuais"),
-        (r"\bneon\b", "Preparar a integracao inicial com o banco Neon"),
-        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Registrar que autenticacao fica fora do escopo inicial"),
+        (r"\bneon\b", "Preparar a integração inicial com o banco Neon"),
+        (r"n[aã]o precisa.*autentica|n[aã]o precisa.*login", "Registrar que a autenticação fica fora do escopo inicial"),
         (r"criar os arquivos|come[cç]a a criar", "Gerar os arquivos iniciais e a estrutura do projeto"),
-        (r"install|instal", "Instalar as dependencias necessarias do projeto"),
+        (r"install|instal", "Instalar as dependências necessárias do projeto"),
     ]
 
     for sentence in sentences:
@@ -487,8 +545,8 @@ def _extract_kaizens(sentences: list[str]) -> list[Kaizen]:
         kaizens.append(
             Kaizen(
                 id="K-001",
-                categoria="comunicacao",
-                descricao="Registrar requisitos em audio ou prompt reutilizavel para evitar retrabalho nas repeticoes.",
+                categoria="comunicação",
+                descricao="Registrar requisitos em áudio ou prompt reutilizável para evitar retrabalho nas repetições.",
             )
         )
     if "centralizado" in transcript and "tailwind" in transcript:
@@ -496,7 +554,7 @@ def _extract_kaizens(sentences: list[str]) -> list[Kaizen]:
             Kaizen(
                 id=f"K-{len(kaizens) + 1:03d}",
                 categoria="arquitetura",
-                descricao="Centralizar tokens visuais desde o inicio para reduzir inconsistencias entre telas.",
+                descricao="Centralizar tokens visuais desde o início para reduzir inconsistências entre telas.",
             )
         )
     return kaizens
@@ -509,20 +567,20 @@ def _extract_risks(sentences: list[str], decisions: list[Decision]) -> list[Risk
         risks.append(
             RiskItem(
                 id="R-001",
-                descricao="A ausencia inicial de autenticacao pode gerar debito tecnico e risco de seguranca ao expandir o produto.",
+                descricao="A ausência inicial de autenticação pode gerar débito técnico e risco de segurança ao expandir o produto.",
                 probabilidade=2,
                 impacto=4,
-                mitigacao="Registrar o tema no backlog e tratar antes de expor funcionalidades sensiveis.",
+                mitigacao="Registrar o tema no backlog e tratar antes de expor funcionalidades sensíveis.",
             )
         )
     if any("Tailwind" in decision.titulo or "Tailwind" in decision.decisao for decision in decisions):
         risks.append(
             RiskItem(
                 id=f"R-{len(risks) + 1:03d}",
-                descricao="Sem governanca dos tokens visuais, o uso de Tailwind pode se fragmentar rapidamente.",
+                descricao="Sem governança dos tokens visuais, o uso de Tailwind pode se fragmentar rapidamente.",
                 probabilidade=2,
                 impacto=3,
-                mitigacao="Definir convencoes de tema e classes utilitarias compartilhadas desde o bootstrap.",
+                mitigacao="Definir convenções de tema e classes utilitárias compartilhadas desde o bootstrap.",
             )
         )
     return risks
@@ -530,49 +588,310 @@ def _extract_risks(sentences: list[str], decisions: list[Decision]) -> list[Risk
 
 def _build_summary(titulo: str, decisions: list[Decision], actions: list[ActionItem], topicos: list[str], projeto: str) -> str:
     focus = ", ".join(topic.lower() for topic in topicos[:3]) if topicos else "arquitetura inicial"
-    summary = f"Reuniao '{titulo}' do projeto {projeto} definiu {focus}."
+    summary = f"Reunião '{titulo}' do projeto {projeto} definiu {focus}."
     if decisions:
-        summary += f" Foram registradas {len(decisions)} decisoes estruturantes para o bootstrap da solucao."
+        summary += f" Foram registradas {len(decisions)} decisões estruturantes para o bootstrap da solução."
     if actions:
-        summary += f" A reuniao tambem gerou {len(actions)} encaminhamentos para execucao imediata."
+        summary += f" A reunião também gerou {len(actions)} encaminhamentos para execução imediata."
     return summary
+
+
+def _coerce_risk_level(value: object) -> int:
+    if isinstance(value, int):
+        return min(max(value, 1), 5)
+    raw = str(value).strip().lower()
+    if raw.isdigit():
+        return min(max(int(raw), 1), 5)
+    mapping = {
+        "baixo": 1,
+        "baixa": 1,
+        "low": 1,
+        "medio": 3,
+        "media": 3,
+        "médio": 3,
+        "média": 3,
+        "medium": 3,
+        "alto": 5,
+        "alta": 5,
+        "high": 5,
+    }
+    return mapping.get(raw, 1)
 
 
 def _is_structured_payload_usable(payload: dict) -> bool:
     decisions = payload.get("decisoes", [])
     actions = payload.get("acoes", [])
 
-    def looks_generic(item: dict, kind: str) -> bool:
-        title = str(item.get("titulo", "")).strip().lower()
-        context = str(item.get("contexto", "")).strip()
-        decision_text = str(item.get("decisao", "")).strip()
-        responsible = str(item.get("responsavel", "")).strip().lower()
-        generic_titles = {
-            "decisao 1",
-            "decisao 2",
-            "decisao 3",
-            "decisao 4",
-            "acao 1",
-            "acao 2",
-            "acao 3",
-            "acao 4",
-        }
-        if kind == "decision":
-            return title in generic_titles and not context and not decision_text
-        return title in generic_titles and responsible in {"", "responsavel a definir"}
-
-    decision_score = sum(1 for item in decisions if not looks_generic(item, "decision"))
-    action_score = sum(1 for item in actions if not looks_generic(item, "action"))
-
     has_summary = bool(str(payload.get("resumo_executivo", "")).strip())
     has_topics = bool(payload.get("topicos"))
-    return has_summary and has_topics and (decision_score > 0 or action_score > 0)
+    if not has_summary or not has_topics:
+        return False
+    if decisions:
+        decision_ok = not _collection_is_generic(_normalize_payload_items(decisions, "decision"), "decision")
+        action_ok = not actions or not _collection_is_generic(_normalize_payload_items(actions, "action"), "action")
+        return decision_ok and action_ok
+    return actions and not _collection_is_generic(_normalize_payload_items(actions, "action"), "action")
+
+
+def _normalize_payload_items(items: list, kind: str) -> list[Decision] | list[ActionItem]:
+    normalized: list[Decision] | list[ActionItem] = []
+    for index, item in enumerate(items, start=1):
+        if not isinstance(item, dict):
+            continue
+        if kind == "decision":
+            normalized.append(
+                Decision(
+                    id=f"D-{index:03d}",
+                    titulo=sanitize_text(item.get("titulo") or item.get("descricao") or f"Decisão {index}"),
+                    contexto=sanitize_text(item.get("contexto", "")),
+                    decisao=sanitize_text(item.get("decisao") or item.get("descricao", "")),
+                )
+            )
+        else:
+            normalized.append(
+                ActionItem(
+                    id=f"A-{index:03d}",
+                    titulo=sanitize_text(item.get("titulo") or item.get("descricao") or f"Acao {index}"),
+                    responsavel=sanitize_text(item.get("responsavel", "Responsável a definir")),
+                )
+            )
+    return normalized
+
+
+def _collection_is_generic(items: list[Decision] | list[ActionItem], kind: str) -> bool:
+    if not items:
+        return True
+
+    useful_count = 0
+    for item in items:
+        if kind == "decision":
+            if _decision_is_useful(item):
+                useful_count += 1
+        else:
+            if _action_is_useful(item):
+                useful_count += 1
+
+    threshold = max(1, len(items) // 2)
+    return useful_count < threshold
+
+
+def _decision_is_useful(item: Decision) -> bool:
+    title = sanitize_text(item.titulo).lower()
+    text = " ".join([title, sanitize_text(item.contexto), sanitize_text(item.decisao)]).strip().lower()
+    if not text:
+        return False
+    if re.fullmatch(r"(decis[aã]o|item|ponto)\s*\d+", title):
+        return False
+    return len(text) >= 20
+
+
+def _action_is_useful(item: ActionItem) -> bool:
+    title = sanitize_text(item.titulo).lower()
+    if not title:
+        return False
+    if re.fullmatch(r"(a[cç][aã]o|acao|item|tarefa)\s*\d+", title):
+        return False
+    if title in {"ajustar", "verificar", "acompanhar", "alinhar"}:
+        return False
+    return len(title) >= 12 and " " in title
+
+
+def _merge_decisions(primary: list[Decision], fallback: list[Decision]) -> list[Decision]:
+    merged: list[Decision] = []
+    for item in [*primary, *fallback]:
+        if not _decision_is_useful(item):
+            continue
+        if any(_decisions_overlap(item, existing) for existing in merged):
+            continue
+        merged.append(item)
+    return _reindex_decisions(merged)
+
+
+def _merge_actions(primary: list[ActionItem], fallback: list[ActionItem]) -> list[ActionItem]:
+    merged: list[ActionItem] = []
+    for item in [*primary, *fallback]:
+        if not _action_is_useful(item):
+            continue
+        if any(_actions_overlap(item, existing) for existing in merged):
+            continue
+        tags = item.tags or ["encaminhamento"]
+        merged.append(
+            ActionItem(
+                id=item.id,
+                titulo=item.titulo,
+                responsavel=normalize_participant_name(item.responsavel or "Responsável a definir"),
+                prazo=item.prazo,
+                prioridade=item.prioridade or "media",
+                tags=tags,
+            )
+        )
+    return _reindex_actions(merged)
+
+
+def _reindex_decisions(items: list[Decision]) -> list[Decision]:
+    return [
+        Decision(
+            id=f"D-{index:03d}",
+            titulo=item.titulo,
+            contexto=item.contexto,
+            decisao=item.decisao,
+            alternativas=item.alternativas,
+            impacto=item.impacto,
+        )
+        for index, item in enumerate(items, start=1)
+    ]
+
+
+def _reindex_actions(items: list[ActionItem]) -> list[ActionItem]:
+    return [
+        ActionItem(
+            id=f"A-{index:03d}",
+            titulo=item.titulo,
+            responsavel=item.responsavel,
+            prazo=item.prazo,
+            prioridade=item.prioridade,
+            tags=item.tags,
+        )
+        for index, item in enumerate(items, start=1)
+    ]
+
+
+def _decisions_overlap(left: Decision, right: Decision) -> bool:
+    left_text = f"{left.titulo} {left.decisao}"
+    right_text = f"{right.titulo} {right.decisao}"
+    return _text_overlap_ratio(left_text, right_text) >= 0.58
+
+
+def _actions_overlap(left: ActionItem, right: ActionItem) -> bool:
+    left_text = f"{left.titulo} {left.responsavel}"
+    right_text = f"{right.titulo} {right.responsavel}"
+    return _text_overlap_ratio(left_text, right_text) >= 0.55
+
+
+def _text_overlap_ratio(left: str, right: str) -> float:
+    left_tokens = _meaningful_tokens(left)
+    right_tokens = _meaningful_tokens(right)
+    if not left_tokens or not right_tokens:
+        return 0.0
+    intersection = left_tokens & right_tokens
+    return len(intersection) / min(len(left_tokens), len(right_tokens))
+
+
+def _meaningful_tokens(text: str) -> set[str]:
+    stopwords = {
+        "a", "o", "as", "os", "de", "do", "da", "das", "dos", "em", "no", "na",
+        "para", "com", "sem", "por", "e", "ou", "um", "uma", "neste", "nesta",
+        "ser", "usar", "utilizar", "implementar", "projeto",
+    }
+    normalized = sanitize_text(text).lower()
+    tokens = {token for token in re.findall(r"[a-zà-ÿ0-9]+", normalized) if len(token) > 2 and token not in stopwords}
+    return tokens
 
 
 def _safe_slug(value: str) -> str:
-    cleaned = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
-    return cleaned or "ata"
+    return slugify_filename(value, fallback="ata")
 
 
 def _html_escape(value: str) -> str:
     return value.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _infer_title_from_transcript(transcript: str) -> str:
+    lowered = sanitize_text(transcript).lower()
+    if not lowered:
+        return ""
+    if "next" in lowered and "tailwind" in lowered and "neon" in lowered:
+        return "Definição de arquitetura inicial"
+    if "ata" in lowered and "sprint" in lowered:
+        return "Alinhamento de ata e sprint"
+
+    sentences = _split_sentences(transcript)
+    if not sentences:
+        return ""
+    candidate = sanitize_text(sentences[0]).rstrip(".")
+    if len(candidate) > 80:
+        candidate = candidate[:77].rstrip() + "..."
+    return candidate[:1].upper() + candidate[1:] if candidate else ""
+
+
+def _markdown_to_email_html(markdown_text: str, title: str) -> str:
+    lines = markdown_text.splitlines()
+    html_lines = [
+        "<html><body style=\"font-family:Segoe UI,Arial,sans-serif;line-height:1.5;color:#1f2937;\">",
+        f"<h1>{_html_escape(title)}</h1>",
+    ]
+    in_frontmatter = False
+    in_list = False
+
+    for raw_line in lines:
+        line = raw_line.rstrip()
+        stripped = line.strip()
+
+        if stripped == "---":
+            in_frontmatter = not in_frontmatter
+            continue
+        if in_frontmatter or not stripped:
+            if in_list:
+                html_lines.append("</ul>")
+                in_list = False
+            continue
+        if stripped.startswith("### "):
+            if in_list:
+                html_lines.append("</ul>")
+                in_list = False
+            html_lines.append(f"<h3>{_html_escape(stripped[4:])}</h3>")
+            continue
+        if stripped.startswith("## "):
+            if in_list:
+                html_lines.append("</ul>")
+                in_list = False
+            html_lines.append(f"<h2>{_html_escape(stripped[3:])}</h2>")
+            continue
+        if stripped.startswith("# "):
+            if in_list:
+                html_lines.append("</ul>")
+                in_list = False
+            html_lines.append(f"<h2>{_html_escape(stripped[2:])}</h2>")
+            continue
+        if stripped.startswith("- "):
+            if not in_list:
+                html_lines.append("<ul>")
+                in_list = True
+            html_lines.append(f"<li>{_render_inline_markdown(stripped[2:])}</li>")
+            continue
+
+        if in_list:
+            html_lines.append("</ul>")
+            in_list = False
+        html_lines.append(f"<p>{_render_inline_markdown(stripped)}</p>")
+
+    if in_list:
+        html_lines.append("</ul>")
+    html_lines.append("</body></html>")
+    return "".join(html_lines)
+
+
+def _render_inline_markdown(text: str) -> str:
+    escaped = _html_escape(text)
+    escaped = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", escaped)
+    escaped = re.sub(r"\[\[(.+?)\]\]", r"<strong>\1</strong>", escaped)
+    return escaped
+
+
+def _strip_frontmatter(markdown_text: str) -> str:
+    stripped = markdown_text.strip()
+    if not stripped.startswith("---"):
+        return markdown_text
+
+    lines = markdown_text.splitlines()
+    if len(lines) < 3:
+        return markdown_text
+
+    end_index = None
+    for index in range(1, len(lines)):
+        if lines[index].strip() == "---":
+            end_index = index
+            break
+    if end_index is None:
+        return markdown_text
+    return "\n".join(lines[end_index + 1 :]).lstrip()

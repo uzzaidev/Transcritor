@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .agents import ArtifactLockRegistry, AtaAgent, AuditorAgent, DashboardAgent, DeliveryIntegratorAgent, ExtractorAgent, NormalizerAgent, OpenAIJsonClient, SprintAgent, ValidatorAgent, run_parallel_derivations
 from .config import PipelineConfig
-from .contracts import PipelineEvent, PipelineResult, PipelineState
+from .contracts import PipelineEvent, PipelineResult, PipelineState, slugify_filename
 from .emailing import SmtpEmailProvider
 from .gitops import GitIntegrator
 from .logging_utils import StructuredLogger
@@ -138,4 +138,4 @@ class PipelineOrchestrator:
 
 
 def _safe_name(value: str) -> str:
-    return "".join(char if char.isalnum() or char in {"-", "_"} else "-" for char in value.lower()).strip("-")
+    return slugify_filename(value, fallback="ata")

@@ -53,11 +53,21 @@ export interface TranscriptionResult {
   speakerProfiles?: SpeakerProfile[];
 }
 
+export interface AtaProjectProfile {
+  id: string;
+  projeto: string;
+  sprint: string;
+  participantes: string;
+  destinatarios: string;
+}
+
 export interface AtaPipelineDefaults {
   projeto: string;
   sprint: string;
   participantes: string;
   destinatarios: string;
+  autoGenerateAta: boolean;
+  projectProfiles: AtaProjectProfile[];
 }
 
 export interface AtaPipelineRequest {
@@ -77,6 +87,7 @@ export interface AtaPipelineExecutionResult {
   stdout?: string;
   stderr?: string;
   pythonExecutable?: string;
+  operation?: 'run' | 'reprocess-latest' | 'preflight';
   result?: {
     success: boolean;
     state?: {
@@ -90,6 +101,13 @@ export interface AtaPipelineExecutionResult {
         issues?: string[];
       };
     };
+  };
+  preflight?: {
+    smtp_ready?: boolean;
+    smtp_dry_run?: boolean;
+    openai_configured?: boolean;
+    runtime_events_ready?: boolean;
+    latest_runtime_event?: string;
   };
 }
 
@@ -128,6 +146,7 @@ export interface QueueItem {
   discoveryResult?: SpeakerDiscoveryResult;
   speakerNames?: Record<string, string>;
   awaitingDiarization?: boolean;
+  processedMode?: 'transcribe' | 'translate';
   ataPipelineStatus?: AtaPipelineStatus;
   ataPipelineMessage?: string;
   ataPipelineResult?: AtaPipelineExecutionResult;

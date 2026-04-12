@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FileText, Loader2, Mail, Send, Users, X } from "lucide-react";
-import { AtaPipelineDefaults, QueueItem } from "../types";
+import { AtaPipelineDefaults, AtaProjectProfile, QueueItem } from "../types";
 
 interface AtaGenerationModalProps {
   isOpen: boolean;
   item: QueueItem | null;
   defaults: AtaPipelineDefaults;
+  projectProfiles: AtaProjectProfile[];
   isSubmitting: boolean;
   errorMessage: string | null;
   onClose: () => void;
@@ -28,10 +29,17 @@ const buildDefaultTitle = (fileName: string): string => {
 
 const todayIso = (): string => new Date().toISOString().slice(0, 10);
 
+const normalizeProjectKey = (value: string): string =>
+  value.trim().toLowerCase();
+
+const findProjectProfile = (projectProfiles: AtaProjectProfile[], projeto: string): AtaProjectProfile | undefined =>
+  projectProfiles.find((profile) => normalizeProjectKey(profile.projeto) === normalizeProjectKey(projeto));
+
 const AtaGenerationModal: React.FC<AtaGenerationModalProps> = ({
   isOpen,
   item,
   defaults,
+  projectProfiles,
   isSubmitting,
   errorMessage,
   onClose,
@@ -48,13 +56,25 @@ const AtaGenerationModal: React.FC<AtaGenerationModalProps> = ({
     if (!isOpen || !item) return;
 
     const participantsFromProfiles = item.result?.speakerProfiles?.map((profile) => profile.displayName).join(", ") || defaults.participantes;
-    setProjeto(defaults.projeto);
-    setSprint(defaults.sprint);
-    setParticipantes(participantsFromProfiles);
-    setDestinatarios(defaults.destinatarios);
+    const matchedProfile = findProjectProfile(projectProfiles, defaults.projeto);
+    setProjeto(matchedProfile?.projeto || defaults.projeto);
+    setSprint(matchedProfile?.sprint || defaults.sprint);
+    setParticipantes(participantsFromProfiles || matchedProfile?.participantes || defaults.participantes);
+    setDestinatarios(matchedProfile?.destinatarios || defaults.destinatarios);
     setMeetingTitle(buildDefaultTitle(item.file.name));
     setMeetingDate(todayIso());
-  }, [defaults, isOpen, item]);
+  }, [defaults, isOpen, item, projectProfiles]);
+
+  const applyProjectProfile = (projectName: string) => {
+    const profile = findProjectProfile(projectProfiles, projectName);
+    if (!profile) {
+      return;
+    }
+    setProjeto(profile.projeto);
+    setSprint(profile.sprint || defaults.sprint);
+    setParticipantes(profile.participantes || defaults.participantes);
+    setDestinatarios(profile.destinatarios || defaults.destinatarios);
+  };
 
   if (!isOpen || !item) return null;
 
@@ -119,12 +139,22 @@ const AtaGenerationModal: React.FC<AtaGenerationModalProps> = ({
             <label className="space-y-2">
               <span className="text-xs font-semibold text-slate-400 uppercase">Projeto</span>
               <input
+                list="ata-project-profiles"
                 type="text"
                 value={projeto}
-                onChange={(event) => setProjeto(event.target.value)}
+                onChange={(event) => {
+                  const nextProject = event.target.value;
+                  setProjeto(nextProject);
+                  applyProjectProfile(nextProject);
+                }}
                 placeholder="GERAL"
                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
+              <datalist id="ata-project-profiles">
+                {projectProfiles.map((profile) => (
+                  <option key={profile.id} value={profile.projeto} />
+                ))}
+              </datalist>
             </label>
 
             <label className="space-y-2">

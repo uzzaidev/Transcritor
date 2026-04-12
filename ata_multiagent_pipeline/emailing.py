@@ -18,6 +18,14 @@ class SmtpEmailProvider:
         self.registry_path.parent.mkdir(parents=True, exist_ok=True)
 
     def send(self, payload: EmailPayload) -> DeliveryResult:
+        if self.config.smtp_dry_run:
+            return DeliveryResult(
+                success=True,
+                provider="smtp-dry-run",
+                sent_at=datetime.utcnow().isoformat() + "Z",
+                error="dry_run",
+            )
+
         if not payload.to:
             return DeliveryResult(success=False, provider="smtp", error="missing_recipients")
 

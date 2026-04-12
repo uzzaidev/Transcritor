@@ -22,6 +22,7 @@ Python 3.12+ is also required for the ATA pipeline integration.
 ## ATA Pipeline
 
 Completed transcriptions can now trigger the ATA multiagent pipeline directly from the UI through the `Gerar ATA` action.
+There is also an automatic mode in Settings that runs the ATA pipeline right after a transcription finishes, as long as the saved defaults are complete.
 
 Requirements:
 - Python installed locally

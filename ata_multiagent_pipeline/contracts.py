@@ -3,7 +3,9 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
 from pathlib import Path
+import re
 from typing import Any
+import unicodedata
 
 
 @dataclass(slots=True)
@@ -62,15 +64,15 @@ class PipelineEvent:
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "PipelineEvent":
         return cls(
-            tipo_evento=payload.get("tipo_evento", "nova_reuniao"),
-            arquivo_fonte=payload.get("arquivo_fonte", ""),
-            projeto=payload.get("projeto", "GERAL"),
-            sprint=payload.get("sprint", ""),
-            participantes=payload.get("participantes", []),
-            transcript_text=payload.get("transcript_text", ""),
-            destinatarios=payload.get("destinatarios", []),
-            meeting_title=payload.get("meeting_title", ""),
-            meeting_date=payload.get("meeting_date", ""),
+            tipo_evento=sanitize_text(payload.get("tipo_evento", "nova_reuniao")),
+            arquivo_fonte=sanitize_text(payload.get("arquivo_fonte", "")),
+            projeto=sanitize_text(payload.get("projeto", "GERAL")),
+            sprint=sanitize_text(payload.get("sprint", "")),
+            participantes=_sanitize_participant_list(payload.get("participantes", [])),
+            transcript_text=sanitize_text(payload.get("transcript_text", "")),
+            destinatarios=_sanitize_string_list(payload.get("destinatarios", [])),
+            meeting_title=sanitize_text(payload.get("meeting_title", "")),
+            meeting_date=sanitize_text(payload.get("meeting_date", "")),
             metadata=payload.get("metadata", {}),
         )
 
@@ -164,3 +166,67 @@ def _serialize(value: Any) -> Any:
     if isinstance(value, dict):
         return {key: _serialize(val) for key, val in value.items()}
     return value
+
+
+def sanitize_text(value: Any) -> str:
+    text = str(value or "").replace("\ufeff", "").strip()
+    if not text:
+        return ""
+
+    text = _repair_utf8_mojibake(text)
+    text = re.sub(r"[^\S\r\n]+", " ", text)
+    return text.strip()
+
+
+def text_looks_degraded(value: str) -> bool:
+    text = sanitize_text(value)
+    if not text:
+        return False
+    return "??" in text or "\ufffd" in text or bool(re.search(r"[A-Za-zÀ-ÿ]\?[A-Za-zÀ-ÿ]", text))
+
+
+def slugify_filename(value: str, fallback: str = "ata") -> str:
+    ascii_text = unicodedata.normalize("NFKD", sanitize_text(value)).encode("ascii", "ignore").decode("ascii")
+    cleaned = re.sub(r"[^a-zA-Z0-9]+", "-", ascii_text).strip("-").lower()
+    return cleaned or fallback
+
+
+def _sanitize_string_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [sanitize_text(item) for item in value if sanitize_text(item)]
+
+
+def _sanitize_participant_list(value: Any) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [normalize_participant_name(sanitize_text(item)) for item in value if sanitize_text(item)]
+
+
+def normalize_participant_name(value: str) -> str:
+    aliases = {
+        "equipe t?cnica": "Equipe técnica",
+        "equipe técnica": "Equipe técnica",
+        "equipe técnica ": "Equipe técnica",
+    }
+    return aliases.get(value.lower(), value)
+
+
+def _repair_utf8_mojibake(text: str) -> str:
+    if not any(marker in text for marker in ("Ã", "Â", "â", "\ufffd")):
+        return text
+
+    try:
+        repaired = text.encode("latin1").decode("utf-8")
+    except (UnicodeDecodeError, UnicodeEncodeError):
+        return text
+
+    if _text_quality_score(repaired) >= _text_quality_score(text):
+        return repaired
+    return text
+
+
+def _text_quality_score(text: str) -> int:
+    preferred = sum(1 for char in text if char.isalnum() or char.isspace() or char in ".,;:!?-_()/[]#@")
+    penalties = (text.count("\ufffd") * 5) + (text.count("Ã") * 2) + (text.count("Â") * 2) + (text.count("â") * 2)
+    return preferred - penalties
