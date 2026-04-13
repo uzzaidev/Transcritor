@@ -11,6 +11,10 @@ interface SettingsModalProps {
   setProvider: (provider: TranscriptionProvider) => void;
   ataDefaults: AtaPipelineDefaults;
   setAtaDefaults: (defaults: AtaPipelineDefaults) => void;
+  secureStorageStatus: {
+    available: boolean;
+    reason: string;
+  };
   pipelineOpsState: {
     running: boolean;
     message: string | null;
@@ -29,6 +33,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   setProvider,
   ataDefaults,
   setAtaDefaults,
+  secureStorageStatus,
   pipelineOpsState,
   onPreflight,
   onReprocessLatest,
@@ -163,6 +168,18 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
 
           {/* API Keys */}
           <div className="space-y-4 pt-4 border-t border-slate-800">
+            <div
+              className={`rounded-lg border px-3 py-2 text-xs ${
+                secureStorageStatus.available
+                  ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
+                  : 'border-amber-500/30 bg-amber-500/10 text-amber-100'
+              }`}
+            >
+              {secureStorageStatus.available
+                ? 'Armazenamento seguro ativo: chaves ficam criptografadas no app Electron.'
+                : `Armazenamento seguro indisponivel (${secureStorageStatus.reason || 'unknown'}). Chaves ficam apenas em memoria nesta sessao.`}
+            </div>
+
             <div className="space-y-2">
               <label className="text-xs font-semibold text-slate-400 uppercase">
                 OpenAI API Key

@@ -45,11 +45,23 @@ class PipelineConfig:
     def from_workspace(cls, workspace_root: str | Path) -> "PipelineConfig":
         root = Path(workspace_root).resolve()
         env_values: dict[str, str] = {}
-        for candidate in (root / ".env", root / "web_sales_agent" / ".env", root / "gemini-whisper" / ".env.local"):
+        for candidate in (
+            root / ".env",
+            root / "ata_multiagent_pipeline" / ".env",
+            root / "web_sales_agent" / ".env",
+            root / "gemini-whisper" / ".env.local",
+        ):
             env_values.update(_load_env_file(candidate))
 
         def getenv(name: str, default: str = "") -> str:
             return os.getenv(name, env_values.get(name, default))
+
+        def getenv_any(names: tuple[str, ...], default: str = "") -> str:
+            for name in names:
+                value = os.getenv(name, env_values.get(name, ""))
+                if value != "":
+                    return value
+            return default
 
         return cls(
             workspace_root=root,
@@ -58,9 +70,9 @@ class PipelineConfig:
             openai_model=getenv("PIPELINE_OPENAI_MODEL", "gpt-4o-mini"),
             smtp_host=getenv("SMTP_HOST"),
             smtp_port=int(getenv("SMTP_PORT", "587")),
-            smtp_username=getenv("SMTP_USERNAME"),
+            smtp_username=getenv_any(("SMTP_USERNAME", "SMTP_USER")),
             smtp_password=getenv("SMTP_PASSWORD"),
-            smtp_from_email=getenv("SMTP_FROM_EMAIL"),
+            smtp_from_email=getenv_any(("SMTP_FROM_EMAIL", "ATA_FROM_EMAIL")),
             smtp_from_name=getenv("SMTP_FROM_NAME", "ATA Pipeline"),
             smtp_use_tls=getenv("SMTP_USE_TLS", "1") not in {"0", "false", "False"},
             smtp_dry_run=getenv("SMTP_DRY_RUN", "0") in {"1", "true", "True"},

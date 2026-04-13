@@ -36,6 +36,10 @@ def _i(name: str, default: int) -> int:
         return default
 
 
+def _max_i(name: str, default: int, floor: int = 1) -> int:
+    return max(floor, _i(name, default))
+
+
 @dataclass
 class Settings:
     gemini_api_key: str
@@ -63,6 +67,13 @@ class Settings:
 
     processed_store: Path
     temp_dir: Path
+    database_url: str
+    smtp_retry_attempts: int
+    smtp_retry_base_seconds: int
+    smtp_retry_max_seconds: int
+    gemini_retry_attempts: int
+    gemini_retry_base_seconds: int
+    gemini_retry_max_seconds: int
 
     @classmethod
     def load(cls) -> Settings:
@@ -107,6 +118,13 @@ class Settings:
                     str(_ROOT / ".cache" / "ata_agent" / "tmp"),
                 )
             ).resolve(),
+            database_url=os.getenv("DATABASE_URL", "").strip(),
+            smtp_retry_attempts=_max_i("SMTP_RETRY_ATTEMPTS", 3),
+            smtp_retry_base_seconds=_max_i("SMTP_RETRY_BASE_SECONDS", 1),
+            smtp_retry_max_seconds=_max_i("SMTP_RETRY_MAX_SECONDS", 30),
+            gemini_retry_attempts=_max_i("GEMINI_RETRY_ATTEMPTS", 3),
+            gemini_retry_base_seconds=_max_i("GEMINI_RETRY_BASE_SECONDS", 1),
+            gemini_retry_max_seconds=_max_i("GEMINI_RETRY_MAX_SECONDS", 30),
         )
 
     def validate(self) -> list[str]:

@@ -1,0 +1,145 @@
+REPO TREE — Transcritor (Uzz.Ai)
+Checkpoint: 2026-04-13
+Commit: 8fecf62d6322f011ccecdcdbf49042503f56fa4e
+Branch: main
+(excluídos: .git, node_modules, __pycache__, dist, build, release, *.pyc)
+
+./
+├── .agents/
+│   └── skills/
+│       └── review/
+│           └── SKILL.md
+├── .env.example                           # Config template (raiz, compartilhado)
+├── .gitignore
+├── package-lock.json                      # Raiz — artefato (sem package.json correspondente)
+├── README.md                              # Overview geral do projeto
+│
+├── PLANO_AGENTE_ATAS.md                   # Design doc: decisões fechadas de arquitetura
+├── PLANO_PIPELINE_MULTIAGENTE.md          # Sprint checklist + contratos dos agentes
+├── PROCESSO-Atualizacao-Dashboards.md     # Processo: gestão de dashboards (~12K)
+├── PROCESSO-Criacao-ATAs.md               # Processo: criação de ATAs (~16K)
+├── PROCESSO-Execucao-Scripts.md           # Processo: execução de scripts (~16K)
+├── PROCESSO-Gestao-Sprints-Agil.md        # Processo: gestão de sprints (~8K)
+├── PROCESSO-Git-Workflow-Colaborativo.md  # Processo: Git colaborativo (~24K)
+│
+├── ata_agent/                             # MÓDULO 1: Pipeline IMAP→Gemini→SMTP
+│   ├── ata_agent/
+│   │   ├── __init__.py
+│   │   ├── __main__.py                    # CLI: run-once | daemon
+│   │   ├── config.py                      # Settings dataclass + .env loader (125 lines)
+│   │   ├── contracts.py                   # PipelineState dataclass (38 lines)
+│   │   ├── orchestrator.py                # Lógica central do pipeline (144 lines)
+│   │   ├── gemini_client.py               # Gemini Files API wrapper (~250 lines)
+│   │   ├── store.py                       # Persistência de IDs processados
+│   │   ├── email/
+│   │   │   ├── __init__.py
+│   │   │   ├── imap_listener.py           # Busca e-mails com anexo de áudio (144 lines)
+│   │   │   └── smtp_dispatcher.py         # Envia e-mail com ATA (75 lines)
+│   │   └── prompts/
+│   │       └── template_default.md        # Template padrão de ATA
+│   ├── pyproject.toml                     # Build config (hatchling)
+│   ├── requirements.txt                   # requests, python-dotenv
+│   └── README.md
+│
+├── ata_multiagent_pipeline/               # MÓDULO 2: Pipeline Multi-agente (OpenAI)
+│   ├── __init__.py
+│   ├── agents.py                          # AtaAgent, ExtractorAgent (~150+ lines)
+│   ├── cli.py                             # CLI: run | reprocess-latest | cleanup (57 lines)
+│   ├── config.py                          # PipelineConfig dataclass
+│   ├── contracts.py                       # Decision, ActionItem, PipelineState, etc. (~150+ lines)
+│   ├── orchestrator.py                    # Pipeline completo com validação
+│   ├── emailing.py                        # Formatação e envio de e-mail
+│   ├── gitops.py                          # Integração Git (commit/push)
+│   ├── scriptops.py                       # Framework de execução de scripts
+│   ├── logging_utils.py                   # Utilitários de log
+│   ├── maintenance.py                     # Limpeza de artefatos gerados
+│   ├── preflight.py                       # Validações de pré-execução (SMTP, OpenAI)
+│   ├── .env.example
+│   ├── examples/
+│   │   └── sample_event.json              # Exemplo de input do pipeline
+│   ├── README.md
+│   └── ROADMAP.md
+│
+├── gemini-whisper/                        # MÓDULO 3: App Desktop (Electron + React)
+│   ├── App.tsx                            # Componente principal (~1000+ lines)
+│   ├── types.ts                           # Interfaces TypeScript globais
+│   ├── index.tsx                          # React entry point
+│   ├── index.html                         # HTML shell
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── tsconfig.json
+│   ├── vite.config.ts
+│   ├── metadata.json
+│   ├── .gitignore
+│   ├── components/
+│   │   ├── AtaGenerationModal.tsx         # Modal: projeto/sprint/participantes/destinatários
+│   │   ├── AudioRecorder.tsx              # Gravação de áudio via MediaRecorder
+│   │   ├── ContextRecorder.tsx            # Contexto + gravação ao vivo
+│   │   ├── FileQueue.tsx                  # Fila de arquivos com status/progresso
+│   │   ├── FileUpload.tsx                 # Drag-drop de arquivos de áudio
+│   │   ├── SettingsModal.tsx              # Configurações: API keys, provider, padrões ATA
+│   │   ├── SpeakerIdentificationModal.tsx # Mapeamento speaker ID → nome
+│   │   └── TranscriptionView.tsx          # Exibição e exportação de transcrições
+│   ├── services/
+│   │   ├── transcriptionService.ts        # Gemini 2.5 Flash ou OpenAI Whisper API
+│   │   ├── geminiService.ts               # SDK GoogleGenAI (legado)
+│   │   └── ataPipelineService.ts          # Electron IPC → Python (69 lines)
+│   ├── utils/
+│   │   ├── audioSlicer.ts                 # Segmentação de áudio
+│   │   ├── costCalculator.ts              # Cálculo de custo OpenAI
+│   │   └── fileUtils.ts                   # Chunking (1MB por chunk)
+│   ├── electron/
+│   │   └── main.cjs                       # Electron main process (~150+ lines)
+│   ├── docs/
+│   │   ├── PLANO_DIARIZACAO.md
+│   │   ├── PLANO_FIX_DIARIZACAO.md
+│   │   └── PROMPT_GENERIC_PROJECT_CHECKPOINT.md
+│   ├── scripts/
+│   │   ├── listModels.js
+│   │   ├── testGen.js
+│   │   └── testGenAlpha.js
+│   ├── implementação ideia/               # Pasta de prototipagem
+│   └── release/                           # Build artifacts (ignorado no checkpoint)
+│
+├── web/                                   # MÓDULO 4: Next.js 15 Dashboard
+│   ├── app/
+│   │   ├── layout.tsx                     # Root layout (Inter + JetBrains Mono)
+│   │   ├── page.tsx                       # Home: total de pipeline_events
+│   │   └── globals.css                    # Tailwind directives
+│   ├── db/
+│   │   └── schema.ts                      # Drizzle schema: tabela pipeline_events
+│   ├── lib/
+│   │   └── db.ts                          # Neon HTTP adapter + Drizzle instance
+│   ├── theme/
+│   │   └── tokens.ts                      # Design system (cores, fontes, bordas)
+│   ├── next.config.ts
+│   ├── tailwind.config.ts
+│   ├── postcss.config.mjs
+│   ├── tsconfig.json
+│   ├── drizzle.config.ts
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .eslintrc.json
+│   ├── .env.example
+│   └── README.md
+│
+├── web_sales_agent/                       # LEGADO — Agente de vendas experimental
+│   ├── sales_agents.py
+│   ├── test.py
+│   └── README.md
+│
+├── Template de atas/                      # Templates Markdown de ATA (12 arquivos)
+│   ├── 04-GARIMPO-TEMPLATE-R02.md
+│   ├── 05-PLANO-NEGOCIO-TEMPLATE-R01.md
+│   ├── 05-SPRINT-SEMANAL-TEMPLATE-R00.md
+│   └── [9 outros templates]
+│
+└── Whisper de voz/                        # LEGADO — Scripts de transcrição em lote + outputs
+    ├── transcrever_*.py                   # Scripts Python legado
+    ├── *.txt                              # 119 arquivos de transcrição gerados
+    └── [22 subdiretórios de projetos]
+
+---
+Estatísticas:
+  Total de arquivos (rastreados): 268
+  .txt: 119 | .py: 56 | .md: 32 | .ts: 16 | .tsx: 13 | .json: 13 | .js: 6

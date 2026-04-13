@@ -19,8 +19,11 @@ const config: Config = {
         danger: colors.danger,
         success: colors.success,
       },
-      fontFamily,
-      borderRadius,
+      fontFamily: {
+        sans: [...fontFamily.sans],
+        mono: [...fontFamily.mono],
+      },
+      borderRadius: { ...borderRadius },
     },
   },
   plugins: [],

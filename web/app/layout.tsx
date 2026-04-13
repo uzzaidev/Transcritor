@@ -13,8 +13,8 @@ const fontMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Atas — painel",
-  description: "Painel do pipeline de atas (Neon + Next.js). Sem autenticação na v1.",
+  title: "Atas - painel",
+  description: "Painel do pipeline de atas (Neon + Next.js) com autenticacao basica.",
 };
 
 export default function RootLayout({
@@ -24,9 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans`}
-      >
+      <body className={`${fontSans.variable} ${fontMono.variable} font-sans`}>
         {children}
       </body>
     </html>

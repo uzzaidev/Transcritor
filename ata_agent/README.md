@@ -1,32 +1,62 @@
 # Agente de ATAs (Python)
 
-Fluxo: **IMAP** (e-mail com anexo de áudio) → **Gemini** (transcrição + geração de ata) → **SMTP** (envio para sócios).
+Pipeline canonico:
 
-## Configuração
+IMAP (email com audio) -> Gemini (transcricao + extracao + ATA) -> SMTP (entrega) -> pipeline_events (Neon, opcional)
 
-1. Copie `.env.example` da raiz do repositório (ou use `ata_agent/.env` com os mesmos nomes de variável).
-2. Instale dependências:
+## Instalacao
 
 ```bash
 cd ata_agent
 python -m pip install -r requirements.txt
 ```
 
-3. Gmail / Workspace: ative IMAP, use **senha de app** ou OAuth conforme política da empresa.
+Para desenvolvimento e testes:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
 
 ## Uso
 
 ```bash
-# Uma passada: processa e-mails não lidos que batem com o gatilho de assunto
 python -m ata_agent run-once
-
-# Loop a cada N segundos (padrão 120)
 python -m ata_agent daemon --interval 120
 ```
 
-Variáveis importantes: `GEMINI_API_KEY`, `IMAP_*`, `SMTP_*`, `EMAIL_SUBJECT_TRIGGER`, `ATA_RECIPIENTS`.
+## Variaveis importantes
 
-## Integração
+- `GEMINI_API_KEY`, `GEMINI_MODEL`
+- `IMAP_*`
+- `SMTP_*`
+- `EMAIL_SUBJECT_TRIGGER`
+- `ATA_RECIPIENTS`, `ATA_FROM_EMAIL`, `ATA_REPLY_TO`
+- `DATABASE_URL` (opcional; quando definida, persiste eventos em `pipeline_events`)
 
-- Transcrição alinhada ao fluxo de upload de ficheiros do projeto `gemini-whisper` (Gemini Files API + `generateContent`).
-- Template opcional: `ATA_TEMPLATE_PATH` apontando para um `.md` em `Template de atas/`.
+## Confiabilidade
+
+- Retry SMTP com backoff exponencial:
+  - `SMTP_RETRY_ATTEMPTS` (default 3)
+  - `SMTP_RETRY_BASE_SECONDS` (default 1)
+  - `SMTP_RETRY_MAX_SECONDS` (default 30)
+- Retry Gemini para falhas transitorias:
+  - `GEMINI_RETRY_ATTEMPTS` (default 3)
+  - `GEMINI_RETRY_BASE_SECONDS` (default 1)
+  - `GEMINI_RETRY_MAX_SECONDS` (default 30)
+- Falhas por mensagem sao isoladas (um erro nao derruba o lote inteiro).
+
+## Observabilidade no banco
+
+Com `DATABASE_URL` configurada, o agente grava eventos compactos em `pipeline_events`:
+
+- `ata_agent.job.skipped_duplicate`
+- `ata_agent.job.validation_failed`
+- `ata_agent.job.delivery`
+- `ata_agent.job.exception`
+
+## Testes
+
+```bash
+cd ata_agent
+python -m pytest
+```

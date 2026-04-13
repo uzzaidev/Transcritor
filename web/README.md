@@ -1,25 +1,37 @@
-# Web — Next.js + Tailwind + Neon
+# Web - Next.js + Neon
+
+Dashboard de observabilidade do pipeline com autenticacao basica obrigatoria.
 
 ## Requisitos
 
 - Node.js 20+
-- Conta [Neon](https://neon.tech) e string `DATABASE_URL`
+- `DATABASE_URL` (Neon)
+- `DASHBOARD_BASIC_AUTH_USER`
+- `DASHBOARD_BASIC_AUTH_PASSWORD`
 
 ## Setup
 
 ```bash
 cd web
 cp .env.example .env.local
-# edite DATABASE_URL
 npm install
 npm run db:push
 npm run dev
 ```
 
-## Tema
+## Comandos
 
-Cores e raios semânticos: `theme/tokens.ts` → referenciados em `tailwind.config.ts`. Use classes Tailwind (`bg-background`, `text-foreground`, `border-border`, `text-accent`, etc.) nos componentes.
+```bash
+npm run dev
+npm run build
+npm run test
+```
 
-## Autenticação
+## Rotas operacionais
 
-Não implementada nesta versão (conforme plano).
+- `/` dashboard principal (eventos ordenados por `created_at desc`, limite/paginacao)
+- `/api/health` healthcheck simples (DB configurado e alcançavel)
+
+## Segurança
+
+- Sem `DASHBOARD_BASIC_AUTH_USER` e `DASHBOARD_BASIC_AUTH_PASSWORD`, o dashboard responde `401` por padrao.

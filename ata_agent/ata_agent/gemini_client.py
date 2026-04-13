@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import mimetypes
+import os
 import time
 from pathlib import Path
 
@@ -10,6 +11,7 @@ import requests
 GEMINI_UPLOAD_START = "https://generativelanguage.googleapis.com/upload/v1beta/files"
 GEMINI_FILES = "https://generativelanguage.googleapis.com/v1beta/files"
 GEMINI_GENERATE = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+RETRIABLE_STATUS_CODES = {408, 429, 500, 502, 503, 504}
 
 
 def _guess_mime(path: Path) -> str:
@@ -28,6 +30,43 @@ def _guess_mime(path: Path) -> str:
     }.get(suf, "application/octet-stream")
 
 
+def _retry_int(name: str, default: int) -> int:
+    try:
+        return max(1, int((os.getenv(name, "") or str(default)).strip()))
+    except ValueError:
+        return max(1, default)
+
+
+def _retry_sleep(attempt: int) -> None:
+    base = _retry_int("GEMINI_RETRY_BASE_SECONDS", 1)
+    max_wait = _retry_int("GEMINI_RETRY_MAX_SECONDS", 30)
+    wait = min(max_wait, base * (2 ** max(0, attempt - 1)))
+    time.sleep(wait)
+
+
+def _request_with_retry(method: str, url: str, **kwargs) -> requests.Response:
+    attempts = _retry_int("GEMINI_RETRY_ATTEMPTS", 3)
+    last_exc: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            response = requests.request(method, url, **kwargs)
+        except requests.RequestException as exc:
+            last_exc = exc
+            if attempt >= attempts:
+                break
+            _retry_sleep(attempt)
+            continue
+
+        if response.status_code in RETRIABLE_STATUS_CODES and attempt < attempts:
+            _retry_sleep(attempt)
+            continue
+        return response
+
+    raise RuntimeError(
+        f"Gemini request failed after {attempts} attempt(s): {last_exc}"
+    )
+
+
 def upload_audio_file(api_key: str, file_path: Path) -> tuple[str, str]:
     """Resumable upload (mesmo fluxo da app gemini-whisper). Devolve (file_uri, file_resource_name)."""
     data = file_path.read_bytes()
@@ -35,7 +74,8 @@ def upload_audio_file(api_key: str, file_path: Path) -> tuple[str, str]:
     mime = _guess_mime(file_path)
     display = file_path.name[:200]
 
-    r = requests.post(
+    r = _request_with_retry(
+        "POST",
         f"{GEMINI_UPLOAD_START}?key={api_key}",
         headers={
             "X-Goog-Upload-Protocol": "resumable",
@@ -52,7 +92,8 @@ def upload_audio_file(api_key: str, file_path: Path) -> tuple[str, str]:
     if not session_url:
         raise RuntimeError("Gemini não devolveu URL de upload.")
 
-    up = requests.post(
+    up = _request_with_retry(
+        "POST",
         session_url,
         headers={
             "Content-Length": str(size),
@@ -77,7 +118,7 @@ def wait_file_active(api_key: str, file_short_name: str, max_wait: int = 300) ->
     deadline = time.time() + max_wait
     url = f"{GEMINI_FILES}/{file_short_name}?key={api_key}"
     while time.time() < deadline:
-        r = requests.get(url, timeout=60)
+        r = _request_with_retry("GET", url, timeout=60)
         r.raise_for_status()
         state = (r.json().get("state") or "").upper()
         if state == "ACTIVE":
@@ -120,7 +161,7 @@ def generate_with_audio(
             "maxOutputTokens": max_output_tokens,
         },
     }
-    r = requests.post(url, json=payload, timeout=600)
+    r = _request_with_retry("POST", url, json=payload, timeout=600)
     if not r.ok:
         try:
             detail = r.json().get("error", {}).get("message", r.text)
@@ -148,7 +189,7 @@ def generate_text_only(
             "maxOutputTokens": max_output_tokens,
         },
     }
-    r = requests.post(url, json=payload, timeout=300)
+    r = _request_with_retry("POST", url, json=payload, timeout=300)
     if not r.ok:
         try:
             detail = r.json().get("error", {}).get("message", r.text)

@@ -1,0 +1,146 @@
+{
+  "checkpoint_date": "2026-04-13",
+  "generated_at": "2026-04-13T00:00:00-03:00",
+  "repository": "Transcritor",
+  "repository_path": "c:/Projetos Uzz.Ai/00 - AA Ferramentas/Transcritor",
+  "commit_hash": "8fecf62d6322f011ccecdcdbf49042503f56fa4e",
+  "branch": "main",
+  "stack_detection": {
+    "tipo_projeto": "monorepo_fullstack",
+    "modulos": [
+      {
+        "nome": "ata_agent",
+        "linguagem_principal": "Python",
+        "tipo": "backend/cli",
+        "framework_principal": "stdlib (imaplib, smtplib, requests)",
+        "package_manager": "pip",
+        "database": "None",
+        "ai": "Google Gemini 2.5 Flash (Files API)"
+      },
+      {
+        "nome": "ata_multiagent_pipeline",
+        "linguagem_principal": "Python",
+        "tipo": "backend/cli",
+        "framework_principal": "openai SDK",
+        "package_manager": "pip (sem requirements.txt)",
+        "database": "None",
+        "ai": "OpenAI GPT-4o-mini"
+      },
+      {
+        "nome": "gemini-whisper",
+        "linguagem_principal": "TypeScript",
+        "tipo": "desktop",
+        "framework_principal": "Electron 34 + React 19 + Vite 6",
+        "package_manager": "npm",
+        "database": "None (localStorage)",
+        "ai": "Google Gemini 2.5 Flash (inlineData) + OpenAI Whisper"
+      },
+      {
+        "nome": "web",
+        "linguagem_principal": "TypeScript",
+        "tipo": "frontend/web",
+        "framework_principal": "Next.js 15 (App Router)",
+        "package_manager": "npm",
+        "database": "Neon PostgreSQL (serverless)",
+        "orm": "Drizzle ORM 0.38.3"
+      }
+    ]
+  },
+  "stats": {
+    "total_files": 268,
+    "total_lines_estimated": "~8000 (código ativo, excluindo legados e .txt)",
+    "routes_or_endpoints": {
+      "http_routes": 1,
+      "ipc_channels": 3,
+      "cli_commands": 5
+    },
+    "components_or_services": {
+      "react_components": 9,
+      "ts_services": 3,
+      "python_modules": 12
+    },
+    "database_tables": 1,
+    "test_coverage_percent": "0%",
+    "template_files": 12,
+    "legacy_transcription_files": 119
+  },
+  "versions": {
+    "python": ">=3.10",
+    "nodejs": ">=18 (inferido)",
+    "next_js": "^15.1.6",
+    "react": "^19.2.4 (electron) / ^19.0.0 (web)",
+    "electron": "^34.3.0",
+    "drizzle_orm": "^0.38.3",
+    "google_genai_sdk": "^1.41.0",
+    "openai_sdk": "não versionado (sem requirements.txt)"
+  },
+  "critical_findings": {
+    "security": [
+      "web dashboard sem autenticação — completamente público",
+      "API Keys salvas em localStorage do Electron (texto claro)",
+      "Trigger de pipeline por assunto de e-mail — sem validação de remetente"
+    ],
+    "performance": [
+      "Full table scan em pipeline_events sem paginação nem LIMIT",
+      "Sem índices secundários na tabela pipeline_events"
+    ],
+    "testing": [
+      "ZERO testes automatizados em todos os módulos",
+      "Pipeline crítico de e-mail sem testes de unidade ou integração"
+    ],
+    "tech_debt": [
+      "requirements.txt ausente em ata_multiagent_pipeline/",
+      "pipeline_events não está sendo populado (INSERT não implementado)",
+      "Dois SDKs Gemini redundantes em gemini-whisper/",
+      "App.tsx monolítico com 1000+ linhas",
+      "Sem retry em falhas de SMTP"
+    ]
+  },
+  "priorities": {
+    "P0_quick_wins": [
+      "Criar requirements.txt em ata_multiagent_pipeline/ (1h)",
+      "Remover SDK Gemini legado @google/generative-ai (2h)",
+      "Adicionar validação de DATABASE_URL no boot do web/ (30min)"
+    ],
+    "P1_medium_wins": [
+      "Implementar INSERT em pipeline_events após delivery (4h)",
+      "Adicionar retry com backoff para SMTP (2h)",
+      "Testes unitários para funções puras — validate_ata, store, costCalculator (10h)",
+      "Paginação + ORDER BY na query do dashboard (2h)",
+      "Refatorar App.tsx em hooks customizados (8h)",
+      "Auth básica no web dashboard (8h)"
+    ],
+    "P2_long_term": [
+      "GitHub Actions CI com lint + type-check + tests",
+      "Logging estruturado com structlog",
+      "Arquivar módulos legados (Whisper de voz/, web_sales_agent/)",
+      "Expandir dashboard com tabela de eventos + filtros + métricas",
+      "Diarização melhorada (PLANO_FIX_DIARIZACAO.md)"
+    ]
+  },
+  "files_generated": [
+    "00_MANIFEST.json",
+    "01_REPO_TREE.txt",
+    "02_BUILD_RUNBOOK.md",
+    "03_DEPENDENCIES.md",
+    "04_STACK_DETECTION.md",
+    "05_ROUTES_FROM_CODE.md",
+    "06_COMPONENTS_CATALOG.md",
+    "07_DATA_ACCESS_MAP.md",
+    "08_DATABASE_SCHEMA.md",
+    "09_AUTH_AND_AUTHZ.md",
+    "10_INTEGRATIONS.md",
+    "11_OBSERVABILITY.md",
+    "12_TESTS_COVERAGE_MAP.md",
+    "13_TECH_DEBT_FINDINGS.md",
+    "14_ARCHITECTURE_DIAGRAMS.md",
+    "99_AI_CONTEXT_PACK.md"
+  ],
+  "notes": [
+    "Monorepo com 4 módulos ativos: ata_agent (Python/Gemini), ata_multiagent_pipeline (Python/OpenAI), gemini-whisper (Electron/React), web (Next.js/Neon)",
+    "Módulos legados presentes mas sem manutenção ativa: web_sales_agent/, Whisper de voz/",
+    "Pipeline de e-mail (ata_agent/) é o módulo mais maduro e completo",
+    "INSERT no banco Neon não está implementado — dashboard mostra dados placeholder",
+    "Sprints 3-5 do roadmap multiagente estão pendentes (validator score, anti-duplicidade Neon, Git ops)"
+  ]
+}

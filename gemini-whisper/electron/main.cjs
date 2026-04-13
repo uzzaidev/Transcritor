@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session, desktopCapturer, globalShortcut, ipcMain } = require('electron');
+const { app, BrowserWindow, session, desktopCapturer, globalShortcut, ipcMain, safeStorage } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -6,6 +6,96 @@ const { spawn } = require('child_process');
 
 const isDev = !app.isPackaged;
 let mainWindow;
+const SECURE_SETTINGS_FILE = 'secure-settings.json';
+
+function getSecureSettingsPath() {
+    return path.join(app.getPath('userData'), SECURE_SETTINGS_FILE);
+}
+
+function getSecureStorageCapabilities() {
+    try {
+        const available = safeStorage.isEncryptionAvailable();
+        if (!available) {
+            return {
+                available: false,
+                reason: 'safe_storage_unavailable',
+            };
+        }
+        return { available: true, reason: '' };
+    } catch (error) {
+        return {
+            available: false,
+            reason: `safe_storage_error:${error.message}`,
+        };
+    }
+}
+
+function loadSecureSettings() {
+    const capabilities = getSecureStorageCapabilities();
+    if (!capabilities.available) {
+        return {
+            success: false,
+            reason: capabilities.reason,
+            data: null,
+        };
+    }
+
+    const filePath = getSecureSettingsPath();
+    if (!fs.existsSync(filePath)) {
+        return {
+            success: true,
+            reason: '',
+            data: {},
+        };
+    }
+
+    try {
+        const raw = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+        if (!raw?.encrypted || typeof raw?.payload !== 'string') {
+            return { success: false, reason: 'invalid_secure_payload', data: null };
+        }
+        const decrypted = safeStorage.decryptString(Buffer.from(raw.payload, 'base64'));
+        const parsed = JSON.parse(decrypted);
+        return { success: true, reason: '', data: parsed || {} };
+    } catch (error) {
+        return { success: false, reason: `secure_read_error:${error.message}`, data: null };
+    }
+}
+
+function saveSecureSettings(nextData) {
+    const capabilities = getSecureStorageCapabilities();
+    if (!capabilities.available) {
+        return {
+            success: false,
+            reason: capabilities.reason,
+        };
+    }
+
+    try {
+        const current = loadSecureSettings();
+        const merged = {
+            ...(current.data || {}),
+            ...nextData,
+        };
+        const encrypted = safeStorage.encryptString(JSON.stringify(merged));
+        fs.writeFileSync(
+            getSecureSettingsPath(),
+            JSON.stringify(
+                {
+                    encrypted: true,
+                    payload: encrypted.toString('base64'),
+                    updatedAt: new Date().toISOString(),
+                },
+                null,
+                2
+            ),
+            'utf-8'
+        );
+        return { success: true, reason: '' };
+    } catch (error) {
+        return { success: false, reason: `secure_write_error:${error.message}` };
+    }
+}
 
 function resolveWorkspaceRoot() {
     const candidates = [
@@ -206,6 +296,18 @@ ipcMain.on('register-shortcut', (_event, shortcut) => {
     } catch (error) {
         console.error('Failed to register shortcut:', error);
     }
+});
+
+ipcMain.handle('settings:secure-capabilities', async () => {
+    return getSecureStorageCapabilities();
+});
+
+ipcMain.handle('settings:secure-load', async () => {
+    return loadSecureSettings();
+});
+
+ipcMain.handle('settings:secure-save', async (_event, payload) => {
+    return saveSecureSettings(payload || {});
 });
 
 ipcMain.handle('ata-pipeline:run', async (_event, payload) => {

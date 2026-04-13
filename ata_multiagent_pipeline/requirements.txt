@@ -1,0 +1,3 @@
+# ata_multiagent_pipeline runtime dependencies
+# This module currently uses Python standard library APIs only.
+# Keep this file to preserve a deterministic install entrypoint.

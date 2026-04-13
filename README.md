@@ -1,31 +1,61 @@
-# Transcritor de ata e enviador de e-mails
+# Transcritor (Uzz.Ai - Ferramentas)
 
-Monorepo com **pipeline Python** (e-mail → Gemini → ata → SMTP), **app web** (Next.js + Tailwind + Neon) e a app existente **gemini-whisper** (Electron).
+Monorepo com pipeline de ATA por e-mail, app desktop de transcricao e dashboard web.
 
-## Documentação de plano
+## Modulos Ativos
 
-- `PLANO_AGENTE_ATAS.md` — fluxo do agente e decisões fechadas.
-- `PLANO_PIPELINE_MULTIAGENTE.md` — papéis dos agentes, contrato de dados e sprints.
-- `PROCESSO-*.md` — processos operacionais do vault (atas, sprint, Git, dashboards, scripts).
+- `ata_agent/` (Python): pipeline canonico IMAP -> Gemini -> ATA -> SMTP
+- `ata_multiagent_pipeline/` (Python): pipeline avancado com extracao e derivados
+- `gemini-whisper/` (Electron + React): app desktop de upload/gravacao/transcricao
+- `web/` (Next.js + Neon): dashboard inicial de observabilidade
 
-## Agente Python (`ata_agent/`)
+## Instalacao Rapida Confiavel
 
-1. Copie `.env.example` para `.env` na **raiz do repositório** e preencha credenciais.
-2. Instale dependências e execute a partir da pasta `ata_agent/`:
+### 1) Preparar env da raiz
+
+```bash
+cp .env.example .env
+```
+
+Preencha no minimo:
+- `GEMINI_API_KEY`
+- `IMAP_USER`, `IMAP_PASSWORD`
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_PASSWORD`
+- `SMTP_USER` (ou `SMTP_USERNAME`)
+- `ATA_FROM_EMAIL` (ou `SMTP_FROM_EMAIL`)
+- `ATA_RECIPIENTS`
+- `DATABASE_URL` (para `web/`)
+- `OPENAI_API_KEY` (se usar `ata_multiagent_pipeline/`)
+
+### 2) Instalar e executar `ata_agent` (pipeline principal)
 
 ```bash
 cd ata_agent
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python -m ata_agent run-once
-# ou loop:
+# ou:
 python -m ata_agent daemon --interval 120
 ```
 
-Requer **Python 3.10+** no PATH. A transcrição usa a **Gemini Files API** (alinhada ao `gemini-whisper`), não o Whisper local.
+### 3) Instalar e executar `ata_multiagent_pipeline`
 
-## Web (`web/`)
+```bash
+cd ata_multiagent_pipeline
+python -m pip install -r requirements.txt
+python -m ata_multiagent_pipeline.cli examples/sample_event.json
+python -m ata_multiagent_pipeline.preflight
+```
 
-Next.js 15, tema centralizado em `web/theme/tokens.ts` → `tailwind.config.ts`, Postgres na **Neon** via `DATABASE_URL`.
+### 4) Instalar e executar `gemini-whisper`
+
+```bash
+cd gemini-whisper
+cp .env.example .env.local
+npm install
+npm run electron:dev
+```
+
+### 5) Instalar e executar `web`
 
 ```bash
 cd web
@@ -35,8 +65,45 @@ npm run db:push
 npm run dev
 ```
 
-Autenticação: não incluída na v1.
+## Testes Minimos
 
-## Templates de ata
+```bash
+cd ata_agent
+python -m pip install -r requirements-dev.txt
+python -m pytest
+```
 
-Pasta `Template de atas/`. Opcional: `ATA_TEMPLATE_PATH` no `.env` apontando para um `.md` específico.
+```bash
+cd gemini-whisper
+npm run test
+```
+
+```bash
+cd web
+npm run test
+```
+
+## Flags Sensiveis (nao ativar por padrao)
+
+Manter estas variaveis em `0` ate autorizacao explicita humana:
+- `PIPELINE_GIT_ENABLED`
+- `PIPELINE_GIT_ALLOW_PUSH`
+- `PIPELINE_DESTRUCTIVE_GIT_OPS`
+- `PIPELINE_SCRIPTOPS_ENABLED`
+
+## Legado e Experimental
+
+Diretorios fora dos 4 modulos ativos devem ser tratados como legado/experimental, exceto quando houver necessidade operacional explicita:
+- `Whisper de voz/`
+- `web_sales_agent/`
+- `Template de atas/`
+
+Status operacional atual e pendencias: `OPERATIONS_STATUS.md`.
+
+Guia humano para configuracao de chaves: `PASSO_A_PASSO_CONFIGURACAO_CHAVES.md`.
+
+Runbook operacional: `RUNBOOK_OPERACIONAL.md`.
+
+Checklist de producao: `CHECKLIST_PRODUCAO.md`.
+
+Checklist humano de decisoes manuais: `CHECKLIST_HUMANO.md`.

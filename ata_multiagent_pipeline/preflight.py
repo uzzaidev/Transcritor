@@ -13,9 +13,9 @@ def main() -> int:
     smtp_fields = {
         "SMTP_HOST": bool(config.smtp_host),
         "SMTP_PORT": bool(config.smtp_port),
-        "SMTP_USERNAME": bool(config.smtp_username),
+        "SMTP_USERNAME_OR_SMTP_USER": bool(config.smtp_username),
         "SMTP_PASSWORD": bool(config.smtp_password),
-        "SMTP_FROM_EMAIL": bool(config.smtp_from_email),
+        "SMTP_FROM_EMAIL_OR_ATA_FROM_EMAIL": bool(config.smtp_from_email),
     }
 
     runtime_events_dir = config.output_root / "runtime_events"

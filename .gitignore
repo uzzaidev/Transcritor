@@ -3,9 +3,25 @@
 *.wav
 *.mp4
 *.ogg
+
+# Env and secrets
 .env
 .env.local
+**/.env
+**/.env.local
+**/.env.*
+!**/.env.example
+
+# Runtime outputs
 generated/
 .cache/
-web/.next/
-web/node_modules/
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node outputs
+**/node_modules/
+**/.next/
