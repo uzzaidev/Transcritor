@@ -33,7 +33,8 @@ Status do modulo `ata_multiagent_pipeline`: `93%`.
 
 ### Fase 1 - Entrada real
 
-- [ ] Ler automaticamente novos audios da caixa de entrada IMAP. BLOQUEADO no produto completo por falta de `IMAP_USER` e `IMAP_PASSWORD`.
+- [x] Configurar e autenticar caixa de entrada IMAP.
+- [ ] Validar processamento completo com e-mail real contendo audio. BLOQUEADO por falta de mensagem de teste.
 - [x] Conectar o pipeline ao fluxo atual do projeto `gemini-whisper`.
 - [ ] Definir pasta canonica para templates finais de ATA.
 - [ ] Mapear destinatarios por projeto, sprint ou tipo de reuniao. BLOQUEADO por decisao de negocio.

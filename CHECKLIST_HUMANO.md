@@ -4,18 +4,19 @@ Data: 2026-04-28
 
 ## 1) Decisoes obrigatorias
 
-- [ ] Confirmar qual caixa de e-mail sera usada para entrada IMAP.
-- [ ] Confirmar destinatarios autorizados para receber ATA.
+- [x] Confirmar qual caixa de e-mail sera usada para entrada IMAP: `contato@uzzai.com.br`.
+- [x] Configurar e validar acesso IMAP da caixa de entrada.
+- [ ] Confirmar destinatarios autorizados para receber ATA em producao.
 - [ ] Confirmar se o trigger `[TRANSCRICAO]` aceita qualquer remetente ou apenas lista permitida.
 - [x] Dashboard deve ser interno neste primeiro corte.
 - [ ] Definir usuario e senha de Basic Auth do dashboard.
-- [ ] Confirmar se os primeiros envios via `ata_agent` serao dry-run ou reais.
+- [ ] Confirmar se o primeiro e-mail real com anexo deve enviar ATA automaticamente ou rodar primeiro em dry-run.
 
 ## 2) Credenciais e acessos
 
 - [x] App Password Google gerada para SMTP.
 - [x] `.env` raiz preenchido para OpenAI e SMTP.
-- [ ] `.env` raiz completo para IMAP, recipients, Neon e dashboard.
+- [ ] `.env` raiz completo para Neon e dashboard.
 - [ ] `web/.env.local` preenchido, se as variaveis do dashboard nao ficarem na raiz.
 - [ ] Configurar variaveis no ambiente de execucao, se houver deploy interno.
 
@@ -27,7 +28,7 @@ Data: 2026-04-28
 
 ## 4) Validacao operacional
 
-- [ ] Rodar `ata_agent run-once --json` com IMAP real.
+- [x] Rodar `ata_agent run-once --json` com IMAP real e 0 mensagens pendentes.
 - [ ] Confirmar eventos em `pipeline_events`.
 - [ ] Validar dashboard com auth.
 - [ ] Validar `/api/health` com o servidor `web` rodando.

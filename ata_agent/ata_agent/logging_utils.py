@@ -20,6 +20,7 @@ class ContextEnrichmentFilter(logging.Filter):
 
 
 def configure_logging(level: int = logging.INFO) -> None:
+    enrichment_filter = ContextEnrichmentFilter()
     logging.basicConfig(
         level=level,
         format=(
@@ -28,7 +29,9 @@ def configure_logging(level: int = logging.INFO) -> None:
         ),
     )
     root = logging.getLogger()
-    root.addFilter(ContextEnrichmentFilter())
+    root.addFilter(enrichment_filter)
+    for handler in root.handlers:
+        handler.addFilter(enrichment_filter)
 
 
 def set_correlation_id(correlation_id: str) -> contextvars.Token[str]:

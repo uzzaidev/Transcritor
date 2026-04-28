@@ -7,14 +7,14 @@ Last update: 2026-04-28
 Foco operacional: fechar o produto completo `IMAP -> Gemini -> ATA -> SMTP -> pipeline_events (Neon) -> dashboard web`.
 
 Status estimado:
-- Projeto completo de producao: `92% pronto localmente`
-- Restante para 100%: `8%`
-- Principal bloqueio: credenciais/decisoes externas para IMAP, Neon, destinatarios e Basic Auth.
+- Projeto completo de producao: `94% pronto localmente`
+- Restante para 100%: `6%`
+- Principal bloqueio: Neon, Basic Auth do dashboard e teste real com e-mail de entrada.
 
 Git:
 - Branch: `main`
 - Commit local mais recente: `ad99a6e feat: strengthen ata pipeline validation and ui ops`
-- Estado remoto: branch local esta `ahead 1`; falta `git push origin main` quando autorizado.
+- Estado remoto: sincronizado apos `git push origin main`; novas alteracoes locais ainda precisam de commit/push.
 
 ## Validado em 2026-04-28
 
@@ -28,6 +28,8 @@ Git:
 - `gemini-whisper` build: ok.
 - `web` testes: 5 passed.
 - `web` build: ok.
+- IMAP Hostinger autenticado para a caixa de entrada configurada.
+- `ata_agent run-once --json`: ok, retornou 0 mensagens pendentes.
 
 ## Entregas Concluidas
 
@@ -40,24 +42,22 @@ Git:
 
 ## Riscos Remanescentes
 
-- E2E real ainda nao foi validado com caixa IMAP recebendo audio.
+- E2E real ainda nao foi validado com uma mensagem `[TRANSCRICAO]` contendo audio.
 - Neon real ainda nao foi validado porque `DATABASE_URL` esta ausente.
 - Dashboard em ambiente real ainda nao foi validado com Basic Auth configurado.
-- `git push origin main` ainda nao foi executado por falta de autorizacao explicita.
+- Um novo ajuste local de logging foi feito apos o push e precisa ser commitado/pushado.
 - `npm install` reporta vulnerabilidades em dependencias transitivas; nao foi aplicado `npm audit fix --force` para evitar mudancas quebradoras.
 
 ## Acoes Humanas Necessarias
 
-- Informar/configurar `IMAP_USER` e `IMAP_PASSWORD`.
-- Informar/configurar `ATA_RECIPIENTS`.
 - Provisionar Neon e configurar `DATABASE_URL`.
 - Definir `DASHBOARD_BASIC_AUTH_USER` e `DASHBOARD_BASIC_AUTH_PASSWORD`.
 - Confirmar se o primeiro teste IMAP real deve enviar e-mail de verdade ou rodar em dry-run.
-- Autorizar `git push origin main` quando quiser publicar os commits locais.
+- Enviar ou criar um e-mail de teste com assunto `[TRANSCRICAO]` e anexo de audio.
 
 ## Proximo Passo Operacional
 
-1. Completar `.env` com IMAP, recipients, Neon e Basic Auth.
+1. Completar `.env` com Neon e Basic Auth.
 2. Rodar `cd web && npm run db:push`.
 3. Rodar `cd ata_agent && python -m ata_agent run-once --json`.
 4. Abrir `web` e confirmar evento em `pipeline_events`.
