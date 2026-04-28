@@ -127,12 +127,16 @@ class ExtractorAgent(BaseAgent):
             )
             for index, item in enumerate(payload.get("decisoes", []), start=1)
         ]
+        default_owner = _default_owner_from_participants(event.participantes)
         actions = [
             ActionItem(
                 id=f"A-{index:03d}",
                 titulo=sanitize_text(item.get("titulo") or item.get("descricao") or f"Acao {index}"),
-                responsavel=normalize_participant_name(sanitize_text(item.get("responsavel", "Responsável a definir"))),
-                prazo=sanitize_text(item.get("prazo", "")),
+                responsavel=_normalize_action_owner(
+                    sanitize_text(item.get("responsavel", "Responsável a definir")),
+                    default_owner,
+                ),
+                prazo=_normalize_due_date(sanitize_text(item.get("prazo", "")), event.meeting_date),
                 prioridade=sanitize_text(item.get("prioridade", "media")) or "media",
                 tags=[sanitize_text(tag) for tag in item.get("tags", []) if sanitize_text(tag)],
             )
@@ -186,7 +190,7 @@ class ExtractorAgent(BaseAgent):
         sentences = _split_sentences(transcript)
         topicos = _extract_topics(sentences)
         decisions = _extract_decisions(sentences)
-        actions = _extract_actions(sentences, event.participantes)
+        actions = _extract_actions(sentences, event.participantes, event.meeting_date)
         kaizens = _extract_kaizens(sentences)
         risks = _extract_risks(sentences, decisions)
 
@@ -361,6 +365,9 @@ class ValidatorAgent(BaseAgent):
         if not extraction.decisoes:
             warnings.append("no_decisions_detected")
             score -= 5
+        if any("definir" in sanitize_text(action.responsavel).lower() for action in extraction.acoes):
+            warnings.append("actions_with_unresolved_owner")
+            score -= 10
         return ValidationResult(valid=score >= min_score and not errors, score=max(score, 0), errors=errors, warnings=warnings)
 
 
@@ -425,12 +432,58 @@ class AuditorAgent(BaseAgent):
         if extraction is None or validation is None:
             return AuditResult(passed=False, issues=["missing_state_for_audit"])
         issues = list(validation.errors)
-        if extraction.acoes and not any("encaminhamentos" in item for item in state.arquivos_derivados):
+        sprint_artifact = _find_artifact(state.arquivos_derivados, "sprint-")
+        encaminhamentos_artifact = _find_artifact(state.arquivos_derivados, "encaminhamentos")
+        kaizens_artifact = _find_artifact(state.arquivos_derivados, "kaizens")
+        bloqueios_artifact = _find_artifact(state.arquivos_derivados, "bloqueios")
+        metricas_artifact = _find_artifact(state.arquivos_derivados, "metricas")
+
+        if not sprint_artifact:
+            issues.append("missing_sprint_artifact")
+        else:
+            sprint_text = _read_artifact_text(sprint_artifact)
+            if extraction.projeto not in sprint_text:
+                issues.append("sprint_missing_project")
+            if extraction.sprint not in sprint_text:
+                issues.append("sprint_missing_sprint_name")
+            if str(len(extraction.acoes)) not in sprint_text:
+                issues.append("sprint_missing_actions_count")
+            if str(len(extraction.decisoes)) not in sprint_text:
+                issues.append("sprint_missing_decisions_count")
+
+        if extraction.acoes and not encaminhamentos_artifact:
             issues.append("missing_encaminhamentos_artifact")
-        if extraction.kaizens and not any("kaizens" in item for item in state.arquivos_derivados):
+        elif encaminhamentos_artifact:
+            dashboard_rows = _artifact_bullet_rows(encaminhamentos_artifact)
+            if len(dashboard_rows) != len(extraction.acoes):
+                issues.append("encaminhamentos_count_mismatch")
+
+        if extraction.kaizens and not kaizens_artifact:
             issues.append("missing_kaizens_artifact")
-        if extraction.riscos and not any("bloqueios" in item for item in state.arquivos_derivados):
+        elif kaizens_artifact:
+            dashboard_rows = _artifact_bullet_rows(kaizens_artifact)
+            if len(dashboard_rows) != len(extraction.kaizens):
+                issues.append("kaizens_count_mismatch")
+
+        if extraction.riscos and not bloqueios_artifact:
             issues.append("missing_bloqueios_artifact")
+        elif bloqueios_artifact:
+            dashboard_rows = _artifact_bullet_rows(bloqueios_artifact)
+            if len(dashboard_rows) != len(extraction.riscos):
+                issues.append("bloqueios_count_mismatch")
+
+        if not metricas_artifact:
+            issues.append("missing_metricas_artifact")
+        else:
+            metrics = _parse_metricas_artifact(metricas_artifact)
+            if metrics.get("decisoes") != len(extraction.decisoes):
+                issues.append("metricas_decisoes_mismatch")
+            if metrics.get("acoes") != len(extraction.acoes):
+                issues.append("metricas_acoes_mismatch")
+            if metrics.get("kaizens") != len(extraction.kaizens):
+                issues.append("metricas_kaizens_mismatch")
+            if metrics.get("riscos") != len(extraction.riscos):
+                issues.append("metricas_riscos_mismatch")
         return AuditResult(passed=not issues, issues=issues)
 
 
@@ -510,9 +563,8 @@ def _extract_decisions(sentences: list[str]) -> list[Decision]:
     return decisions
 
 
-def _extract_actions(sentences: list[str], participants: list[str]) -> list[ActionItem]:
+def _extract_actions(sentences: list[str], participants: list[str], meeting_date: str = "") -> list[ActionItem]:
     actions: list[ActionItem] = []
-    owner = participants[0] if participants else "Responsavel a definir"
     rules = [
         (r"\bnext\b", "Criar a base do projeto em Next.js com React"),
         (r"\btailwind\b", "Configurar Tailwind CSS e centralizar os temas visuais"),
@@ -526,11 +578,14 @@ def _extract_actions(sentences: list[str], participants: list[str]) -> list[Acti
         lowered = sentence.lower()
         for pattern, title in rules:
             if re.search(pattern, lowered) and not any(action.titulo == title for action in actions):
+                owner = _infer_owner_for_sentence(sentence, participants)
+                due_date = _extract_due_date(sentence, meeting_date)
                 actions.append(
                     ActionItem(
                         id=f"A-{len(actions) + 1:03d}",
                         titulo=title,
                         responsavel=owner,
+                        prazo=due_date,
                         prioridade="media",
                         tags=["encaminhamento"],
                     )
@@ -594,6 +649,139 @@ def _build_summary(titulo: str, decisions: list[Decision], actions: list[ActionI
     if actions:
         summary += f" A reunião também gerou {len(actions)} encaminhamentos para execução imediata."
     return summary
+
+
+def _infer_owner_for_sentence(sentence: str, participants: list[str]) -> str:
+    if not participants:
+        return "Responsável a definir"
+
+    lowered_sentence = sanitize_text(sentence).lower()
+    normalized_participants = [normalize_participant_name(name) for name in participants]
+
+    for participant in normalized_participants:
+        tokens = [token for token in re.findall(r"[a-zà-ÿ0-9]+", participant.lower()) if len(token) > 2]
+        if tokens and all(token in lowered_sentence for token in tokens[:2]):
+            return participant
+
+    if any(token in lowered_sentence for token in {"equipe", "técnica", "tecnica", "time", "dev", "desenvolvimento"}):
+        team_participant = next((name for name in normalized_participants if "equipe" in name.lower()), None)
+        if team_participant:
+            return team_participant
+
+    return normalized_participants[0]
+
+
+def _extract_due_date(sentence: str, meeting_date: str) -> str:
+    lowered_sentence = sanitize_text(sentence).lower()
+    base_date = _parse_iso_date(meeting_date)
+
+    explicit_match = re.search(r"\b(\d{4}-\d{2}-\d{2})\b", lowered_sentence)
+    if explicit_match:
+        return explicit_match.group(1)
+
+    brazilian_match = re.search(r"\b(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?\b", lowered_sentence)
+    if brazilian_match:
+        day = int(brazilian_match.group(1))
+        month = int(brazilian_match.group(2))
+        year_raw = brazilian_match.group(3)
+        if year_raw:
+            year = int(year_raw) if len(year_raw) == 4 else 2000 + int(year_raw)
+        elif base_date:
+            year = base_date.year
+        else:
+            year = date.today().year
+        try:
+            return date(year, month, day).isoformat()
+        except ValueError:
+            return ""
+
+    if not base_date:
+        return ""
+
+    relative_mapping = {
+        "hoje": 0,
+        "amanhã": 1,
+        "amanha": 1,
+        "ontem": -1,
+    }
+    for token, offset in relative_mapping.items():
+        if token in lowered_sentence:
+            return (base_date.fromordinal(base_date.toordinal() + offset)).isoformat()
+
+    if "semana que vem" in lowered_sentence or "próxima semana" in lowered_sentence or "proxima semana" in lowered_sentence:
+        return (base_date.fromordinal(base_date.toordinal() + 7)).isoformat()
+
+    return ""
+
+
+def _normalize_due_date(raw_value: str, meeting_date: str) -> str:
+    raw = sanitize_text(raw_value)
+    if not raw:
+        return ""
+
+    lowered = raw.lower()
+    base_date = _parse_iso_date(meeting_date)
+    if lowered in {"próximo dia", "proximo dia", "dia seguinte", "amanhã", "amanha"} and base_date:
+        return date.fromordinal(base_date.toordinal() + 1).isoformat()
+    if lowered in {"hoje"} and base_date:
+        return base_date.isoformat()
+    if lowered in {"próxima semana", "proxima semana", "semana que vem"} and base_date:
+        return date.fromordinal(base_date.toordinal() + 7).isoformat()
+
+    iso_match = re.search(r"\b(\d{4}-\d{2}-\d{2})\b", raw)
+    if iso_match:
+        return iso_match.group(1)
+
+    short_match = re.search(r"\b(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?\b", raw)
+    if short_match:
+        day = int(short_match.group(1))
+        month = int(short_match.group(2))
+        year_raw = short_match.group(3)
+        if year_raw:
+            year = int(year_raw) if len(year_raw) == 4 else 2000 + int(year_raw)
+            if base_date and abs(year - base_date.year) > 1:
+                year = base_date.year
+        elif base_date:
+            year = base_date.year
+        else:
+            year = date.today().year
+        try:
+            return date(year, month, day).isoformat()
+        except ValueError:
+            return raw
+
+    return raw
+
+
+def _parse_iso_date(value: str) -> date | None:
+    raw = sanitize_text(value)
+    if not raw:
+        return None
+    try:
+        return date.fromisoformat(raw)
+    except ValueError:
+        return None
+
+
+def _normalize_action_owner(raw_owner: str, default_owner: str) -> str:
+    owner = normalize_participant_name(sanitize_text(raw_owner))
+    if owner and "definir" not in owner.lower():
+        return owner
+    return default_owner or "Responsável a definir"
+
+
+def _default_owner_from_participants(participants: list[str]) -> str:
+    normalized_participants = [normalize_participant_name(sanitize_text(name)) for name in participants if sanitize_text(name)]
+    concrete_participants = [name for name in normalized_participants if not _participant_is_role_like(name)]
+    if len(concrete_participants) == 1:
+        return concrete_participants[0]
+    return ""
+
+
+def _participant_is_role_like(value: str) -> bool:
+    lowered = sanitize_text(value).lower()
+    role_tokens = {"equipe", "time", "cliente", "fornecedor", "parceiro", "pai", "mae", "mãe", "grupo"}
+    return any(token in lowered for token in role_tokens)
 
 
 def _coerce_risk_level(value: object) -> int:
@@ -701,7 +889,9 @@ def _merge_decisions(primary: list[Decision], fallback: list[Decision]) -> list[
     for item in [*primary, *fallback]:
         if not _decision_is_useful(item):
             continue
-        if any(_decisions_overlap(item, existing) for existing in merged):
+        overlap_index = next((index for index, existing in enumerate(merged) if _decisions_overlap(item, existing)), -1)
+        if overlap_index >= 0:
+            merged[overlap_index] = _prefer_richer_decision(merged[overlap_index], item)
             continue
         merged.append(item)
     return _reindex_decisions(merged)
@@ -712,19 +902,19 @@ def _merge_actions(primary: list[ActionItem], fallback: list[ActionItem]) -> lis
     for item in [*primary, *fallback]:
         if not _action_is_useful(item):
             continue
-        if any(_actions_overlap(item, existing) for existing in merged):
-            continue
-        tags = item.tags or ["encaminhamento"]
-        merged.append(
-            ActionItem(
-                id=item.id,
-                titulo=item.titulo,
-                responsavel=normalize_participant_name(item.responsavel or "Responsável a definir"),
-                prazo=item.prazo,
-                prioridade=item.prioridade or "media",
-                tags=tags,
-            )
+        normalized_item = ActionItem(
+            id=item.id,
+            titulo=item.titulo,
+            responsavel=normalize_participant_name(item.responsavel or "Responsável a definir"),
+            prazo=item.prazo,
+            prioridade=item.prioridade or "media",
+            tags=item.tags or ["encaminhamento"],
         )
+        overlap_index = next((index for index, existing in enumerate(merged) if _actions_overlap(normalized_item, existing)), -1)
+        if overlap_index >= 0:
+            merged[overlap_index] = _prefer_richer_action(merged[overlap_index], normalized_item)
+            continue
+        merged.append(normalized_item)
     return _reindex_actions(merged)
 
 
@@ -754,6 +944,105 @@ def _reindex_actions(items: list[ActionItem]) -> list[ActionItem]:
         )
         for index, item in enumerate(items, start=1)
     ]
+
+
+def _prefer_richer_decision(left: Decision, right: Decision) -> Decision:
+    if _decision_richness(right) > _decision_richness(left):
+        stronger, weaker = right, left
+    else:
+        stronger, weaker = left, right
+
+    alternatives = stronger.alternativas or weaker.alternativas
+    if stronger.alternativas and weaker.alternativas:
+        alternatives = list(dict.fromkeys([*stronger.alternativas, *weaker.alternativas]))
+
+    return Decision(
+        id=stronger.id,
+        titulo=_prefer_longer_text(stronger.titulo, weaker.titulo),
+        contexto=_prefer_longer_text(stronger.contexto, weaker.contexto),
+        decisao=_prefer_longer_text(stronger.decisao, weaker.decisao),
+        alternativas=alternatives,
+        impacto=_prefer_longer_text(stronger.impacto, weaker.impacto),
+    )
+
+
+def _prefer_richer_action(left: ActionItem, right: ActionItem) -> ActionItem:
+    if _action_richness(right) > _action_richness(left):
+        stronger, weaker = right, left
+    else:
+        stronger, weaker = left, right
+
+    merged_tags = list(dict.fromkeys([*(stronger.tags or []), *(weaker.tags or []), "encaminhamento"]))
+
+    return ActionItem(
+        id=stronger.id,
+        titulo=_prefer_longer_text(stronger.titulo, weaker.titulo),
+        responsavel=_prefer_action_owner(stronger.responsavel, weaker.responsavel),
+        prazo=_prefer_action_due_date(stronger.prazo, weaker.prazo),
+        prioridade=_prefer_action_priority(stronger.prioridade, weaker.prioridade),
+        tags=merged_tags,
+    )
+
+
+def _decision_richness(item: Decision) -> int:
+    score = 0
+    score += min(len(_meaningful_tokens(item.titulo)), 5)
+    score += min(len(_meaningful_tokens(item.contexto)), 6)
+    score += min(len(_meaningful_tokens(item.decisao)), 6)
+    score += min(len(item.alternativas or []), 3)
+    score += min(len(_meaningful_tokens(item.impacto)), 4)
+    return score
+
+
+def _action_richness(item: ActionItem) -> int:
+    score = 0
+    score += min(len(_meaningful_tokens(item.titulo)), 6)
+    if sanitize_text(item.responsavel) and "definir" not in sanitize_text(item.responsavel).lower():
+        score += 3
+    if sanitize_text(item.prazo):
+        score += 3
+    if sanitize_text(item.prioridade):
+        score += 1
+    score += len(item.tags or [])
+    return score
+
+
+def _prefer_longer_text(left: str, right: str) -> str:
+    left_clean = sanitize_text(left)
+    right_clean = sanitize_text(right)
+    if len(right_clean) > len(left_clean):
+        return right_clean
+    return left_clean or right_clean
+
+
+def _prefer_action_owner(left: str, right: str) -> str:
+    left_clean = normalize_participant_name(sanitize_text(left))
+    right_clean = normalize_participant_name(sanitize_text(right))
+    if not left_clean or "definir" in left_clean.lower():
+        return right_clean or left_clean
+    if not right_clean or "definir" in right_clean.lower():
+        return left_clean
+    return _prefer_longer_text(left_clean, right_clean)
+
+
+def _prefer_action_due_date(left: str, right: str) -> str:
+    left_clean = sanitize_text(left)
+    right_clean = sanitize_text(right)
+    left_date = _parse_iso_date(left_clean)
+    right_date = _parse_iso_date(right_clean)
+    if left_date and right_date:
+        return left_clean if left_date <= right_date else right_clean
+    if left_date:
+        return left_clean
+    if right_date:
+        return right_clean
+    return left_clean or right_clean
+
+
+def _prefer_action_priority(left: str, right: str) -> str:
+    left_clean = sanitize_text(left) or "media"
+    right_clean = sanitize_text(right) or "media"
+    return left_clean if _priority_weight(left_clean) >= _priority_weight(right_clean) else right_clean
 
 
 def _decisions_overlap(left: Decision, right: Decision) -> bool:
@@ -895,3 +1184,29 @@ def _strip_frontmatter(markdown_text: str) -> str:
     if end_index is None:
         return markdown_text
     return "\n".join(lines[end_index + 1 :]).lstrip()
+
+
+def _find_artifact(paths: list[str], needle: str) -> str:
+    lowered_needle = needle.lower()
+    return next((path for path in paths if lowered_needle in Path(path).name.lower()), "")
+
+
+def _read_artifact_text(path: str) -> str:
+    artifact_path = Path(path)
+    if not artifact_path.exists():
+        return ""
+    return artifact_path.read_text(encoding="utf-8", errors="ignore")
+
+
+def _artifact_bullet_rows(path: str) -> list[str]:
+    text = _read_artifact_text(path)
+    return [line for line in text.splitlines() if line.strip().startswith("- ")]
+
+
+def _parse_metricas_artifact(path: str) -> dict[str, int]:
+    metrics: dict[str, int] = {}
+    for row in _artifact_bullet_rows(path):
+        match = re.match(r"-\s+([a-z_]+)=(\d+)", row.strip(), re.IGNORECASE)
+        if match:
+            metrics[match.group(1).lower()] = int(match.group(2))
+    return metrics

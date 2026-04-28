@@ -11,7 +11,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "electron:dev": "concurrently \"vite\" \"wait-on tcp:5173 && electron .\"",
+    "electron:dev": "concurrently \"vite\" \"wait-on tcp:5173 && set ELECTRON_RUN_AS_NODE= && electron .\"",
     "electron:build": "vite build && electron-builder"
   },
   "dependencies": {

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "voz_prompt_curto",
+    "source": "transcricao_Voz_260411_020256.txt",
+    "meeting_title": "Definição inicial de stack web",
+    "meeting_date": "2026-04-12",
+    "project": "STACK-WEB",
+    "sprint": "Sprint-2026-W15",
+    "participants": [
+      "Pedro Vitor Pagliarin",
+      "Equipe técnica"
+    ]
+  },
+  {
+    "id": "umana_apresentacao",
+    "source": "Whisper de voz/reuniao umana/transcricao_reuniao umana.txt",
+    "meeting_title": "Apresentação comercial do agente para WhatsApp",
+    "meeting_date": "2026-03-06",
+    "project": "USAP-UMANA",
+    "sprint": "Sprint-2026-W10",
+    "participants": [
+      "Fabrício",
+      "Equipe comercial",
+      "Equipe técnica"
+    ]
+  },
+  {
+    "id": "carro_erp_ata",
+    "source": "Whisper de voz/Reuniao Carro/transcricao_Reuniao pai carro 1.txt",
+    "meeting_title": "Estratégia do sistema de gestão com atas",
+    "meeting_date": "2026-01-08",
+    "project": "ERP-ATAS",
+    "sprint": "Sprint-2026-W02",
+    "participants": [
+      "Pedro Vitor Pagliarin",
+      "Pai"
+    ]
+  },
+  {
+    "id": "projetos_backlog",
+    "source": "Whisper de voz/transcricao_Projetos e backlog_otimizado.txt",
+    "meeting_title": "Revisão de backlog e gestão de projetos",
+    "meeting_date": "2025-11-18",
+    "project": "GESTAO-PROJETOS",
+    "sprint": "Sprint-2025-W47",
+    "participants": [
+      "Pedro Vitor Pagliarin",
+      "Equipe técnica"
+    ]
+  },
+  {
+    "id": "decisoes_estrategicas",
+    "source": "Whisper de voz/transcricao_decisoes estrategicas_otimizado.txt",
+    "meeting_title": "Decisões estratégicas e papéis no projeto",
+    "meeting_date": "2025-11-18",
+    "project": "PAPA-BOB",
+    "sprint": "Sprint-2025-W47",
+    "participants": [
+      "Vitinho",
+      "Equipe técnica"
+    ]
+  },
+  {
+    "id": "reuniao_geral_socios",
+    "source": "Whisper de voz/transcricao_reuniao geral 2710_otimizado.txt",
+    "meeting_title": "Alinhamento societário e operacional",
+    "meeting_date": "2025-10-27",
+    "project": "UZZAI-OPERACAO",
+    "sprint": "Sprint-2025-W44",
+    "participants": [
+      "PV",
+      "Luís",
+      "Vitinho",
+      "Equipe técnica"
+    ]
+  }
+]

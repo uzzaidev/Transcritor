@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Key, Save, CheckCircle2, Plus, Trash2, Activity, RefreshCw, FlaskConical } from 'lucide-react';
+import { X, Key, Save, CheckCircle2, Plus, Trash2, Activity, RefreshCw, FlaskConical, BrushCleaning } from 'lucide-react';
 import { ApiKeys, AtaPipelineDefaults, AtaPipelineExecutionResult, AtaProjectProfile, TranscriptionProvider } from '../types';
 
 interface SettingsModalProps {
@@ -22,6 +22,7 @@ interface SettingsModalProps {
   };
   onPreflight: () => void;
   onReprocessLatest: (dryRunEmail: boolean) => void;
+  onCleanupGenerated: () => void;
 }
 
 const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -37,10 +38,35 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   pipelineOpsState,
   onPreflight,
   onReprocessLatest,
+  onCleanupGenerated,
 }) => {
   const [localKeys, setLocalKeys] = useState<ApiKeys>(apiKeys);
   const [localAtaDefaults, setLocalAtaDefaults] = useState<AtaPipelineDefaults>(ataDefaults);
   const [saved, setSaved] = useState(false);
+  const preflight = pipelineOpsState.result?.preflight;
+  const lastRunState = pipelineOpsState.result?.result?.state;
+  const validation = lastRunState?.validation_result;
+  const delivery = lastRunState?.delivery_result;
+  const audit = lastRunState?.audit_result;
+  const derivedCount = lastRunState?.arquivos_derivados?.length || 0;
+
+  const yesNo = (value: boolean | undefined): string => value ? 'Sim' : 'Não';
+  const healthCardClass = (value: boolean | undefined): string =>
+    value
+      ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
+      : 'border-amber-500/30 bg-amber-500/10 text-amber-100';
+  const autoAtaDefaultsReady = Boolean(
+    localAtaDefaults.projeto.trim() &&
+    localAtaDefaults.sprint.trim() &&
+    localAtaDefaults.destinatarios.trim()
+  );
+  const manualOpsReady = Boolean(preflight?.openai_configured && preflight?.smtp_ready && preflight?.smtp_login_verified);
+  const automaticOpsReady = Boolean(manualOpsReady && localAtaDefaults.autoGenerateAta && autoAtaDefaultsReady);
+  const readinessTitle = automaticOpsReady
+    ? 'Pronto para operação automática'
+    : manualOpsReady
+      ? 'Pronto para operação manual'
+      : 'Ajustes pendentes';
 
   const updateProjectProfile = (profileId: string, patch: Partial<AtaProjectProfile>) => {
     setLocalAtaDefaults({
@@ -372,6 +398,16 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                 <RefreshCw className="w-4 h-4" />
                 Reprocessar último evento com envio real
               </button>
+
+              <button
+                type="button"
+                onClick={onCleanupGenerated}
+                disabled={pipelineOpsState.running}
+                className="w-full flex items-center justify-center gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm font-semibold text-amber-100 hover:bg-amber-500/20 transition-colors disabled:opacity-60"
+              >
+                <BrushCleaning className="w-4 h-4" />
+                Limpar artefatos legados
+              </button>
             </div>
 
             {pipelineOpsState.message && (
@@ -386,8 +422,117 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                     SMTP pronto: {pipelineOpsState.result.preflight.smtp_ready ? 'sim' : 'não'} | Evento disponível: {pipelineOpsState.result.preflight.runtime_events_ready ? 'sim' : 'não'}
                   </p>
                 ) : null}
+                {pipelineOpsState.result?.preflight?.latest_runtime_event ? (
+                  <p className="mt-1 text-xs opacity-80 break-all">
+                    Último evento: {pipelineOpsState.result.preflight.latest_runtime_event}
+                  </p>
+                ) : null}
+                {pipelineOpsState.result?.maintenance ? (
+                  <p className="mt-2 text-xs opacity-80">
+                    Arquivos verificados: {pipelineOpsState.result.maintenance.scanned_files || 0} | Arquivados: {pipelineOpsState.result.maintenance.archived_files?.length || 0}
+                  </p>
+                ) : null}
               </div>
             )}
+
+            {preflight ? (
+              <div className="grid grid-cols-2 gap-3">
+                <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.openai_configured)}`}>
+                  <p className="text-[11px] uppercase tracking-wide opacity-80">OpenAI</p>
+                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.openai_configured)}</p>
+                </div>
+                <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.smtp_ready)}`}>
+                  <p className="text-[11px] uppercase tracking-wide opacity-80">SMTP Config</p>
+                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.smtp_ready)}</p>
+                </div>
+                <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.smtp_login_verified)}`}>
+                  <p className="text-[11px] uppercase tracking-wide opacity-80">SMTP Login</p>
+                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.smtp_login_verified)}</p>
+                </div>
+                <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.runtime_events_ready)}`}>
+                  <p className="text-[11px] uppercase tracking-wide opacity-80">Runtime Event</p>
+                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.runtime_events_ready)}</p>
+                </div>
+              </div>
+            ) : null}
+
+            {preflight?.smtp_verify_error ? (
+              <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+                <p className="font-medium">Falha na verificação SMTP</p>
+                <p className="mt-1 text-xs opacity-80 break-words">{preflight.smtp_verify_error}</p>
+              </div>
+            ) : null}
+
+            {lastRunState ? (
+              <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-4 space-y-3">
+                <div className="text-sm font-semibold text-slate-300 uppercase tracking-wide">
+                  Última execução
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="rounded-lg border border-slate-800 bg-slate-900/70 px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wide text-slate-500">Validação</p>
+                    <p className="mt-1 text-slate-100 font-medium">
+                      {validation?.valid ? `OK (${validation.score ?? 0})` : `Pendente (${validation?.score ?? 0})`}
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-slate-800 bg-slate-900/70 px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wide text-slate-500">Artefatos</p>
+                    <p className="mt-1 text-slate-100 font-medium">{derivedCount}</p>
+                  </div>
+                  <div className="rounded-lg border border-slate-800 bg-slate-900/70 px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wide text-slate-500">Entrega</p>
+                    <p className="mt-1 text-slate-100 font-medium">
+                      {delivery?.success ? 'E-mail enviado' : (delivery?.error || 'Sem envio')}
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-slate-800 bg-slate-900/70 px-3 py-2">
+                    <p className="text-[11px] uppercase tracking-wide text-slate-500">Auditoria</p>
+                    <p className="mt-1 text-slate-100 font-medium">
+                      {audit?.passed ? 'Aprovada' : 'Com pendências'}
+                    </p>
+                  </div>
+                </div>
+
+                {validation?.warnings?.length ? (
+                  <div className="rounded-lg border border-amber-500/20 bg-amber-500/10 px-3 py-2 text-xs text-amber-100">
+                    <p className="font-medium">Warnings</p>
+                    <p className="mt-1 break-words">{validation.warnings.join(', ')}</p>
+                  </div>
+                ) : null}
+
+                {audit?.issues?.length ? (
+                  <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs text-red-100">
+                    <p className="font-medium">Issues de auditoria</p>
+                    <p className="mt-1 break-words">{audit.issues.join(', ')}</p>
+                  </div>
+                ) : null}
+
+                {delivery?.sent_at ? (
+                  <p className="text-xs text-slate-500 break-words">
+                    Último envio: {delivery.sent_at}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+
+            <div className={`rounded-xl border px-4 py-4 ${
+              automaticOpsReady
+                ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
+                : manualOpsReady
+                  ? 'border-blue-500/30 bg-blue-500/10 text-blue-100'
+                  : 'border-amber-500/30 bg-amber-500/10 text-amber-100'
+            }`}>
+              <p className="text-sm font-semibold">{readinessTitle}</p>
+              <div className="mt-3 space-y-2 text-xs opacity-90">
+                <p>OpenAI configurado: {yesNo(preflight?.openai_configured)}</p>
+                <p>SMTP autenticado: {yesNo(preflight?.smtp_login_verified)}</p>
+                <p>Projeto padrão preenchido: {yesNo(Boolean(localAtaDefaults.projeto.trim()))}</p>
+                <p>Sprint padrão preenchida: {yesNo(Boolean(localAtaDefaults.sprint.trim()))}</p>
+                <p>Destinatários padrão preenchidos: {yesNo(Boolean(localAtaDefaults.destinatarios.trim()))}</p>
+                <p>Auto ATA habilitada: {yesNo(localAtaDefaults.autoGenerateAta)}</p>
+              </div>
+            </div>
           </div>
 
         </div>

@@ -55,6 +55,39 @@ python -m ata_multiagent_pipeline.cli reprocess-latest --dry-run-email
 python -m ata_multiagent_pipeline.cli cleanup-generated
 ```
 
+O modo `--dry-run-email` gera todos os artefatos e valida a entrega sem disparar SMTP real.
+
+## Regressao com casos reais
+
+Antes de mexer em heuristicas de extracao, merge ou validacao, rode:
+
+```bash
+python -m ata_multiagent_pipeline.real_world_regression
+```
+
+Essa bateria executa casos reais em `dry-run` e grava relatorios em `generated/ata_pipeline/regression/`.
+
+Ela destaca:
+- falhas de execucao
+- score de validacao
+- saidas genericas
+- responsaveis indefinidos
+- sinais de texto degradado
+
+## Regressao de sprint e dashboards
+
+Para validar a consistencia entre ATA, sprint, dashboards e metricas:
+
+```bash
+python -m ata_multiagent_pipeline.derived_artifacts_regression
+```
+
+Essa bateria valida:
+- presenca dos artefatos derivados
+- contagem de acoes e decisoes no sprint
+- consistencia do dashboard de metricas
+- auditoria final do pipeline
+
 ## Preflight
 
 Antes de envio real:

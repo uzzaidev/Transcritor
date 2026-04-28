@@ -63,6 +63,7 @@ const App: React.FC = () => {
         handleOpenAtaModal,
         handlePreflightPipeline,
         handleReprocessLatestPipeline,
+        handleCleanupGeneratedArtifacts,
     } = useAtaPipeline({
         queue,
         setQueue,
@@ -573,6 +574,7 @@ const App: React.FC = () => {
                 pipelineOpsState={pipelineOpsState}
                 onPreflight={handlePreflightPipeline}
                 onReprocessLatest={handleReprocessLatestPipeline}
+                onCleanupGenerated={handleCleanupGeneratedArtifacts}
             />
 
             <AtaGenerationModal

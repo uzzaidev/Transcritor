@@ -87,14 +87,22 @@ export interface AtaPipelineExecutionResult {
   stdout?: string;
   stderr?: string;
   pythonExecutable?: string;
-  operation?: 'run' | 'reprocess-latest' | 'preflight';
+  operation?: 'run' | 'reprocess-latest' | 'preflight' | 'cleanup-generated';
   result?: {
     success: boolean;
     state?: {
       arquivos_derivados?: string[];
+      validation_result?: {
+        valid?: boolean;
+        score?: number;
+        errors?: string[];
+        warnings?: string[];
+      };
       delivery_result?: {
         success: boolean;
         error?: string;
+        provider?: string;
+        sent_at?: string;
       };
       audit_result?: {
         passed: boolean;
@@ -105,9 +113,19 @@ export interface AtaPipelineExecutionResult {
   preflight?: {
     smtp_ready?: boolean;
     smtp_dry_run?: boolean;
+    smtp_connection_ok?: boolean;
+    smtp_auth_ok?: boolean;
+    smtp_login_verified?: boolean;
+    smtp_verify_error?: string;
     openai_configured?: boolean;
     runtime_events_ready?: boolean;
     latest_runtime_event?: string;
+  };
+  maintenance?: {
+    scanned_files?: number;
+    archived_files?: string[];
+    skipped_files?: string[];
+    archive_root?: string;
   };
 }
 

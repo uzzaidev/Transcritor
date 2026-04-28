@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
-import { preflightAtaPipeline, reprocessLatestAtaPipeline, runAtaPipeline } from "../services/ataPipelineService";
+import {
+  cleanupGeneratedAtaArtifacts,
+  preflightAtaPipeline,
+  reprocessLatestAtaPipeline,
+  runAtaPipeline,
+} from "../services/ataPipelineService";
 import { AtaPipelineDefaults, AtaPipelineExecutionResult, ProcessStatus, QueueItem } from "../types";
 import {
   canAutoGenerateAta,
@@ -116,6 +121,11 @@ export const useAtaPipeline = ({
               : queueItem
           )
         );
+        setPipelineOpsState({
+          running: false,
+          message: result.message,
+          result,
+        });
 
         if (result.success && options?.closeModalOnSuccess) {
           setAtaModalItemId(null);
@@ -138,6 +148,11 @@ export const useAtaPipeline = ({
         if (options?.surfaceErrorsInModal) {
           setAtaPipelineError(message);
         }
+        setPipelineOpsState({
+          running: false,
+          message,
+          result: null,
+        });
       } finally {
         setIsRunningAtaPipeline(false);
       }
@@ -202,6 +217,24 @@ export const useAtaPipeline = ({
     }
   }, []);
 
+  const handleCleanupGeneratedArtifacts = useCallback(async () => {
+    setPipelineOpsState({
+      running: true,
+      message: "Limpando artefatos legados do pipeline...",
+      result: null,
+    });
+    try {
+      const result = await cleanupGeneratedAtaArtifacts();
+      setPipelineOpsState({ running: false, message: result.message, result });
+    } catch (error: any) {
+      setPipelineOpsState({
+        running: false,
+        message: error?.message || "Falha ao limpar artefatos legados.",
+        result: null,
+      });
+    }
+  }, []);
+
   useEffect(() => {
     if (isRunningAtaPipeline || !canAutoGenerateAta(ataDefaults)) {
       return;
@@ -249,5 +282,6 @@ export const useAtaPipeline = ({
     handleOpenAtaModal,
     handlePreflightPipeline,
     handleReprocessLatestPipeline,
+    handleCleanupGeneratedArtifacts,
   };
 };

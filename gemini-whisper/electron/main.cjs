@@ -417,6 +417,35 @@ ipcMain.handle('ata-pipeline:reprocess-latest', async (_event, payload) => {
     };
 });
 
+ipcMain.handle('ata-pipeline:cleanup-generated', async () => {
+    const workspaceRoot = resolveWorkspaceRoot();
+    const execution = await runPythonCommand(workspaceRoot, ['-m', 'ata_multiagent_pipeline.cli', 'cleanup-generated']);
+
+    if (execution.code === 0) {
+        return {
+            success: true,
+            message: execution.parsed?.archived_files?.length
+                ? 'Limpeza concluida e artefatos legados foram arquivados.'
+                : 'Limpeza concluida. Nenhum artefato legado precisou ser movido.',
+            stdout: execution.stdout,
+            stderr: execution.stderr,
+            pythonExecutable: execution.pythonExecutable,
+            maintenance: execution.parsed,
+            operation: 'cleanup-generated',
+        };
+    }
+
+    return {
+        success: false,
+        message: execution.stderr?.trim() || `Limpeza falhou com codigo ${execution.code}.`,
+        stdout: execution.stdout,
+        stderr: execution.stderr,
+        pythonExecutable: execution.pythonExecutable,
+        maintenance: execution.parsed,
+        operation: 'cleanup-generated',
+    };
+});
+
 app.whenReady().then(createWindow);
 
 app.on('will-quit', () => {
