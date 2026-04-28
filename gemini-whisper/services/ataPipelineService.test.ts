@@ -26,7 +26,8 @@ describe("ataPipelineService", () => {
     });
 
     expect(response.success).toBe(false);
-    expect(response.message).toContain("IPC");
+    expect(response.message).toContain("localhost");
+    expect(response.message).toContain("Electron");
   });
 
   it("invokes Electron IPC channels when available", async () => {
