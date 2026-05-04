@@ -9,15 +9,15 @@ Data: 2026-05-04
 - [ ] Confirmar destinatarios autorizados para receber ATA em producao.
 - [ ] Confirmar se o trigger `[TRANSCRICAO]` aceita qualquer remetente ou apenas lista permitida.
 - [x] Dashboard deve ser interno neste primeiro corte.
-- [ ] Definir usuario e senha de Basic Auth do dashboard.
+- [x] Definir usuario e senha de Basic Auth do dashboard.
 - [ ] Confirmar se o primeiro e-mail real com anexo deve enviar ATA automaticamente ou rodar primeiro em dry-run.
 
 ## 2) Credenciais e acessos
 
 - [x] App Password Google gerada para SMTP.
 - [x] `.env` raiz preenchido para OpenAI e SMTP.
-- [ ] `.env` raiz completo para dashboard. Neon ja foi configurado.
-- [x] `web` configurado para ler variaveis da raiz; `web/.env.local` e opcional.
+- [x] `.env` raiz completo para dashboard e Neon.
+- [x] `web/.env.local` configurado localmente para runtime do dashboard.
 - [ ] Configurar variaveis no ambiente de execucao, se houver deploy interno.
 
 ## 3) Banco de dados
@@ -31,8 +31,8 @@ Data: 2026-05-04
 - [x] Rodar `ata_agent run-once --json` com IMAP real e 0 mensagens pendentes.
 - [x] Confirmar tabela `pipeline_events` consultavel no Neon.
 - [ ] Confirmar primeiro evento real em `pipeline_events`.
-- [ ] Validar dashboard com auth.
-- [ ] Validar `/api/health` com o servidor `web` rodando.
+- [x] Validar dashboard com auth.
+- [x] Validar `/api/health` com o servidor `web` rodando.
 
 ## 5) Politicas de risco
 

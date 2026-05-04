@@ -2,7 +2,7 @@
 
 Data: 2026-05-04
 
-Status geral: `97% pronto localmente`
+Status geral: `99% pronto localmente`
 
 Legenda:
 - `[x]` concluido/validado nesta maquina
@@ -16,8 +16,8 @@ Legenda:
 - [x] Dependencias instaladas em `ata_agent`.
 - [x] Dependencias instaladas em `gemini-whisper`.
 - [x] Dependencias instaladas em `web`.
-- [ ] `.env` raiz completo. BLOQUEADO: faltam apenas credenciais de dashboard.
-- [x] `web` consegue ler `DATABASE_URL` da raiz; `web/.env.local` ficou opcional.
+- [x] `.env` raiz completo para execucao local.
+- [x] `web/.env.local` configurado localmente para runtime do dashboard.
 
 ## B. Credenciais
 
@@ -32,8 +32,8 @@ Legenda:
 - [x] `ATA_FROM_EMAIL`/`SMTP_FROM_EMAIL`
 - [x] `ATA_RECIPIENTS`
 - [x] `DATABASE_URL`
-- [ ] `DASHBOARD_BASIC_AUTH_USER` BLOQUEADO
-- [ ] `DASHBOARD_BASIC_AUTH_PASSWORD` BLOQUEADO
+- [x] `DASHBOARD_BASIC_AUTH_USER`
+- [x] `DASHBOARD_BASIC_AUTH_PASSWORD`
 
 ## C. Banco
 
@@ -43,7 +43,7 @@ Legenda:
 
 ## D. Seguranca
 
-- [ ] Dashboard protegido por Basic Auth. BLOQUEADO: faltam credenciais `DASHBOARD_BASIC_AUTH_*`.
+- [x] Dashboard protegido por Basic Auth.
 - [x] Flags perigosas em `0`:
 - [x] `PIPELINE_GIT_ENABLED=0`
 - [x] `PIPELINE_GIT_ALLOW_PUSH=0`
@@ -69,6 +69,8 @@ Legenda:
 - [x] `cd web && npm run build`
 - [x] `cd web && npm run db:push`
 - [x] Consulta direta `pipeline_events` no Neon: ok, 0 eventos.
+- [x] Dashboard sem auth retorna 401.
+- [x] Dashboard `/api/health` com auth retorna ok.
 - [x] `python -m ata_multiagent_pipeline.preflight`
 - [x] `python -m ata_multiagent_pipeline.real_world_regression`
 - [x] `python -m ata_multiagent_pipeline.derived_artifacts_regression`
@@ -77,7 +79,7 @@ Legenda:
 ## G. Go-live interno
 
 - [x] `ata_agent` rodando `run-once` com IMAP autenticado.
-- [ ] Dashboard `web` online com auth. BLOQUEADO: faltam Basic Auth e ambiente de execucao.
-- [ ] `/api/health` com status ok em ambiente rodando. Pendente de execucao do servidor.
+- [x] Dashboard `web` online com auth em validacao local temporaria.
+- [x] `/api/health` com status ok em ambiente rodando.
 - [ ] Primeiro evento confirmado em `pipeline_events`. BLOQUEADO: falta e-mail real com trigger/anexo.
 - [ ] Primeiro envio real a partir de e-mail de entrada validado. BLOQUEADO: falta e-mail real com trigger/anexo e politica de envio.
