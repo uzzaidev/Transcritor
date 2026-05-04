@@ -47,12 +47,14 @@ Definição tipada: `ata_agent/contracts.py`.
 - [x] Geração de ata + sumário via Gemini com instruções + template opcional em arquivo.
 
 ### Sprint 3 — Validação e derivados (vault)
-- [ ] Validador com score mínimo e regras dos PROCESSO-*.
-- [ ] Agente Sprint e dashboards (Markdown no repositório/vault externo).
+- [x] Validador minimo no `ata_agent` e validador avancado no `ata_multiagent_pipeline`.
+- [x] Sprint e dashboards derivados no `ata_multiagent_pipeline`.
+- [ ] Integrar os derivados do `ata_multiagent_pipeline` ao fluxo canonico `ata_agent`, se isso virar requisito do app diario.
 
 ### Sprint 4 — Entrega
 - [x] Integrador de entrega (texto + HTML simples).
 - [x] Dispatcher SMTP + `.env`.
+- [x] Persistencia de eventos em Neon `pipeline_events`.
 - [ ] Anti-duplicidade persistente (Neon `web` + job id).
 
 ### Sprint 5 — Git e ScriptOps

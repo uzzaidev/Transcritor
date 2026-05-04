@@ -13,8 +13,8 @@ Status estimado:
 
 Git:
 - Branch: `main`
-- Commit local mais recente: consultar `git log -1 --oneline`.
-- Estado remoto: sera sincronizado apos commit/push desta etapa.
+- Commit local mais recente: `ea7bc6b docs: mark dashboard auth configured`
+- Estado remoto: sincronizado com `origin/main`.
 
 ## Validado em 2026-05-04
 
@@ -50,7 +50,7 @@ Git:
 
 - E2E real ainda nao foi validado com uma mensagem `[TRANSCRICAO]` contendo audio.
 - Dashboard em ambiente local foi validado com Basic Auth; falta apenas eventual deploy externo, se desejado.
-- As alteracoes desta etapa precisam ser commitadas/pushadas.
+- Anti-duplicidade hoje usa store local (`.cache/ata_agent/processed.json`); uma trava global via Neon/job id fica como melhoria do roadmap expandido.
 - `npm install` reporta vulnerabilidades em dependencias transitivas; nao foi aplicado `npm audit fix --force` para evitar mudancas quebradoras.
 
 ## Acoes Humanas Necessarias

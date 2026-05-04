@@ -1,6 +1,6 @@
 # Runbook Operacional - Transcritor
 
-Data: 2026-04-13
+Data: 2026-05-04
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ IMAP -> Gemini -> ATA -> SMTP -> `pipeline_events` (Neon) -> dashboard `web`.
 
 - Python 3.10+
 - Node.js 20+
-- Conta Gmail com App Password
+- Conta de e-mail com IMAP/SMTP configurado
 - Banco Neon provisionado
 
 ## 2) Instalacao
@@ -42,7 +42,7 @@ npm install
 
 1. Copie `.env.example` para `.env` na raiz.
 2. Preencha chaves e credenciais.
-3. No `web`, copie `web/.env.example` para `web/.env.local`.
+3. No `web`, use `web/.env.local` ou deixe o app ler as variaveis da raiz.
 4. Aplique schema:
 
 ```bash
@@ -128,6 +128,6 @@ Manual:
 
 ## 9) Pendencias atuais
 
-- FASE 7 concluida parcialmente com reducao e modularizacao do `App.tsx`; refatoracao adicional opcional.
-- Autenticacao do web e basica (intencional para simplicidade interna).
-- Falta rotina E2E automatizada com provedores reais.
+- Falta validar o primeiro E2E real com e-mail `[TRANSCRICAO]` e audio anexado.
+- Autenticacao do web e Basic Auth simples, intencional para uso interno.
+- Anti-duplicidade global via Neon/job id segue como melhoria do roadmap expandido.

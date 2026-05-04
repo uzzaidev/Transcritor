@@ -46,9 +46,9 @@ Criar um agente (ou fluxo de automação) que seja capaz de:
 | Tema | Decisão |
 |------|---------|
 | **Gatilho / infra** | **100% Python** para leitura IMAP, processamento e envio SMTP. n8n/Make permanecem opcionais no futuro se quiser UI visual para o mesmo fluxo. |
-| **E-mail** | **Gmail / Google Workspace** como padrão (IMAP + SMTP com app password ou credencial adequada). Outros provedores via mesma interface (`ata_agent/email/`), trocando host/porta. |
+| **E-mail** | Entrada IMAP configuravel (atual: Hostinger) e saida SMTP configuravel (atual: Gmail/Workspace ou equivalente). Outros provedores usam a mesma interface (`ata_agent/email/`), trocando host/porta. |
 | **Transcrição** | **Gemini** (upload de arquivo + `generateContent`), alinhado ao fluxo da pasta `gemini-whisper`. Whisper local em `Whisper de voz/` continua disponível para uso manual/offline. |
 | **Template** | Padrão interno em `ata_agent/prompts/` + possibilidade de apontar `ATA_TEMPLATE_PATH` para um arquivo em `Template de atas/`. |
-| **Camada web** | Projeto **Next.js + React + Tailwind** em `web/`, tokens de cor no `tailwind.config.ts`, **Neon** para persistência leve (runs do pipeline); **sem autenticação** na primeira versão. |
+| **Camada web** | Projeto **Next.js + React + Tailwind** em `web/`, tokens de cor no `tailwind.config.ts`, **Neon** para persistencia leve (runs do pipeline) e **Basic Auth** para uso interno. |
 
 Implementação: pacote `ata_agent/` (CLI) e app `web/`. Detalhes operacionais multiagente: `PLANO_PIPELINE_MULTIAGENTE.md`.
