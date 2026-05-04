@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session, desktopCapturer, globalShortcut, ipcMain, safeStorage } = require('electron');
+const { app, BrowserWindow, session, desktopCapturer, globalShortcut, ipcMain, safeStorage, screen } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -229,9 +229,16 @@ function runPythonCommand(workspaceRoot, args) {
 }
 
 function createWindow() {
+    const { width: screenWidth, height: screenHeight } = screen.getPrimaryDisplay().workAreaSize;
+    const windowWidth = Math.max(1100, Math.min(1440, screenWidth - 80));
+    const windowHeight = Math.max(760, Math.min(920, screenHeight - 80));
+
     mainWindow = new BrowserWindow({
-        width: 1200,
-        height: 800,
+        width: windowWidth,
+        height: windowHeight,
+        minWidth: 1024,
+        minHeight: 720,
+        center: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
@@ -265,7 +272,9 @@ function createWindow() {
 
     if (isDev) {
         mainWindow.loadURL('http://localhost:5173');
-        mainWindow.webContents.openDevTools();
+        if (process.env.ELECTRON_OPEN_DEVTOOLS === '1') {
+            mainWindow.webContents.openDevTools({ mode: 'detach' });
+        }
         console.log('Running in development mode');
     } else {
         mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
