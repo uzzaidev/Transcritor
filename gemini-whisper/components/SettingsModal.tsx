@@ -51,6 +51,10 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   const derivedCount = lastRunState?.arquivos_derivados?.length || 0;
 
   const yesNo = (value: boolean | undefined): string => value ? 'Sim' : 'Não';
+  const statusText = (value: boolean | undefined): string => {
+    if (!preflight) return 'Aguardando preflight';
+    return value ? 'Sim' : 'Nao';
+  };
   const healthCardClass = (value: boolean | undefined): string =>
     value
       ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
@@ -62,7 +66,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
   );
   const manualOpsReady = Boolean(preflight?.openai_configured && preflight?.smtp_ready && preflight?.smtp_login_verified);
   const automaticOpsReady = Boolean(manualOpsReady && localAtaDefaults.autoGenerateAta && autoAtaDefaultsReady);
-  const readinessTitle = automaticOpsReady
+  const readinessTitle = !preflight
+    ? 'Status ainda nao verificado'
+    : automaticOpsReady
     ? 'Pronto para operação automática'
     : manualOpsReady
       ? 'Pronto para operação manual'
@@ -439,19 +445,19 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
               <div className="grid grid-cols-2 gap-3">
                 <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.openai_configured)}`}>
                   <p className="text-[11px] uppercase tracking-wide opacity-80">OpenAI</p>
-                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.openai_configured)}</p>
+                  <p className="mt-1 text-sm font-semibold">{statusText(preflight.openai_configured)}</p>
                 </div>
                 <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.smtp_ready)}`}>
                   <p className="text-[11px] uppercase tracking-wide opacity-80">SMTP Config</p>
-                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.smtp_ready)}</p>
+                  <p className="mt-1 text-sm font-semibold">{statusText(preflight.smtp_ready)}</p>
                 </div>
                 <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.smtp_login_verified)}`}>
                   <p className="text-[11px] uppercase tracking-wide opacity-80">SMTP Login</p>
-                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.smtp_login_verified)}</p>
+                  <p className="mt-1 text-sm font-semibold">{statusText(preflight.smtp_login_verified)}</p>
                 </div>
                 <div className={`rounded-xl border px-4 py-3 ${healthCardClass(preflight.runtime_events_ready)}`}>
                   <p className="text-[11px] uppercase tracking-wide opacity-80">Runtime Event</p>
-                  <p className="mt-1 text-sm font-semibold">{yesNo(preflight.runtime_events_ready)}</p>
+                  <p className="mt-1 text-sm font-semibold">{statusText(preflight.runtime_events_ready)}</p>
                 </div>
               </div>
             ) : null}
@@ -524,9 +530,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
                   : 'border-amber-500/30 bg-amber-500/10 text-amber-100'
             }`}>
               <p className="text-sm font-semibold">{readinessTitle}</p>
+              {!preflight ? (
+                <p className="mt-2 text-xs opacity-90">
+                  Clique em "Executar preflight" para validar OpenAI, SMTP e o ultimo evento antes de operar.
+                </p>
+              ) : null}
               <div className="mt-3 space-y-2 text-xs opacity-90">
-                <p>OpenAI configurado: {yesNo(preflight?.openai_configured)}</p>
-                <p>SMTP autenticado: {yesNo(preflight?.smtp_login_verified)}</p>
+                <p>OpenAI configurado: {statusText(preflight?.openai_configured)}</p>
+                <p>SMTP autenticado: {statusText(preflight?.smtp_login_verified)}</p>
                 <p>Projeto padrão preenchido: {yesNo(Boolean(localAtaDefaults.projeto.trim()))}</p>
                 <p>Sprint padrão preenchida: {yesNo(Boolean(localAtaDefaults.sprint.trim()))}</p>
                 <p>Destinatários padrão preenchidos: {yesNo(Boolean(localAtaDefaults.destinatarios.trim()))}</p>
