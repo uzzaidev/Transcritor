@@ -11,7 +11,7 @@ export const buildDashboardStatus = (
     return {
       tone: "missing",
       message:
-        "DATABASE_URL nao configurada. Defina web/.env.local, execute db:push e valide /api/health.",
+        "DATABASE_URL nao configurada. Defina .env na raiz ou web/.env.local, execute db:push e valide /api/health.",
     };
   }
   if (input.dbError) {

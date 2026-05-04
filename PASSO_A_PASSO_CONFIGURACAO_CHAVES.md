@@ -1,6 +1,6 @@
 # Passo a Passo - Configuracao de Chaves (Humano)
 
-Data: 2026-04-13
+Data: 2026-05-04
 
 Este guia cobre somente configuracao manual de credenciais e acessos.
 
@@ -41,8 +41,7 @@ Este guia cobre somente configuracao manual de credenciais e acessos.
 2. Copie connection string para `DATABASE_URL` no `.env`.
 3. Aplique schema do web:
    - `cd web`
-   - `cp .env.example .env.local`
-   - confirme `DATABASE_URL` em `.env.local`
+   - confirme `DATABASE_URL` no `.env` da raiz ou em `web/.env.local`
    - `npm run db:push`
 
 ## 4) Proteger dashboard web

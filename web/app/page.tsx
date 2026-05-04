@@ -4,6 +4,8 @@ import { pipelineEvents } from "@/db/schema";
 import { getDb } from "@/lib/db";
 import { buildDashboardStatus } from "@/lib/dashboardSummary";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = {
   searchParams?: Promise<{
     page?: string;
@@ -104,9 +106,9 @@ export default async function Home({ searchParams }: PageProps) {
           <h2 className="text-lg font-medium text-foreground">Ultimos eventos</h2>
           <div className="text-sm text-foreground-muted">
             Total: <span className="font-semibold text-success">{total}</span>
-            {" · "}
+            {" - "}
             Pagina {page}/{totalPages}
-            {" · "}
+            {" - "}
             Limite {limit}
           </div>
         </div>

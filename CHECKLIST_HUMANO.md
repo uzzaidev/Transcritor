@@ -1,6 +1,6 @@
 # Checklist Humano - Decisoes e Acoes Manuais
 
-Data: 2026-04-28
+Data: 2026-05-04
 
 ## 1) Decisoes obrigatorias
 
@@ -16,20 +16,21 @@ Data: 2026-04-28
 
 - [x] App Password Google gerada para SMTP.
 - [x] `.env` raiz preenchido para OpenAI e SMTP.
-- [ ] `.env` raiz completo para Neon e dashboard.
-- [ ] `web/.env.local` preenchido, se as variaveis do dashboard nao ficarem na raiz.
+- [ ] `.env` raiz completo para dashboard. Neon ja foi configurado.
+- [x] `web` configurado para ler variaveis da raiz; `web/.env.local` e opcional.
 - [ ] Configurar variaveis no ambiente de execucao, se houver deploy interno.
 
 ## 3) Banco de dados
 
-- [ ] Provisionar Neon em staging/producao.
-- [ ] Definir `DATABASE_URL`.
-- [ ] Rodar `cd web && npm run db:push`.
+- [x] Provisionar Neon em staging/producao.
+- [x] Definir `DATABASE_URL`.
+- [x] Rodar `cd web && npm run db:push`.
 
 ## 4) Validacao operacional
 
 - [x] Rodar `ata_agent run-once --json` com IMAP real e 0 mensagens pendentes.
-- [ ] Confirmar eventos em `pipeline_events`.
+- [x] Confirmar tabela `pipeline_events` consultavel no Neon.
+- [ ] Confirmar primeiro evento real em `pipeline_events`.
 - [ ] Validar dashboard com auth.
 - [ ] Validar `/api/health` com o servidor `web` rodando.
 
