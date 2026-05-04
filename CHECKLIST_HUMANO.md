@@ -6,11 +6,11 @@ Data: 2026-05-04
 
 - [x] Confirmar qual caixa de e-mail sera usada para entrada IMAP: `contato@uzzai.com.br`.
 - [x] Configurar e validar acesso IMAP da caixa de entrada.
-- [ ] Confirmar destinatarios autorizados para receber ATA em producao.
-- [ ] Confirmar se o trigger `[TRANSCRICAO]` aceita qualquer remetente ou apenas lista permitida.
+- [x] Confirmar destinatarios autorizados para receber ATA no primeiro teste local.
+- [x] Confirmar uso do trigger `[TRANSCRICAO]` para o primeiro teste local.
 - [x] Dashboard deve ser interno neste primeiro corte.
 - [x] Definir usuario e senha de Basic Auth do dashboard.
-- [ ] Confirmar se o primeiro e-mail real com anexo deve enviar ATA automaticamente ou rodar primeiro em dry-run.
+- [x] Confirmar primeiro e-mail real com anexo e envio automatico.
 
 ## 2) Credenciais e acessos
 
@@ -30,7 +30,7 @@ Data: 2026-05-04
 
 - [x] Rodar `ata_agent run-once --json` com IMAP real e 0 mensagens pendentes.
 - [x] Confirmar tabela `pipeline_events` consultavel no Neon.
-- [ ] Confirmar primeiro evento real em `pipeline_events`.
+- [x] Confirmar primeiro evento real em `pipeline_events`.
 - [x] Validar dashboard com auth.
 - [x] Validar `/api/health` com o servidor `web` rodando.
 

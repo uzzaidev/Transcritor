@@ -2,7 +2,7 @@
 
 Data: 2026-05-04
 
-Status geral: `99% pronto localmente`
+Status geral: `100% pronto localmente para o fluxo principal`
 
 Legenda:
 - `[x]` concluido/validado nesta maquina
@@ -58,7 +58,7 @@ Legenda:
 - [x] Dry-run e preflight do `ata_multiagent_pipeline` executados.
 - [x] Regressao com casos reais executada com 0 falhas.
 - [x] Regressao de derivados executada com 0 falhas.
-- [ ] E2E real `IMAP -> Gemini -> ATA -> SMTP -> Neon`. BLOQUEADO: falta e-mail real de entrada e decisao sobre envio real vs dry-run.
+- [x] E2E real `IMAP -> Gemini -> ATA -> SMTP -> Neon` validado com e-mail real de entrada.
 
 ## F. Testes
 
@@ -68,18 +68,19 @@ Legenda:
 - [x] `cd gemini-whisper && npm run build`
 - [x] `cd web && npm run build`
 - [x] `cd web && npm run db:push`
-- [x] Consulta direta `pipeline_events` no Neon: ok, 0 eventos.
+- [x] Consulta direta `pipeline_events` no Neon: ok.
 - [x] Dashboard sem auth retorna 401.
 - [x] Dashboard `/api/health` com auth retorna ok.
 - [x] `python -m ata_multiagent_pipeline.preflight`
 - [x] `python -m ata_multiagent_pipeline.real_world_regression`
 - [x] `python -m ata_multiagent_pipeline.derived_artifacts_regression`
 - [x] `cd ata_agent && python -m ata_agent run-once --json` com IMAP autenticado e 0 mensagens pendentes.
+- [x] `cd ata_agent && python -m ata_agent run-once --json` com 1 e-mail real processado, `status_validacao=ok` e `delivery_success=true`.
 
 ## G. Go-live interno
 
 - [x] `ata_agent` rodando `run-once` com IMAP autenticado.
 - [x] Dashboard `web` online com auth em validacao local temporaria.
 - [x] `/api/health` com status ok em ambiente rodando.
-- [ ] Primeiro evento confirmado em `pipeline_events`. BLOQUEADO: falta e-mail real com trigger/anexo.
-- [ ] Primeiro envio real a partir de e-mail de entrada validado. BLOQUEADO: falta e-mail real com trigger/anexo e politica de envio.
+- [x] Primeiro evento confirmado em `pipeline_events`.
+- [x] Primeiro envio real a partir de e-mail de entrada validado.

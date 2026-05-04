@@ -7,13 +7,13 @@ Last update: 2026-05-04
 Foco operacional: fechar o produto completo `IMAP -> Gemini -> ATA -> SMTP -> pipeline_events (Neon) -> dashboard web`.
 
 Status estimado:
-- Projeto completo de producao: `99% pronto localmente`
-- Restante para 100%: `1%`
-- Principal bloqueio: primeiro teste real com e-mail de entrada.
+- Projeto completo de producao: `100% pronto localmente para o fluxo principal`
+- Restante para uso local do fluxo principal: `0%`
+- Principal bloqueio: nenhum para uso local controlado.
 
 Git:
 - Branch: `main`
-- Commit local mais recente: `ea7bc6b docs: mark dashboard auth configured`
+- Commit local mais recente: consultar `git log -1 --oneline`.
 - Estado remoto: sincronizado com `origin/main`.
 
 ## Validado em 2026-05-04
@@ -30,12 +30,14 @@ Git:
 - `web` build: ok.
 - Neon provisionado e `DATABASE_URL` configurada localmente.
 - `web db:push`: schema aplicado no Neon.
-- `pipeline_events`: tabela consultavel, 0 eventos no momento da validacao.
+- `pipeline_events`: tabela consultavel com primeiro evento real confirmado.
 - Basic Auth do dashboard configurado localmente.
 - Dashboard sem auth retorna 401.
 - `/api/health` autenticado retorna ok.
 - IMAP Hostinger autenticado para a caixa de entrada configurada.
 - `ata_agent run-once --json`: ok, retornou 0 mensagens pendentes.
+- E2E real: 1 e-mail `[TRANSCRICAO]` com audio processado com `status_validacao=ok`.
+- Entrega real: `delivery_success=true`, e-mail de ATA enviado e mensagem de entrada marcada como lida.
 
 ## Entregas Concluidas
 
@@ -48,19 +50,18 @@ Git:
 
 ## Riscos Remanescentes
 
-- E2E real ainda nao foi validado com uma mensagem `[TRANSCRICAO]` contendo audio.
 - Dashboard em ambiente local foi validado com Basic Auth; falta apenas eventual deploy externo, se desejado.
 - Anti-duplicidade hoje usa store local (`.cache/ata_agent/processed.json`); uma trava global via Neon/job id fica como melhoria do roadmap expandido.
 - `npm install` reporta vulnerabilidades em dependencias transitivas; nao foi aplicado `npm audit fix --force` para evitar mudancas quebradoras.
 
 ## Acoes Humanas Necessarias
 
-- Confirmar se o primeiro teste IMAP real deve enviar e-mail de verdade ou rodar em dry-run.
-- Enviar ou criar um e-mail de teste com assunto `[TRANSCRICAO]` e anexo de audio.
+- Definir se havera deploy externo/24x7 ou uso local sob demanda.
+- Opcional: trocar a senha Basic Auth por uma senha exclusiva do dashboard.
 
 ## Proximo Passo Operacional
 
-1. Confirmar envio real vs dry-run no primeiro teste IMAP.
-2. Enviar e-mail `[TRANSCRICAO]` contendo audio para a caixa IMAP.
-3. Rodar `cd ata_agent && python -m ata_agent run-once --json`.
-4. Confirmar primeiro evento em `pipeline_events` e recebimento da ATA por e-mail.
+1. Para uso sob demanda: enviar e-mail `[TRANSCRICAO]` com audio e rodar `cd ata_agent && python -m ata_agent run-once --json`.
+2. Para operacao continua: rodar `cd ata_agent && python -m ata_agent daemon --interval 120`.
+3. Monitorar eventos no dashboard `web`.
+4. Evoluir roadmap expandido apenas se necessario: anti-duplicidade global, GitOps, ScriptOps e deploy externo.
