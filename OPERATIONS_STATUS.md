@@ -38,12 +38,14 @@ Git:
 - `ata_agent run-once --json`: ok, retornou 0 mensagens pendentes.
 - E2E real: 1 e-mail `[TRANSCRICAO]` com audio processado com `status_validacao=ok`.
 - Entrega real: `delivery_success=true`, e-mail de ATA enviado e mensagem de entrada marcada como lida.
+- App desktop: modo `Reuniao + ATA` implementado para gravar, transcrever e enviar ATA automaticamente via pipeline.
 
 ## Entregas Concluidas
 
 - `ata_agent` como pipeline canonico IMAP/Gemini/ATA/SMTP com CLI `run-once` e `daemon`.
 - `ata_multiagent_pipeline` com geracao de ATA, validacao, derivados, auditoria, e-mail, preflight e regressoes.
 - `gemini-whisper` integrado ao pipeline de ATA com operacao assistida na UI.
+- `gemini-whisper` com modo reuniao para envio automatico apos a gravacao.
 - `web` com dashboard inicial, Basic Auth e healthcheck.
 - Logs, snapshots, dry-run e validacoes locais.
 - Documentacao operacional, checklists e runbook.

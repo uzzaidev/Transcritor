@@ -236,7 +236,7 @@ export const useAtaPipeline = ({
   }, []);
 
   useEffect(() => {
-    if (isRunningAtaPipeline || !canAutoGenerateAta(ataDefaults)) {
+    if (isRunningAtaPipeline) {
       return;
     }
 
@@ -245,7 +245,8 @@ export const useAtaPipeline = ({
         item.status === ProcessStatus.COMPLETED &&
         item.processedMode === "transcribe" &&
         item.result &&
-        !item.ataPipelineStatus
+        !item.ataPipelineStatus &&
+        (item.autoRunAta || canAutoGenerateAta(ataDefaults))
     );
 
     if (!pendingAutoItem) {
@@ -256,16 +257,37 @@ export const useAtaPipeline = ({
       ?.map((profile) => profile.displayName)
       .join(", ");
     const fallbackTitle =
+      pendingAutoItem.meetingTitle ||
       pendingAutoItem.file.name.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").trim() ||
       "Nova reuniao";
     const matchedProfile = findProjectProfile(ataDefaults.projectProfiles, ataDefaults.projeto);
+    const projeto = matchedProfile?.projeto || ataDefaults.projeto;
+    const sprint = matchedProfile?.sprint || ataDefaults.sprint;
+    const participantes =
+      participantsFromProfiles || matchedProfile?.participantes || ataDefaults.participantes;
+    const destinatarios = matchedProfile?.destinatarios || ataDefaults.destinatarios;
+
+    if (!projeto.trim() || !sprint.trim() || !destinatarios.trim()) {
+      setQueue((previous) =>
+        previous.map((queueItem) =>
+          queueItem.id === pendingAutoItem.id
+            ? {
+                ...queueItem,
+                ataPipelineStatus: "error",
+                ataPipelineMessage:
+                  "Configure projeto, sprint e destinatarios em Settings antes de usar o modo reuniao com envio automatico.",
+              }
+            : queueItem
+        )
+      );
+      return;
+    }
 
     void executeAtaPipelineForItem(pendingAutoItem, {
-      projeto: matchedProfile?.projeto || ataDefaults.projeto,
-      sprint: matchedProfile?.sprint || ataDefaults.sprint,
-      participantes:
-        participantsFromProfiles || matchedProfile?.participantes || ataDefaults.participantes,
-      destinatarios: matchedProfile?.destinatarios || ataDefaults.destinatarios,
+      projeto,
+      sprint,
+      participantes,
+      destinatarios,
       meetingTitle: fallbackTitle,
       meetingDate: new Date().toISOString().slice(0, 10),
     });

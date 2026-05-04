@@ -5,9 +5,18 @@ import { MediaFile } from '../types';
 interface AudioRecorderProps {
     onRecordingComplete: (file: MediaFile) => void;
     disabled?: boolean;
+    idleLabel?: string;
+    recordingLabel?: string;
+    stopTitle?: string;
 }
 
-const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplete, disabled }) => {
+const AudioRecorder: React.FC<AudioRecorderProps> = ({
+    onRecordingComplete,
+    disabled,
+    idleLabel = "Record Audio",
+    recordingLabel = "Recording in progress...",
+    stopTitle = "Stop Recording",
+}) => {
     const [isRecording, setIsRecording] = useState(false);
     const [duration, setDuration] = useState(0);
     const [stream, setStream] = useState<MediaStream | null>(null);
@@ -100,7 +109,7 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplete, disa
                     <div className="p-2 rounded-full bg-red-500/10 group-hover:bg-red-500/20 text-red-500 transition-colors">
                         <Mic className="w-5 h-5" />
                     </div>
-                    <span>Record Audio</span>
+                    <span>{idleLabel}</span>
                 </button>
             ) : (
                 <div className="flex flex-col items-center gap-4 animate-fade-in">
@@ -115,12 +124,12 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onRecordingComplete, disa
                         <button
                             onClick={stopRecording}
                             className="p-2 hover:bg-red-500/20 rounded-full text-red-400 hover:text-red-300 transition-colors"
-                            title="Stop Recording"
+                            title={stopTitle}
                         >
                             <Square className="w-5 h-5 fill-current" />
                         </button>
                     </div>
-                    <p className="text-xs text-slate-500 animate-pulse">Recording in progress...</p>
+                    <p className="text-xs text-slate-500 animate-pulse">{recordingLabel}</p>
                 </div>
             )}
         </div>

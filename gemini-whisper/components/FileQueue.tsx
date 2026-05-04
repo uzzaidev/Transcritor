@@ -86,6 +86,12 @@ const FileQueue: React.FC<FileQueueProps> = ({ queue, onRemove, onDownload, onVi
                                         {item.status === ProcessStatus.PENDING && (
                                             <span className="text-xs text-slate-500">Waiting...</span>
                                         )}
+                                        {item.autoRunAta && item.status !== ProcessStatus.ERROR && (
+                                            <span className="text-xs text-emerald-300 flex items-center gap-1">
+                                                <FileText className="w-3 h-3" />
+                                                ATA automatica apos transcricao
+                                            </span>
+                                        )}
                                         {item.status === ProcessStatus.AWAITING_NAMES && (
                                             <span className="text-xs text-amber-400 flex items-center gap-1.5">
                                                 <Users className="w-3 h-3" />

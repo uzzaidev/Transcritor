@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, RefreshCw, Mic, Globe, Play, Loader2, X, FileText, Settings, Video, Download } from 'lucide-react';
+import { Sparkles, RefreshCw, Mic, Globe, Play, Loader2, X, FileText, Settings, Video, Download, Send, AlertTriangle } from 'lucide-react';
 import FileUpload from './components/FileUpload';
 import TranscriptionView from './components/TranscriptionView';
 import SettingsModal from './components/SettingsModal';
@@ -40,6 +40,7 @@ const App: React.FC = () => {
     const [mode, setMode] = useState<'transcribe' | 'translate'>('transcribe');
     const [errorMsg, setErrorMsg] = useState<string | null>(null);
     const [inputMode, setInputMode] = useState<'upload' | 'record'>('upload');
+    const [recordingIntent, setRecordingIntent] = useState<'transcription' | 'meeting-ata'>('transcription');
     const [useDiarization, setUseDiarization] = useState(false);
     const [language, setLanguage] = useState<string>('Portuguese');
 
@@ -302,6 +303,35 @@ const App: React.FC = () => {
         processNext();
     };
 
+    const handleMeetingRecordingComplete = (mediaFile: { file: File; previewUrl: string; type: 'audio' | 'video' }) => {
+        const recordedAt = new Date();
+        const title = `Reuniao gravada ${recordedAt.toLocaleDateString('pt-BR')} ${recordedAt
+            .toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+            .replace(':', 'h')}`;
+        const newItem: QueueItem = {
+            id: Math.random().toString(36).substr(2, 9),
+            file: mediaFile.file,
+            status: ProcessStatus.PENDING,
+            type: 'audio',
+            previewUrl: mediaFile.previewUrl,
+            autoRunAta: true,
+            meetingTitle: title,
+            progressMessage: "Aguardando transcricao da reuniao...",
+        };
+
+        const nextQueue = [...queueRef.current, newItem];
+        queueRef.current = nextQueue;
+        setQueue(nextQueue);
+        setViewMode('files');
+        setInputMode('upload');
+        setErrorMsg(null);
+        setStatus(ProcessStatus.IDLE);
+
+        setTimeout(() => {
+            processQueue();
+        }, 0);
+    };
+
     const handleDiarizationConfirm = async (rawNames: Record<string, string>) => {
         if (!diarizationPendingItem) return;
 
@@ -411,6 +441,18 @@ const App: React.FC = () => {
     // Get Gemini API Key (either from env or potentially settings if we added it there)
     // For now assuming it is in env as per original app, but could be extended
     const geminiApiKey = process.env.GEMINI_API_KEY || "";
+    const selectedAtaProfile = ataDefaults.projectProfiles.find(
+        (profile) => profile.projeto.trim().toLowerCase() === ataDefaults.projeto.trim().toLowerCase()
+    );
+    const meetingAtaProject = selectedAtaProfile?.projeto || ataDefaults.projeto;
+    const meetingAtaSprint = selectedAtaProfile?.sprint || ataDefaults.sprint;
+    const meetingAtaParticipants = selectedAtaProfile?.participantes || ataDefaults.participantes;
+    const meetingAtaRecipients = selectedAtaProfile?.destinatarios || ataDefaults.destinatarios;
+    const meetingAtaReady = Boolean(
+        meetingAtaProject.trim() &&
+        meetingAtaSprint.trim() &&
+        meetingAtaRecipients.trim()
+    );
 
     const handleSessionComplete = async (audioBlob: Blob, screenshots: any[], duration: number) => {
         const file = new File([audioBlob], `session_${new Date().toISOString()}.webm`, { type: 'audio/webm' });
@@ -732,8 +774,74 @@ const App: React.FC = () => {
                                 {inputMode === 'upload' ? (
                                     <FileUpload onFilesSelected={handleFilesSelected} />
                                 ) : (
-                                    <div className="w-full max-w-2xl border-2 border-dashed border-slate-700 rounded-xl p-10 bg-slate-800/30 flex flex-col items-center justify-center min-h-[300px]">
-                                        <AudioRecorder onRecordingComplete={(file) => handleFilesSelected([file.file])} />
+                                    <div className="w-full max-w-2xl border-2 border-dashed border-slate-700 rounded-xl p-8 bg-slate-800/30 flex flex-col items-center justify-center min-h-[360px]">
+                                        <div className="mb-6 grid w-full max-w-xl gap-3 sm:grid-cols-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => setRecordingIntent('transcription')}
+                                                className={`rounded-xl border px-4 py-3 text-left transition-all ${recordingIntent === 'transcription'
+                                                    ? 'border-blue-500 bg-blue-500/10 text-white'
+                                                    : 'border-slate-700 bg-slate-900/60 text-slate-400 hover:border-slate-600'
+                                                    }`}
+                                            >
+                                                <p className="text-sm font-semibold">Só transcrever</p>
+                                                <p className="mt-1 text-xs opacity-70">Grava e adiciona o áudio na fila.</p>
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={() => setRecordingIntent('meeting-ata')}
+                                                className={`rounded-xl border px-4 py-3 text-left transition-all ${recordingIntent === 'meeting-ata'
+                                                    ? 'border-emerald-500 bg-emerald-500/10 text-white'
+                                                    : 'border-slate-700 bg-slate-900/60 text-slate-400 hover:border-slate-600'
+                                                    }`}
+                                            >
+                                                <p className="flex items-center gap-2 text-sm font-semibold">
+                                                    <Send className="h-4 w-4" />
+                                                    Reunião + ATA
+                                                </p>
+                                                <p className="mt-1 text-xs opacity-70">Ao parar, transcreve e envia a ATA.</p>
+                                            </button>
+                                        </div>
+
+                                        {recordingIntent === 'meeting-ata' && (
+                                            <div
+                                                className={`mb-6 w-full max-w-xl rounded-xl border px-4 py-3 text-sm ${meetingAtaReady
+                                                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-100'
+                                                    : 'border-amber-500/30 bg-amber-500/10 text-amber-100'
+                                                    }`}
+                                            >
+                                                {meetingAtaReady ? (
+                                                    <>
+                                                        <p className="font-semibold">Modo reunião pronto para envio automático.</p>
+                                                        <p className="mt-1 text-xs opacity-80">
+                                                            Projeto: {meetingAtaProject} | Sprint: {meetingAtaSprint} | Destinatários: {meetingAtaRecipients}
+                                                        </p>
+                                                        {meetingAtaParticipants ? (
+                                                            <p className="mt-1 text-xs opacity-80">Participantes padrão: {meetingAtaParticipants}</p>
+                                                        ) : null}
+                                                    </>
+                                                ) : (
+                                                    <p className="flex items-start gap-2">
+                                                        <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                                                        Configure projeto, sprint e destinatários em Settings antes de usar o envio automático.
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+
+                                        <AudioRecorder
+                                            disabled={recordingIntent === 'meeting-ata' && !meetingAtaReady}
+                                            idleLabel={recordingIntent === 'meeting-ata' ? 'Iniciar reunião' : 'Record Audio'}
+                                            recordingLabel={recordingIntent === 'meeting-ata' ? 'Reunião em andamento...' : 'Recording in progress...'}
+                                            stopTitle={recordingIntent === 'meeting-ata' ? 'Finalizar reunião e enviar ATA' : 'Stop Recording'}
+                                            onRecordingComplete={(file) => {
+                                                if (recordingIntent === 'meeting-ata') {
+                                                    handleMeetingRecordingComplete(file);
+                                                    return;
+                                                }
+                                                handleFilesSelected([file.file]);
+                                            }}
+                                        />
                                     </div>
                                 )}
                             </div>

@@ -55,6 +55,8 @@ npm install
 npm run electron:dev
 ```
 
+No app desktop, use `Record Audio` -> `Reuniao + ATA` para gravar uma reuniao, transcrever e enviar a ATA automaticamente com os padroes salvos em `Settings`.
+
 ### 5) Instalar e executar `web`
 
 ```bash

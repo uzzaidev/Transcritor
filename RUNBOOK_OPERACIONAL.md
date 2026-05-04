@@ -83,6 +83,21 @@ npm run dev
 - Abrir `/` com credenciais Basic Auth.
 - Healthcheck: `GET /api/health`.
 
+### App desktop em modo reuniao
+
+```bash
+cd gemini-whisper
+npm run electron:dev
+```
+
+1. Abra `Settings`.
+2. Confirme projeto, sprint e destinatarios padrao em `ATA Pipeline Defaults`.
+3. Feche `Settings` e escolha `Record Audio`.
+4. Selecione `Reuniao + ATA`.
+5. Clique `Iniciar reuniao`.
+6. Ao terminar, clique no botao de parar gravacao.
+7. O app transcreve, gera a ATA e envia o e-mail automaticamente usando os padroes salvos.
+
 ## 6) Como validar que esta funcionando
 
 1. `ata_agent` processa e retorna estado com `delivery_success`.
@@ -119,6 +134,7 @@ Automatico:
 - Retry SMTP/Gemini
 - Persistencia de eventos (com `DATABASE_URL`)
 - Atualizacao de dashboard via leitura do banco
+- Modo reuniao no app desktop: gravacao local -> transcricao -> ATA -> SMTP
 
 Manual:
 - Configuracao de chaves/credenciais

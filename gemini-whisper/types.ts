@@ -165,6 +165,8 @@ export interface QueueItem {
   speakerNames?: Record<string, string>;
   awaitingDiarization?: boolean;
   processedMode?: 'transcribe' | 'translate';
+  autoRunAta?: boolean;
+  meetingTitle?: string;
   ataPipelineStatus?: AtaPipelineStatus;
   ataPipelineMessage?: string;
   ataPipelineResult?: AtaPipelineExecutionResult;
