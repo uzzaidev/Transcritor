@@ -1085,7 +1085,7 @@ const transcribeWithOpenAI = async (
 
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("model", "whisper-1");
+  formData.append("model", "gpt-4o-transcribe");
 
   const response = await fetch(endpoint, {
     method: "POST",
@@ -1103,7 +1103,7 @@ const transcribeWithOpenAI = async (
   const data = await response.json();
   return {
     text: data.text,
-    provider: "OpenAI Whisper-1",
+    provider: "OpenAI gpt-4o-transcribe",
   };
 };
 

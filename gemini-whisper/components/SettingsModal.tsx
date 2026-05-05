@@ -156,7 +156,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="grid grid-cols-1 gap-3">
               {[
                 { id: 'gemini', name: 'Google Gemini', desc: 'Fast, Multimodal, Built-in' },
-                { id: 'openai', name: 'OpenAI Whisper', desc: 'Industry Standard ASR' },
+                { id: 'openai', name: 'OpenAI GPT-4o Transcribe', desc: 'High-accuracy GPT-4o ASR' },
                 { id: 'huggingface', name: 'Hugging Face', desc: 'Whisper Large v3 (Free/Pro)' }
               ].map((p) => (
                 <button

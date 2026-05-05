@@ -432,7 +432,7 @@ const App: React.FC = () => {
 
     const getProviderName = () => {
         switch (provider) {
-            case 'openai': return 'OpenAI Whisper';
+            case 'openai': return 'OpenAI GPT-4o Transcribe';
             case 'huggingface': return 'HF Whisper v3';
             case 'gemini': default: return 'Gemini 2.5 Flash';
         }
